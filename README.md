@@ -7,11 +7,8 @@
 - Matheus Coelho - [GitHub](https://github.com/matheuslmc)
 - Nicolas Vycas Nery - [GitHub](https://github.com/tomast1337)
 
+### No Wiki está a prototipagem e afins do projeto.
 
-
-# Business Case
-
-Business Case:  A fim de atender melhor seus clientes, uma pizzaria decide abrir um sistema online de vendas de suas pizzas. Com o advento da pandemia de COVID-19, diversos estabelecimentos do meio comercial, principalmente àqueles de vendas alimentício, passaram a investir no comércio online e nos deliveries para trazer segurança para o cliente. Um aplicativo de vendas de pizza customizado e feito para exclusivamente para a pizzaria. A Pizza poderá ser customizada da forma que o cliente quiser e ainda sairá com o preço na hora, sem ter problemas no futuro.
 
 ## Abra esse projeto no Visual Studio Code
 
