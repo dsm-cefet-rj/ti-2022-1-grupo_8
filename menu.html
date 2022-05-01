@@ -5,13 +5,100 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Pizzaria</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="js/bootstrap.min.js">
     <style>
+        body {
+            background-image: url(imgs/background.webp);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
     </style>
 </head>
+
 <body>
+    <!-- Barra superior fixa com um botão para configurações e outro para o carrinho-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-2">
+        <a class="navbar-brand" href="#">Pizzaria</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="menu.html">Menu <span class="sr-only">(atual)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="carrinho.html">Carrinho</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contato</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!-- Conteúdo da página -->
+    <!-- Lista de produtos mais pedidos -->
+    <div class="container mb-2 p-1 bg-transparent">
+        <div class="row">
+            <h1 class="text-center">Pizzas mais pedidas</h1>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="imgs/pizza-calabresa.jpg" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Pizza de Calabresa</h5>
+                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam libero dolor,
+                            venenatis vel ex laoreet.</p>
+                        <a href="#" class="btn btn-success">Adicionar ao Carinho</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="imgs/pizza-mussarela.webp" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Pizza de Mussarela</h5>
+                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam libero dolor,
+                            venenatis vel ex laoreet.</p>
+                        <a href="#" class="btn btn-success">Adicionar ao Carinho</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="imgs/pizza-da-casa.webp" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Pizza da Casa</h5>
+                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam libero dolor,
+                            venenatis vel ex laoreet.</p>
+                        <a href="#" class="btn btn-success">Adicionar ao Carinho</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-4 text-center">
+                <h3>Outros Sabores</h3>
+            </div>
+        </div>
+        <div class="row mt-5 justify-content-center">
+            <div class="col-9">
+                <h3 class="text-center">Crie sua própria pizza</h3>
+            </div>
+
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-4">
+                <a href="criar-pizza.html" class="btn btn-primary btn-lg">Criar Pizza</a>
+            </div>
+        </div>
+    </div>
 
 </body>
+
 </html>
