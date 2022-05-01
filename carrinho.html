@@ -5,19 +5,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Carrinho</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="js/bootstrap.min.js">
     <style>
+        body {
+            background-image: url(imgs/background.webp);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
     </style>
 </head>
 
 <body>
-    <div class="container">
+    <div class="container mb-2 p-1 bg-transparent">
         <div class="row">
-            <div class="col-md-12">
-                <h1 class="text-center">Carrinho</h1>
-            </div>
+            <h1 class="text-center">Carrinho</h1>
         </div>
         <div class="row">
             <div class="col-md-12">
@@ -66,6 +70,50 @@
                                     </span>
                                 </div>
                             </td>
+                            <td>R$ 20,00</td>
+                            <td>
+                                <a href="#" class="btn btn-danger">Remover</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Pizza Customizada</td>
+                            <td>R$ 25,00</td>
+                            <td>
+                                <div class="input-group">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-default" type="button">-</button>
+                                    </span>
+                                    <input type="text" class="form-control" value="1">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn
+                                    -default" type="button">+</button>
+                                    </span>
+                                </div>
+                            </td>
+                            <td>R$ 8,00</td>
+                            <td>
+                                <a href="#" class="btn btn-danger">Remover</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Refrigerante 2 Litros</td>
+                            <td>R$ 8,00</td>
+                            <td>
+                                <div class="input-group">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-default" type="button">-</button>
+                                    </span>
+                                    <input type="text" class="form-control" value="1">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn
+                                    -default" type="button">+</button>
+                                    </span>
+                                </div>
+                            </td>
+                            <td>R$ 8,00</td>
+                            <td>
+                                <a href="#" class="btn btn-danger">Remover</a>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
@@ -74,12 +122,15 @@
         </div>
         <div class="row">
             <div class="col-md-12">
-                <h3>Total: R$ 40,00</h3>
+                <h3>Total: R$ 73,00</h3>
             </div>
         </div>
         <div class="row">
-            <div class="col-md-12">
-                <a href="#" class="btn btn-primary">Finalizar Compra</a>
+            <div class="col-sm">
+                <a href="#" class="btn btn-outline-success  btn-lg">Finalizar Compra</a>
+            </div>
+            <div class="col-sm">
+                <a href="menu.html" class="btn btn-outline-warning  btn-lg">Voltar</a>
             </div>
         </div>
     </div>
