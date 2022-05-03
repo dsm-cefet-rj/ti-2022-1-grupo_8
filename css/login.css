@@ -1,0 +1,82 @@
+*{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.loginPage {
+    width: max-content;
+    margin: auto;
+    
+  }
+
+  .field{
+    width: 300px;
+    border: none;
+  }
+
+
+  .loginHeader {
+    display: block;
+  
+    
+    text-align: center;
+    font-family: "Erica One", cursive;
+  }
+
+  .titulo {
+    font-size: 8rem;
+    color: rgb(0, 0, 0);
+    margin-bottom: 30px;
+    margin-top: 10px;
+    text-shadow: #7c7c7c 0 0 10px;
+    text-align: center;
+  }
+
+
+  .inputTexto{
+    width: 100%;
+    margin-bottom: 5px;
+    border: none;
+    border-bottom: 1px solid;
+    outline: none;
+    font-size: 15px;
+    letter-spacing: 1px;
+    padding: 5px;
+  
+  }
+
+  .botaoLogar{
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    background-color: rgb(78, 159, 230);
+    margin-top: 5px;
+    cursor: pointer;
+    color: white;
+    font-size: 19px;  
+  }
+  
+  .botaoLogar:hover{
+    background-color: rgb(35, 136, 224);
+  }
+
+  .botaoCriarConta{
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    background-color: rgb(22, 231, 50);
+    cursor: pointer;
+    color: white;
+    font-size: 19px;
+    
+  }
+
+  .corLink{
+    color: white;
+    text-decoration: none;
+  }
+  
+  .botaoCriarConta:hover{
+    background-color: rgb(58, 184, 27);
+  }
