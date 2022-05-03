@@ -1,0 +1,70 @@
+*{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.Header{
+    display: block;
+    
+    position: absolute;
+    left: 50%;
+    top: 35%;
+    transform: translate(-50%,-50%);   
+}
+
+.field{
+    width: 300px;
+    border: none;
+}
+
+.InputTexto{
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid;
+    outline: none;
+    font-size: 15px;
+    letter-spacing: 1px;
+    padding: 5px;
+}
+
+.titulo{
+    text-align: center;
+    font-size: 30px;
+    border-bottom: 2px solid black;
+}
+
+.botaoCadastrar{
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    background-color: rgb(22, 231, 50);
+    cursor: pointer;
+    color: white;
+    font-size: 19px;
+    
+}
+
+.botaoCadastrar:hover{
+    background-color: rgb(58, 184, 27);
+}
+
+.botaoVoltar{
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    background-color: rgb(226, 19, 19);
+    cursor: pointer;
+    margin-bottom: 10px;
+    color: white;
+    font-size: 19px;
+}
+
+.botaoVoltar:hover{
+    background-color: rgb(196, 23, 23);
+}
+
+.corLink{
+    color: white;
+    text-decoration: none;
+  }
