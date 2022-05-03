@@ -4,36 +4,45 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed;
 }
-.card{
+
+.card {
     background-color: rgba(255, 255, 255, 0.94);
     border-radius: 10px;
     box-shadow: 0px 0px 10px rgba(255, 0, 0, 0.166);
     transition: 0.8s;
 }
 
-.card img:hover{
+.card img:hover {
     transform: scale(1.2);
     transition: 0.8s;
     border-radius: 20px;
 }
 
-
 .card img {
-    width: 100%;  height: 10rem; object-fit: cover;
+    width: 100%;
+    height: 10rem;
+    object-fit: cover;
 }
 
-.logo{
+.logo {
     width: 20rem;
     height: auto;
     display: block;
     margin-left: auto;
     margin-right: auto;
 }
+
 .main {
     background-color: rgba(255, 255, 255, 0.5);
     border-radius: 10px;
     padding: 20px;
     box-shadow: 0px 0px 10px #000;
+}
+
+.section {
+    padding: 10px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.838);
 }
 
 hr {
@@ -42,4 +51,26 @@ hr {
 
 h1 {
     margin: 30px 0;
+}
+
+div.scrollmenu {
+    overflow: auto;
+    white-space: nowrap;
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.ingrediente {
+    width: 50%;
+    height: fit-content;
+    margin: 10px;
+    text-align: center;
+    border-radius: 5px;
+    left: 0;
+}
+
+.ingrediente img {
+    width: 100%;
+    height: 10rem;
+    object-fit: cover;
 }
