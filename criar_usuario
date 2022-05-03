@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="criar_usuario.css">
+    <title>Cadastro</title>
+</head>
+<body>
+    <div class="Header">
+        <form>
+            <fieldset class="field">
+                <legend class="titulo">Tela de cadastro</legend>
+                
+                <div>
+                    <br/>
+                    <input 
+                        type="text" 
+                        name="campoNome" 
+                        class="InputTexto" 
+                        placeholder="Nome"
+                        autocomplete="off"
+                        required>
+                    </input>
+                </div>
+                <div>
+                    <br/>
+                    <input 
+                        type="email" 
+                        name="campoEmail" 
+                        class="InputTexto"  
+                        placeholder="E-mail" 
+                        autocomplete="off"
+                        required>    
+                    </input>
+                </div>
+                <div>
+                    <br/>
+                    <input 
+                        type="password" 
+                        name="campoSenha" 
+                        class="InputTexto" 
+                        placeholder="Senha"
+                        required>  
+                    </input>
+                </div>
+                <div>
+                    <br/> 
+                    <input 
+                        type="password" 
+                        name="campoConfirmaSenha" 
+                        class="InputTexto" 
+                        placeholder="Confirmar senha" 
+                        required>
+                    </input>
+                </div>
+                <div>
+                    <br/>
+                    
+                        <button class="botaoCadastrar">
+                            <a href="Login.html" class="corLink">Cadastrar</a>
+                        </button>
+                    
+                </div>
+            </fieldset>
+        </form>
+        <fieldset class="field">
+                <button class="botaoVoltar">
+                    <a href="Login.html" class="corLink"> Voltar</a>
+                </button>
+        </fieldset>
+    </div>
+</body>
+</html>
