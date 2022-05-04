@@ -28,12 +28,15 @@
                 <li class="nav-item">
                     <a class="nav-link" href="carrinho.html">Carrinho</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="criar-pizza.html">Monte sua Pizza <span class="sr-only">(atual)</span></a>
+                </li>
             </ul>
         </div>
     </nav>
 
     <!-- Conteúdo da página -->
-    
+    <form>
     <div class="container">
         <div class="row">
             <h1 class="text-center">Monte sua pizza</h1>
@@ -41,10 +44,10 @@
         <div class="row section">
             <section style="margin: 50px auto; width: 80%">
                 <label for="qtdQueijo" class="form-label">Quantidade de queijo</label>
-                <input type="range" class="form-range" min="0" max="2" id="qtdQueijoRange">
+                <input type="range" class="form-range" min="0" step=".1" max="2" id="qtdQueijoRange" >
         
                 <label for="qtdMolho" class="form-label">Quantidade de molho</label>
-                <input type="range" class="form-range" min="0" max="2" id="qtdMolhoRange">
+                <input type="range" class="form-range" min="0" step=".1" max="2" id="qtdMolhoRange">
             </section>
             <hr/>
         </div>
@@ -152,7 +155,7 @@
         <a href="carrinho.html"><button class="btn btn-primary">Adicionar ao carrinho</button></a>
     </div>
 
-
+</form>
 
 
 

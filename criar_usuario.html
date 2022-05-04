@@ -1,75 +1,55 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/criar_usuario.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="js/bootstrap.min.js">
+    <link rel="stylesheet" href="css/nosso.css">
     <title>Cadastro</title>
 </head>
+
 <body>
-    <div class="Header">
+    <div class="logo text-center">
+        <h1 >Pizzaria ON</h1>
+    </div>
+    <div class="container mt-2 mb-5 p-5 bg-transparent">
+        <div class="row mb-2">
+            <h1 class="titulo">Cadastro</h1>
+        </div>
+        
         <form>
-            <fieldset class="field">
-                <legend class="titulo">Tela de cadastro</legend>
-                
-                <div>
-                    <br/>
-                    <input 
-                        type="text" 
-                        name="campoNome" 
-                        class="InputTexto" 
-                        placeholder="Nome"
-                        autocomplete="off"
-                        required>
-                    </input>
-                </div>
-                <div>
-                    <br/>
-                    <input 
-                        type="email" 
-                        name="campoEmail" 
-                        class="InputTexto"  
-                        placeholder="E-mail" 
-                        autocomplete="off"
-                        required>    
-                    </input>
-                </div>
-                <div>
-                    <br/>
-                    <input 
-                        type="password" 
-                        name="campoSenha" 
-                        class="InputTexto" 
-                        placeholder="Senha"
-                        required>  
-                    </input>
-                </div>
-                <div>
-                    <br/> 
-                    <input 
-                        type="password" 
-                        name="campoConfirmaSenha" 
-                        class="InputTexto" 
-                        placeholder="Confirmar senha" 
-                        required>
-                    </input>
-                </div>
-                <div>
-                    <br/>
-                    
-                        <button class="botaoCadastrar">
-                            <a href="Login.html" class="corLink">Cadastrar</a>
-                        </button>
-                    
-                </div>
-            </fieldset>
+            <div class="row mb-1">
+                <input type="text" name="campoNome" class="form-control" placeholder="Nome" autocomplete="off" required>
+                </input>
+            </div>
+            <div class="row mb-1">
+                <input type="email" name="campoEmail" class="form-control" placeholder="E-mail" autocomplete="off"
+                    required>
+                </input>
+            </div>
+            <div class="row mb-1">
+                <input type="password" name="campoSenha" class="form-control" placeholder="Senha" required>
+                </input>
+            </div>
+            <div class="row mb-5">
+                <input type="password" name="campoConfirmaSenha" class="form-control" placeholder="Confirmar senha"
+                    required>
+                </input>
+            </div>
+
+
+            <div class="row mb-2">
+                <a href="Login.html" class="btn btn-primary btn-block ">Cadastrar</a>
+            </div>
         </form>
-        <fieldset class="field">
-                <button class="botaoVoltar">
-                    <a href="Login.html" class="corLink"> Voltar</a>
-                </button>
-        </fieldset>
+        <div class="row mb-2">
+            <a href="Login.html" class="btn btn-primary btn-block ">Voltar</a>
+        </div>
     </div>
 </body>
+
 </html>
