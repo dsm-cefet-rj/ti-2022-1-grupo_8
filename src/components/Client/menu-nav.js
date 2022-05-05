@@ -12,7 +12,7 @@ const MenuNav = (props) => {
             </button>
             <div className="collapse navbar-collapse" id="navbarNav">
                 <ul className="navbar-nav">
-                    <li className="nav-item active">
+                    <li className="nav-item">
                         <a className="nav-link" href="/menu">Menu
                             {
                                 atual === "menu" ? (<span className="sr-only">(Atual)</span>) : null
