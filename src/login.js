@@ -24,7 +24,7 @@ function Login() {
                     </div>
                     <div className="row mb-2">
                         <p>Não possui conta? Cadastre-se</p>
-                        <a href='Cliente Novo.html' className="btn btn-primary btn-block ">Criar conta</a>
+                        <a href='/criar-usuario' className="btn btn-primary btn-block ">Criar conta</a>
                     </div>
                 </form>
             </div>

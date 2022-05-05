@@ -26,6 +26,9 @@ const MenuNav = (props) => {
                             }
                         </a>
                     </li>
+                    <li className="nav-item">
+                        <a className="nav-link" href="/">Sair</a>
+                    </li>
                 </ul>
             </div>
         </nav>
