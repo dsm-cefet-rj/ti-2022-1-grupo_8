@@ -28,8 +28,6 @@ const CriarUsuario = () => {
                             required>
                         </input>
                     </div>
-
-
                     <div className="row mb-2">
                         <a href="/" className="btn btn-primary btn-block ">Cadastrar</a>
                     </div>

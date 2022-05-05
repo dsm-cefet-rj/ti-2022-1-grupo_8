@@ -131,7 +131,6 @@ const MenuCliente = () => {
                             key={pizza.id}
                         />
                     ))}
-
                 </div>
                 <hr />
                 <div className="row justify-content-center mt-2">

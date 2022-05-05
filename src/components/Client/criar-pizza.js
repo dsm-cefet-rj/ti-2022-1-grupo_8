@@ -175,17 +175,17 @@ const CriarPizza = () => {
                                         Pequena
                                     </label>
                                     <br />
-                                    <input className="form-check-input" type="radio" value="" id="tamanho2" name="tamanho"/>
+                                    <input className="form-check-input" type="radio" value="" id="tamanho2" name="tamanho" />
                                     <label className="form-check-label" for="tamanho2">
                                         Media
                                     </label>
                                     <br />
-                                    <input className="form-check-input" type="radio" value="" id="tamanho3" name="tamanho"/>
+                                    <input className="form-check-input" type="radio" value="" id="tamanho3" name="tamanho" />
                                     <label className="form-check-label" for="tamanho3">
                                         Grande
                                     </label>
                                     <br />
-                                    <input className="form-check-input" type="radio" value="" id="tamanho4" name="tamanho"/>
+                                    <input className="form-check-input" type="radio" value="" id="tamanho4" name="tamanho" />
                                     <label className="form-check-label" for="tamanho4">
                                         Familia
                                     </label>
@@ -205,10 +205,10 @@ const CriarPizza = () => {
                 </div>
                 <hr />
                 <div className="row section">
-                        <p><b>Preço total:</b></p>
-                        <p>R$ 
-                            {precoTotal.toFixed(2)}
-                        </p>
+                    <p><b>Preço total:</b></p>
+                    <p>R$
+                        {precoTotal.toFixed(2)}
+                    </p>
                 </div>
                 <hr />
                 <div style={{ "text-align": "center", }}>
