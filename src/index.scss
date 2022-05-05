@@ -1,0 +1,145 @@
+@import url("https://fonts.googleapis.com/css2?family=BenchNine:wght@300&family=Roboto:wght@900&family=Water+Brush&family=Yanone+Kaffeesatz:wght@300&display=swap");
+
+body {
+    background-image: url("../public/imgs/background.webp");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font-family: "Yanone Kaffeesatz", sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+}
+
+.card {
+    width: 18rem;
+    height: fit-content;
+    object-fit: cover;
+
+    p {
+        font-family: "BenchNine", sans-serif;
+        font-size: x-large;
+
+    }
+
+    h5 {
+        font-family: "Roboto", sans-serif;
+        text-decoration: solid underline;
+        size: 1.5rem;
+    }
+}
+
+.titulo {
+    text-align: center;
+    font-size: 30px;
+    border-bottom: 2px solid black;
+}
+
+.logo {
+    font-family: "Water Brush", cursive;
+    width: 100%;
+    size: 100px;
+
+    h1 {
+        font-size: 50px;
+        color: rgb(0, 0, 0);
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    h3 {
+        font-size: 50px;
+        color: rgb(0, 0, 0);
+        text-align: center;
+        margin-top: 10px;
+    }
+}
+
+.card {
+    background-color: rgba(255, 255, 255, 0.94);
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(255, 0, 0, 0.166);
+    transition: 0.8s;
+
+    img {
+        width: 100%;
+        height: 10rem;
+        object-fit: cover;
+        transition: 0.8s;
+    }
+
+    img:hover {
+        transform: scale(1.2);
+        transition: 0.8s;
+        border-radius: 20px;
+    }
+}
+
+.logo {
+    width: 20rem;
+    height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.main {
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0px 0px 10px #000;
+}
+
+.section {
+    padding: 10px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.838);
+}
+
+hr {
+    margin: 20px 0;
+}
+
+h1 {
+    margin: 30px 0;
+}
+
+div.scrollmenu {
+    overflow: auto;
+    white-space: nowrap;
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.ingrediente {
+    width: 50%;
+    height: fit-content;
+    margin: 10px;
+    text-align: center;
+    border-radius: 5px;
+    left: 0;
+
+    img {
+        width: 100%;
+        height: 10rem;
+        object-fit: cover;
+    }
+}
+
+
+
+@media only screen and (max-width: 768px) {
+    .card {
+        width: 100%;
+        height: auto;
+    }
+
+    .card img {
+        width: 100%;
+        height: auto;
+    }
+
+    .ingrediente {
+        width: 100%;
+    }
+}
