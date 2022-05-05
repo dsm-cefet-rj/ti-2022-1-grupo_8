@@ -1,5 +1,11 @@
 import React from 'react';
 
+let pizzas = [
+    {}
+]
+
+
+
 const MenuNav = (props) => {
     let atual = props.Atual;
     return (
@@ -12,14 +18,14 @@ const MenuNav = (props) => {
             <div className="collapse navbar-collapse" id="navbarNav">
                 <ul className="navbar-nav">
                     <li className="nav-item active">
-                        <a className="nav-link" href="#">Menu
+                        <a className="nav-link" href="/menu">Menu
                             {
                                 atual === "menu" ? <span className="sr-only">(Atual)</span> : null
                             }
                         </a>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" href="#">Carrinho
+                        <a className="nav-link" href="/carrinho">Carrinho
                             {
                                 atual === "carrinho" ? <span className="sr-only">(Atual)</span> : null
                             }
