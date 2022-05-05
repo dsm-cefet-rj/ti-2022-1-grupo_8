@@ -16,7 +16,7 @@ class Cart extends Component {
     this.state = {
       name: "",
       email: "",
-      address: "",
+      address: "",a
       showCheckout: false,
     };
   }
