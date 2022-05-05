@@ -1,13 +1,8 @@
 import React from 'react';
 
-let pizzas = [
-    {}
-]
-
-
-
 const MenuNav = (props) => {
     let atual = props.Atual;
+    console.log(atual);
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark p-2">
             <a className="navbar-brand" href="#">Pizzaria</a>
@@ -20,14 +15,14 @@ const MenuNav = (props) => {
                     <li className="nav-item active">
                         <a className="nav-link" href="/menu">Menu
                             {
-                                atual === "menu" ? <span className="sr-only">(Atual)</span> : null
+                                atual === "menu" ? (<span className="sr-only">(Atual)</span>) : null
                             }
                         </a>
                     </li>
                     <li className="nav-item">
                         <a className="nav-link" href="/carrinho">Carrinho
                             {
-                                atual === "carrinho" ? <span className="sr-only">(Atual)</span> : null
+                                atual === "carrinho" ? (<span className="sr-only">(Atual)</span>) : null
                             }
                         </a>
                     </li>
