@@ -67,10 +67,10 @@ const Carrinho = () => {
                     </div>
                 </div>
                 <div className="row">
-                    <div className="col-sm" style={{ 'text-align': 'center', }}>
+                    <div className="col-sm" style={{ 'textAlign': 'center', }}>
                         <button href="#" className="btn btn-success  btn-lg">Finalizar Compra</button>
                     </div>
-                    <div className="col-sm" style={{ 'text-align': 'center', }}>
+                    <div className="col-sm" style={{ 'textAlign': 'center', }}>
                         <button href="Cliente Menu.html" className="btn btn-warning  btn-lg">Voltar</button>
                     </div>
                 </div>

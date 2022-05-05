@@ -1,9 +1,8 @@
 import './App.css';
-import { Route, Routes} from 'react-router-dom';
 import React from 'react';
 import Login from './login';
 import { Provider } from "react-redux";
-import { BrowserRouter, Route, Link } from "react-router-dom";
+import { BrowserRouter, Route,Routes, Link } from "react-router-dom";
 import MenuCliente from './components/Client/menu.js';
 import Carrinho from './components/Client/carrinho';
 import CriarPizza from './components/Client/criar-pizza';

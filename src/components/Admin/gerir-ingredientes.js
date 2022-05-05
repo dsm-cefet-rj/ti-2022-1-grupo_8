@@ -41,19 +41,19 @@ const GerirIngredientes = () => {
                     </div>
                     <form action="Administrador Gerir Ingredientes.html" method="post">
                         <div className="form-group mb-2">
-                            <label for="nome">Nome</label>
+                            <label htmlFor="nome">Nome</label>
                             <input type="text" className="form-control" id="nome" name="nome" placeholder="Nome"/>
                         </div>
                         <div className="form-group mb-2">
-                            <label for="preco">Preço</label>
+                            <label htmlFor="preco">Preço</label>
                             <input type="text" className="form-control" id="preco" name="preco" placeholder="Preço"/>
                         </div>
                         <div className="form-group mb-2">
-                            <label for="descricao">Descrição</label>
+                            <label htmlFor="descricao">Descrição</label>
                             <input type="text" className="form-control" id="descricao" name="descricao" placeholder="Descrição"/>
                         </div>
                         <div className="form-group mb-2">
-                            <label for="imagem">Imagem</label>
+                            <label htmlFor="imagem">Imagem</label>
                             <input type="file" className="form-control" id="imagem" name="imagem" placeholder="Imagem"/>
                         </div>
                         <button type="submit" className="btn btn-primary">Adicionar</button>

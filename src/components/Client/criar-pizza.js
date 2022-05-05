@@ -14,7 +14,7 @@ const Metade = () => {
                             <img src={ingrediente.imagem} alt="Pizza" style={{ "width": "100px", }} />
                             <br />
                             <input className="form-check-input" type="checkbox" value="" id="ingrediente1" />
-                            <label className="form-check-label" for="ingrediente1">
+                            <label className="form-check-label" htmlFor="ingrediente1">
                                 {ingrediente.nome}
                             </label>
                             <p>R$ {ingrediente.preco}</p>
@@ -60,10 +60,10 @@ const CriarPizza = () => {
                     </div>
                     <div className="row section">
                         <section style={{ "margin": "50px auto", "width": "80%", }}>
-                            <label for="qtdQueijo" className="form-label">Quantidade de queijo</label>
+                            <label htmlFor="qtdQueijo" className="form-label">Quantidade de queijo</label>
                             <input type="range" className="form-range" min="0" step=".1" max="2" id="qtdQueijoRange" />
 
-                            <label for="qtdMolho" className="form-label">Quantidade de molho</label>
+                            <label htmlFor="qtdMolho" className="form-label">Quantidade de molho</label>
                             <input type="range" className="form-range" min="0" step=".1" max="2" id="qtdMolhoRange" />
                         </section>
                     </div>
@@ -73,22 +73,22 @@ const CriarPizza = () => {
                             <div className="scrollmenu">
                                 <div className="tamanho">
                                     <input className="form-check-input" type="radio" value="" id="tamanho1" name="tamanho" />
-                                    <label className="form-check-label" for="tamanho1">
+                                    <label className="form-check-label" htmlFor="tamanho1">
                                         Pequena
                                     </label>
                                     <br />
                                     <input className="form-check-input" type="radio" value="" id="tamanho2" name="tamanho" />
-                                    <label className="form-check-label" for="tamanho2">
+                                    <label className="form-check-label" htmlFor="tamanho2">
                                         Media
                                     </label>
                                     <br />
                                     <input className="form-check-input" type="radio" value="" id="tamanho3" name="tamanho" />
-                                    <label className="form-check-label" for="tamanho3">
+                                    <label className="form-check-label" htmlFor="tamanho3">
                                         Grande
                                     </label>
                                     <br />
                                     <input className="form-check-input" type="radio" value="" id="tamanho4" name="tamanho" />
-                                    <label className="form-check-label" for="tamanho4">
+                                    <label className="form-check-label" htmlFor="tamanho4">
                                         Familia
                                     </label>
                                 </div>
@@ -113,7 +113,7 @@ const CriarPizza = () => {
                     </p>
                 </div>
                 <hr />
-                <div style={{ "text-align": "center", }}>
+                <div style={{ "textAlign": "center", }}>
                     <a href="Cliente Menu.html"><button className="btn btn-outline-danger"
                         style={{ "margin": " 0 5px" }}>Cancelar</button></a>
                     <a href="Cliente Carrinho.html"><button className="btn btn-primary">Adicionar ao carrinho</button></a>
