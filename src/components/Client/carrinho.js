@@ -57,7 +57,13 @@ const Carrinho = () => {
                 </div>
                 <div className="row">
                     <div className="col-md-12">
-                        <h3>Total: R$ 81,00</h3>
+                        <h3>Total: 
+                            {
+                                intensCarrinho.reduce((total, item) => {
+                                    return total + (item.Preço * item.Quantidade);
+                                }, 0)
+                            }
+                        </h3>
                     </div>
                 </div>
                 <div className="row">

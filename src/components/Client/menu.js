@@ -142,7 +142,7 @@ const MenuCliente = () => {
                             </div>
                             <div className="card-body">
                                 <h5 className="card-title">Do seu jeitinho</h5>
-                                <a href="Cliente Criar Pizza.html" className="btn btn-primary">Clique aqui</a>
+                                <a href="/criar-pizza" className="btn btn-primary">Clique aqui</a>
                             </div>
                         </div>
                     </div>
