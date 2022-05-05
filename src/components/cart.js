@@ -42,10 +42,10 @@ class Cart extends Component {
     return (
       <div>
         {cartItems.length === 0 ? (
-          <div className="cart cart-header">Cart is empty</div>
+          <div className="cart cart-header">Seu carrinho está vázio</div>
         ) : (
           <div className="cart cart-header">
-            You have {cartItems.length} in the cart{" "}
+            Você tem {cartItems.length} produtos no carrinho{" "}
           </div>
         )}
 
@@ -56,7 +56,7 @@ class Cart extends Component {
                 x
               </button>
               <div className="order-details">
-                <h3 className="success-message">Your order has been placed.</h3>
+                <h3 className="success-message">Seu pedido está sendo preparado.</h3>
                 <h2>Order {order._id}</h2>
                 <ul>
                   <li>
