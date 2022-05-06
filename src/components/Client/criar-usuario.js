@@ -11,22 +11,17 @@ const CriarUsuario = () => {
 
                 <form>
                     <div className="row mb-1">
-                        <input type="text" name="campoNome" className="form-control" placeholder="Nome" autocomplete="off" required>
-                        </input>
+                        <input type="text" name="campoNome" className="form-control" placeholder="Nome" autoComplete="name" required />
+
                     </div>
                     <div className="row mb-1">
-                        <input type="email" name="campoEmail" className="form-control" placeholder="E-mail" autocomplete="off"
-                            required>
-                        </input>
+                        <input type="email" name="campoEmail" className="form-control" placeholder="E-mail" autoComplete="email" required />
                     </div>
                     <div className="row mb-1">
-                        <input type="password" name="campoSenha" className="form-control" placeholder="Senha" required>
-                        </input>
+                        <input type="password" name="campoSenha" className="form-control" placeholder="Senha" autoComplete="new-password" required />
                     </div>
                     <div className="row mb-5">
-                        <input type="password" name="campoConfirmaSenha" className="form-control" placeholder="Confirmar senha"
-                            required>
-                        </input>
+                        <input type="password" name="campoConfirmaSenha" className="form-control" placeholder="Confirmar senha" autoComplete="new-password" required />
                     </div>
                     <div className="row mb-2">
                         <a href="/" className="btn btn-primary btn-block ">Cadastrar</a>

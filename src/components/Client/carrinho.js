@@ -1,24 +1,14 @@
 import MenuNav from "./menu-nav";
-
-let intensCarrinho = [
-    {
-        Produto: "Pizza de Mussarela",
-        Preço: 20.00,
-        Quantidade: 1,
-    },
-    {
-        Produto: "Pizza Customizada",
-        Preço: 25.00,
-        Quantidade: 1,
-    },
-    {
-        Produto: "Coca Cola 2L",
-        Preço: 8.00,
-        Quantidade: 2,
-    }
-]
+import { useSelector } from "react-redux";
 
 const Carrinho = () => {
+    // get form redux
+    const itens = useSelector(state => state.carrinho.itens); 
+
+    console.log(itens);
+
+    let itensCarrinho = [];
+
     return (
         <>
             <MenuNav Atual="carrinho" />
@@ -39,7 +29,7 @@ const Carrinho = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {intensCarrinho.map(item => (
+                                {itensCarrinho.map(item => (
                                     <tr key={item.Produto}>
                                         <td>{item.Produto}</td>
                                         <td>{item.Preço}</td>
@@ -59,7 +49,7 @@ const Carrinho = () => {
                     <div className="col-md-12">
                         <h3>Total:
                             {
-                                intensCarrinho.reduce((total, item) => {
+                                itensCarrinho.reduce((total, item) => {
                                     return total + (item.Preço * item.Quantidade);
                                 }, 0)
                             }

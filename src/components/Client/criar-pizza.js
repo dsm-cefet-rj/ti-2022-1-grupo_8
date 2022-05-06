@@ -19,8 +19,7 @@ const Metade = () => {
                             </label>
                             <p>R$ {ingrediente.preco}</p>
                         </div>
-                    ))
-                    }
+                    ))}
                 </div>
             </div>
         </div>
@@ -72,25 +71,30 @@ const CriarPizza = () => {
                             <p><b>Tamanho</b></p>
                             <div className="scrollmenu">
                                 <div className="tamanho">
-                                    <input className="form-check-input" type="radio" value="" id="tamanho1" name="tamanho" />
-                                    <label className="form-check-label" htmlFor="tamanho1">
-                                        Pequena
-                                    </label>
-                                    <br />
-                                    <input className="form-check-input" type="radio" value="" id="tamanho2" name="tamanho" />
-                                    <label className="form-check-label" htmlFor="tamanho2">
-                                        Media
-                                    </label>
-                                    <br />
-                                    <input className="form-check-input" type="radio" value="" id="tamanho3" name="tamanho" />
-                                    <label className="form-check-label" htmlFor="tamanho3">
-                                        Grande
-                                    </label>
-                                    <br />
-                                    <input className="form-check-input" type="radio" value="" id="tamanho4" name="tamanho" />
-                                    <label className="form-check-label" htmlFor="tamanho4">
-                                        Familia
-                                    </label>
+                                    <div className="col">
+                                        <input className="form-check-input" type="radio" value="" id="tamanho1" name="tamanho" />
+                                        <label className="form-check-label" htmlFor="tamanho1">
+                                            Pequena
+                                        </label>
+                                    </div>
+                                    <div className="col">
+                                        <input className="form-check-input" type="radio" value="" id="tamanho2" name="tamanho" />
+                                        <label className="form-check-label" htmlFor="tamanho2">
+                                            Media
+                                        </label>
+                                    </div>
+                                    <div className="col">
+                                        <input className="form-check-input" type="radio" value="" id="tamanho3" name="tamanho" />
+                                        <label className="form-check-label" htmlFor="tamanho3">
+                                            Grande
+                                        </label>
+                                    </div>
+                                    <div className="col">
+                                        <input className="form-check-input" type="radio" value="" id="tamanho4" name="tamanho" />
+                                        <label className="form-check-label" htmlFor="tamanho4">
+                                            Familia
+                                        </label>
+                                    </div>
                                 </div>
                             </div>
                         </div>

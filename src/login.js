@@ -11,13 +11,10 @@ function Login() {
                 </div>
                 <form>
                     <div className="row mb-2">
-                        <input type="text" name="campoEmailLog" placeholder="Email" className="form-control" autocomplete="off"
-                            required>
-                        </input>
+                        <input type="email" name="campoEmailLog" placeholder="Email" className="form-control" autoComplete="email" required />
                     </div>
                     <div className="row mb-2">
-                        <input type="password" name="campoSenhaLog" placeholder="Senha" className="form-control" required>
-                        </input>
+                        <input type="password" name="campoSenhaLog" placeholder="Senha" className="form-control" autoComplete="password" required />
                     </div>
                     <div className="row mb-5">
                         <a href="/menu" className="btn btn-primary btn-block ">Logar</a>

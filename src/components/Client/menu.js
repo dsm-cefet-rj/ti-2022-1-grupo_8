@@ -29,6 +29,7 @@ const MenuCliente = () => {
                             imagem={pizza.imagem}
                             preco={pizza.preco}
                             key={pizza.id}
+                            tipo="pizza"
                         />
                     ))}
                 </div>
@@ -58,6 +59,7 @@ const MenuCliente = () => {
                             imagem={bebida.imagem}
                             preco={bebida.preco}
                             key={bebida.id}
+                            tipo="bebida"
                         />
                     ))}
                 </div>
@@ -73,6 +75,7 @@ const MenuCliente = () => {
                             imagem={pizza.imagem}
                             preco={pizza.preco}
                             key={pizza.id}
+                            tipo="pizza"
                         />
                     ))}
                 </div>
