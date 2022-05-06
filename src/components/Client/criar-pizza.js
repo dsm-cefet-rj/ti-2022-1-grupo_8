@@ -3,28 +3,53 @@ import { useState } from "react";
 import MenuNav from "./menu-nav";
 import { ingredientes } from "../store";
 
-const Metade = () => {
+const Metade = (props) => {
+
+    const [key] = useState(props.key);
+
+
+    const [active, setActive] = useState(
+        props.active
+    );
+
+    const handleClick = () => setActive(!active);
+    
+    console.log(props);
     return (<>
-        <div className="row section">
-            <div className="col">
-                <p><b>Metade 1</b></p>
-                <div className="scrollmenu">
-                    {ingredientes.map(ingrediente => (
-                        <div className="ingrediente">
-                            <img src={ingrediente.imagem} alt="Pizza" style={{ "width": "100px", }} />
-                            <br />
-                            <input className="form-check-input" type="checkbox" value="" id="ingrediente1" />
-                            <label className="form-check-label" htmlFor="ingrediente1">
-                                {ingrediente.nome}
-                            </label>
-                            <p>R$ {ingrediente.preco}</p>
+        {active ? (
+            <>
+                <div className="row section">
+                    <div className="col">
+                        <p><b>Metade 1</b></p>
+                        <div className="scrollmenu">
+                            {ingredientes.map(ingrediente => (
+                                <div className="ingrediente">
+                                    <img src={ingrediente.imagem} alt="Pizza" style={{ "width": "100px", }} />
+                                    <br />
+                                    <input className="form-check-input" type="checkbox" value="" id="ingrediente1" />
+                                    <label className="form-check-label" htmlFor="ingrediente1">
+                                        {ingrediente.nome}
+                                    </label>
+                                    <p>R$ {ingrediente.preco}</p>
+                                </div>
+                            ))}
                         </div>
-                    ))}
+                    </div>
                 </div>
-            </div>
-        </div>
-        <hr />
-    </>);
+                <hr />
+                <Metade key={key + 1} active={false} />
+            </>
+        ) : key < 4 ? null :
+            (
+                <>
+                    <div className="row section">
+                        <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#exampleModal" onClick={handleClick}> Adicionar Nova Metade </button>
+                    </div>
+                </>
+            )
+        }
+    </>
+    );
 }
 
 
@@ -44,8 +69,7 @@ const CriarPizza = () => {
         let total = 0;
         ingredientes.map(ingrediente => {
             total += ingrediente.preco;
-        }
-        )
+        });
         setPrecoTotal(total);
     }
 
@@ -103,11 +127,8 @@ const CriarPizza = () => {
                         <h5>Ingredientes</h5>
                         <p>Escolha até 5 em cada metade</p>
                     </div>
-                    <Metade />
-                    <div className="row section">
-                        <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                            Adicionar Nova Metade </button>
-                    </div>
+                    <Metade key={0} active={true} />
+
                 </div>
                 <hr />
                 <div className="row section">
