@@ -27,7 +27,7 @@ const MenuAdmin = () => {
                                     <tr key={pizza.id}>
                                         <td>{pizza.nome}</td>
                                         <td>{pizza.quant_comprada}</td>
-                                        <td>{pizza.quant_comprada * 23.37}</td>
+                                        <td>{(pizza.quant_comprada * 23.37).toFixed(2) }</td>
                                     </tr>
                                 ))
                             }
@@ -36,7 +36,7 @@ const MenuAdmin = () => {
                     <p>Total: R$ {
                         pizzas.reduce((total, pizza) => {
                             return total + (pizza.quant_comprada * 23.37);
-                        }, 0)
+                        }, 0).toFixed(2) 
                     }</p>
                 </div>
 
@@ -58,7 +58,7 @@ const MenuAdmin = () => {
                                     <tr key={ingrediente.id}>
                                         <td>{ingrediente.nome}</td>
                                         <td>{ingrediente.usados}</td>
-                                        <td>{ingrediente.usados * ingrediente.preco}</td>
+                                        <td>{ (ingrediente.usados * ingrediente.preco).toFixed(2) }</td>
                                     </tr>
                                 ))
                             }
@@ -67,7 +67,7 @@ const MenuAdmin = () => {
                     <p>Total: R$ {
                         ingredientes.reduce((total, ingrediente) => {
                             return total + (ingrediente.usados * ingrediente.preco);
-                        }, 0)
+                        }, 0).toFixed(2) 
                     }</p>
                 </div>
 
