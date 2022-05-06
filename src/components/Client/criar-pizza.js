@@ -1,36 +1,57 @@
 import React from "react";
 import { useState } from "react";
 import MenuNav from "./menu-nav";
-import { ingredientes } from "../store";
+import { ingredientes as ingredientesBD } from "../store";
+import { useSelector, useDispatch } from "react-redux";
+import { setQuantidadeDeQueijo, setQuantidadeDeMolho, setTamanho, setMetades } from "../../features/criar-pizzaSlice";
 
 /* 
 Componente: Metade
 Descrição:  Componente que renderiza a metade de um pizza personalizada
 */
 const Metade = (props) => {
+    // Variáveis que controlam se a metade esta ative e quanta metades existem.
+    const [id] = useState(props.id);
+    const [active, setActive] = useState(props.active);
 
-    const [key] = useState(props.key);
-
-
-    const [active, setActive] = useState(
-        props.active
-    );
-
+    // Função que controla se a metade esta ativa ou não.
     const handleClick = () => setActive(!active);
-    
-    console.log(props);
+
+    // Dispatch do Redux
+    const dispatch = useDispatch();
+    // Variáveis que controlam os ingredientes selecionados.
+    const [ingredientes, setIngredientes] = useState([]);
+
+
+    // Função que adiciona um ingrediente ao array de ingredientes quando o checkbox esta marcado.
+    const adicionarIngrediente = (ingrediente) => {
+        if (ingredientes.includes(ingrediente)) {
+            setIngredientes(ingredientes.filter(item => item !== ingrediente));
+        } else {
+            setIngredientes([...ingredientes, ingrediente]);
+        }
+    }
+
+
+    // Renderiza o componente.
     return (<>
-        {active ? (
+        {active === true ? (
             <>
                 <div className="row section">
                     <div className="col">
-                        <p><b>Metade 1</b></p>
+                        <p><b>Metade {id}</b></p>
                         <div className="scrollmenu">
-                            {ingredientes.map(ingrediente => (
-                                <div className="ingrediente">
+                            {ingredientesBD.map(ingrediente => (
+                                <div className="ingrediente" key={ingrediente.id}>
                                     <img src={ingrediente.imagem} alt="Pizza" style={{ "width": "100px", }} />
                                     <br />
-                                    <input className="form-check-input" type="checkbox" value="" id="ingrediente1" />
+                                    <input
+                                        className="form-check-input"
+                                        type="checkbox"
+                                        value={ingrediente.id.toString()}
+                                        id="ingrediente1"
+                                        onChange={() => adicionarIngrediente(ingrediente)}
+                                    />
                                     <label className="form-check-label" htmlFor="ingrediente1">
                                         {ingrediente.nome}
                                     </label>
@@ -41,9 +62,9 @@ const Metade = (props) => {
                     </div>
                 </div>
                 <hr />
-                <Metade key={key + 1} active={false} />
+                <Metade key={(id + 1).toString()} id={id + 1} active={false} />
             </>
-        ) : key < 4 ? null :
+        ) : id > 4 ? null :
             (
                 <>
                     <div className="row section">
@@ -61,25 +82,51 @@ Componente: CriarPizza
 Descrição:  Componente que renderiza a página de criação de pizza
 */
 const CriarPizza = () => {
-    const [ingredientes, setIngredientes] = useState([]);
+    // Dispatch do Redux
+    const dispatch = useDispatch();
+    // Variáveis que controlam estados do componente.
+    const [queijo, setQueijo] = useState(1);
+    const [molho, setMolho] = useState(1);
+    const [tamanho, setTamanho] = useState("");
     const [precoTotal, setPrecoTotal] = useState(0);
 
-    const handleChange = (e) => {
-        if (e.target.checked) {
-            setIngredientes([...ingredientes, e.target.value]);
-        } else {
-            setIngredientes(ingredientes.filter(ingrediente => ingrediente !== e.target.value));
+    // função que manipula o evento slide de queijo
+    const handleQuantidadeQueijo = (valor) => {
+        setQueijo(valor);
+        dispatch(setQuantidadeDeQueijo(valor));
+        handlePrecoTotal();
+    }
+
+    // função que manipula o evento slide de molho
+    const handleQuantidadeMolho = (valor) => {
+        setMolho(valor);
+        dispatch(setQuantidadeDeMolho(valor));
+        handlePrecoTotal();
+    }
+
+    // função que manipula o radio button de tamanho
+    const handleTamanho = (valor) => {
+        setTamanho(valor);
+        dispatch(setTamanho(valor));
+        handlePrecoTotal();
+    }
+
+    // função que manipula o valor total da pizza
+    const handlePrecoTotal = () => {
+        if (tamanho === "Pequena") {
+            setPrecoTotal(queijo * molho * 10);
+        } else if (tamanho === "Média") {
+            setPrecoTotal(queijo * molho * 15);
+        } else if (tamanho === "Grande") {
+            setPrecoTotal(queijo * molho * 20);
+        } else if (tamanho === "Familia") {
+            setPrecoTotal(queijo * molho * 25);
         }
     }
 
-    const handlePrecoTotal = () => {
-        let total = 0;
-        ingredientes.map(ingrediente => {
-            total += ingrediente.preco;
-        });
-        setPrecoTotal(total);
-    }
 
+
+    // Renderiza a página de criação de pizza.
     return (
         <>
             <MenuNav />
@@ -91,10 +138,25 @@ const CriarPizza = () => {
                     <div className="row section">
                         <section style={{ "margin": "50px auto", "width": "80%", }}>
                             <label htmlFor="qtdQueijo" className="form-label">Quantidade de queijo</label>
-                            <input type="range" className="form-range" min="0" step=".1" max="2" id="qtdQueijoRange" />
-
+                            <input
+                                type="range"
+                                className="form-range"
+                                min="0"
+                                step=".1"
+                                max="2"
+                                value={queijo}
+                                onChange={(e) => handleQuantidadeQueijo(e.target.value)}
+                                id="qtdQueijoRange" />
                             <label htmlFor="qtdMolho" className="form-label">Quantidade de molho</label>
-                            <input type="range" className="form-range" min="0" step=".1" max="2" id="qtdMolhoRange" />
+                            <input
+                                type="range"
+                                className="form-range"
+                                min="0"
+                                step=".1"
+                                max="2"
+                                value={molho}
+                                onChange={(e) => handleQuantidadeMolho(e.target.value)}
+                                id="qtdMolhoRange" />
                         </section>
                     </div>
                     <div className="row section">
@@ -103,28 +165,20 @@ const CriarPizza = () => {
                             <div className="scrollmenu">
                                 <div className="tamanho">
                                     <div className="col">
-                                        <input className="form-check-input" type="radio" value="" id="tamanho1" name="tamanho" />
-                                        <label className="form-check-label" htmlFor="tamanho1">
-                                            Pequena
-                                        </label>
+                                        <input className="form-check-input" type="radio" value="" id="Pequena" name="tamanho" />
+                                        <label className="form-check-label" htmlFor="tamanho1" onChange={() => handleTamanho("Pequena")}>Pequena</label>
                                     </div>
                                     <div className="col">
-                                        <input className="form-check-input" type="radio" value="" id="tamanho2" name="tamanho" />
-                                        <label className="form-check-label" htmlFor="tamanho2">
-                                            Media
-                                        </label>
+                                        <input className="form-check-input" type="radio" value="" id="Media" name="tamanho" />
+                                        <label className="form-check-label" htmlFor="tamanho2" onChange={() => handleTamanho("Media")}>Media</label>
                                     </div>
                                     <div className="col">
-                                        <input className="form-check-input" type="radio" value="" id="tamanho3" name="tamanho" />
-                                        <label className="form-check-label" htmlFor="tamanho3">
-                                            Grande
-                                        </label>
+                                        <input className="form-check-input" type="radio" value="" id="Grande" name="tamanho" />
+                                        <label className="form-check-label" htmlFor="tamanho3" onChange={() => handleTamanho("Grande")}>Grande</label>
                                     </div>
                                     <div className="col">
-                                        <input className="form-check-input" type="radio" value="" id="tamanho4" name="tamanho" />
-                                        <label className="form-check-label" htmlFor="tamanho4">
-                                            Familia
-                                        </label>
+                                        <input className="form-check-input" type="radio" value="" id="Familia" name="tamanho" />
+                                        <label className="form-check-label" htmlFor="tamanho4" onChange={() => handleTamanho("Familia")}>Família</label>
                                     </div>
                                 </div>
                             </div>
@@ -134,8 +188,7 @@ const CriarPizza = () => {
                         <h5>Ingredientes</h5>
                         <p>Escolha até 5 em cada metade</p>
                     </div>
-                    <Metade key={0} active={true} />
-
+                    <Metade key="1" id={1} active={true} />
                 </div>
                 <hr />
                 <div className="row section">
