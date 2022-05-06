@@ -1,4 +1,8 @@
-function Login() {
+/*
+Componente: Login
+Descrição: Componente que renderiza a página de login
+*/
+const Login = () => {
     return (
         <>
             <div className="logo text-center">

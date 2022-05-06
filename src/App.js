@@ -11,6 +11,11 @@ import MenuAdmin from './components/Admin/menu-admin';
 import GerirPizzas from './components/Admin/gerir-pizzas';
 import GerirIngredientes from './components/Admin/gerir-ingredientes';
 
+
+/*
+Componente: App
+Descrição: Componente que renderiza a página principal
+*/
 function App() {
     return (
         <Routes>

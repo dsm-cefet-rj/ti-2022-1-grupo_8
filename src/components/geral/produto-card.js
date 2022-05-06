@@ -3,6 +3,10 @@ import { useDispatch } from 'react-redux';
 import { adicionarAoCarrinho } from '../../features/carrinhoSlice';
 import { useSelector } from "react-redux";
 
+/* 
+Componente: ProdutoCard
+Descrição: Componente que renderiza um card de um produto
+*/
 const ProdutoCard = (props) => {
     const produtoData = {
         nome: props.nome,
