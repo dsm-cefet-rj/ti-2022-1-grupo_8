@@ -4,8 +4,11 @@ import { useDispatch } from "react-redux";
 import { setCarrinho, selectCarrinho } from "../../features/carrinhoSlice";
 import { useState } from "react";
 
+/* 
+Componente: Carrinho
+Descrição: Componente que renderiza a página de carrinho
+*/
 const Carrinho = () => {
-    // get form redux
     const itens = selectCarrinho(useSelector(state => state));
 
     const dispatch = useDispatch();

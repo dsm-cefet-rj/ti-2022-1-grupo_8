@@ -3,6 +3,10 @@ import React from 'react';
 import ProdutoCard from '../geral/produto-card';
 import { pizzas as PizzaBD, bebidas as BebidaBD } from '../store';
 
+/* 
+Componente: MenuCliente
+Descrição: Componente que renderiza a página principal do Cliente
+*/
 const MenuCliente = () => {
     let pizzas = PizzaBD;
     let bebidas = BebidaBD;

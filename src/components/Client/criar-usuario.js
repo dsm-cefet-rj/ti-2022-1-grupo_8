@@ -1,3 +1,7 @@
+/* 
+Componente: CriarUsuario
+Descrição: Componente que renderiza a página de criação de usuário
+*/
 const CriarUsuario = () => {
     return (
         <>

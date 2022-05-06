@@ -3,6 +3,10 @@ import { useState } from "react";
 import MenuNav from "./menu-nav";
 import { ingredientes } from "../store";
 
+/* 
+Componente: Metade
+Descrição:  Componente que renderiza a metade de um pizza personalizada
+*/
 const Metade = (props) => {
 
     const [key] = useState(props.key);
@@ -52,7 +56,10 @@ const Metade = (props) => {
     );
 }
 
-
+/* 
+Componente: CriarPizza
+Descrição:  Componente que renderiza a página de criação de pizza
+*/
 const CriarPizza = () => {
     const [ingredientes, setIngredientes] = useState([]);
     const [precoTotal, setPrecoTotal] = useState(0);

@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
 
+/* 
+Componente: MenuNav
+Descrição: Componente que renderiza o menu de navegação para os clientes
+*/
 const MenuNav = (props) => {
     const atual = props.Atual;
     
