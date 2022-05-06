@@ -2,7 +2,6 @@ import React from 'react';
 
 const AdminNav = (props) => {
     let atual = props.Atual;
-    console.log(atual);
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark p-2">
             <a className="navbar-brand" href="#">Administrador</a>
