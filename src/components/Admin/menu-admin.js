@@ -1,6 +1,10 @@
 import AdminNav from "./admin-nav";
 import { pizzas, bebidas, ingredientes } from "../store";
 
+/* 
+Componente: MenuAdmin
+Descrição: Componente que renderiza a página principal de administração
+*/
 const MenuAdmin = () => {
     return (
         <>

@@ -1,5 +1,10 @@
 import React from 'react';
 
+
+/* 
+Componente: AdminNav
+Descrição: Componente que renderiza o menu de navegação do administrador
+*/
 const AdminNav = (props) => {
     let atual = props.Atual;
     return (

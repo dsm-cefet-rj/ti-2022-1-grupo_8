@@ -1,6 +1,11 @@
 import AdminNav from "./admin-nav";
 import { ingredientes } from "../store";
 
+
+/* 
+Componente: Ingrediente
+Descrição: Componente que renderiza um ingrediente na pagina de gerir ingredientes
+*/
 const Ingrediente = (props) => {
     let { key, imagem, nome, preco } = props;
     return (<>
@@ -14,7 +19,10 @@ const Ingrediente = (props) => {
     </>);
 }
 
-
+/* 
+Componente: GerirIngredientes
+Descrição: Componente que renderiza a página de gerenciamento de ingredientes
+*/
 const GerirIngredientes = () => {
     return (
         <>
