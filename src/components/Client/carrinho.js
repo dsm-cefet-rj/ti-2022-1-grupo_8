@@ -1,13 +1,48 @@
 import MenuNav from "./menu-nav";
 import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { setCarrinho, selectCarrinho } from "../../features/carrinhoSlice";
+import { useState } from "react";
 
 const Carrinho = () => {
     // get form redux
-    const itens = useSelector(state => state.carrinho.itens); 
+    const itens = selectCarrinho(useSelector(state => state));
 
-    console.log(itens);
+    const dispatch = useDispatch();
 
-    let itensCarrinho = [];
+    const [itensCarrinho, setItensCarrinho] = useState(itens);
+
+    const [total, setTotal] = useState(0);
+
+    const mudarQuantidade = (id, quantidade) => {
+        const novoItens = itensCarrinho.map(item => {
+            if (item.id === id) {
+                item.quantidade = quantidade;
+            }
+            return item;
+        }
+        );
+        setItensCarrinho(novoItens);
+        setTotal(0);
+        novoItens.map(item => {
+            setTotal(total + (item.preco * item.quantidade));
+        }
+        );
+        dispatch(setCarrinho(novoItens));
+        setItensCarrinho(novoItens);
+    };
+
+    const remover = (produto) => {
+        setItensCarrinho(itensCarrinho.filter(item => item.id !== produto.id));
+        setTotal(total - produto.preco);
+        dispatch(setCarrinho(itensCarrinho));
+    };
+
+    const limpar = () => {
+        setItensCarrinho([]);
+        setTotal(0);
+        dispatch(setCarrinho([]));
+    };
 
     return (
         <>
@@ -34,9 +69,14 @@ const Carrinho = () => {
                                         <td>{item.Produto}</td>
                                         <td>{item.Preço}</td>
                                         <td>{item.Quantidade}</td>
-                                        <td>{item.Preço * item.Quantidade}</td>
                                         <td>
-                                            <button className="btn btn-danger">Remover</button>
+                                            <button className="btn btn-success" onClick={() => mudarQuantidade(item.id, item.quantidade + 1)}>+</button>
+                                            {item.Preço * item.Quantidade}
+                                            <button className="btn btn-danger" onClick={() => mudarQuantidade(item.id, item.quantidade - 1)}>-</button>
+                                        </td>
+                                        <td>
+                                            <button className="btn btn-danger"
+                                                onClick={() => remover(item)}>Remover</button>
                                         </td>
                                     </tr>
                                 ))}
@@ -57,11 +97,14 @@ const Carrinho = () => {
                     </div>
                 </div>
                 <div className="row">
-                    <div className="col-sm" style={{ 'textAlign': 'center', }}>
+                    <div className="col-sm mb-4" style={{ 'textAlign': 'center', }}>
                         <button href="#" className="btn btn-success  btn-lg">Finalizar Compra</button>
                     </div>
-                    <div className="col-sm" style={{ 'textAlign': 'center', }}>
-                        <button href="Cliente Menu.html" className="btn btn-warning  btn-lg">Voltar</button>
+                    <div className="col-sm mb-4" style={{ 'textAlign': 'center', }}>
+                        <button href="#" className="btn btn-danger  btn-lg" onClick={limpar}>Limpar Carrinho</button>
+                    </div>
+                    <div className="col-sm mb-4" style={{ 'textAlign': 'center', }}>
+                        <a href="Cliente Menu.html" className="btn btn-warning  btn-lg">Voltar</a>
                     </div>
                 </div>
             </div>

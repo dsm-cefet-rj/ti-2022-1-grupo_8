@@ -6,26 +6,18 @@ const carrinhoSlice = createSlice({
         itens: [],
     },
     reducers: {
-        adicionarAoCarrinho: (state, {payload}) => {
+        setCarrinho: (state, { payload }) => {
+            state.itens = payload;
+        },
+        adicionarAoCarrinho: (state, { payload }) => {
             state.itens.push(payload);
         },
-        removerDoCarrinho: (state, {payload}) => {
-            state.itens = state.itens.filter(item => item.id !== payload.id);
-        },
-        limparCarrinho: (state) => {
-            state.itens = [];
-        },
-        getItensCarrinho: (state) => {
-            return state.itens;
-        }
     }
 });
 
-export const {
-    adicionarAoCarrinho,
-    removerDoCarrinho,
-    limparCarrinho,
-    getItensCarrinho } = carrinhoSlice.actions;
+export const { setCarrinho, adicionarAoCarrinho } = carrinhoSlice.actions;
+
+export const selectCarrinho = state => state.carrinho.itens;
 
 const reducer = carrinhoSlice.reducer;
 export default reducer;

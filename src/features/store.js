@@ -4,6 +4,6 @@ import carrinhoSlice from "./carrinhoSlice";
 
 export default configureStore({
     reducer: {
-        carrinho: carrinhoSlice,
+        carrinho: carrinhoSlice.reducer,
     },
 });
