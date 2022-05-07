@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { adicionarAoCarrinho } from '../../features/carrinhoSlice';
-import { useSelector } from "react-redux";
 
 /* 
 Componente: ProdutoCard

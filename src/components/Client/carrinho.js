@@ -1,5 +1,5 @@
 import MenuNav from "./menu-nav";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { setCarrinho, getFromLocalStorage } from "../../features/carrinhoSlice";
 import { useState } from "react";
 
