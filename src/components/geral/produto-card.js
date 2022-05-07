@@ -7,9 +7,10 @@ Componente: ProdutoCard
 Descrição: Componente que renderiza um card de um produto
 */
 const ProdutoCard = (props) => {
-    const data = props.data;
+    const data = props.data; // Dados do produto
 
-    const [adicionado, setAdicionado] = useState(getFromLocalStorage().find(item => item.id === data.id));
+    // Variável que controla se o produto ja esta no carrinho
+    const [adicionado, setAdicionado] = useState(getFromLocalStorage().find(item => item.id === data.id)); // Retorna true se o produto ja esta no carrinho
 
     /* Dados básicos de um produto
     que serão enviados para o carrinho caso o produto seja selecionado */
@@ -28,8 +29,8 @@ const ProdutoCard = (props) => {
 
     // Adiciona o produto selecionado ao carrinho
     const adicionar = (produto) => {
-        dispatch(adicionarAoCarrinho(produto));
-        setAdicionado(true);
+        dispatch(adicionarAoCarrinho(produto)); // Adiciona o produto ao carrinho
+        setAdicionado(true); // Altera a variável para que o produto não seja adicionado novamente
     };
 
     return (
@@ -41,9 +42,9 @@ const ProdutoCard = (props) => {
                     <p className="card-text">{produtoData.descricao}</p>
                     <p className="card-text">R$ {produtoData.preco}</p>
                     {adicionado ?
-                        <p className="card-text" style={{ "color": "green", "fontWeight": "bold" }}>Produto no carrinho!</p>
+                        <p className="card-text" style={{ "color": "green", "fontWeight": "bold" }}>Produto no carrinho!</p> // Se o produto ja estiver no carrinho
                         :
-                        <button className="btn btn-success" onClick={() => adicionar(produto)}>Adicionar ao carrinho</button>
+                        <button className="btn btn-success" onClick={() => adicionar(produto)}>Adicionar ao carrinho</button> // Se o produto nao estiver no carrinho
                     }
                 </div>
             </div>
