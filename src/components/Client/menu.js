@@ -45,7 +45,7 @@ const MenuCliente = () => {
                 </div>
                 <hr />
                 <div className="row justify-content-center mt-2">
-                    <div className="col-5">
+                    <div className="col-md-4">
                         <div className="card text-center">
                             <div className="card-header">
                                 Crie sua própria pizza
