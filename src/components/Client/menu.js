@@ -8,16 +8,22 @@ Componente: MenuCliente
 Descrição: Componente que renderiza a página principal do Cliente
 */
 const MenuCliente = () => {
+    // Pegando os produtos do banco de dados
     let pizzas = PizzaBD;
+    // Pegando os produtos do banco de dados
     let bebidas = BebidaBD;
 
+    // Ordena os produtos obtidos do "banco de dados"
     pizzas.sort((a, b) => {
         return b.quant_comprada - a.quant_comprada;
     });
 
+    // Ordena os bebidas obtida do "banco de dados"
     bebidas.sort((a, b) => {
         return b.quant_comprada - a.quant_comprada;
     });
+
+    // Renderiza o menu
     return (
         <>
             <MenuNav Atual="menu" />
@@ -31,8 +37,8 @@ const MenuCliente = () => {
                             nome={pizza.nome}
                             descricao={pizza.descricao}
                             imagem={pizza.imagem}
-                            preco={pizza.preco}
                             key={pizza.id}
+                            data={pizza}
                             tipo="pizza"
                         />
                     ))}
@@ -63,6 +69,7 @@ const MenuCliente = () => {
                             imagem={bebida.imagem}
                             preco={bebida.preco}
                             key={bebida.id}
+                            data={bebida}
                             tipo="bebida"
                         />
                     ))}
@@ -79,6 +86,7 @@ const MenuCliente = () => {
                             imagem={pizza.imagem}
                             preco={pizza.preco}
                             key={pizza.id}
+                            data={pizza}
                             tipo="pizza"
                         />
                     ))}

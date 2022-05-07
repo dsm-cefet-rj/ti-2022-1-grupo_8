@@ -1,7 +1,6 @@
 import MenuNav from "./menu-nav";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
-import { setCarrinho, selectCarrinho } from "../../features/carrinhoSlice";
+import { useSelector, useDispatch } from "react-redux";
+import { setCarrinho, getFromLocalStorage } from "../../features/carrinhoSlice";
 import { useState } from "react";
 
 /* 
@@ -9,38 +8,64 @@ Componente: Carrinho
 Descrição: Componente que renderiza a página de carrinho
 */
 const Carrinho = () => {
-    const itens = selectCarrinho(useSelector(state => state));
+    const itens = getFromLocalStorage();
 
     const dispatch = useDispatch();
 
     const [itensCarrinho, setItensCarrinho] = useState(itens);
 
-    const [total, setTotal] = useState(0);
 
+    const [total, setTotal] = useState(
+        itensCarrinho.reduce((total, item) => {
+            return total + item.preco * item.quantidade;
+        }, 0)
+    );
+
+
+    const recalcularTotal = (novoCarrinho) => {
+        setTotal(0);
+        let total = itensCarrinho.reduce((total, item) => {
+            return total + item.preco * item.quantidade;
+        }, 0)
+        setTotal(total);
+    }
+
+    // Manuseio da quantidade de um item
     const mudarQuantidade = (id, quantidade) => {
-        const novoItens = itensCarrinho.map(item => {
+        const novoCarrinho = itensCarrinho.map((item) => {
             if (item.id === id) {
-                item.quantidade = quantidade;
+                if (quantidade > 0) 
+                    item.quantidade = quantidade;                            
             }
             return item;
-        }
-        );
-        setItensCarrinho(novoItens);
-        setTotal(0);
-        novoItens.map(item => {
-            setTotal(total + (item.preco * item.quantidade));
-        }
-        );
-        dispatch(setCarrinho(novoItens));
-        setItensCarrinho(novoItens);
+        });
+        setItensCarrinho(novoCarrinho);
+        recalcularTotal(novoCarrinho);
+        setCarrinho(novoCarrinho);
     };
 
+    // manuseio da remoção de um item
     const remover = (produto) => {
-        setItensCarrinho(itensCarrinho.filter(item => item.id !== produto.id));
-        setTotal(total - produto.preco);
-        dispatch(setCarrinho(itensCarrinho));
+        let novoCarrinho = itensCarrinho.filter((item) => {
+            return item.id !== produto.id;
+        });
+
+        setItensCarrinho(novoCarrinho);
+
+        
+
+        setCarrinho(novoCarrinho);
+
+        if (novoCarrinho.length === 0) {
+            dispatch(setCarrinho([]));
+            setTotal(0);
+        } else {
+            dispatch(setCarrinho(novoCarrinho));
+            recalcularTotal(novoCarrinho);
+        }
     };
 
+    // Limpa o carrinho
     const limpar = () => {
         setItensCarrinho([]);
         setTotal(0);
@@ -68,14 +93,16 @@ const Carrinho = () => {
                             </thead>
                             <tbody>
                                 {itensCarrinho.map(item => (
-                                    <tr key={item.Produto}>
-                                        <td>{item.Produto}</td>
-                                        <td>{item.Preço}</td>
-                                        <td>{item.Quantidade}</td>
+                                    <tr key={item.id}>
+                                        <td>{item.nome}</td>
+                                        <td>{item.preco}</td>
                                         <td>
                                             <button className="btn btn-success" onClick={() => mudarQuantidade(item.id, item.quantidade + 1)}>+</button>
-                                            {item.Preço * item.Quantidade}
+                                            {item.quantidade}
                                             <button className="btn btn-danger" onClick={() => mudarQuantidade(item.id, item.quantidade - 1)}>-</button>
+                                        </td>
+                                        <td>
+                                            {item.preco * item.quantidade}
                                         </td>
                                         <td>
                                             <button className="btn btn-danger"
@@ -92,9 +119,7 @@ const Carrinho = () => {
                     <div className="col-md-12">
                         <h3>Total:
                             {
-                                itensCarrinho.reduce((total, item) => {
-                                    return total + (item.Preço * item.Quantidade);
-                                }, 0)
+                                total.toFixed(2)
                             }
                         </h3>
                     </div>
@@ -107,7 +132,7 @@ const Carrinho = () => {
                         <button href="#" className="btn btn-danger  btn-lg" onClick={limpar}>Limpar Carrinho</button>
                     </div>
                     <div className="col-sm mb-4" style={{ 'textAlign': 'center', }}>
-                        <a href="Cliente Menu.html" className="btn btn-warning  btn-lg">Voltar</a>
+                        <a href="/menu" className="btn btn-warning  btn-lg">Voltar</a>
                     </div>
                 </div>
             </div>

@@ -8,12 +8,16 @@ Componente: ProdutoCard
 Descrição: Componente que renderiza um card de um produto
 */
 const ProdutoCard = (props) => {
+    const data = props.data;
+
+    /* Dados básicos de um produto
+    que serão enviados para o carrinho caso o produto seja selecionado */
     const produtoData = {
-        nome: props.nome,
-        descricao: props.descricao,
+        nome: data.nome,
+        descricao: data.descricao,
         imagem: props.imagem,
-        preco: props.preco,
-        id: props.id,
+        preco: data.preco,
+        id: data.id,
         tipo: props.tipo,
         quantidade: 1,
     };
@@ -21,6 +25,7 @@ const ProdutoCard = (props) => {
     const [produto] = useState(produtoData);
     const dispatch = useDispatch();
 
+    // Adiciona o produto selecionado ao carrinho
     const adicionar = (produto) => {
         dispatch(adicionarAoCarrinho(produto));
     };
