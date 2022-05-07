@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { adicionarAoCarrinho } from '../../features/carrinhoSlice';
+import { adicionarAoCarrinho, getFromLocalStorage } from '../../features/carrinhoSlice';
 
 /* 
 Componente: ProdutoCard
@@ -8,6 +8,8 @@ Descrição: Componente que renderiza um card de um produto
 */
 const ProdutoCard = (props) => {
     const data = props.data;
+
+    const [adicionado, setAdicionado] = useState(getFromLocalStorage().find(item => item.id === data.id));
 
     /* Dados básicos de um produto
     que serão enviados para o carrinho caso o produto seja selecionado */
@@ -27,6 +29,7 @@ const ProdutoCard = (props) => {
     // Adiciona o produto selecionado ao carrinho
     const adicionar = (produto) => {
         dispatch(adicionarAoCarrinho(produto));
+        setAdicionado(true);
     };
 
     return (
@@ -37,7 +40,11 @@ const ProdutoCard = (props) => {
                     <h5 className="card-title">{produtoData.nome}</h5>
                     <p className="card-text">{produtoData.descricao}</p>
                     <p className="card-text">R$ {produtoData.preco}</p>
-                    <button className="btn btn-success" onClick={() => adicionar(produto)}>Adicionar ao carrinho</button>
+                    {adicionado ?
+                        <p className="card-text" style={{ "color": "green", "fontWeight": "bold" }}>Produto no carrinho!</p>
+                        :
+                        <button className="btn btn-success" onClick={() => adicionar(produto)}>Adicionar ao carrinho</button>
+                    }
                 </div>
             </div>
         </div>
