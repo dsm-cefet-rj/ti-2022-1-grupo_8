@@ -16,13 +16,14 @@ const Carrinho = () => {
 
 
     const [total, setTotal] = useState(
+        // Recupera o total do carrinho
         itensCarrinho.reduce((total, item) => {
             return total + item.preco * item.quantidade;
         }, 0)
     );
 
-
-    const recalcularTotal = (novoCarrinho) => {
+     // função que recalcula o total do carrinho
+    const recalcularTotal = (novoCarrinho) => { 
         setTotal(0);
         let total = itensCarrinho.reduce((total, item) => {
             return total + item.preco * item.quantidade;
@@ -51,9 +52,6 @@ const Carrinho = () => {
         });
 
         setItensCarrinho(novoCarrinho);
-
-        
-
         setCarrinho(novoCarrinho);
 
         if (novoCarrinho.length === 0) {
@@ -72,6 +70,7 @@ const Carrinho = () => {
         dispatch(setCarrinho([]));
     };
 
+    // Renderização do componente
     return (
         <>
             <MenuNav Atual="carrinho" />

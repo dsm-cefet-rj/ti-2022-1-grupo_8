@@ -5,12 +5,13 @@ Componente: MenuNav
 Descrição: Componente que renderiza o menu de navegação para os clientes
 */
 const MenuNav = (props) => {
-    const atual = props.Atual;
-    
-    const [collapse, setCollapse] = useState(false);
+    const atual = props.Atual; // Página atual
 
-    const toggle = () => setCollapse(!collapse);
+    const [collapse, setCollapse] = useState(false); // estado que controla o collapse do menu
 
+    const toggle = () => setCollapse(!collapse); // função que altera o estado do collapse
+
+    // Renderização do componente
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark p-2">
             <a className="navbar-brand" href="#">Pizzaria</a>
@@ -22,14 +23,14 @@ const MenuNav = (props) => {
                     <li className="nav-item">
                         <a className="nav-link" href="/menu">Menu
                             {
-                                atual === "menu" ? (<span className="sr-only">(Atual)</span>) : null
+                                atual === "menu" ? (<span className="sr-only">(Atual)</span>) : null /* Se a página atual for a página de menu, renderiza um span com a classe sr-only */
                             }
                         </a>
                     </li>
                     <li className="nav-item">
                         <a className="nav-link" href="/carrinho">Carrinho
                             {
-                                atual === "carrinho" ? (<span className="sr-only">(Atual)</span>) : null
+                                atual === "carrinho" ? (<span className="sr-only">(Atual)</span>) : null /* Se a página atual for a página de carrinho, renderiza um span com a classe sr-only */
                             }
                         </a>
                     </li>

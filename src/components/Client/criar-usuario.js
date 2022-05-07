@@ -3,6 +3,7 @@ Componente: CriarUsuario
 Descrição: Componente que renderiza a página de criação de usuário
 */
 const CriarUsuario = () => {
+    // Renderização do componente
     return (
         <>
             <div className="logo text-center">

@@ -4,6 +4,7 @@ import MenuNav from "./menu-nav";
 import { ingredientes as ingredientesBD } from "../store";
 import { useSelector, useDispatch } from "react-redux";
 import { setQuantidadeDeQueijo, setQuantidadeDeMolho, setTamanho, setMetades } from "../../features/criar-pizzaSlice";
+import { setCarrinho } from "../../features/carrinhoSlice";
 
 /* 
 Componente: Metade
@@ -84,11 +85,13 @@ Descrição:  Componente que renderiza a página de criação de pizza
 const CriarPizza = () => {
     // Dispatch do Redux
     const dispatch = useDispatch();
+    
     // Variáveis que controlam estados do componente.
     const [queijo, setQueijo] = useState(1);
     const [molho, setMolho] = useState(1);
     const [tamanho, setTamanho] = useState("");
     const [precoTotal, setPrecoTotal] = useState(0);
+    const [erro, setErro] = useState('');
 
     // função que manipula o evento slide de queijo
     const handleQuantidadeQueijo = (valor) => {
@@ -113,17 +116,20 @@ const CriarPizza = () => {
 
     // função que manipula o valor total da pizza
     const handlePrecoTotal = () => {
-        if (tamanho === "Pequena") {
-            setPrecoTotal(queijo * molho * 10);
-        } else if (tamanho === "Média") {
-            setPrecoTotal(queijo * molho * 15);
-        } else if (tamanho === "Grande") {
-            setPrecoTotal(queijo * molho * 20);
-        } else if (tamanho === "Familia") {
-            setPrecoTotal(queijo * molho * 25);
+        if (erro) {
+            setErro('');
         }
     }
 
+    // função que adiciona a pizza customizada ao carrinho
+    const adicionarAoCarrinho = () => {
+        if (tamanho === "") {
+            setErro("Selecione um tamanho");
+        } else {
+
+            alert("Pizza adicionada ao carrinho");
+        }
+    }
 
 
     // Renderiza a página de criação de pizza.
@@ -135,6 +141,9 @@ const CriarPizza = () => {
                     <div className="row">
                         <h1 className="text-center">Monte sua pizza</h1>
                     </div>
+                    <div className="row">
+                        <h5 className="text-center" style={{ "color": "red" }}>{erro}</h5>
+                    </div>
                     <div className="row section">
                         <section style={{ "margin": "50px auto", "width": "80%", }}>
                             <label htmlFor="qtdQueijo" className="form-label">Quantidade de queijo</label>
@@ -145,7 +154,7 @@ const CriarPizza = () => {
                                 step=".1"
                                 max="2"
                                 value={queijo}
-                                onChange={(e) => handleQuantidadeQueijo(e.target.value)}
+                                onChange={(e) => { handleQuantidadeQueijo(e.target.value); }}
                                 id="qtdQueijoRange" />
                             <label htmlFor="qtdMolho" className="form-label">Quantidade de molho</label>
                             <input
@@ -155,7 +164,7 @@ const CriarPizza = () => {
                                 step=".1"
                                 max="2"
                                 value={molho}
-                                onChange={(e) => handleQuantidadeMolho(e.target.value)}
+                                onChange={(e) => { handleQuantidadeMolho(e.target.value); }}
                                 id="qtdMolhoRange" />
                         </section>
                     </div>
@@ -166,19 +175,19 @@ const CriarPizza = () => {
                                 <div className="tamanho">
                                     <div className="col">
                                         <input className="form-check-input" type="radio" value="" id="Pequena" name="tamanho" />
-                                        <label className="form-check-label" htmlFor="tamanho1" onChange={() => handleTamanho("Pequena")}>Pequena</label>
+                                        <label className="form-check-label" htmlFor="tamanho1" onChange={() => { handleTamanho("Pequena"); }}>Pequena</label>
                                     </div>
                                     <div className="col">
                                         <input className="form-check-input" type="radio" value="" id="Media" name="tamanho" />
-                                        <label className="form-check-label" htmlFor="tamanho2" onChange={() => handleTamanho("Media")}>Media</label>
+                                        <label className="form-check-label" htmlFor="tamanho2" onChange={() => { handleTamanho("Media"); }}>Media</label>
                                     </div>
                                     <div className="col">
                                         <input className="form-check-input" type="radio" value="" id="Grande" name="tamanho" />
-                                        <label className="form-check-label" htmlFor="tamanho3" onChange={() => handleTamanho("Grande")}>Grande</label>
+                                        <label className="form-check-label" htmlFor="tamanho3" onChange={() => { handleTamanho("Grande"); }}>Grande</label>
                                     </div>
                                     <div className="col">
                                         <input className="form-check-input" type="radio" value="" id="Familia" name="tamanho" />
-                                        <label className="form-check-label" htmlFor="tamanho4" onChange={() => handleTamanho("Familia")}>Família</label>
+                                        <label className="form-check-label" htmlFor="tamanho4" onChange={() => { handleTamanho("Familia"); }}>Família</label>
                                     </div>
                                 </div>
                             </div>
@@ -198,12 +207,11 @@ const CriarPizza = () => {
                     </p>
                 </div>
                 <hr />
-                <div style={{ "textAlign": "center", }}>
-                    <a href="Cliente Menu.html"><button className="btn btn-outline-danger"
-                        style={{ "margin": " 0 5px" }}>Cancelar</button></a>
-                    <a href="Cliente Carrinho.html"><button className="btn btn-primary">Adicionar ao carrinho</button></a>
-                </div>
             </form>
+            <div style={{ "textAlign": "center", }}>
+                <a href="/menu" style={{ "margin": " 0 5px" }} className="btn btn-outline-danger">Cancelar</a>
+                <button className="btn btn-primary" onClick={() => adicionarAoCarrinho()}>Adicionar ao carrinho</button>
+            </div>
         </>
     );
 }
