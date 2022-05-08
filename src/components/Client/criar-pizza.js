@@ -2,9 +2,10 @@ import React from "react";
 import { useState } from "react";
 import MenuNav from "./menu-nav";
 import { ingredientes as ingredientesBD } from "../store";
-import { useSelector, useDispatch } from "react-redux";
-import { setQuantidadeDeQueijo, setQuantidadeDeMolho, setTamanho, setMetades } from "../../features/criar-pizzaSlice";
+import { useDispatch } from "react-redux";
+import { setQuantidadeDeQueijo, setQuantidadeDeMolho, } from "../../features/criar-pizzaSlice";
 import { setCarrinho } from "../../features/carrinhoSlice";
+import { createBrowserHistory } from "history";
 
 /* 
 Componente: Metade
@@ -17,12 +18,8 @@ const Metade = (props) => {
 
     // Função que controla se a metade esta ativa ou não.
     const handleClick = () => setActive(!active);
-
-    // Dispatch do Redux
-    const dispatch = useDispatch();
     // Variáveis que controlam os ingredientes selecionados.
     const [ingredientes, setIngredientes] = useState([]);
-
 
     // Função que adiciona um ingrediente ao array de ingredientes quando o checkbox esta marcado.
     const adicionarIngrediente = (ingrediente) => {
@@ -85,7 +82,7 @@ Descrição:  Componente que renderiza a página de criação de pizza
 const CriarPizza = () => {
     // Dispatch do Redux
     const dispatch = useDispatch();
-    
+
     // Variáveis que controlam estados do componente.
     const [queijo, setQueijo] = useState(1);
     const [molho, setMolho] = useState(1);
@@ -110,7 +107,6 @@ const CriarPizza = () => {
     // função que manipula o radio button de tamanho
     const handleTamanho = (valor) => {
         setTamanho(valor);
-        dispatch(setTamanho(valor));
         handlePrecoTotal();
     }
 
@@ -119,6 +115,34 @@ const CriarPizza = () => {
         if (erro) {
             setErro('');
         }
+        if (tamanho === '') {
+            setErro('Selecione um tamanho');
+        } else {
+            let preco = 0;
+            if (queijo > 0) {
+                preco += queijo * 0.5;
+            }
+            if (molho > 0) {
+                preco += molho * 0.5;
+            }
+            switch (tamanho) {
+                case 'Pequena':
+                    preco += 10;
+                    break;
+                case 'Média':
+                    preco += 15;
+                    break;
+                case 'Grande':
+                    preco += 20;
+                    break;
+                case 'Familia':
+                    preco += 25;
+                    break;
+                default:
+                    break;
+            }
+            setPrecoTotal(preco);
+        }
     }
 
     // função que adiciona a pizza customizada ao carrinho
@@ -126,11 +150,37 @@ const CriarPizza = () => {
         if (tamanho === "") {
             setErro("Selecione um tamanho");
         } else {
-
+            // pegar ingredientes de todas as metades
+            let metades = [];
+            for (let i = 1; i <= 4; i++) {
+                metades.push(document.getElementById(i.toString()).children[1].children);
+            }
+            // criar array de ingredientes
+            let ingredientes = [];
+            for (let i = 0; i < metades.length; i++) {
+                for (let j = 0; j < metades[i].length; j++) {
+                    if (metades[i][j].children[0].checked) {
+                        ingredientes.push(metades[i][j].children[0].value);
+                    }
+                }
+            }
+            // Gerar objeto da pizza customizada
+            let pizza = {
+                tamanho: tamanho,
+                queijo: queijo,
+                molho: molho,
+                id: Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15),
+                ingredientes: ingredientes,
+                preco: precoTotal
+            };
+            // Adicionar a pizza customizada ao carrinho
+            console.log(pizza);
+            //dispatch(setCarrinho(pizza));
+            // Redirecionar para a página de carrinho
+            //createBrowserHistory().push("/carrinho");
             alert("Pizza adicionada ao carrinho");
         }
     }
-
 
     // Renderiza a página de criação de pizza.
     return (
