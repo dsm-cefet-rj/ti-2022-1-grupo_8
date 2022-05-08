@@ -1,8 +1,13 @@
+import { useEffect } from "react";
 /*
 Componente: Login
 Descrição: Componente que renderiza a página de login
 */
 const Login = () => {
+    useEffect(() => {
+        document.title = "Pizzaria ON - Login";
+    }, []);
+
     return (
         <>
             <div className="logo text-center">

@@ -12,13 +12,13 @@ const GerirPizzas = () => {
 
     return (
         <>
-            <AdminNav />
+            <AdminNav Atual="pizzas" />
             <div class="container mb-2 p-1 bg-transparent">
                 <div class="row section">
                     <p><b>Pizzas Cadastradas</b></p>
                     <div class="scrollmenu">
                         {pizzas.map(pizza => (
-                            <div  style={{ 
+                            <div style={{
                                 "width": "18rem",
                                 "margin": "0.5rem",
                                 "border": "1px solid #ccc",
@@ -28,12 +28,12 @@ const GerirPizzas = () => {
                                 "flex-direction": "column",
                                 "justify-content": "space-between",
                                 "align-items": "center",
-                                }} key={pizza.id}>
-                                <img class="card-img-top" src={pizza.imagem} alt={pizza.nome} style={{ 
+                            }} key={pizza.id}>
+                                <img class="card-img-top" src={pizza.imagem} alt={pizza.nome} style={{
                                     "width": "12rem",
                                     "height": "12rem",
                                     "object-fit": "cover",
-                                    }}/>
+                                }} />
                                 <div class="card-body">
                                     <h5 class="card-title">{pizza.nome}</h5>
                                     <button class="btn btn-lg btn-primary btn-success">Alterar</button>

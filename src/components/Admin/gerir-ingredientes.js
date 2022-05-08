@@ -40,11 +40,11 @@ Descrição: Componente que renderiza a página de gerenciamento de ingredientes
 const GerirIngredientes = () => {
     // Dispatch do Redux
     const dispatch = useDispatch();
-    
+
     // Renderização do componente
     return (
         <>
-            <AdminNav />
+            <AdminNav Atual="ingredientes" />
             <div className="container mb-2 p-1 bg-transparent">
                 <div className="row section">
                     <div className="col">

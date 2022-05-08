@@ -185,7 +185,7 @@ const CriarPizza = () => {
     // Renderiza a página de criação de pizza.
     return (
         <>
-            <MenuNav />
+            <MenuNav Atual="criar-pizza" />
             <form>
                 <div className="container">
                     <div className="row">

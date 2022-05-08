@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { React, useState, useEffect } from 'react';
 
 /* 
 Componente: MenuNav
@@ -11,10 +11,30 @@ const MenuNav = (props) => {
 
     const toggle = () => setCollapse(!collapse); // função que altera o estado do collapse
 
+    // set screen title
+    useEffect(() => {
+        let title = '';
+        switch (atual) {
+            case 'menu':
+                title = 'Pizzaria ON - Menu';
+                break;
+            case 'carrinho':
+                title = 'Pizzaria ON - Carrinho';
+                break;
+            case 'criar-pizza':
+                title = 'Pizzaria ON - Criar Pizza';
+                break;
+            default:
+                title = 'Pizzaria ON';
+                break;
+        }
+        document.title = title;
+    }, [atual]);
+
     // Renderização do componente
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark p-2">
-            <a className="navbar-brand" href="#">Pizzaria</a>
+            <a className="navbar-brand" >Pizzaria ON</a>
             <button className="navbar-toggler" type="button" onClick={toggle}>
                 <span className="navbar-toggler-icon"></span>
             </button>

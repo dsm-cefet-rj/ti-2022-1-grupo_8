@@ -254,4 +254,4 @@ let bebidas = [
     },
 ]
 
-export { pizzas, bebidas , ingredientes };
+export { pizzas, bebidas, ingredientes };

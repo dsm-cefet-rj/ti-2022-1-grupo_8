@@ -22,8 +22,8 @@ const Carrinho = () => {
         }, 0)
     );
 
-     // função que recalcula o total do carrinho
-    const recalcularTotal = (novoCarrinho) => { 
+    // função que recalcula o total do carrinho
+    const recalcularTotal = (novoCarrinho) => {
         setTotal(0);
         let total = itensCarrinho.reduce((total, item) => {
             return total + item.preco * item.quantidade;
@@ -35,8 +35,8 @@ const Carrinho = () => {
     const mudarQuantidade = (id, quantidade) => {
         const novoCarrinho = itensCarrinho.map((item) => {
             if (item.id === id) {
-                if (quantidade > 0) 
-                    item.quantidade = quantidade;                            
+                if (quantidade > 0)
+                    item.quantidade = quantidade;
             }
             return item;
         });
@@ -80,7 +80,7 @@ const Carrinho = () => {
                 </div>
                 <div className="row">
                     <div className="col-md-12">
-                        <table className="table table-striped">
+                        <table className="table table-striped table-dark">
                             <thead>
                                 <tr>
                                     <th>Produto</th>
@@ -90,7 +90,7 @@ const Carrinho = () => {
                                     <th>Ação</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody className="table-hover">
                                 {itensCarrinho.map(item => (
                                     <tr key={item.id}>
                                         <td>{item.nome}</td>

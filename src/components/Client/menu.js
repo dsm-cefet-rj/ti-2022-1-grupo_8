@@ -1,5 +1,5 @@
 import MenuNav from './menu-nav';
-import React from 'react';
+import { React } from 'react';
 import ProdutoCard from '../geral/produto-card';
 import { pizzas as PizzaBD, bebidas as BebidaBD } from '../store';
 
@@ -22,6 +22,7 @@ const MenuCliente = () => {
     bebidas.sort((a, b) => {
         return b.quant_comprada - a.quant_comprada;
     });
+
 
     // Renderiza o menu
     return (

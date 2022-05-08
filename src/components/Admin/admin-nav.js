@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { React, useState, useEffect } from 'react';
 
 
 /* 
@@ -13,9 +13,28 @@ const AdminNav = (props) => {
 
     const toggle = () => setCollapse(!collapse); // função que altera o estado do collapse
 
+    // set screen title
+    useEffect(() => {
+        let title = 'Adminitrador - Pizzaria ON -';
+        switch (atual) {
+            case 'menu':
+                title += ' - Menu';
+                break;
+            case 'ingredientes':
+                title += ' - Ingredientes';
+                break;
+            case 'pizzas':
+                title += ' - Pizzas';
+                break;
+            default:
+                break;
+        }
+        document.title = title;
+    }, [atual]);
+
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark p-2">
-            <a className="navbar-brand" href="#">Administrador</a>
+            <a className="navbar-brand"  >Administrador</a>
             <button className="navbar-toggler" type="button" onClick={toggle}>
                 <span className="navbar-toggler-icon"></span>
             </button>

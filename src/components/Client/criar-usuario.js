@@ -1,8 +1,13 @@
+import { useEffect } from "react";
 /* 
 Componente: CriarUsuario
 Descrição: Componente que renderiza a página de criação de usuário
 */
 const CriarUsuario = () => {
+    useEffect(() => {
+        document.title = "Pizzaria ON - Criar Usuário";
+    }, []);
+
     // Renderização do componente
     return (
         <>
