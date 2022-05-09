@@ -6,74 +6,7 @@ import { useDispatch } from "react-redux";
 import { setQuantidadeDeQueijo, setQuantidadeDeMolho, } from "../../features/criar-pizzaSlice";
 import { setCarrinho } from "../../features/carrinhoSlice";
 import { createBrowserHistory } from "history";
-
-/* 
-Componente: Metade
-Descrição:  Componente que renderiza a metade de um pizza personalizada
-*/
-const Metade = (props) => {
-    // Variáveis que controlam se a metade esta ative e quanta metades existem.
-    const [id] = useState(props.id);
-    const [active, setActive] = useState(props.active);
-
-    // Função que controla se a metade esta ativa ou não.
-    const handleClick = () => setActive(!active);
-    // Variáveis que controlam os ingredientes selecionados.
-    const [ingredientes, setIngredientes] = useState([]);
-
-    // Função que adiciona um ingrediente ao array de ingredientes quando o checkbox esta marcado.
-    const adicionarIngrediente = (ingrediente) => {
-        if (ingredientes.includes(ingrediente)) {
-            setIngredientes(ingredientes.filter(item => item !== ingrediente));
-        } else {
-            setIngredientes([...ingredientes, ingrediente]);
-        }
-    }
-
-
-    // Renderiza o componente.
-    return (<>
-        {active === true ? (
-            <>
-                <div className="row section">
-                    <div className="col">
-                        <p><b>Metade {id}</b></p>
-                        <div className="scrollmenu">
-                            {ingredientesBD.map(ingrediente => (
-                                <div className="ingrediente" key={ingrediente.id}>
-                                    <img src={ingrediente.imagem} alt="Pizza" style={{ "width": "100px", }} />
-                                    <br />
-                                    <input
-                                        className="form-check-input"
-                                        type="checkbox"
-                                        value={ingrediente.id.toString()}
-                                        id="ingrediente1"
-                                        onChange={() => adicionarIngrediente(ingrediente)}
-                                    />
-                                    <label className="form-check-label" htmlFor="ingrediente1">
-                                        {ingrediente.nome}
-                                    </label>
-                                    <p>R$ {ingrediente.preco}</p>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </div>
-                <hr />
-                <Metade key={(id + 1).toString()} id={id + 1} active={false} />
-            </>
-        ) : id > 4 ? null :
-            (
-                <>
-                    <div className="row section">
-                        <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#exampleModal" onClick={handleClick}> Adicionar Nova Metade </button>
-                    </div>
-                </>
-            )
-        }
-    </>
-    );
-}
+import  Metade  from "../geral/metade-pizza";
 
 /* 
 Componente: CriarPizza
