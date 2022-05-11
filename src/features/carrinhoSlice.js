@@ -23,9 +23,12 @@ const carrinhoSlice = createSlice({
         },
         // adiciona um item ao carrinho
         adicionarAoCarrinho: (state, { payload }) => {
-            state.itens.push(payload);
-            // salva no localStorage
-            localStorage.setItem("carrinho", JSON.stringify(state.itens));
+            // Verificar se ja esta no carrinho
+            if (!state.itens.find(item => item.id === payload.id)) {
+                state.itens.push(payload);
+                // salva no localStorage
+                localStorage.setItem("carrinho", JSON.stringify(state.itens));
+            }
         },
         // remove um item do carrinho
         removerDoCarrinho: (state, { payload }) => {
