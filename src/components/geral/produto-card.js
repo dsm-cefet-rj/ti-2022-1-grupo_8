@@ -35,17 +35,23 @@ const ProdutoCard = (props) => {
 
     return (
         <div className="col-md-6 col-lg-4">
-            <div className="card mt-3 mb-3">
-                <img className="card-img-top" src={produtoData.imagem} alt={produtoData.nome} />
-                <div className="card-body">
-                    <h5 className="card-title">{produtoData.nome}</h5>
-                    <p className="card-text">{produtoData.descricao}</p>
-                    <p className="card-text">R$ {produtoData.preco}</p>
-                    {adicionado ?
-                        <p className="card-text" style={{ "color": "green", "fontWeight": "bold" }}>Produto no carrinho!</p> // Se o produto ja estiver no carrinho
-                        :
-                        <button className="btn btn-success" onClick={() => adicionar(produto)}>Adicionar ao carrinho</button> // Se o produto nao estiver no carrinho
-                    }
+            <div className="card mt-3 mb-3" style={{maxWidth: "540px"}}>
+                <div className="row g-1">
+                    <div class="col-4 col-md-12 card-img-container">
+                        <img className="card-img-top" src={produtoData.imagem} alt={produtoData.nome} />
+                    </div>
+                    <div class="col-8 col-md-12 card-body-container">
+                        <div className="card-body">
+                            <h5 className="card-title">{produtoData.nome}</h5>
+                            <p className="card-text">{produtoData.descricao}</p>
+                            <p className="card-text">R$ {produtoData.preco}</p>
+                            {adicionado ?
+                                <p className="card-text" style={{ "color": "green", "fontWeight": "bold" }}>Produto no carrinho!</p> // Se o produto ja estiver no carrinho
+                                :
+                                <button className="btn btn-success" onClick={() => adicionar(produto)}>Adicionar ao carrinho</button> // Se o produto nao estiver no carrinho
+                            }
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
