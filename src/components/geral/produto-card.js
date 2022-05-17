@@ -35,7 +35,7 @@ const ProdutoCard = (props) => {
 
     return (
         <div className="col-md-6 col-lg-4">
-            <div className="card">
+            <div className="card mt-3 mb-3">
                 <img className="card-img-top" src={produtoData.imagem} alt={produtoData.nome} />
                 <div className="card-body">
                     <h5 className="card-title">{produtoData.nome}</h5>
