@@ -44,12 +44,14 @@ const ProdutoCard = (props) => {
                         <div className="card-body">
                             <h5 className="card-title">{produtoData.nome}</h5>
                             <p className="card-text">{produtoData.descricao}</p>
-                            <p className="card-text">R$ {produtoData.preco}</p>
-                            {adicionado ?
-                                <p className="card-text" style={{ "color": "green", "fontWeight": "bold" }}>Produto no carrinho!</p> // Se o produto ja estiver no carrinho
-                                :
-                                <button className="btn btn-success" onClick={() => adicionar(produto)}>Adicionar ao carrinho</button> // Se o produto nao estiver no carrinho
-                            }
+                            <div style={{"display": "flex", "justifyContent": "space-between"}}>
+                                <p className="card-text" style={{ "fontWeight": "bold", "margin": "0", "font-size": "1.5rem"}}>R$ {produtoData.preco}</p>
+                                {adicionado ?
+                                    <p className="card-text" style={{ "color": "green", "fontWeight": "bold" }}>Produto no carrinho!</p> // Se o produto ja estiver no carrinho
+                                    :
+                                    <button className="btn btn-sm btn-success" onClick={() => adicionar(produto)}>Adicionar ao carrinho</button> // Se o produto nao estiver no carrinho
+                                }
+                            </div>
                         </div>
                     </div>
                 </div>
