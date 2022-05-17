@@ -23,6 +23,10 @@ h1 {
     font-size: 3rem;
 }
 
+.sr-only {
+    display: none;
+}
+
 .card {
     width: 18rem;
     height: fit-content;
@@ -30,7 +34,7 @@ h1 {
 
     p {
         font-family: "BenchNine", sans-serif;
-        font-size: x-large;
+        font-size: 1.3em;
         line-height: 1.25;
     }
 
@@ -81,7 +85,7 @@ h1 {
     }
 
     img:hover {
-        transform: scale(1.2);
+        transform: scale(1.1);
         transition: 0.8s;
         border-radius: 20px;
     }
@@ -109,7 +113,12 @@ h1 {
 }
 
 hr {
-    margin: 20px 0;
+    margin: 20px auto;
+    width: 80%;
+    border-top: 2px solid;
+    opacity: 60%;
+    color: white;
+    box-shadow: 1px 1px 3px #000;
 }
 
 h1 {
