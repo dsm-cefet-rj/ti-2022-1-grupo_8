@@ -19,6 +19,10 @@ h1, h2, h3 {
     text-shadow: 1px 1px 4px black;
 }
 
+h1 {
+    font-size: 3rem;
+}
+
 .card {
     width: 18rem;
     height: fit-content;
@@ -27,7 +31,7 @@ h1, h2, h3 {
     p {
         font-family: "BenchNine", sans-serif;
         font-size: x-large;
-
+        line-height: 1.25;
     }
 
     h5 {

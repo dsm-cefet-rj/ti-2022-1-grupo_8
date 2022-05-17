@@ -30,7 +30,7 @@ const MenuCliente = () => {
             <MenuNav Atual="menu" />
             <div className="container mb-2 p-1 bg-transparent">
                 <div className="row">
-                    <h1 className="text-center">Pizzas mais pedidas</h1>
+                    <h1 className="text-center">Mais pedidas</h1>
                 </div>
                 <div className="row">
                     {pizzas.slice(0, 4).map(pizza => (
