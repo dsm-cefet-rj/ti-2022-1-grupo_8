@@ -1,7 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=BenchNine:wght@300&family=Roboto:wght@900&family=Water+Brush&family=Yanone+Kaffeesatz:wght@300&display=swap");
 
 body {
-    background-image: url("../public/imgs/background.webp");
+    background: rgba(255, 255, 255, .50) url("../public/imgs/background2.jpg");
+    background-blend-mode: lighten;
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
