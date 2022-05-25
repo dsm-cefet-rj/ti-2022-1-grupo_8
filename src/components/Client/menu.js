@@ -1,5 +1,6 @@
 import MenuNav from './menu-nav';
 import { React } from 'react';
+import { Link } from 'react-router-dom';
 import ProdutoCard from '../geral/produto-card';
 import { pizzas as PizzaBD, bebidas as BebidaBD } from '../store';
 
@@ -53,7 +54,7 @@ const MenuCliente = () => {
                             </div>
                             <div className="card-body">
                                 <h5 className="card-title">Do seu jeitinho</h5>
-                                <a href="/criar-pizza" className="btn btn-primary">Clique aqui</a>
+                                <Link to="/criar-pizza" className="btn btn-primary">Clique aqui</Link>
                             </div>
                         </div>
                     </div>

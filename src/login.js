@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 /*
 Componente: Login
 Descrição: Componente que renderiza a página de login
@@ -26,11 +27,11 @@ const Login = () => {
                         <input type="password" name="campoSenhaLog" placeholder="Senha" className="form-control" autoComplete="password" required />
                     </div>
                     <div className="row mb-5">
-                        <a href="/menu" className="btn btn-primary btn-block ">Logar</a>
+                        <Link to="/menu" className="btn btn-primary btn-block ">Logar</Link>
                     </div>
                     <div className="row mb-2">
                         <p>Não possui conta? Cadastre-se</p>
-                        <a href='/criar-usuario' className="btn btn-primary btn-block ">Criar conta</a>
+                        <Link to ='/criar-usuario' className="btn btn-primary btn-block ">Criar conta</Link>
                     </div>
                 </form>
             </div>

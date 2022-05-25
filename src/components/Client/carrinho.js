@@ -2,6 +2,7 @@ import MenuNav from "./menu-nav";
 import { useDispatch } from "react-redux";
 import { setCarrinho, getFromLocalStorage } from "../../features/carrinhoSlice";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 /* 
 Componente: Carrinho
@@ -131,7 +132,7 @@ const Carrinho = () => {
                         <button href="#" className="btn btn-danger  btn-lg" onClick={limpar}>Limpar Carrinho</button>
                     </div>
                     <div className="col-sm mb-4" style={{ 'textAlign': 'center', }}>
-                        <a href="/menu" className="btn btn-warning  btn-lg">Voltar</a>
+                        <Link to="/menu" className="btn btn-warning  btn-lg">Voltar</Link>
                     </div>
                 </div>
             </div>

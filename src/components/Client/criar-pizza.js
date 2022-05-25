@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import MenuNav from "./menu-nav";
 import { ingredientes as ingredientesBD } from "../store";
 import { useDispatch } from "react-redux";
@@ -192,7 +193,7 @@ const CriarPizza = () => {
                 <hr />
             </form>
             <div style={{ "textAlign": "center", }}>
-                <a href="/menu" style={{ "margin": " 0 5px" }} className="btn btn-outline-danger">Cancelar</a>
+                <Link to="/menu" style={{ "margin": " 0 5px" }} className="btn btn-outline-danger">Cancelar</Link>
                 <button className="btn btn-primary" onClick={() => adicionarAoCarrinho()}>Adicionar ao carrinho</button>
             </div>
         </>

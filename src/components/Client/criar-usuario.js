@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 /* 
 Componente: CriarUsuario
 Descrição: Componente que renderiza a página de criação de usuário
@@ -34,11 +35,11 @@ const CriarUsuario = () => {
                         <input type="password" name="campoConfirmaSenha" className="form-control" placeholder="Confirmar senha" autoComplete="new-password" required />
                     </div>
                     <div className="row mb-2">
-                        <a href="/" className="btn btn-primary btn-block ">Cadastrar</a>
+                        <Link to="/" className="btn btn-primary btn-block ">Cadastrar</Link>
                     </div>
                 </form>
                 <div className="row mb-2">
-                    <a href="/" className="btn btn-primary btn-block ">Voltar</a>
+                    <Link to="/" className="btn btn-primary btn-block ">Voltar</Link>
                 </div>
             </div>
         </>
