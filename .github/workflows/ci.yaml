@@ -15,6 +15,6 @@ jobs:
       # Verifica se há mudanças no repositório
       - run: git status
       # Publica o código no GitHub
-      - uses: mikeal/publish-to-github-action@master
+      - uses: mikeal/publish-to-github-action@main
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
