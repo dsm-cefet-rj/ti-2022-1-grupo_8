@@ -1,0 +1,20 @@
+name: Prettier # Action para formatar o código com o Prettier
+on: [push]
+jobs:
+  build:
+    name: Prettier
+    # Rodar no Ubuntu
+    runs-on: ubuntu-latest
+    steps:
+      # Sincroniza o repositório
+      - uses: actions/checkout@v1
+      # Instala o Prettier
+      - uses: bahmutov/npm-install@v1
+      # Roda o Prettier
+      - run: npm run format
+      # Verifica se há mudanças no repositório
+      - run: git status
+      # Publica o código no GitHub
+      - uses: mikeal/publish-to-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
