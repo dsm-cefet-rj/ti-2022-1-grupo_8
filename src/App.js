@@ -1,35 +1,33 @@
-import './App.css';
-import React from 'react';
-import Login from './login';
+import "./App.css";
+import React from "react";
+import Login from "./login";
 import { Route, Routes } from "react-router-dom";
-import MenuCliente from './components/Client/menu.js';
-import Carrinho from './components/Client/carrinho';
-import CriarPizza from './components/Client/criar-pizza';
-import CriarUsuario from './components/Client/criar-usuario';
-import MenuAdmin from './components/Admin/menu-admin';
-import GerirPizzas from './components/Admin/gerir-pizzas';
-import GerirIngredientes from './components/Admin/gerir-ingredientes';
-
+import MenuCliente from "./components/Client/menu.js";
+import Carrinho from "./components/Client/carrinho";
+import CriarPizza from "./components/Client/criar-pizza";
+import CriarUsuario from "./components/Client/criar-usuario";
+import MenuAdmin from "./components/Admin/menu-admin";
+import GerirPizzas from "./components/Admin/gerir-pizzas";
+import GerirIngredientes from "./components/Admin/gerir-ingredientes";
 
 /*
 Componente: App
 Descrição: Componente que renderiza a página principal
 */
 function App() {
-    return (
-        <Routes>
-            <Route path="/" element={<Login />} />
-            <Route path="/criar-usuario" element={<CriarUsuario />} />
-            <Route path="/carrinho" element={<Carrinho />} />
-            <Route path="/criar-pizza" element={<CriarPizza />} />
-            <Route path="/menu" element={<MenuCliente />} />
+  return (
+    <Routes>
+      <Route path="/" element={<Login />} />
+      <Route path="/criar-usuario" element={<CriarUsuario />} />
+      <Route path="/carrinho" element={<Carrinho />} />
+      <Route path="/criar-pizza" element={<CriarPizza />} />
+      <Route path="/menu" element={<MenuCliente />} />
 
-            <Route path="/menu-admin" element={<MenuAdmin />} />
-            <Route path="/gerir-pizzas" element={<GerirPizzas />} />
-            <Route path="/gerir-ingredientes" element={<GerirIngredientes />} />
-
-        </Routes >
-    );
+      <Route path="/menu-admin" element={<MenuAdmin />} />
+      <Route path="/gerir-pizzas" element={<GerirPizzas />} />
+      <Route path="/gerir-ingredientes" element={<GerirIngredientes />} />
+    </Routes>
+  );
 }
 
 export default App;
