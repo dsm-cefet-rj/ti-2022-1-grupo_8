@@ -7,9 +7,11 @@ Componente: Metade
 Descrição:  Componente que renderiza a metade de um pizza personalizada
 */
 const Metade = (props) => {
+
     // Variáveis que controlam se a metade esta ative e quanta metades existem.
     const [id] = useState(props.id);
     const [active, setActive] = useState(props.active);
+    const max_ingredientes = props.max_ingredientes ? props.max_ingredientes : 5;
 
     // Função que controla se a metade esta ativa ou não.
     const handleClick = () => setActive(!active);
@@ -17,7 +19,13 @@ const Metade = (props) => {
     const [ingredientes, setIngredientes] = useState([]);
 
     // Função que adiciona um ingrediente ao array de ingredientes quando o checkbox esta marcado.
-    const adicionarIngrediente = (ingrediente) => {
+    const adicionarIngrediente = (ingrediente , id_metade, id_ingrediente ) => {
+        // se tiver mais que max_ingredientes, não permite adicionar mais
+        if (ingredientes.length < max_ingredientes) {
+            // desmacar o checkbox
+            return;
+        }
+
         if (ingredientes.includes(ingrediente)) {
             setIngredientes(ingredientes.filter(item => item !== ingrediente));
         } else {
@@ -42,7 +50,7 @@ const Metade = (props) => {
                                         type="checkbox"
                                         value={ingrediente.id.toString()}
                                         id="ingrediente1"
-                                        onChange={() => adicionarIngrediente(ingrediente)}
+                                        onChange={() => adicionarIngrediente(ingrediente , id, ingrediente.id)}
                                     />
                                     <label className="form-check-label" htmlFor="ingrediente1">
                                         {ingrediente.nome}
@@ -53,7 +61,7 @@ const Metade = (props) => {
                         </div>
                     </div>
                 </div>
-                {id === 4 ? (null):(<hr />)}
+                {id === 4 ? (null) : (<hr />)}
                 <Metade key={(id + 1).toString()} id={id + 1} active={false} />
             </>
         ) : id > 4 ? null :
