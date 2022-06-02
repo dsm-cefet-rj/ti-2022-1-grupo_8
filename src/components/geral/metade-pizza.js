@@ -49,10 +49,10 @@ const Metade = (props) => {
                                         className="form-check-input"
                                         type="checkbox"
                                         value={ingrediente.id.toString()}
-                                        id="ingrediente1"
+                                        id={ingrediente.id.toString()}
                                         onChange={() => adicionarIngrediente(ingrediente , id, ingrediente.id)}
                                     />
-                                    <label className="form-check-label" htmlFor="ingrediente1">
+                                    <label className="form-check-label" htmlFor={ingrediente.id.toString()}>
                                         {ingrediente.nome}
                                     </label>
                                     <p>R$ {ingrediente.preco}</p>
