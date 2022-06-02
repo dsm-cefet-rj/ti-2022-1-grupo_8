@@ -97,9 +97,11 @@ const Carrinho = () => {
                                         <td>{item.nome}</td>
                                         <td>{item.preco}</td>
                                         <td>
-                                            <button className="btn btn-success" onClick={() => mudarQuantidade(item.id, item.quantidade + 1)}>+</button>
-                                            {item.quantidade}
-                                            <button className="btn btn-danger" onClick={() => mudarQuantidade(item.id, item.quantidade - 1)}>-</button>
+                                            <div class="qtd-selection">
+                                                <button className="btn btn-danger btn-sm" onClick={() => mudarQuantidade(item.id, item.quantidade - 1)}>-</button>
+                                                {item.quantidade}
+                                                <button className="btn btn-success btn-sm" onClick={() => mudarQuantidade(item.id, item.quantidade + 1)}>+</button>
+                                            </div>
                                         </td>
                                         <td>
                                             {item.preco * item.quantidade}

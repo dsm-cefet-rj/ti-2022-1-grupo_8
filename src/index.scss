@@ -148,6 +148,23 @@ div.scrollmenu {
 }
 
 
+/******** Carrinho ********/
+
+.qtd-selection {
+    font-weight: bold;
+    font-size: 1.25rem;
+
+    button {
+        margin: 0 10px;
+        line-height: 0;
+        font-size: 1.25rem;
+        height: 25px;
+        width: 30px;
+    }
+
+}
+
+
 
 @media only screen and (max-width: 768px) {
     .card {
@@ -163,5 +180,14 @@ div.scrollmenu {
 
     .ingrediente {
         width: 100%;
+    }
+
+    .qtd-selection {
+        font-size: 1rem;
+
+        button {
+            width: 25px;
+            margin: 4px;
+        }
     }
 }
