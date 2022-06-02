@@ -18,24 +18,10 @@ const CriarPizza = () => {
     const dispatch = useDispatch();
 
     // Variáveis que controlam estados do componente.
-    const [queijo, setQueijo] = useState(1);
-    const [molho, setMolho] = useState(1);
     const [tamanho, setTamanho] = useState("");
     const [precoTotal, setPrecoTotal] = useState(0);
     const [erro, setErro] = useState('');
     const [ingredientes, setIngredientes] = useState([]);
-
-    // função que manipula o evento slide de queijo
-    const handleQuantidadeQueijo = (valor) => {
-        setQueijo(valor);
-        dispatch(setQuantidadeDeQueijo(valor));
-    }
-
-    // função que manipula o evento slide de molho
-    const handleQuantidadeMolho = (valor) => {
-        setMolho(valor);
-        dispatch(setQuantidadeDeMolho(valor));
-    }
 
     // função que manipula o radio button de tamanho
     const handleTamanho = (valor) => {
@@ -51,8 +37,6 @@ const CriarPizza = () => {
             // Gerar objeto da pizza customizada
             let pizza = {
                 tamanho: tamanho,
-                queijo: queijo,
-                molho: molho,
                 id: Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15),
                 ingredientes: ingredientes,
                 preco: precoTotal
@@ -73,12 +57,6 @@ const CriarPizza = () => {
             setErro('Selecione um tamanho');
         } else {
             let preco = 0;
-            if (queijo > 0) {
-                preco += queijo * 0.75;
-            }
-            if (molho > 0) {
-                preco += molho * 0.75;
-            }
             switch (tamanho) {
                 case 'Pequena':
                     preco += 10;
@@ -100,9 +78,7 @@ const CriarPizza = () => {
             }
             setPrecoTotal(preco);
         }
-    }, [queijo, molho, tamanho]);
-
-
+    }, [tamanho]);
 
     // Renderiza a página de criação de pizza.
     return (
@@ -111,37 +87,13 @@ const CriarPizza = () => {
             <form>
                 <div className="container">
                     <div className="row">
-                        <h1 className="text-center">Monte sua pizza</h1>
+                        <h1 className="text-center">Monte sua pizza 🍕</h1>
                     </div>
                     <div className="row">
                         <h5 className="text-center" style={{
                             "color": "red",
                             "textShadow": "0px 0px 10px black"
                         }}>{erro}</h5>
-                    </div>
-                    <div className="row section">
-                        <section style={{ "margin": "50px auto", "width": "80%", }}>
-                            <label htmlFor="qtdQueijo" className="form-label">Quantidade de queijo</label>
-                            <input
-                                type="range"
-                                className="form-range"
-                                min="0"
-                                step=".1"
-                                max="2"
-                                value={queijo}
-                                onChange={(e) => { handleQuantidadeQueijo(e.target.value); }}
-                                id="qtdQueijoRange" />
-                            <label htmlFor="qtdMolho" className="form-label">Quantidade de molho</label>
-                            <input
-                                type="range"
-                                className="form-range"
-                                min="0"
-                                step=".1"
-                                max="2"
-                                value={molho}
-                                onChange={(e) => { handleQuantidadeMolho(e.target.value); }}
-                                id="qtdMolhoRange" />
-                        </section>
                     </div>
                     <div className="row section">
                         <div className="col">

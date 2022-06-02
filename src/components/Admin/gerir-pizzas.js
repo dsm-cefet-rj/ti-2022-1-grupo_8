@@ -40,8 +40,16 @@ const GerirPizzas = () => {
             <div className="container mb-2 p-1 bg-transparent">
                 <div className="row">
                     <h1>Gerenciar Pizzas</h1>
+                    <div className="row section mb-3">
+                    
+                            <h4>Adicionar Nova ou Editar Pizza</h4>
+                    
+                    </div>
                     <h3><b>Pizzas Cadastradas</b></h3>
                 </div>
+
+                
+
                 <div className="row section">
                     <div className="scrollmenu">
                         {pizzas.map(pizza => (
@@ -70,35 +78,7 @@ const GerirPizzas = () => {
                     </div>
                 </div>
                 <form>
-                    <div className="row section">
-                        <div className="card-header mb-3">
-                            <h4>Adicionar Nova ou Editar Pizza</h4>
-                        </div>
-                    </div>
-                    <div className="row section">
-                        <section style={{ "margin": "50px auto", "width": "80%", }}>
-                            <label htmlFor="qtdQueijo" className="form-label">Quantidade de queijo</label>
-                            <input
-                                type="range"
-                                className="form-range"
-                                min="0"
-                                step=".1"
-                                max="2"
-                                value={queijo}
-                                onChange={(e) => { handleQuantidadeQueijo(e.target.value); }}
-                                id="qtdQueijoRange" />
-                            <label htmlFor="qtdMolho" className="form-label">Quantidade de molho</label>
-                            <input
-                                type="range"
-                                className="form-range"
-                                min="0"
-                                step=".1"
-                                max="2"
-                                value={molho}
-                                onChange={(e) => { handleQuantidadeMolho(e.target.value); }}
-                                id="qtdMolhoRange" />
-                        </section>
-                    </div>
+                    
                     <div className="row section">
                         <div className="form-group">
                             <label htmlFor="exampleFormControlSelect1">Nome</label>
