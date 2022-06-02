@@ -163,7 +163,7 @@ let pizzas = [
     },
     {
         nome: "Frango com Requeijão",
-        descricao: "Deliciosa pizza com molho de tomate, frango desfiado, queijo, requeijão e orégano",
+        descricao: "A mais querida! Pizza com molho de tomate, frango desfiado, queijo, requeijão e orégano",
         imagem: "/imgs/Frango com Requeijão.jpeg",
         quant_queijo: 1.0,
         quant_molho: 1.0,
@@ -183,7 +183,7 @@ let pizzas = [
     },
     {
         nome: "Brócolis com Alho",
-        descricao: "Deliciosa pizza com molho de tomate, mussarela, alho e orégano.",
+        descricao: "Deliciosa pizza com molho de tomate, mussarela, brócolis, alho e orégano.",
         imagem: "/imgs/brocolis e alho.jpeg",
         quant_queijo: 1.0,
         quant_molho: 1.0,
@@ -213,7 +213,7 @@ let pizzas = [
     },
     {
         nome: "Portuguesa",
-        descricao: "Deliciosa pizza com calabresa, tomates, mussarela, cebolas e azeitonas pretas.",
+        descricao: "Uma pizza com calabresa, tomates, mussarela, cebolas e azeitonas pretas.",
         imagem: "/imgs/Portuguesa.jpg",
         quant_queijo: 1.0,
         quant_molho: 1.0,
@@ -256,7 +256,7 @@ let pizzas = [
 let bebidas = [
     {
         nome: "Coca Cola 2L",
-        descricao: "Refrigerante sabor coca de 2L.",
+        descricao: "Refrigerante sabor cola de 2L.",
         imagem: "imgs/coca-cola.webp",
         preco: 8.00,
         id: 1,
