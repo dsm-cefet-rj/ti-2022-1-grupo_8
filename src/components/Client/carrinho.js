@@ -107,7 +107,7 @@ const Carrinho = () => {
                                             {item.preco * item.quantidade}
                                         </td>
                                         <td>
-                                            <button className="btn btn-danger"
+                                            <button className="btn btn-danger btn-sm"
                                                 onClick={() => remover(item)}>Remover</button>
                                         </td>
                                     </tr>
@@ -128,13 +128,13 @@ const Carrinho = () => {
                 </div>
                 <div className="row">
                     <div className="col-sm mb-4" style={{ 'textAlign': 'center', }}>
-                        <button href="#" className="btn btn-success  btn-lg">Finalizar Compra</button>
+                        <Link to="/menu" className="btn btn-warning  btn-lg">Voltar</Link>
                     </div>
                     <div className="col-sm mb-4" style={{ 'textAlign': 'center', }}>
                         <button href="#" className="btn btn-danger  btn-lg" onClick={limpar}>Limpar Carrinho</button>
                     </div>
                     <div className="col-sm mb-4" style={{ 'textAlign': 'center', }}>
-                        <Link to="/menu" className="btn btn-warning  btn-lg">Voltar</Link>
+                        <button href="#" className="btn btn-success  btn-lg">Finalizar Compra</button>
                     </div>
                 </div>
             </div>
