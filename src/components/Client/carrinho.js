@@ -95,7 +95,7 @@ const Carrinho = () => {
                                 {itensCarrinho.map(item => (
                                     <tr key={item.id}>
                                         <td>{item.nome}</td>
-                                        <td>{item.preco}</td>
+                                        <td>R$ {item.preco.toFixed(2)}</td>
                                         <td>
                                             <div class="qtd-selection">
                                                 <button className="btn btn-danger btn-sm" onClick={() => mudarQuantidade(item.id, item.quantidade - 1)}>-</button>
@@ -104,7 +104,7 @@ const Carrinho = () => {
                                             </div>
                                         </td>
                                         <td>
-                                            {item.preco * item.quantidade}
+                                            R$ {(item.preco * item.quantidade).toFixed(2)}
                                         </td>
                                         <td>
                                             <button className="btn btn-danger btn-sm"
@@ -118,12 +118,8 @@ const Carrinho = () => {
 
                 </div>
                 <div className="row">
-                    <div className="col-md-12">
-                        <h3>Total:
-                            {
-                                total.toFixed(2)
-                            }
-                        </h3>
+                    <div className="col-md-12" style={{"textAlign": "right", "margin-bottom": "20px"}}>
+                        <h3>Total: R$ <span className="total-carrinho">{total.toFixed(2)}</span></h3>
                     </div>
                 </div>
                 <div className="row">
