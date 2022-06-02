@@ -298,7 +298,8 @@ const getPizzasUsuario = () => {
             quant_comprada: pizza.quant_comprada,
         }
     })
-
 }
 
-export {getPizzasUsuario as getPizzasFrontEnd, pizzas, bebidas, ingredientes };
+
+
+export {getPizzasUsuario, pizzas, bebidas, ingredientes };

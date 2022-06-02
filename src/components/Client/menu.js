@@ -2,7 +2,7 @@ import MenuNav from './menu-nav';
 import { React } from 'react';
 import { Link } from 'react-router-dom';
 import ProdutoCard from '../geral/produto-card';
-import { pizzas as PizzaBD, bebidas as BebidaBD } from '../store';
+import { getPizzasUsuario, bebidas as BebidaBD } from '../store';
 
 /* 
 Componente: MenuCliente
@@ -10,7 +10,7 @@ Descrição: Componente que renderiza a página principal do Cliente
 */
 const MenuCliente = () => {
     // Pegando os produtos do banco de dados
-    let pizzas = PizzaBD;
+    let pizzas = getPizzasUsuario();
     // Pegando os produtos do banco de dados
     let bebidas = BebidaBD;
 
@@ -23,7 +23,6 @@ const MenuCliente = () => {
     bebidas.sort((a, b) => {
         return b.quant_comprada - a.quant_comprada;
     });
-
 
     // Renderiza o menu
     return (
