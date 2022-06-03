@@ -97,7 +97,7 @@ const Carrinho = () => {
                                         <td>{item.nome}</td>
                                         <td>R$ {item.preco.toFixed(2)}</td>
                                         <td>
-                                            <div class="qtd-selection">
+                                            <div className="qtd-selection">
                                                 <button className="btn btn-danger btn-sm" onClick={() => mudarQuantidade(item.id, item.quantidade - 1)}>-</button>
                                                 {item.quantidade}
                                                 <button className="btn btn-success btn-sm" onClick={() => mudarQuantidade(item.id, item.quantidade + 1)}>+</button>
@@ -118,7 +118,7 @@ const Carrinho = () => {
 
                 </div>
                 <div className="row">
-                    <div className="col-md-12" style={{"textAlign": "right", "margin-bottom": "20px"}}>
+                    <div className="col-md-12" style={{"textAlign": "right", "marginBottom": "20px"}}>
                         <h3>Total: R$ <span className="total-carrinho">{total.toFixed(2)}</span></h3>
                     </div>
                 </div>
