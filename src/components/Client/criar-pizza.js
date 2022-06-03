@@ -23,12 +23,6 @@ const CriarPizza = () => {
     const [erro, setErro] = useState('');
     const [ingredientes, setIngredientes] = useState([]);
 
-    // função que manipula o radio button de tamanho
-    const handleTamanho = (valor) => {
-        console.log(valor);
-        setTamanho(valor);
-    }
-
     // função que adiciona a pizza customizada ao carrinho
     const adicionarAoCarrinho = () => {
         if (tamanho === "") {
@@ -43,10 +37,17 @@ const CriarPizza = () => {
             };
             // Adicionar a pizza customizada ao carrinho
             dispatch(adicionarAoCarrinho(pizza));
-            
+
             // Redirecionar para a página de carrinho
             createBrowserHistory().push("/carrinho");
         }
+    }
+
+    const handleTamanhoRadio = (e) => {
+        let valor = e.target.value;
+        setTamanho(valor);
+        setErro("");
+        document.getElementById("INGREDIENTES").scrollIntoView({ behavior: "smooth" });
     }
 
     useEffect(() => {
@@ -96,48 +97,67 @@ const CriarPizza = () => {
                         }}>{erro}</h5>
                     </div>
                     <div className="row section">
-                        <div className="col">
-                            <p><b>Tamanho</b></p>
-                            <div className="scrollmenu">
-                                <div className="tamanho">
-                                    <div className="col">
-                                        <input className="form-check-input" type="radio" value="Pequena" onChange={() => { handleTamanho("Pequena"); }} id="Pequena" name="tamanho" />
-                                        <label className="form-check-label" htmlFor="tamanho1" >Pequena</label>
+                        <p><b>Tamanho</b></p>
+                        <div>
+                            <div class="form-check form-switch">
+                                <div className="tamanho p-2" onChange={handleTamanhoRadio}
+                                    style={{
+                                        "width": "50%",
+                                        "font-size": "1.25rem"
+                                    }}>
+                                    <div className="col mb-1">
+                                        <input className="form-check-input" type="radio" value="Pequena" id="Pequena" name="tamanho" />
+                                        <label className="form-check-label" htmlFor="tamanho1" >Pequena 🤏 15cm
+                                        </label>
                                     </div>
-                                    <div className="col">
-                                        <input className="form-check-input" type="radio" value="Media" onChange={() => { handleTamanho("Media"); }} id="Media" name="tamanho" />
-                                        <label className="form-check-label" htmlFor="tamanho2" >Media</label>
+                                    <div className="col mb-1">
+                                        <input className="form-check-input" type="radio" value="Media" id="Media" name="tamanho" />
+                                        <label className="form-check-label" htmlFor="tamanho2" >Media 🫄🏻 20cm
+                                        </label>
                                     </div>
-                                    <div className="col">
-                                        <input className="form-check-input" type="radio" value="Grande" onChange={() => { handleTamanho("Grande"); }} id="Grande" name="tamanho" />
-                                        <label className="form-check-label" htmlFor="tamanho3" >Grande</label>
+                                    <div className="col mb-1">
+                                        <input className="form-check-input" type="radio" value="Grande" id="Grande" name="tamanho" />
+                                        <label className="form-check-label" htmlFor="tamanho3" >Grande 📏  25cm
+                                        </label>
                                     </div>
-                                    <div className="col">
-                                        <input className="form-check-input" type="radio" value="Familia" onChange={() => { handleTamanho("Familia"); }} id="Familia" name="tamanho" />
-                                        <label className="form-check-label" htmlFor="tamanho4" >Família</label>
+                                    <div className="col mb-1">
+                                        <input className="form-check-input" type="radio" value="Familia" id="Familia" name="tamanho" />
+                                        <label className="form-check-label" htmlFor="tamanho4" >Família 😱 40cm
+                                        </label>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div className="row">
-                        <h5>Ingredientes</h5>
-                        <p>Escolha até 5 em cada metade</p>
+                    <div className="row" style={{ "textAlign": "center", }} >
+                        <h3
+                            id="INGREDIENTES"
+                        >Ingredientes</h3>
+                        <h4
+                            style={{
+                                "color": "white",
+
+                                "textShadow": "1px 1px 4px black"
+                            }}
+                        >Escolha até 7 em cada metade</h4>
                     </div>
                     <Metade max_ingredientes={5} key="1" id={1} active={true} />
                 </div>
                 <hr />
-                <div className="row section">
-                    <p><b>Preço total:</b></p>
-                    <p>
-                        {erro === '' ? "R$: "+ precoTotal.toFixed(2) : "Tamanho não selecionado"}
-                    </p>
+                <div className="row">
+                    <div className="col-md-12" style={{ "textAlign": "right", "marginBottom": "20px" }}>
+                        <h3>Preço total:</h3>
+                        <h3>
+                            {erro === '' ? "R$: " + precoTotal.toFixed(2) : "Tamanho não selecionado"}
+                        </h3>
+                    </div>
                 </div>
-                <hr />
             </form>
-            <div style={{ "textAlign": "center", }}>
-                <Link to="/menu" style={{ "margin": " 0 5px" }} className="btn btn-outline-danger">Cancelar</Link>
-                <button className="btn btn-primary" onClick={() => adicionarAoCarrinho()}>Adicionar ao carrinho</button>
+            <div className="row" style={{ "textAlign": "center", }}>
+
+                <Link to="/menu" style={{ "margin": " 0 5px" }} className="btn btn-lg btn-danger mb-5">Cancelar</Link>
+
+                <button className="btn btn-lg btn-primary mb-5" onClick={() => adicionarAoCarrinho()}>Adicionar ao carrinho</button>
             </div>
         </>
     );
