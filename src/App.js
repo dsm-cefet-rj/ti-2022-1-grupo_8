@@ -15,19 +15,25 @@ Componente: App
 Descrição: Componente que renderiza a página principal
 */
 function App() {
-  return (
-    <Routes>
-      <Route path="/" element={<Login />} />
-      <Route path="/criar-usuario" element={<CriarUsuario />} />
-      <Route path="/carrinho" element={<Carrinho />} />
-      <Route path="/criar-pizza" element={<CriarPizza />} />
-      <Route path="/menu" element={<MenuCliente />} />
+        return (
+                <Routes>
+                        <Route path="/" element={<Login />} />
+                        <Route
+                                path="/criar-usuario"
+                                element={<CriarUsuario />}
+                        />
+                        <Route path="/carrinho" element={<Carrinho />} />
+                        <Route path="/criar-pizza" element={<CriarPizza />} />
+                        <Route path="/menu" element={<MenuCliente />} />
 
-      <Route path="/menu-admin" element={<MenuAdmin />} />
-      <Route path="/gerir-pizzas" element={<GerirPizzas />} />
-      <Route path="/gerir-ingredientes" element={<GerirIngredientes />} />
-    </Routes>
-  );
+                        <Route path="/menu-admin" element={<MenuAdmin />} />
+                        <Route path="/gerir-pizzas" element={<GerirPizzas />} />
+                        <Route
+                                path="/gerir-ingredientes"
+                                element={<GerirIngredientes />}
+                        />
+                </Routes>
+        );
 }
 
 export default App;
