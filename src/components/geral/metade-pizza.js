@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { ingredientes as ingredientesBD } from "../store";
+import { setMetades, getMetades } from '../../features/gerir-pizzaSlice';
+import { useDispatch } from 'react-redux';
 
 /* 
 Componente: Metade
@@ -8,13 +10,24 @@ Descrição:  Componente que renderiza a metade de um pizza personalizada
 */
 const Metade = (props) => {
 
+
+
+    const dispatch = useDispatch();
+
+    const type = props.type; // "Cliente" ou "Admin"
+
     // Variáveis que controlam se a metade esta ative e quanta metades existem.
     const [id] = useState(props.id);
     const [active, setActive] = useState(props.active);
     const max_ingredientes = props.max_ingredientes ? props.max_ingredientes : 7;
 
     // Função que controla se a metade esta ativa ou não.
-    const handleClick = () => setActive(!active);
+    const handleClick = () => {
+        setActive(!active);
+        document.getElementById(
+            `SCROLLMENU${id-1}`
+        ).scrollIntoView({ behavior: "smooth" });
+    }
     // Variáveis que controlam os ingredientes selecionados.
     const [ingredientes, setIngredientes] = useState([]);
 
@@ -32,6 +45,13 @@ const Metade = (props) => {
         }
         setIngredientes([...ingredientes, e.target.value]);
         e.target.checked = true;
+        props.handleIngredientes(ingredientes, id);
+
+        if (type === "Admin") {
+            let metades = getMetades();
+            metades[id] = ingredientes;
+            dispatch(setMetades(metades));
+        }
     }
 
     // Renderiza o componente.
@@ -41,7 +61,7 @@ const Metade = (props) => {
                 <div className="row section">
                     <div className="col">
                         <p><b>Metade {id}</b></p>
-                        <div className="scrollmenu">
+                        <div className="scrollmenu" id = {`SCROLLMENU${id}`}>
                             {ingredientesBD.map(ingrediente => (
                                 <div className="ingrediente" key={ingrediente.id}>
                                     <img src={ingrediente.imagem} alt="Pizza" style={{ "width": "100px", }} />
