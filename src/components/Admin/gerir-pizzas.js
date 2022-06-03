@@ -1,9 +1,10 @@
 import AdminNav from "./admin-nav";
 import { pizzas as pizzaBD } from "../store";
 import Metade from "../geral/metade-pizza";
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
-
+import { useDispatch } from "react-redux";
+import { setNome, setMetades, getMetades, getNome } from "../../features/gerir-pizzaSlice";
 
 /* 
 Componente: GerirPizzas
@@ -14,24 +15,41 @@ const GerirPizzas = () => {
         return b.quant_comprada - a.quant_comprada;
     });
 
-    const [queijo, setQueijo] = useState(1);
-    const [molho, setMolho] = useState(1);
-    const [tamanho, setTamanho] = useState("");
+    const dispatch = useDispatch();
+
     const [erro, setErro] = useState('');
+    const [nome, setNome] = useState("");
+    const [imagem, setImagem] = useState("");
+    const [metades, setMetades] = useState([[], [], [], []]);
+    const [preco, setPreco] = useState(0);
+    const [editando, setEditando] = useState(false);
 
-    // função que manipula o evento slide de queijo
-    const handleQuantidadeQueijo = (valor) => {
-        setQueijo(valor);
+    const handleNome = (e) => {
+        setNome(e.target.value);
+        dispatch(setNome(e.target.value));
+    }
+    const handleImagem = (e) => {
+        setImagem(e.target.value);
     }
 
-    // função que manipula o evento slide de molho
-    const handleQuantidadeMolho = (valor) => {
-        setMolho(valor);
-    }
-
-    // função que manipula o radio button de tamanho
-    const handleTamanho = (valor) => {
-        setTamanho(valor);
+    const handleButton = () => {
+        if (nome === "") {
+            setErro("Preencha o nome da pizza");
+            return;
+        }
+        if (imagem === "") {
+            setErro("Preencha a imagem da pizza");
+            return;
+        }
+        if (metades.length === 0) {
+            setErro("Preencha pelo menos uma metade da pizza");
+            return;
+        }
+        let pizza = {
+            nome: nome,
+            imagem: imagem,
+            metades: metades,
+        }
     }
 
     return (
@@ -41,15 +59,10 @@ const GerirPizzas = () => {
                 <div className="row">
                     <h1>Gerenciar Pizzas</h1>
                     <div className="row section mb-3">
-                    
-                            <h4>Adicionar Nova ou Editar Pizza</h4>
-                    
+                        <h4>Adicionar Nova ou Editar Pizza</h4>
                     </div>
                     <h3><b>Pizzas Cadastradas</b></h3>
                 </div>
-
-                
-
                 <div className="row section">
                     <div className="scrollmenu">
                         {pizzas.map(pizza => (
@@ -78,27 +91,48 @@ const GerirPizzas = () => {
                     </div>
                 </div>
                 <form>
-                    
+
                     <div className="row section">
                         <div className="form-group">
                             <label htmlFor="exampleFormControlSelect1">Nome</label>
-                            <input type="text" className="form-control" id="nomePizza" placeholder="Nome da pizza" />
+                            <input
+                                type="text"
+                                className="form-control"
+                                id="nomePizza"
+                                placeholder="Nome da pizza"
+                                value={nome}
+                                onChange={e => setNome(e.target.value)}
+                                enabled={!editando}
+                            />
                             <label htmlFor="imagem">Imagem</label>
-                            <input type="file" className="form-control" id="imagem" name="imagem" placeholder="Imagem" />
+                            <input type="file"
+                                className="form-control"
+                                id="imagem"
+                                name="imagem"
+                                placeholder="Imagem"
+                                onChange={e => setImagem(e.target.files[0])}
+                            />
                         </div>
                     </div>
                     <div className="row">
-                    <hr/>
+                        <hr />
                         <h3>Ingredientes</h3>
-                        <p>Escolha até 5 em cada metade</p>
                     </div>
                     <Metade key="1" id={1} active={true} />
-                    <hr/>
+                    <hr />
+                    <div className="row">
+                    <div className="col-md-12" style={{"textAlign": "right", "marginBottom": "20px"}}>
+                        <h3>Preço: R$ <span className="total-carrinho">{preco.toFixed(2)}</span></h3>
+                    </div>
+                </div>
                     <div style={{ "textAlign": "center", }} >
-                        <button className="btn btn-primary">Criar</button>
-                        <a href="/menu-admin" style={{ "margin": " 0 5px" }} className="btn btn-outline-danger">Cancelar</a>
+                        <button className="btn btn-primary btn-lg"
+                        onClick={handleButton()}>
+                        Criar</button>
+                        <a href="/menu-admin" style={{ "margin": " 0 5px" }} className="btn btn-danger btn-lg">Cancelar</a>
                     </div>
                 </form>
+                
             </div >
 
         </>

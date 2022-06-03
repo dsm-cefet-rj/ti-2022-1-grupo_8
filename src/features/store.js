@@ -1,12 +1,14 @@
 import { configureStore } from "@reduxjs/toolkit";
 import carrinhoSlice from "./carrinhoSlice";
 import criarPizzaSlice from "./criar-pizzaSlice";
-import geirIngredientesSlice from "./geir-ingredientesSlice";
+import gerirIngredientesSlice from "./gerir-ingredientesSlice";
+import gerirPizzaSlice from "./gerir-pizzaSlice";
 
 export default configureStore({
     reducer: {
         carrinho: carrinhoSlice,
         criarPizza: criarPizzaSlice,
-        geirIngredientes: geirIngredientesSlice,
+        gerirIngredientes: gerirIngredientesSlice,
+        gerirPizzaSlice: gerirPizzaSlice,
     },
 });
