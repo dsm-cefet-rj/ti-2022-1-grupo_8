@@ -85,7 +85,12 @@ const Metade = (props) => {
                     </div>
                 </div>
                 {id === 4 ? (null) : (<hr />)}
-                <Metade key={(id + 1).toString()} id={id + 1} active={false} />
+                <Metade 
+                key={(id + 1).toString()} 
+                id={id + 1} 
+                active={false}
+                max_ingredientes={max_ingredientes}
+                />
             </>
         ) : id > 4 ? null :
             (
