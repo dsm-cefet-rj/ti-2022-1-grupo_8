@@ -4,13 +4,10 @@ import { Link } from "react-router-dom";
 import MenuNav from "./menu-nav";
 import { ingredientes as ingredientesBD } from "../store";
 import { useDispatch } from "react-redux";
-import {
-  setQuantidadeDeQueijo,
-  setQuantidadeDeMolho,
-} from "../../features/criar-pizzaSlice";
 import { adicionarAoCarrinho } from "../../features/carrinhoSlice";
 import { createBrowserHistory } from "history";
 import Metade from "../geral/metade-pizza";
+import { getMetades } from "../../features/ingredientes-metadeSlice";
 
 /* 
 Componente: CriarPizza
@@ -38,13 +35,14 @@ const CriarPizza = () => {
           Math.random().toString(36).substring(2, 15) +
           Math.random().toString(36).substring(2, 15),
         ingredientes: ingredientes,
+        metades: getMetades(),
         preco: precoTotal,
       };
       // Adicionar a pizza customizada ao carrinho
       dispatch(adicionarAoCarrinho(pizza));
-
+      console.log(pizza);
       // Redirecionar para a página de carrinho
-      createBrowserHistory().push("/carrinho");
+      //createBrowserHistory().push("/carrinho");
     }
   };
 

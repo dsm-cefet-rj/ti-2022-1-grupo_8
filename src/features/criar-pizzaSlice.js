@@ -3,8 +3,6 @@ import { createSlice } from "@reduxjs/toolkit";
 const criarPizzaSlice = createSlice({
   name: "criarPizza",
   initialState: {
-    QuantidadeDeQueijo: 0,
-    QuantidadeDeMolho: 0,
     tamanho: "",
     metades: [],
   },
@@ -25,8 +23,6 @@ const criarPizzaSlice = createSlice({
 });
 
 export const {
-  setQuantidadeDeQueijo,
-  setQuantidadeDeMolho,
   setTamanho,
   setMetades,
 } = criarPizzaSlice.actions;

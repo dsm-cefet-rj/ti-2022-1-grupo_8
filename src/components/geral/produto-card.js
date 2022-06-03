@@ -49,7 +49,7 @@ const ProdutoCard = (props) => {
               alt={produtoData.nome}
             />
           </div>
-          <div class="col-8 col-md-12">
+          <div className="col-8 col-md-12">
             <div className="card-body">
               <h5 className="card-title">{produtoData.nome}</h5>
               <p className="card-text">{produtoData.descricao}</p>
