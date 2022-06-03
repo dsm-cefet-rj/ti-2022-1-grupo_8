@@ -21,7 +21,7 @@ const CriarPizza = () => {
     const [tamanho, setTamanho] = useState("");
     const [precoTotal, setPrecoTotal] = useState(0);
     const [erro, setErro] = useState('');
-    const [ingredientes, setIngredientes] = useState([]);
+    const [ingredientes, setIngredientes] = useState([[], [], [], []]);
 
     // função que adiciona a pizza customizada ao carrinho
     const adicionarAoCarrinho = () => {
@@ -48,6 +48,10 @@ const CriarPizza = () => {
         setTamanho(valor);
         setErro("");
         document.getElementById("INGREDIENTES").scrollIntoView({ behavior: "smooth" });
+    }
+
+    const handleChangeIngredientes = (metade, ingredientes) => {
+        setIngredientes(ingredientes)
     }
 
     useEffect(() => {
@@ -141,7 +145,11 @@ const CriarPizza = () => {
                             }}
                         >Escolha até 7 em cada metade</h4>
                     </div>
-                    <Metade max_ingredientes={5} key="1" id={1} active={true} />
+                    {
+                        [...Array(4).keys()].map(index => 
+                            <Metade max_ingredientes={5} key={index} id={index} active={true} ingredientes={ingredientes} onIngredientesChange={handleChangeIngredientes} />
+                        )
+                    }
                 </div>
                 <hr />
                 <div className="row">
