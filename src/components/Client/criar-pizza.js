@@ -61,7 +61,7 @@ const CriarPizza = () => {
                 case 'Pequena':
                     preco += 10;
                     break;
-                case 'Média':
+                case 'Media':
                     preco += 15;
                     break;
                 case 'Grande':
