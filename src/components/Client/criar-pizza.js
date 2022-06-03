@@ -99,11 +99,11 @@ const CriarPizza = () => {
                     <div className="row section">
                         <p><b>Tamanho</b></p>
                         <div>
-                            <div class="form-check form-switch">
+                            <div className="form-check form-switch">
                                 <div className="tamanho p-2" onChange={handleTamanhoRadio}
                                     style={{
                                         "width": "50%",
-                                        "font-size": "1.25rem"
+                                        "fontSize": "1.25rem"
                                     }}>
                                     <div className="col mb-1">
                                         <input className="form-check-input" type="radio" value="Pequena" id="Pequena" name="tamanho" />
