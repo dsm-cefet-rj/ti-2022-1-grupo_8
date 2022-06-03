@@ -45,7 +45,7 @@ const ProdutoCard = (props) => {
                             <h5 className="card-title">{produtoData.nome}</h5>
                             <p className="card-text">{produtoData.descricao}</p>
                             <div style={{"display": "flex", "justifyContent": "space-between"}}>
-                                <p className="card-text" style={{ "fontWeight": "bold", "margin": "0", "fontSize": "1.5rem"}}>R$ {produtoData.preco}</p>
+                                <p className="card-text" style={{ "fontWeight": "bold", "margin": "0", "fontSize": "1.5rem"}}>R$ {produtoData.preco.toFixed(2)}</p>
                                 {adicionado ?
                                     <p className="card-text" style={{ "color": "green", "fontWeight": "bold" }}>Produto no carrinho!</p> // Se o produto ja estiver no carrinho
                                     :
