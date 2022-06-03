@@ -42,7 +42,6 @@ const Carrinho = () => {
             return item;
         });
         setItensCarrinho(novoCarrinho);
-        recalcularTotal(novoCarrinho);
         setCarrinho(novoCarrinho);
     };
 
