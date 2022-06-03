@@ -58,56 +58,72 @@ const Metade = (props) => {
     dispatch(setMetades(payload));
   };
 
-    // Renderiza o componente.
-    return (<>
-        {active === true ? (
-            <>
-                <div className="row section">
-                    <div className="col">
-                        <p><b>Metade {id}</b></p>
-                        <div className="scrollmenu" id={`SCROLLMENU${id}`}>
-                            {ingredientesBD.map(ingrediente => (
-                                <div className="ingrediente" key={ingrediente.id}>
-                                    <p className="form-check-label" htmlFor={ingrediente.id.toString()}>
-                                        {ingrediente.nome}
-                                    </p>
-                                    <img src={ingrediente.imagem} alt="Pizza" style={{ "width": "100px",
-                                        "borderRadius": "10px",}} />
-                                    <br />
-                                    <input
-                                        className="form-check-input"
-                                        type="checkbox"
-                                        style={{
-                                            "width": "40px",
-                                            "height": "40px",
-                                        }}
-                                        value={ingrediente.id.toString()}
-                                        id={ingrediente.id.toString()}
-                                        onChange={handleCheckbox}
-                                    />
-                                    <p>R$ {ingrediente.preco}</p>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </div>
-                {id === 4 ? (null) : (<hr />)}
-                <Metade 
-                key={(id + 1).toString()} 
-                id={id + 1} 
-                active={false}
-                max_ingredientes={max_ingredientes}
-                />
-            </>
-        ) : id > 4 ? null :
-            (
-                <>
-                    <div className="row section">
-                        <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#exampleModal" onClick={handleClick}> Adicionar Nova Metade </button>
-                    </div>
-                </>
-            )
-        }
+  // Renderiza o componente.
+  return (
+    <>
+      {active === true ? (
+        <>
+          <div className="row section">
+            <div className="col">
+              <p>
+                <b>Metade {id}</b>
+              </p>
+              <div className="scrollmenu" id={`SCROLLMENU${id}`}>
+                {ingredientesBD.map((ingrediente) => (
+                  <div className="ingrediente" key={ingrediente.id}>
+                    <p
+                      className="form-check-label"
+                      htmlFor={ingrediente.id.toString()}
+                    >
+                      {ingrediente.nome}
+                    </p>
+                    <img
+                      src={ingrediente.imagem}
+                      alt="Pizza"
+                      style={{ width: "100px", borderRadius: "10px" }}
+                    />
+                    <br />
+                    <input
+                      className="form-check-input"
+                      type="checkbox"
+                      style={{
+                        width: "40px",
+                        height: "40px",
+                      }}
+                      value={ingrediente.id.toString()}
+                      id={ingrediente.id.toString()}
+                      onChange={handleCheckbox}
+                    />
+                    <p>R$ {ingrediente.preco}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+          {id === 4 ? null : <hr />}
+          <Metade
+            key={(id + 1).toString()}
+            id={id + 1}
+            active={false}
+            max_ingredientes={max_ingredientes}
+          />
+        </>
+      ) : id > 4 ? null : (
+        <>
+          <div className="row section">
+            <button
+              type="button"
+              className="btn btn-primary"
+              data-toggle="modal"
+              data-target="#exampleModal"
+              onClick={handleClick}
+            >
+              {" "}
+              Adicionar Nova Metade{" "}
+            </button>
+          </div>
+        </>
+      )}
     </>
   );
 };
