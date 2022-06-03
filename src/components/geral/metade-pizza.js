@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import { ingredientes as ingredientesBD } from "../store";
 
@@ -11,7 +11,7 @@ const Metade = (props) => {
     // Variáveis que controlam se a metade esta ative e quanta metades existem.
     const [id] = useState(props.id);
     const [active, setActive] = useState(props.active);
-    const max_ingredientes = props.max_ingredientes ? props.max_ingredientes : 5;
+    const max_ingredientes = props.max_ingredientes ? props.max_ingredientes : 7;
 
     // Função que controla se a metade esta ativa ou não.
     const handleClick = () => setActive(!active);
@@ -19,18 +19,19 @@ const Metade = (props) => {
     const [ingredientes, setIngredientes] = useState([]);
 
     // Função que adiciona um ingrediente ao array de ingredientes quando o checkbox esta marcado.
-    const adicionarIngrediente = (ingrediente , id_metade, id_ingrediente ) => {
-        // se tiver mais que max_ingredientes, não permite adicionar mais
-        if (ingredientes.length < max_ingredientes) {
-            // desmacar o checkbox
+    const handleCheckbox = (e) => {
+        if (ingredientes.length >= max_ingredientes) {
+            setIngredientes([...ingredientes, e.target.value]);
+            e.target.checked = false;
             return;
         }
-
-        if (ingredientes.includes(ingrediente)) {
-            setIngredientes(ingredientes.filter(item => item !== ingrediente));
-        } else {
-            setIngredientes([...ingredientes, ingrediente]);
+        if( ingredientes.includes(e.target.value) ) {
+            setIngredientes(ingredientes.filter(i => i !== e.target.value));
+            e.target.checked = false;
+            return;
         }
+        setIngredientes([...ingredientes, e.target.value]);
+        e.target.checked = true;
     }
 
     // Renderiza o componente.
@@ -50,7 +51,7 @@ const Metade = (props) => {
                                         type="checkbox"
                                         value={ingrediente.id.toString()}
                                         id={ingrediente.id.toString()}
-                                        onChange={() => adicionarIngrediente(ingrediente , id, ingrediente.id)}
+                                        onClick={handleCheckbox}
                                     />
                                     <label className="form-check-label" htmlFor={ingrediente.id.toString()}>
                                         {ingrediente.nome}
