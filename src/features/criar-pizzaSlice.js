@@ -22,10 +22,7 @@ const criarPizzaSlice = createSlice({
   },
 });
 
-export const {
-  setTamanho,
-  setMetades,
-} = criarPizzaSlice.actions;
+export const { setTamanho, setMetades } = criarPizzaSlice.actions;
 
 export const selectCriarPizza = (state) => state.criarPizza;
 
