@@ -26,7 +26,7 @@ const Carrinho = () => {
     // função que recalcula o total do carrinho
     const recalcularTotal = (novoCarrinho) => {
         setTotal(0);
-        let total = itensCarrinho.reduce((total, item) => {
+        let total = novoCarrinho.reduce((total, item) => {
             return total + item.preco * item.quantidade;
         }, 0)
         setTotal(total);
