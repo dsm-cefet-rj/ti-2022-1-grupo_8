@@ -5,10 +5,10 @@ import gerirIngredientesSlice from "./gerir-ingredientesSlice";
 import ingredientesMetadeSlice from "./ingredientes-metadeSlice";
 
 export default configureStore({
-        reducer: {
-                carrinho: carrinhoSlice,
-                criarPizza: criarPizzaSlice,
-                gerirIngredientes: gerirIngredientesSlice,
-                ingredientesMetade: ingredientesMetadeSlice,
-        },
+    reducer: {
+        carrinho: carrinhoSlice,
+        criarPizza: criarPizzaSlice,
+        gerirIngredientes: gerirIngredientesSlice,
+        ingredientesMetade: ingredientesMetadeSlice,
+    },
 });

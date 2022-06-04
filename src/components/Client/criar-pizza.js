@@ -22,9 +22,7 @@ const CriarPizza = () => {
     const [tamanho, setTamanho] = useState("");
     const [precoTotal, setPrecoTotal] = useState(0);
     const [erro, setErro] = useState("");
-    const ingredientes = useSelector(selectMetades)
-
-
+    const ingredientes = useSelector(selectMetades);
 
     // função que adiciona a pizza customizada ao carrinho
     const adicionarAoCarrinho = (e) => {
@@ -40,10 +38,8 @@ const CriarPizza = () => {
                 let ingredientes_string = (ingredientes.flat().join('') + tamanho).split('').reduce(
                     (soma, elemento) => {
                         return soma + elemento.charCodeAt(0);
-                    }
-                ) // No clue what this is, at this point its all made up
-                return Math.abs(ingredientes_string)
-
+                    }); // No clue what this is, at this point its all made up
+                return Math.abs(ingredientes_string);
             };
             atualizarPreco();
             // Gerar objeto da pizza customizada
@@ -60,7 +56,6 @@ const CriarPizza = () => {
             dispatch(adicionarAoCarrinho(pizza));
             // Redirecionar para a página de carrinho
             createBrowserHistory().push("/carrinho");
-
         }
     };
 
@@ -114,12 +109,10 @@ const CriarPizza = () => {
     return (
         <>
             <MenuNav Atual="criar-pizza" />
-            <form onSubmit={adicionarAoCarrinho} >
+            <form onSubmit={adicionarAoCarrinho}>
                 <div className="container">
                     <div className="row">
-                        <h1 className="text-center">
-                            Monte sua pizza 🍕
-                        </h1>
+                        <h1 className="text-center">Monte sua pizza 🍕</h1>
                     </div>
                     <div className="row">
                         <h5
@@ -141,9 +134,7 @@ const CriarPizza = () => {
                             <div className="form-check form-switch">
                                 <div
                                     className="tamanho p-2"
-                                    onChange={
-                                        handleTamanhoRadio
-                                    }
+                                    onChange={handleTamanhoRadio}
                                     style={{
                                         width: "50%",
                                         fontSize: "1.25rem",
@@ -161,9 +152,7 @@ const CriarPizza = () => {
                                             className="form-check-label"
                                             htmlFor="tamanho1"
                                         >
-                                            Pequena
-                                            🤏
-                                            15cm
+                                            Pequena 🤏 15cm
                                         </label>
                                     </div>
                                     <div className="col mb-1">
@@ -178,9 +167,7 @@ const CriarPizza = () => {
                                             className="form-check-label"
                                             htmlFor="tamanho2"
                                         >
-                                            Media
-                                            🫄🏻
-                                            20cm
+                                            Media 🫄🏻 20cm
                                         </label>
                                     </div>
                                     <div className="col mb-1">
@@ -195,9 +182,7 @@ const CriarPizza = () => {
                                             className="form-check-label"
                                             htmlFor="tamanho3"
                                         >
-                                            Grande
-                                            📏
-                                            25cm
+                                            Grande 📏 25cm
                                         </label>
                                     </div>
                                     <div className="col mb-1">
@@ -212,22 +197,15 @@ const CriarPizza = () => {
                                             className="form-check-label"
                                             htmlFor="tamanho4"
                                         >
-                                            Família
-                                            😱
-                                            40cm
+                                            Família 😱 40cm
                                         </label>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div
-                        className="row"
-                        style={{ textAlign: "center" }}
-                    >
-                        <h3 id="INGREDIENTES">
-                            Ingredientes
-                        </h3>
+                    <div className="row" style={{ textAlign: "center" }}>
+                        <h3 id="INGREDIENTES">Ingredientes</h3>
                         <h4
                             style={{
                                 color: "white",
@@ -235,16 +213,10 @@ const CriarPizza = () => {
                                 textShadow: "1px 1px 4px black",
                             }}
                         >
-                            Escolha até 7 em cada
-                            metade
+                            Escolha até 7 em cada metade
                         </h4>
                     </div>
-                    <Metade
-                        max_ingredientes={5}
-                        key="1"
-                        id={1}
-                        active={true}
-                    />
+                    <Metade max_ingredientes={5} key="1" id={1} active={true} />
                 </div>
                 <hr />
                 <div className="row">
@@ -258,10 +230,7 @@ const CriarPizza = () => {
                         <h3>Preço total:</h3>
                         <h3>
                             {erro === ""
-                                ? "R$: " +
-                                precoTotal.toFixed(
-                                    2
-                                )
+                                ? "R$: " + precoTotal.toFixed(2)
                                 : "Tamanho não selecionado"}
                         </h3>
                     </div>

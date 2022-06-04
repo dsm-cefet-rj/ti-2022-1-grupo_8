@@ -1,17 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const ingredientesMetadeSlice = createSlice({
-        name: "GerirPizza",
-        initialState: {
-                metades: [[], [], [], []],
+    name: "GerirPizza",
+    initialState: {
+        metades: [[], [], [], []],
+    },
+    reducers: {
+        setMetades: (state, { payload }) => {
+            let id = payload.id;
+            let ingredientes = payload.ingredientes;
+            state.metades[id - 1] = ingredientes;
         },
-        reducers: {
-                setMetades: (state, { payload }) => {
-                        let id = payload.id;
-                        let ingredientes = payload.ingredientes;
-                        state.metades[id - 1] = ingredientes;
-                },
-        },
+    },
 });
 
 export const { setMetades, getMetades } = ingredientesMetadeSlice.actions;
