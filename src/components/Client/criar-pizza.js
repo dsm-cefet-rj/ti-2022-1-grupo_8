@@ -3,11 +3,12 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import MenuNav from "./menu-nav";
 import { ingredientes as ingredientesBD } from "../store";
-import { useDispatch , useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { adicionarAoCarrinho } from "../../features/carrinhoSlice";
 import { createBrowserHistory } from "history";
 import Metade from "../geral/metade-pizza";
 import { selectMetades } from "../../features/ingredientes-metadeSlice";
+import { ingredientes as ingredientesDB } from "../store";
 
 /* 
 Componente: CriarPizza
@@ -32,18 +33,19 @@ const CriarPizza = () => {
             setErro("Selecione um tamanho");
             document.getElementById(`erro_message`).scrollIntoView({
                 behavior: "smooth",
-        });
+            });
         } else {
             const generate_id = () => {
                 // Generate a id based on the tamanho and ingredientes
                 let ingredientes_string = (ingredientes.flat().join('') + tamanho).split('').reduce(
-                    (soma,elemento) => {
+                    (soma, elemento) => {
                         return soma + elemento.charCodeAt(0);
                     }
                 ) // No clue what this is, at this point its all made up
                 return Math.abs(ingredientes_string)
 
             };
+            atualizarPreco();
             // Gerar objeto da pizza customizada
             let pizza = {
                 id: generate_id(),
@@ -52,7 +54,7 @@ const CriarPizza = () => {
                 quantidade: 1,
                 tamanho: tamanho,
                 Metades: ingredientes,
-                descricao:"Ingredientes: " + ingredientes.flat().join(', '),
+                descricao: "Ingredientes: " + ingredientes.flat().join(', '),
             };
             // Adicionar a pizza customizada ao carrinho
             dispatch(adicionarAoCarrinho(pizza));
@@ -61,6 +63,32 @@ const CriarPizza = () => {
 
         }
     };
+
+    const atualizarPreco = () => {
+        let preco = 0;
+        switch (tamanho) {
+            case "Pequena":
+                preco += 10;
+                break;
+            case "Media":
+                preco += 15;
+                break;
+            case "Grande":
+                preco += 20;
+                break;
+            case "Familia":
+                preco += 25;
+                break;
+            default:
+                break;
+        }
+
+        ingredientes.flat().forEach((ingrediente) => {
+            preco += ingredientesDB.find((i) => i.nome === ingrediente).preco;
+        });
+
+        setPrecoTotal(preco);
+    }
 
     const handleTamanhoRadio = (e) => {
         let valor = e.target.value;
@@ -78,25 +106,7 @@ const CriarPizza = () => {
         if (tamanho === "") {
             setErro("Selecione um tamanho");
         } else {
-            let preco = 0;
-            switch (tamanho) {
-                case "Pequena":
-                    preco += 10;
-                    break;
-                case "Media":
-                    preco += 15;
-                    break;
-                case "Grande":
-                    preco += 20;
-                    break;
-                case "Familia":
-                    preco += 25;
-                    break;
-                default:
-                    break;
-            }
-            
-            setPrecoTotal(preco);
+            atualizarPreco();
         }
     }, [tamanho]);
 
