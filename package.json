@@ -22,7 +22,7 @@
       "build": "react-scripts build",
       "test": "react-scripts test",
       "eject": "react-scripts eject",
-      "format": "prettier --write 'src/**/*.{js,jsx,json}' --parser babel --print-width 80 --tab-width 8 && prettier --write 'src/**/*.{scss,css}' --parser scss --print-width 80 --tab-width 8"
+      "format": "prettier --write 'src/**/*.{js,jsx,json}' --parser babel --print-width 80 --tab-width 4 && prettier --write 'src/**/*.{scss,css}' --parser scss --print-width 80 --tab-width 4"
     },
     "eslintConfig": {
       "extends": [
