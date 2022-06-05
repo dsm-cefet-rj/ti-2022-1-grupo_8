@@ -35,8 +35,11 @@ const CriarPizza = () => {
         } else {
             const generate_id = () => {
                 // Generate a id based on the tamanho and ingredientes
-                let ingredientes_string = (ingredientes.flat().join('') + tamanho).split('').reduce(
-                    (soma, elemento) => {
+                let ingredientes_string = (
+                    ingredientes.flat().join("") + tamanho
+                )
+                    .split("")
+                    .reduce((soma, elemento) => {
                         return soma + elemento.charCodeAt(0);
                     }); // No clue what this is, at this point its all made up
                 return Math.abs(ingredientes_string);
@@ -50,7 +53,7 @@ const CriarPizza = () => {
                 quantidade: 1,
                 tamanho: tamanho,
                 Metades: ingredientes,
-                descricao: "Ingredientes: " + ingredientes.flat().join(', '),
+                descricao: "Ingredientes: " + ingredientes.flat().join(", "),
             };
             // Adicionar a pizza customizada ao carrinho
             dispatch(adicionarAoCarrinho(pizza));
@@ -83,7 +86,7 @@ const CriarPizza = () => {
         });
 
         setPrecoTotal(preco);
-    }
+    };
 
     const handleTamanhoRadio = (e) => {
         let valor = e.target.value;
