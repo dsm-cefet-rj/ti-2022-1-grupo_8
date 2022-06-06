@@ -148,7 +148,7 @@ const CriarPizza = () => {
         } else {
             atualizarPreco();
         }
-    }, [tamanho , ingredientes]);
+    }, [tamanho, ingredientes]);
 
     // Renderiza a página de criação de pizza.
     return (
