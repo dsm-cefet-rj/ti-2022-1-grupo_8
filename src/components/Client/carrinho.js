@@ -157,35 +157,20 @@ const Carrinho = () => {
                         </h3>
                     </div>
                 </div>
-                <div className="row">
-                    <div
-                        className="col-sm mb-4"
-                        style={{ textAlign: "center" }}
-                    >
-                        <Link to="/menu" className="btn btn-warning  btn-lg">
+                <div className="row section"
+                    style={{
+                        marginBottom: "20px",
+                        flexDirection: "row",
+                        }}>
+                        <Link to="/menu" className="btn btn-warning">
                             Voltar
                         </Link>
-                    </div>
-                    <div
-                        className="col-sm mb-4"
-                        style={{ textAlign: "center" }}
-                    >
-                        <button
-                            href="#"
-                            className="btn btn-danger  btn-lg"
-                            onClick={limpar}
-                        >
+                        <button className="btn btn-danger mt-2" onClick={limpar}>
                             Limpar Carrinho
                         </button>
-                    </div>
-                    <div
-                        className="col-sm mb-4"
-                        style={{ textAlign: "center" }}
-                    >
-                        <button href="#" className="btn btn-success  btn-lg">
+                        <button className="btn btn-success mt-2">
                             Finalizar Compra
                         </button>
-                    </div>
                 </div>
             </div>
         </>
