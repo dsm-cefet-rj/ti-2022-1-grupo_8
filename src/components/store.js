@@ -6,129 +6,165 @@ let ingredientes = [
         "id": 1,
         "imagem": "imgs/igrediente/molho_de_tomate.jpg",
         "nome": "Molho",
-        "preco": 0.75,
-        "usados": 452
+        "preco": 66,
+        "usados": 44,
+        "descricao": "Molho - 0.75",
+        "pesoPorcao": 22
     },
     {
         "id": 2,
         "imagem": "imgs/igrediente/queijo-musssarela.jpg",
         "nome": "Queijo",
-        "preco": 0.75,
-        "usados": 452
+        "preco": 34,
+        "usados": 13,
+        "descricao": "Queijo - 0.75",
+        "pesoPorcao": 67
     },
     {
         "id": 3,
         "imagem": "imgs/igrediente/Calabresa.jpg",
         "nome": "Calabresa",
-        "preco": 6.45,
-        "usados": 452
+        "preco": 84,
+        "usados": 95,
+        "descricao": "Calabresa - 6.45",
+        "pesoPorcao": 70
     },
     {
         "id": 4,
         "imagem": "imgs/igrediente/Presunto.jpg",
         "nome": "Presunto",
-        "preco": 8.5,
-        "usados": 785
+        "preco": 67,
+        "usados": 71,
+        "descricao": "Presunto - 8.5",
+        "pesoPorcao": 22
     },
     {
         "id": 5,
         "imagem": "imgs/igrediente/Camarao.webp",
         "nome": "Camarão",
-        "preco": 4.86,
-        "usados": 785
+        "preco": 6,
+        "usados": 78,
+        "descricao": "Camarão - 4.86",
+        "pesoPorcao": 61
     },
     {
         "id": 6,
         "imagem": "imgs/igrediente/Alho.jpg",
         "nome": "Alho",
-        "preco": 4.75,
-        "usados": 123
+        "preco": 23,
+        "usados": 93,
+        "descricao": "Alho - 4.75",
+        "pesoPorcao": 39
     },
     {
         "id": 7,
         "imagem": "imgs/igrediente/Ovo.jpg",
         "nome": "Ovo",
-        "preco": 5.32,
-        "usados": 752
+        "preco": 79,
+        "usados": 82,
+        "descricao": "Ovo - 5.32",
+        "pesoPorcao": 15
     },
     {
         "id": 8,
         "imagem": "imgs/igrediente/Azeitona verde.webp",
         "nome": "Azeitona verde",
-        "preco": 5.86,
-        "usados": 756
+        "preco": 52,
+        "usados": 17,
+        "descricao": "Azeitona verde - 5.86",
+        "pesoPorcao": 51
     },
     {
         "id": 9,
         "imagem": "imgs/igrediente/Azeitona preta.jpg",
         "nome": "Azeitona preta",
-        "preco": 4,
-        "usados": 75
+        "preco": 45,
+        "usados": 45,
+        "descricao": "Azeitona preta - 4",
+        "pesoPorcao": 68
     },
     {
         "id": 10,
         "imagem": "imgs/igrediente/Tomate.jpg",
         "nome": "Tomate",
-        "preco": 4.5,
-        "usados": 75
+        "preco": 58,
+        "usados": 17,
+        "descricao": "Tomate - 4.5",
+        "pesoPorcao": 2
     },
     {
         "id": 11,
         "imagem": "imgs/igrediente/Cebola.png",
         "nome": "Cebola",
-        "preco": 2,
-        "usados": 15
+        "preco": 90,
+        "usados": 94,
+        "descricao": "Cebola - 2",
+        "pesoPorcao": 28
     },
     {
         "id": 12,
         "imagem": "imgs/igrediente/Frango desfiado.jpg",
         "nome": "Frango desfiado",
-        "preco": 7.99,
-        "usados": 75
+        "preco": 4,
+        "usados": 26,
+        "descricao": "Frango desfiado - 7.99",
+        "pesoPorcao": 95
     },
     {
         "id": 13,
         "imagem": "imgs/igrediente/Requeijão.jpg",
         "nome": "Requeijão",
-        "preco": 5,
-        "usados": 48
+        "preco": 92,
+        "usados": 97,
+        "descricao": "Requeijão - 5",
+        "pesoPorcao": 26
     },
     {
         "id": 14,
         "imagem": "imgs/igrediente/Pimentão verde.webp",
         "nome": "Pimentão verde",
-        "preco": 5.66,
-        "usados": 42
+        "preco": 51,
+        "usados": 55,
+        "descricao": "Pimentão verde - 5.66",
+        "pesoPorcao": 8
     },
     {
         "id": 15,
         "imagem": "imgs/igrediente/Manjericão.jpg",
         "nome": "Manjericão",
-        "preco": 6.6,
-        "usados": 26
+        "preco": 74,
+        "usados": 11,
+        "descricao": "Manjericão - 6.6",
+        "pesoPorcao": 82
     },
     {
         "id": 16,
         "imagem": "imgs/igrediente/Bacon.webp",
         "nome": "Bacon",
-        "preco": 5,
-        "usados": 85
+        "preco": 55,
+        "usados": 5,
+        "descricao": "Bacon - 5",
+        "pesoPorcao": 4
     },
     {
         "id": 17,
         "imagem": "imgs/igrediente/Brócolis.jpg.crdownload",
         "nome": "Brócolis",
-        "preco": 6,
-        "usados": 74
+        "preco": 28,
+        "usados": 76,
+        "descricao": "Brócolis - 6",
+        "pesoPorcao": 75
     },
     {
         "id": 18,
         "imagem": "imgs/igrediente/Pepperoni.webp",
         "nome": "Pepperoni",
-        "preco": 8.55,
-        "usados": 74
+        "preco": 35,
+        "usados": 14,
+        "descricao": "Pepperoni - 8.55",
+        "pesoPorcao": 17
     }
-];
+]
 
 let pizzas = [
     {
