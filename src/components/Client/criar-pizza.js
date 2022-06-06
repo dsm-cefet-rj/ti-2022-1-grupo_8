@@ -24,6 +24,38 @@ const CriarPizza = () => {
     const [erro, setErro] = useState("");
     const ingredientes = useSelector(selectMetades);
 
+    const getNomePizzaFromIngredientes = (ingredientes, tamanho) => {
+        let nome = "Pizza " + tamanho;
+
+        // Achatar metades, remover duplicados, e remover molho da lista
+        const flatIngredientes = [...new Set(ingredientes.flat())].filter(
+            (id) => id != -2
+        );
+
+        const prefixos = ["de", "com", "e"];
+
+        for (let i = 0; i < 3; i++) {
+            if (flatIngredientes.length <= 0) break;
+            const idIngrediente = sortear(flatIngredientes);
+            const nomeIngrediente = getNomeIngredienteFromId(idIngrediente);
+            const prefixo = prefixos[Math.min(i, prefixos.length - 1)];
+
+            nome += " " + prefixo + " " + nomeIngrediente;
+        }
+        console.log(nome);
+        return nome;
+    };
+
+    const getNomeIngredienteFromId = (id) => {
+        return ingredientesBD.find((ingrediente) => ingrediente.id == id).nome;
+    };
+
+    const sortear = (arr) => {
+        const item = arr[Math.floor(Math.random() * arr.length)];
+        arr.splice(arr.indexOf(item), 1);
+        return item;
+    };
+
     // função que adiciona a pizza customizada ao carrinho
     const adicionarAoCarrinho = () => {
         if (erro !== "") {
@@ -55,7 +87,7 @@ const CriarPizza = () => {
             // Gerar objeto da pizza customizada
             let pizza = {
                 id: generate_id(),
-                nome: "Pizza Customizada" + tamanho,
+                nome: getNomePizzaFromIngredientes(ingredientes, tamanho),
                 preco: precoTotal,
                 quantidade: 1,
                 tamanho: tamanho,
