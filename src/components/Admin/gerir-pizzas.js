@@ -95,21 +95,24 @@ const GerirPizzas = () => {
                                 />
                                 <div className="card-body">
                                     <h5 className="card-title">{pizza.nome}</h5>
-                                    <button className="btn btn-lg btn-primary btn-success"
-                                    id = {`pizza-${pizza.id}`}
-
-                                    onClick={
-                                        () => {
+                                    <button
+                                        className="btn btn-lg btn-primary btn-success"
+                                        id={`pizza-${pizza.id}`}
+                                        onClick={() => {
                                             setEditando(true);
                                             setNome(pizza.nome);
-                                            document.getElementById(`pizza-${pizza.id}`).innerHTML = "Alterando...";
+                                            document.getElementById(
+                                                `pizza-${pizza.id}`
+                                            ).innerHTML = "Alterando...";
                                             pizzaBD.map((pizzaOBJ) => {
                                                 if (pizzaOBJ.id !== pizza.id) {
-                                                    document.getElementById(`pizza-${pizzaOBJ.id}`).innerHTML = "Alterar";
+                                                    document.getElementById(
+                                                        `pizza-${pizzaOBJ.id}`
+                                                    ).innerHTML = "Alterar";
                                                 }
                                             });
-                                        }
-                                    }>
+                                        }}
+                                    >
                                         Alterar
                                     </button>
                                 </div>
@@ -131,11 +134,8 @@ const GerirPizzas = () => {
                     </div>
                     <div className="row section">
                         <div className="form-group">
-
                             <div id="Imagem">
-                                <label htmlFor="nomePizza">
-                                    Nome
-                                </label>
+                                <label htmlFor="nomePizza">Nome</label>
                                 <input
                                     type="text"
                                     className="form-control"
@@ -143,7 +143,8 @@ const GerirPizzas = () => {
                                     placeholder="Nome da pizza"
                                     value={nome}
                                     onChange={handleNome}
-                                    enabled={(!editando).toString()}/>
+                                    enabled={(!editando).toString()}
+                                />
                             </div>
                             <div id="Imagem">
                                 <label htmlFor="imagem">Imagem</label>
@@ -153,9 +154,9 @@ const GerirPizzas = () => {
                                     id="imagem"
                                     name="imagem"
                                     placeholder="Imagem"
-                                    onChange={handleImagem}/>
+                                    onChange={handleImagem}
+                                />
                             </div>
-
                         </div>
                     </div>
                     <div className="row">
@@ -170,7 +171,8 @@ const GerirPizzas = () => {
                             style={{
                                 textAlign: "right",
                                 marginBottom: "20px",
-                            }}>
+                            }}
+                        >
                             <h3>
                                 Preço Total: R${" "}
                                 <span className="total-carrinho">
