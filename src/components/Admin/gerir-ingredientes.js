@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { ingredientes } from "../store";
 import AdminNav from "./admin-nav";
 import { setIdSelecinado } from "../../features/gerir-ingredientesSlice";
-import { useSelector } from 'react-redux'
+import { useSelector } from "react-redux";
 import { ingredientes as ingredientesDB } from "../store";
 /* 
 Componente: Ingrediente
@@ -22,9 +22,11 @@ const Ingrediente = (props) => {
     const selecionar = () => {
         setSelecionado(!selecionado);
         if (!selecionado) {
-            dispatch(setIdSelecinado({
-                id: id,
-            }));
+            dispatch(
+                setIdSelecinado({
+                    id: id,
+                })
+            );
             document.getElementById("form-ingrediente").scrollIntoView({
                 behavior: "instant",
                 block: "center",
@@ -32,16 +34,19 @@ const Ingrediente = (props) => {
             //descelecionar todos oo outros
             ingredientes.forEach((ingrediente) => {
                 if (ingrediente.id !== id) {
-                    let elem = document.getElementById(`ingrediente-${ingrediente.id}`);
-                    elem.innerHTML = 'Selecionar'
+                    let elem = document.getElementById(
+                        `ingrediente-${ingrediente.id}`
+                    );
+                    elem.innerHTML = "Selecionar";
                 }
             });
         } else {
-            dispatch(setIdSelecinado({
-                id: 0,
-            }));
+            dispatch(
+                setIdSelecinado({
+                    id: 0,
+                })
+            );
         }
-
     };
     // Renderização do componente
     return (
@@ -51,7 +56,11 @@ const Ingrediente = (props) => {
                 <br />
                 <p>{nome}</p>
                 <p>R$ {preco}</p>
-                <button className="btn btn-primary" onClick={selecionar} id={`ingrediente-${id}`}>
+                <button
+                    className="btn btn-primary"
+                    onClick={selecionar}
+                    id={`ingrediente-${id}`}
+                >
                     {selecionado ? "Desselecionar" : "Selecionar"}
                 </button>
             </div>
@@ -64,17 +73,22 @@ Componente: GerirIngredientes
 Descrição: Componente que renderiza a página de gerenciamento de ingredientes
 */
 const GerirIngredientes = () => {
-    const idSelecinado = useSelector(state => state.gerirIngredientes.idSelecinado);
+    const idSelecinado = useSelector(
+        (state) => state.gerirIngredientes.idSelecinado
+    );
     useEffect(() => {
         if (idSelecinado !== 0) {
-            let ingrediente = ingredientesDB.find(ingrediente => ingrediente.id === idSelecinado);
+            let ingrediente = ingredientesDB.find(
+                (ingrediente) => ingrediente.id === idSelecinado
+            );
             document.getElementById("nome").value = ingrediente.nome;
             document.getElementById("nome").readOnly = false;
             document.getElementById("preco").value = ingrediente.preco;
             document.getElementById("descricao").value = ingrediente.descricao;
-            document.getElementById("PesoPorcao").value = ingrediente.pesoPorcao;
+            document.getElementById("PesoPorcao").value =
+                ingrediente.pesoPorcao;
             document.getElementById("imagem-field").hidden = true;
-        }else{
+        } else {
             document.getElementById("nome").value = "";
             document.getElementById("nome").readOnly = false;
             document.getElementById("preco").value = "";
@@ -118,7 +132,8 @@ const GerirIngredientes = () => {
                     <form
                         action="Administrador Gerir Ingredientes.html"
                         method="post"
-                        id="form-ingrediente">
+                        id="form-ingrediente"
+                    >
                         <div className="form-group mb-2">
                             <label htmlFor="nome">Nome</label>
                             <input
