@@ -49,14 +49,7 @@ const CriarPizza = () => {
         } else {
             const generate_id = () => {
                 // Generate a id based on the tamanho and ingredientes
-                let ingredientes_string = (
-                    ingredientes.flat().join("") + tamanho
-                )
-                    .split("")
-                    .reduce((soma, elemento) => {
-                        return soma + elemento.charCodeAt(0);
-                    }); // No clue what this is, at this point its all made up
-                return Math.abs(ingredientes_string);
+                return crypto.randomUUID();
             };
             atualizarPreco();
             // Gerar objeto da pizza customizada
@@ -69,10 +62,11 @@ const CriarPizza = () => {
                 Metades: ingredientes,
                 descricao: "Ingredientes: " + ingredientes.flat().join(", "),
             };
+            console.log(pizza);
             // Adicionar a pizza customizada ao carrinho
-            //dispatch(mandaPCarrinho(pizza));
+            dispatch(mandaPCarrinho(pizza));
             // Redirecionar para a página de carrinho
-            //createBrowserHistory().push("/carrinho");
+            createBrowserHistory().push("/carrinho");
         }
     };
 
