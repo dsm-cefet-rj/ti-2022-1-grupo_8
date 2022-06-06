@@ -14,7 +14,7 @@ const ingredientesMetadeSlice = createSlice({
     },
 });
 
-export const { setMetades, getMetades } = ingredientesMetadeSlice.actions;
+export const { setMetades } = ingredientesMetadeSlice.actions;
 
 export const selectMetades = (state) => state.ingredientesMetade.metades;
 

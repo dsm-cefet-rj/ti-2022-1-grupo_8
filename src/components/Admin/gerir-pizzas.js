@@ -4,10 +4,7 @@ import Metade from "../geral/metade-pizza";
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-    setMetades,
-    getMetades,
-} from "../../features/ingredientes-metadeSlice";
+import { setMetades } from "../../features/ingredientes-metadeSlice";
 
 /* 
 Componente: GerirPizzas
@@ -50,13 +47,10 @@ const GerirPizzas = () => {
             imagem: imagem,
             metades: metades,
         };
-        console.log(pizza);
     };
 
     useEffect(() => {
         // atualiza o array de metades
-        let metades = getMetades();
-        setMetades(metades);
     }, []);
 
     return (
@@ -101,7 +95,21 @@ const GerirPizzas = () => {
                                 />
                                 <div className="card-body">
                                     <h5 className="card-title">{pizza.nome}</h5>
-                                    <button className="btn btn-lg btn-primary btn-success">
+                                    <button className="btn btn-lg btn-primary btn-success"
+                                    id = {`pizza-${pizza.id}`}
+
+                                    onClick={
+                                        () => {
+                                            setEditando(true);
+                                            setNome(pizza.nome);
+                                            document.getElementById(`pizza-${pizza.id}`).innerHTML = "Alterando...";
+                                            pizzaBD.map((pizzaOBJ) => {
+                                                if (pizzaOBJ.id !== pizza.id) {
+                                                    document.getElementById(`pizza-${pizzaOBJ.id}`).innerHTML = "Alterar";
+                                                }
+                                            });
+                                        }
+                                    }>
                                         Alterar
                                     </button>
                                 </div>
@@ -123,27 +131,31 @@ const GerirPizzas = () => {
                     </div>
                     <div className="row section">
                         <div className="form-group">
-                            <label htmlFor="exampleFormControlSelect1">
-                                Nome
-                            </label>
-                            <input
-                                type="text"
-                                className="form-control"
-                                id="nomePizza"
-                                placeholder="Nome da pizza"
-                                value={nome}
-                                onChange={handleNome}
-                                enabled={(!editando).toString()}
-                            />
-                            <label htmlFor="imagem">Imagem</label>
-                            <input
-                                type="file"
-                                className="form-control"
-                                id="imagem"
-                                name="imagem"
-                                placeholder="Imagem"
-                                onChange={handleImagem}
-                            />
+
+                            <div id="Imagem">
+                                <label htmlFor="nomePizza">
+                                    Nome
+                                </label>
+                                <input
+                                    type="text"
+                                    className="form-control"
+                                    id="nomePizza"
+                                    placeholder="Nome da pizza"
+                                    value={nome}
+                                    onChange={handleNome}
+                                    enabled={(!editando).toString()}/>
+                            </div>
+                            <div id="Imagem">
+                                <label htmlFor="imagem">Imagem</label>
+                                <input
+                                    type="file"
+                                    className="form-control"
+                                    id="imagem"
+                                    name="imagem"
+                                    placeholder="Imagem"
+                                    onChange={handleImagem}/>
+                            </div>
+
                         </div>
                     </div>
                     <div className="row">
@@ -158,8 +170,7 @@ const GerirPizzas = () => {
                             style={{
                                 textAlign: "right",
                                 marginBottom: "20px",
-                            }}
-                        >
+                            }}>
                             <h3>
                                 Preço Total: R${" "}
                                 <span className="total-carrinho">
