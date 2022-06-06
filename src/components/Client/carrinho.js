@@ -157,20 +157,22 @@ const Carrinho = () => {
                         </h3>
                     </div>
                 </div>
-                <div className="row section"
+                <div
+                    className="row section"
                     style={{
                         marginBottom: "20px",
                         flexDirection: "row",
-                        }}>
-                        <Link to="/menu" className="btn btn-warning">
-                            Voltar
-                        </Link>
-                        <button className="btn btn-danger mt-2" onClick={limpar}>
-                            Limpar Carrinho
-                        </button>
-                        <button className="btn btn-success mt-2">
-                            Finalizar Compra
-                        </button>
+                    }}
+                >
+                    <Link to="/menu" className="btn btn-warning">
+                        Voltar
+                    </Link>
+                    <button className="btn btn-danger mt-2" onClick={limpar}>
+                        Limpar Carrinho
+                    </button>
+                    <button className="btn btn-success mt-2">
+                        Finalizar Compra
+                    </button>
                 </div>
             </div>
         </>
