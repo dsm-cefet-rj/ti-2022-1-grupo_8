@@ -83,9 +83,27 @@ const Carrinho = () => {
                             <thead>
                                 <tr>
                                     <th>Produto</th>
-                                    <th>Preço</th>
-                                    <th>Quantidade</th>
-                                    <th>Subtotal</th>
+                                    <th
+                                        style={{
+                                            textAlign: "center",
+                                        }}
+                                    >
+                                        Preço
+                                    </th>
+                                    <th
+                                        style={{
+                                            textAlign: "center",
+                                        }}
+                                    >
+                                        Quantidade
+                                    </th>
+                                    <th
+                                        style={{
+                                            textAlign: "center",
+                                        }}
+                                    >
+                                        Subtotal
+                                    </th>
                                     <th>Ação</th>
                                 </tr>
                             </thead>
@@ -93,8 +111,20 @@ const Carrinho = () => {
                                 {itensCarrinho.map((item) => (
                                     <tr key={item.id}>
                                         <td>{item.nome}</td>
-                                        <td>R$ {item.preco.toFixed(2)}</td>
-                                        <td>
+                                        <td
+                                            style={{
+                                                textAlign: "center",
+                                                width: "25%",
+                                            }}
+                                        >
+                                            R$ {item.preco.toFixed(2)}
+                                        </td>
+                                        <td
+                                            style={{
+                                                textAlign: "center",
+                                                width: "25%",
+                                            }}
+                                        >
                                             <div className="qtd-selection">
                                                 <button
                                                     className="btn btn-danger btn-sm"
@@ -103,6 +133,9 @@ const Carrinho = () => {
                                                             item.id,
                                                             item.quantidade - 1
                                                         )
+                                                    }
+                                                    disabled={
+                                                        item.quantidade === 1
                                                     }
                                                 >
                                                     -
@@ -121,7 +154,12 @@ const Carrinho = () => {
                                                 </button>
                                             </div>
                                         </td>
-                                        <td>
+                                        <td
+                                            style={{
+                                                textAlign: "center",
+                                                width: "25%",
+                                            }}
+                                        >
                                             R${" "}
                                             {(
                                                 item.preco * item.quantidade
@@ -157,35 +195,22 @@ const Carrinho = () => {
                         </h3>
                     </div>
                 </div>
-                <div className="row">
-                    <div
-                        className="col-sm mb-4"
-                        style={{ textAlign: "center" }}
-                    >
-                        <Link to="/menu" className="btn btn-warning  btn-lg">
-                            Voltar
-                        </Link>
-                    </div>
-                    <div
-                        className="col-sm mb-4"
-                        style={{ textAlign: "center" }}
-                    >
-                        <button
-                            href="#"
-                            className="btn btn-danger  btn-lg"
-                            onClick={limpar}
-                        >
-                            Limpar Carrinho
-                        </button>
-                    </div>
-                    <div
-                        className="col-sm mb-4"
-                        style={{ textAlign: "center" }}
-                    >
-                        <button href="#" className="btn btn-success  btn-lg">
-                            Finalizar Compra
-                        </button>
-                    </div>
+                <div
+                    className="row section"
+                    style={{
+                        marginBottom: "20px",
+                        flexDirection: "row",
+                    }}
+                >
+                    <Link to="/menu" className="btn btn-warning">
+                        Voltar
+                    </Link>
+                    <button className="btn btn-danger mt-2" onClick={limpar}>
+                        Limpar Carrinho
+                    </button>
+                    <button className="btn btn-success mt-2">
+                        Finalizar Compra
+                    </button>
                 </div>
             </div>
         </>
