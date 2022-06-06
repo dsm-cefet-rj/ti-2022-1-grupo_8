@@ -1,15 +1,17 @@
-import AdminNav from "./admin-nav";
+import { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { ingredientes } from "../store";
-import { useSelector, useDispatch } from "react-redux";
-import { useState } from "react";
-
+import AdminNav from "./admin-nav";
+import { setIdSelecinado } from "../../features/gerir-ingredientesSlice";
+import { useSelector } from 'react-redux'
+import { ingredientes as ingredientesDB } from "../store";
 /* 
 Componente: Ingrediente
 Descrição: Componente que renderiza um ingrediente na pagina de gerir ingredientes
 */
 const Ingrediente = (props) => {
     // Dados do ingrediente
-    let { key, imagem, nome, preco } = props.data;
+    const { id, imagem, nome, preco } = props.data;
     // Controle se o ingrediente está selecionado
     const [selecionado, setSelecionado] = useState(false);
 
@@ -19,8 +21,28 @@ const Ingrediente = (props) => {
     // Função que seleciona um ingrediente
     const selecionar = () => {
         setSelecionado(!selecionado);
-    };
+        if (!selecionado) {
+            dispatch(setIdSelecinado({
+                id: id,
+            }));
+            document.getElementById("form-ingrediente").scrollIntoView({
+                behavior: "instant",
+                block: "center",
+            });
+            //descelecionar todos oo outros
+            ingredientes.forEach((ingrediente) => {
+                if (ingrediente.id !== id) {
+                    let elem = document.getElementById(`ingrediente-${ingrediente.id}`);
+                    elem.innerHTML = 'Selecionar'
+                }
+            });
+        } else {
+            dispatch(setIdSelecinado({
+                id: 0,
+            }));
+        }
 
+    };
     // Renderização do componente
     return (
         <>
@@ -29,7 +51,7 @@ const Ingrediente = (props) => {
                 <br />
                 <p>{nome}</p>
                 <p>R$ {preco}</p>
-                <button className="btn btn-primary" onClick={selecionar}>
+                <button className="btn btn-primary" onClick={selecionar} id={`ingrediente-${id}`}>
                     {selecionado ? "Desselecionar" : "Selecionar"}
                 </button>
             </div>
@@ -42,8 +64,25 @@ Componente: GerirIngredientes
 Descrição: Componente que renderiza a página de gerenciamento de ingredientes
 */
 const GerirIngredientes = () => {
-    // Dispatch do Redux
-    const dispatch = useDispatch();
+    const idSelecinado = useSelector(state => state.gerirIngredientes.idSelecinado);
+    useEffect(() => {
+        if (idSelecinado !== 0) {
+            let ingrediente = ingredientesDB.find(ingrediente => ingrediente.id === idSelecinado);
+            document.getElementById("nome").value = ingrediente.nome;
+            document.getElementById("nome").readOnly = false;
+            document.getElementById("preco").value = ingrediente.preco;
+            document.getElementById("descricao").value = ingrediente.descricao;
+            document.getElementById("PesoPorcao").value = ingrediente.pesoPorcao;
+            document.getElementById("imagem-field").hidden = true;
+        }else{
+            document.getElementById("nome").value = "";
+            document.getElementById("nome").readOnly = false;
+            document.getElementById("preco").value = "";
+            document.getElementById("descricao").value = "";
+            document.getElementById("PesoPorcao").value = "";
+            document.getElementById("imagem-field").hidden = false;
+        }
+    }, [idSelecinado]);
 
     // Renderização do componente
     return (
@@ -79,7 +118,7 @@ const GerirIngredientes = () => {
                     <form
                         action="Administrador Gerir Ingredientes.html"
                         method="post"
-                    >
+                        id="form-ingrediente">
                         <div className="form-group mb-2">
                             <label htmlFor="nome">Nome</label>
                             <input
@@ -114,11 +153,11 @@ const GerirIngredientes = () => {
                             />
                         </div>
                         <div className="form-group mb-2">
-                            <label htmlFor="descricao">Peso Porção</label>
+                            <label htmlFor="PesoPorcao">Peso Porção</label>
                             <input
                                 type="number"
                                 className="form-control"
-                                id="descricao"
+                                id="PesoPorcao"
                                 name="descricao"
                                 placeholder="Peso Porção"
                                 min="1"
@@ -126,7 +165,7 @@ const GerirIngredientes = () => {
                                 autoComplete="off"
                             />
                         </div>
-                        <div className="form-group mb-2">
+                        <div className="form-group mb-2" id="imagem-field">
                             <label htmlFor="imagem">Imagem</label>
                             <input
                                 type="file"
@@ -136,10 +175,13 @@ const GerirIngredientes = () => {
                                 placeholder="Imagem"
                             />
                         </div>
-                        <button type="submit" className="btn btn-primary">
-                            Adicionar
-                        </button>
                     </form>
+                    <button type="submit" className="btn btn-primary mb-3 mt-3">
+                        Adicionar
+                    </button>
+                    <button type="submit" className="btn btn-danger">
+                        Remover
+                    </button>
                 </div>
             </div>
         </>
