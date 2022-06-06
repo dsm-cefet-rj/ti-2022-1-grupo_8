@@ -11,7 +11,7 @@ const geirIngredientesSlice = createSlice({
             state.ingredientes = payload;
         },
         setIdSelecinado: (state, { payload }) => {
-            state.idSelecinado = payload;
+            state.idSelecinado = payload.id;
         },
     },
 });
