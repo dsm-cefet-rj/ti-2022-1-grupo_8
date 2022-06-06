@@ -9,7 +9,7 @@ const ingredientesMetadeSlice = createSlice({
         setMetades: (state, { payload }) => {
             let id = payload.id;
             let ingredientes = payload.ingredientes;
-            state.metades[id - 1] = ingredientes;
+            state.metades[id] = ingredientes;
         },
     },
 });

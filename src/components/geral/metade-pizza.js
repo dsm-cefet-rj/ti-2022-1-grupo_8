@@ -54,7 +54,7 @@ const Metade = (props) => {
             <div className="row section" style={{"marginBottom": "15px"}}>
                 <div className="col">
                     <p>
-                        <b>Metade {id}</b>
+                        <b>Metade {id + 1}</b>
                     </p>
                     <div className="scrollmenu" id={`SCROLLMENU${id}`}>
                         {ingredientesBD.map((ingrediente) => (
