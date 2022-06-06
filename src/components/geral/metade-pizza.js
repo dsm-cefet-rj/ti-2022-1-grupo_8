@@ -51,7 +51,7 @@ const Metade = (props) => {
     // Renderiza o componente.
     return (
         <>
-            <div className="row section">
+            <div className="row section" style={{"marginBottom": "15px"}}>
                 <div className="col">
                     <p>
                         <b>Metade {id}</b>
