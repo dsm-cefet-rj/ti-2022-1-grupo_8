@@ -99,7 +99,7 @@ const Metade = (props) => {
                                             id={ingrediente.id.toString()}
                                             onChange={handleCheckbox}
                                         />
-                                        <p>R$ {ingrediente.preco}</p>
+                                        <p>R$ {ingrediente.preco.toFixed(2)}</p>
                                     </div>
                                 ))}
                             </div>
