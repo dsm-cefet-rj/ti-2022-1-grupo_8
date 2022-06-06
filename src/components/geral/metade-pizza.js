@@ -36,7 +36,7 @@ const Metade = (props) => {
             id: id,
         };
         // Se o checkbox estiver marcado, e o numero de ingredientes selecionados for menor que o máximo, adiciona o ingrediente.
-        if (e.target.checked && ingredientes.length <= max_ingredientes) {
+        if (e.target.checked && ingredientes.length < max_ingredientes) {
             setIngredientes([...ingredientes, e.target.value]);
             payload.ingredientes = [...ingredientes, e.target.value];
         }
