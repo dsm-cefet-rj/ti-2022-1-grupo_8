@@ -42,7 +42,6 @@ const CriarPizza = () => {
 
             nome += " " + prefixo + " " + nomeIngrediente;
         }
-        console.log(nome);
         return nome;
     };
 
@@ -97,7 +96,7 @@ const CriarPizza = () => {
             // Adicionar a pizza customizada ao carrinho
             dispatch(mandaPCarrinho(pizza));
             // Redirecionar para a página de carrinho
-            //window.location.replace("/carrinho");
+            window.location.replace("/carrinho");
         }
     };
 
