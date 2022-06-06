@@ -51,17 +51,14 @@ const Metade = (props) => {
     // Renderiza o componente.
     return (
         <>
-            <div className="row section" style={{"marginBottom": "15px"}}>
+            <div className="row section" style={{ marginBottom: "15px" }}>
                 <div className="col">
                     <p>
                         <b>Metade {id + 1}</b>
                     </p>
                     <div className="scrollmenu" id={`SCROLLMENU${id}`}>
                         {ingredientesBD.map((ingrediente) => (
-                            <div
-                                className="ingrediente"
-                                key={ingrediente.id}
-                            >
+                            <div className="ingrediente" key={ingrediente.id}>
                                 <p
                                     className="form-check-label"
                                     htmlFor={ingrediente.id.toString()}

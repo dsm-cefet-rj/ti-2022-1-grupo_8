@@ -29,8 +29,7 @@ const CriarPizza = () => {
 
     // Função que adiciona uma metade
     const handleAddMetade = () => {
-        if (metadeCount >= maxMetades)
-            return;
+        if (metadeCount >= maxMetades) return;
         setMetadeCount(metadeCount + 1);
         document.getElementById(`SCROLLMENU${metadeCount - 1}`).scrollIntoView({
             behavior: "smooth",
@@ -38,8 +37,7 @@ const CriarPizza = () => {
     };
 
     const handleRemoveMetade = () => {
-        if (metadeCount <= 1)
-            return;
+        if (metadeCount <= 1) return;
         setMetadeCount(metadeCount - 1);
         document.getElementById(`SCROLLMENU${metadeCount - 1}`).scrollIntoView({
             behavior: "smooth",
@@ -282,19 +280,16 @@ const CriarPizza = () => {
                             Escolha até 7 em cada metade
                         </h4>
                     </div>
-                    {
-                        
-                        [...Array(metadeCount).keys()].map(index => 
-                            <Metade max_ingredientes={7} key={index} id={index} />
-                        )
-                    }
+                    {[...Array(metadeCount).keys()].map((index) => (
+                        <Metade max_ingredientes={7} key={index} id={index} />
+                    ))}
 
                     <div className="row section">
-                        <div className="col-sm-12" style={{display: "flex"}}>
+                        <div className="col-sm-12" style={{ display: "flex" }}>
                             {metadeCount > 1 && (
                                 <button
                                     type="button"
-                                    style={{width: "100%"}}
+                                    style={{ width: "100%" }}
                                     className="btn btn-danger"
                                     data-toggle="modal"
                                     data-target="#exampleModal"
@@ -307,7 +302,7 @@ const CriarPizza = () => {
                                 <button
                                     type="button"
                                     className="btn btn-primary"
-                                    style={{width: "100%"}}
+                                    style={{ width: "100%" }}
                                     data-toggle="modal"
                                     data-target="#exampleModal"
                                     onClick={handleAddMetade}
@@ -317,7 +312,6 @@ const CriarPizza = () => {
                             )}
                         </div>
                     </div>
-
                 </div>
                 <hr />
                 <div className="row">
