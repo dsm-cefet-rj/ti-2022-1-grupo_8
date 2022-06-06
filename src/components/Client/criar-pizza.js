@@ -62,11 +62,10 @@ const CriarPizza = () => {
                 Metades: ingredientes,
                 descricao: "Ingredientes: " + ingredientes.flat().join(", "),
             };
-            console.log(pizza);
             // Adicionar a pizza customizada ao carrinho
             dispatch(mandaPCarrinho(pizza));
             // Redirecionar para a página de carrinho
-            createBrowserHistory().push("/carrinho");
+            window.location.replace("/carrinho");
         }
     };
 
