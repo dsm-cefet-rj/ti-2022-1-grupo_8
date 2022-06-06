@@ -41,6 +41,7 @@ const Carrinho = () => {
         });
         setItensCarrinho(novoCarrinho);
         setCarrinho(novoCarrinho);
+        recalcularTotal(novoCarrinho);
     };
 
     // manuseio da remoção de um item
