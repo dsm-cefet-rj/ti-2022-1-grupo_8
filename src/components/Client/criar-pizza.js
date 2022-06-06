@@ -22,7 +22,18 @@ const CriarPizza = () => {
     const [tamanho, setTamanho] = useState("");
     const [precoTotal, setPrecoTotal] = useState(0);
     const [erro, setErro] = useState("");
+    const [metadeCount, setMetadeCount] = useState(1);
     const ingredientes = useSelector(selectMetades);
+
+    const maxMetades = 4;
+
+    // Função que adiciona uma metade
+    const handleAddMetade = () => {
+        setMetadeCount(metadeCount + 1);
+        document.getElementById(`SCROLLMENU${metadeCount - 1}`).scrollIntoView({
+            behavior: "smooth",
+        });
+    };
 
     const getNomePizzaFromIngredientes = (ingredientes, tamanho) => {
         let nome = "Pizza " + tamanho;
@@ -261,10 +272,26 @@ const CriarPizza = () => {
                         </h4>
                     </div>
                     {
-                        [...Array(4).keys()].map(index => 
+                        
+                        [...Array(metadeCount).keys()].map(index => 
                             <Metade max_ingredientes={7} key={index} id={index} />
                         )
                     }
+
+                    {metadeCount < maxMetades && (
+                        <div className="row section">
+                            <button
+                                type="button"
+                                className="btn btn-primary"
+                                data-toggle="modal"
+                                data-target="#exampleModal"
+                                onClick={handleAddMetade}
+                            >
+                                Adicionar Metade
+                            </button>
+                        </div>    
+                    )}
+
                 </div>
                 <hr />
                 <div className="row">

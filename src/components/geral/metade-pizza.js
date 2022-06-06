@@ -13,18 +13,9 @@ const Metade = (props) => {
 
     // Variáveis que controlam se a metade esta ative e quanta metades existem.
     const [id] = useState(props.id);
-    const [active, setActive] = useState(props.active);
     const max_ingredientes = props.max_ingredientes
         ? props.max_ingredientes
         : 7;
-
-    // Função que controla se a metade esta ativa ou não.
-    const handleClick = () => {
-        setActive(!active);
-        document.getElementById(`SCROLLMENU${id - 1}`).scrollIntoView({
-            behavior: "smooth",
-        });
-    };
 
     // Variáveis que controlam os ingredientes selecionados.
     const [ingredientes, setIngredientes] = useState([]);
