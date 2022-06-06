@@ -281,21 +281,21 @@ const CriarPizza = () => {
                     </div>
                 </div>
             </form>
-            <div className="row" style={{ textAlign: "center" }}>
-                <Link
-                    to="/menu"
-                    style={{ margin: " 0 5px" }}
-                    className="btn btn-lg btn-danger mb-5"
-                >
-                    Cancelar
-                </Link>
-
-                <button
-                    className="btn btn-lg btn-primary mb-5"
-                    onClick={adicionarAoCarrinho}
-                >
+            <div className="row section"
+            style={{
+                textAlign: "center",
+                marginLeft: "auto",
+                marginRight: "auto",
+                width: "80%",
+                marginBottom: "1rem",
+            }}>
+                <button className="btn btn-primary mb-3" onClick={adicionarAoCarrinho}>
                     Adicionar ao carrinho
                 </button>
+
+                <Link to="/menu" className="btn btn-danger">
+                    Cancelar
+                </Link>
             </div>
         </>
     );
