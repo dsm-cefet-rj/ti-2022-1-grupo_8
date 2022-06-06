@@ -25,7 +25,7 @@ const CriarPizza = () => {
     const ingredientes = useSelector(selectMetades);
 
     // função que adiciona a pizza customizada ao carrinho
-    const adicionarAoCarrinho = () => {
+    const adicionarPizzaAoCarrinho = () => {
         if (erro !== "") {
             document.getElementById(`erro_message`).scrollIntoView({
                 behavior: "auto",
@@ -264,7 +264,7 @@ const CriarPizza = () => {
 
                 <button
                     className="btn btn-lg btn-primary mb-5"
-                    onClick={adicionarAoCarrinho}
+                    onClick={adicionarPizzaAoCarrinho}
                 >
                     Adicionar ao carrinho
                 </button>
