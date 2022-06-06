@@ -25,12 +25,23 @@ const CriarPizza = () => {
     const ingredientes = useSelector(selectMetades);
 
     // função que adiciona a pizza customizada ao carrinho
-    const adicionarAoCarrinho = (e) => {
-        e.preventDefault();
+    const adicionarAoCarrinho = () => {
+        if (erro !== "") {
+            document.getElementById(`erro_message`).scrollIntoView({
+                behavior: "auto",
+                block: "center",
+            });
+            document.getElementById(`erro_message`).animate({
+                color: "yellow",
+                textShadow: "50px 50px 50px red",
+            }, 1000);
+            return;
+        }
         if (tamanho === "") {
             setErro("Selecione um tamanho");
             document.getElementById(`erro_message`).scrollIntoView({
-                behavior: "smooth",
+                behavior: "auto",
+                block: "center",
             });
         } else {
             const generate_id = () => {
@@ -112,7 +123,7 @@ const CriarPizza = () => {
     return (
         <>
             <MenuNav Atual="criar-pizza" />
-            <form onSubmit={adicionarAoCarrinho}>
+            <form>
                 <div className="container">
                     <div className="row">
                         <h1 className="text-center">Monte sua pizza 🍕</h1>
@@ -124,8 +135,7 @@ const CriarPizza = () => {
                             style={{
                                 color: "red",
                                 textShadow: "0px 0px 10px black",
-                            }}
-                        >
+                            }}>
                             {erro}
                         </h5>
                     </div>
@@ -155,7 +165,7 @@ const CriarPizza = () => {
                                             className="form-check-label"
                                             htmlFor="tamanho1"
                                         >
-                                            Pequena 🤏 15cm
+                                            {"Pequena 🤏 15cm"}
                                         </label>
                                     </div>
                                     <div className="col mb-1">
@@ -170,7 +180,7 @@ const CriarPizza = () => {
                                             className="form-check-label"
                                             htmlFor="tamanho2"
                                         >
-                                            Media 🫄🏻 20cm
+                                            {"Media 🫄🏻 20cm"}
                                         </label>
                                     </div>
                                     <div className="col mb-1">
@@ -185,7 +195,7 @@ const CriarPizza = () => {
                                             className="form-check-label"
                                             htmlFor="tamanho3"
                                         >
-                                            Grande 📏 25cm
+                                            {"Grande 📏 25cm"}
                                         </label>
                                     </div>
                                     <div className="col mb-1">
@@ -200,7 +210,7 @@ const CriarPizza = () => {
                                             className="form-check-label"
                                             htmlFor="tamanho4"
                                         >
-                                            Família 😱 40cm
+                                            {"Família 😱 40cm"}
                                         </label>
                                     </div>
                                 </div>
@@ -228,8 +238,7 @@ const CriarPizza = () => {
                         style={{
                             textAlign: "right",
                             marginBottom: "20px",
-                        }}
-                    >
+                        }}>
                         <h3>Preço total:</h3>
                         <h3>
                             {erro === ""
@@ -238,20 +247,19 @@ const CriarPizza = () => {
                         </h3>
                     </div>
                 </div>
-                <div className="row" style={{ textAlign: "center" }}>
-                    <Link
-                        to="/menu"
-                        style={{ margin: " 0 5px" }}
-                        className="btn btn-lg btn-danger mb-5"
-                    >
-                        Cancelar
-                    </Link>
-
-                    <button className="btn btn-lg btn-primary mb-5">
-                        Adicionar ao carrinho
-                    </button>
-                </div>
             </form>
+            <div className="row" style={{ textAlign: "center" }}>
+                <Link
+                    to="/menu"
+                    style={{ margin: " 0 5px" }}
+                    className="btn btn-lg btn-danger mb-5">
+                    Cancelar
+                </Link>
+
+                <button className="btn btn-lg btn-primary mb-5" onClick={adicionarAoCarrinho}>
+                    Adicionar ao carrinho
+                </button>
+            </div>
         </>
     );
 };
