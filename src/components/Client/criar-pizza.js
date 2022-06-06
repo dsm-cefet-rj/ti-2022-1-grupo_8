@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import MenuNav from "./menu-nav";
 import { ingredientes as ingredientesBD } from "../store";
 import { useDispatch, useSelector } from "react-redux";
-import { adicionarAoCarrinho } from "../../features/carrinhoSlice";
+import { adicionarAoCarrinho as mandaPCarrinho } from "../../features/carrinhoSlice";
 import { createBrowserHistory } from "history";
 import Metade from "../geral/metade-pizza";
 import { selectMetades } from "../../features/ingredientes-metadeSlice";
@@ -25,7 +25,7 @@ const CriarPizza = () => {
     const ingredientes = useSelector(selectMetades);
 
     // função que adiciona a pizza customizada ao carrinho
-    const adicionarPizzaAoCarrinho = () => {
+    const adicionarAoCarrinho = () => {
         if (erro !== "") {
             document.getElementById(`erro_message`).scrollIntoView({
                 behavior: "auto",
@@ -70,9 +70,9 @@ const CriarPizza = () => {
                 descricao: "Ingredientes: " + ingredientes.flat().join(", "),
             };
             // Adicionar a pizza customizada ao carrinho
-            dispatch(adicionarAoCarrinho(pizza));
+            //dispatch(mandaPCarrinho(pizza));
             // Redirecionar para a página de carrinho
-            createBrowserHistory().push("/carrinho");
+            //createBrowserHistory().push("/carrinho");
         }
     };
 
@@ -95,8 +95,11 @@ const CriarPizza = () => {
                 break;
         }
 
-        ingredientes.flat().forEach((ingrediente) => {
-            preco += ingredientesDB.find((i) => i.nome === ingrediente).preco;
+        ingredientes.flat().forEach((id) => {
+            let ingredienteObj = ingredientesBD.find((i) => {
+                return i.id === parseInt(id);
+            });
+            preco += ingredienteObj.preco;
         });
 
         setPrecoTotal(preco);
@@ -233,7 +236,7 @@ const CriarPizza = () => {
                             Escolha até 7 em cada metade
                         </h4>
                     </div>
-                    <Metade max_ingredientes={7} key="1" id={1} active={true} />
+                    <Metade max_ingredientes={5} key="1" id={1} active={true} />
                 </div>
                 <hr />
                 <div className="row">
@@ -264,7 +267,7 @@ const CriarPizza = () => {
 
                 <button
                     className="btn btn-lg btn-primary mb-5"
-                    onClick={adicionarPizzaAoCarrinho}
+                    onClick={adicionarAoCarrinho}
                 >
                     Adicionar ao carrinho
                 </button>
