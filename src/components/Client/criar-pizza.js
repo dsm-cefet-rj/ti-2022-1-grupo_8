@@ -29,7 +29,7 @@ const CriarPizza = () => {
 
         // Achatar metades, remover duplicados, e remover molho da lista
         const flatIngredientes = [...new Set(ingredientes.flat())].filter(
-            (id) => id != -2
+            (id) => id != 1
         );
 
         const prefixos = ["de", "com", "e"];
@@ -97,7 +97,7 @@ const CriarPizza = () => {
             // Adicionar a pizza customizada ao carrinho
             dispatch(mandaPCarrinho(pizza));
             // Redirecionar para a página de carrinho
-            window.location.replace("/carrinho");
+            //window.location.replace("/carrinho");
         }
     };
 
