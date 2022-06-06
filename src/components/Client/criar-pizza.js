@@ -31,10 +31,13 @@ const CriarPizza = () => {
                 behavior: "auto",
                 block: "center",
             });
-            document.getElementById(`erro_message`).animate({
-                color: "yellow",
-                textShadow: "50px 50px 50px red",
-            }, 1000);
+            document.getElementById(`erro_message`).animate(
+                {
+                    color: "yellow",
+                    textShadow: "50px 50px 50px red",
+                },
+                1000
+            );
             return;
         }
         if (tamanho === "") {
@@ -135,7 +138,8 @@ const CriarPizza = () => {
                             style={{
                                 color: "red",
                                 textShadow: "0px 0px 10px black",
-                            }}>
+                            }}
+                        >
                             {erro}
                         </h5>
                     </div>
@@ -238,7 +242,8 @@ const CriarPizza = () => {
                         style={{
                             textAlign: "right",
                             marginBottom: "20px",
-                        }}>
+                        }}
+                    >
                         <h3>Preço total:</h3>
                         <h3>
                             {erro === ""
@@ -252,11 +257,15 @@ const CriarPizza = () => {
                 <Link
                     to="/menu"
                     style={{ margin: " 0 5px" }}
-                    className="btn btn-lg btn-danger mb-5">
+                    className="btn btn-lg btn-danger mb-5"
+                >
                     Cancelar
                 </Link>
 
-                <button className="btn btn-lg btn-primary mb-5" onClick={adicionarAoCarrinho}>
+                <button
+                    className="btn btn-lg btn-primary mb-5"
+                    onClick={adicionarAoCarrinho}
+                >
                     Adicionar ao carrinho
                 </button>
             </div>
