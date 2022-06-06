@@ -260,7 +260,11 @@ const CriarPizza = () => {
                             Escolha até 7 em cada metade
                         </h4>
                     </div>
-                    <Metade max_ingredientes={5} key="1" id={1} active={true} />
+                    {
+                        [...Array(4).keys()].map(index => 
+                            <Metade max_ingredientes={7} key={index} id={index} />
+                        )
+                    }
                 </div>
                 <hr />
                 <div className="row">
