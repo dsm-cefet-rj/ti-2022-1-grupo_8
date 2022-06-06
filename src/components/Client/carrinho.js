@@ -87,17 +87,23 @@ const Carrinho = () => {
                                         style={{
                                             textAlign: "center",
                                         }}
-                                    >Preço</th>
+                                    >
+                                        Preço
+                                    </th>
                                     <th
                                         style={{
                                             textAlign: "center",
                                         }}
-                                    >Quantidade</th>
+                                    >
+                                        Quantidade
+                                    </th>
                                     <th
                                         style={{
                                             textAlign: "center",
                                         }}
-                                    >Subtotal</th>
+                                    >
+                                        Subtotal
+                                    </th>
                                     <th>Ação</th>
                                 </tr>
                             </thead>
@@ -108,15 +114,17 @@ const Carrinho = () => {
                                         <td
                                             style={{
                                                 textAlign: "center",
-                                                width: "25%"
-                                            }}>
+                                                width: "25%",
+                                            }}
+                                        >
                                             R$ {item.preco.toFixed(2)}
                                         </td>
                                         <td
                                             style={{
                                                 textAlign: "center",
-                                                width: "25%"
-                                            }}>
+                                                width: "25%",
+                                            }}
+                                        >
                                             <div className="qtd-selection">
                                                 <button
                                                     className="btn btn-danger btn-sm"
@@ -126,7 +134,10 @@ const Carrinho = () => {
                                                             item.quantidade - 1
                                                         )
                                                     }
-                                                    disabled={item.quantidade === 1}>
+                                                    disabled={
+                                                        item.quantidade === 1
+                                                    }
+                                                >
                                                     -
                                                 </button>
                                                 {item.quantidade}
@@ -146,9 +157,9 @@ const Carrinho = () => {
                                         <td
                                             style={{
                                                 textAlign: "center",
-                                                width: "25%"
-                                            }}>
-
+                                                width: "25%",
+                                            }}
+                                        >
                                             R${" "}
                                             {(
                                                 item.preco * item.quantidade
@@ -189,7 +200,8 @@ const Carrinho = () => {
                     style={{
                         marginBottom: "20px",
                         flexDirection: "row",
-                    }}>
+                    }}
+                >
                     <Link to="/menu" className="btn btn-warning">
                         Voltar
                     </Link>
