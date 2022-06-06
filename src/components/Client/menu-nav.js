@@ -54,6 +54,16 @@ const MenuNav = (props) => {
                         </a>
                     </li>
                     <li className="nav-item">
+                        <a className="nav-link" href="/criar-pizza">
+                            Criar Pizza
+                            {
+                                atual === "criar-pizza" ? (
+                                    <span className="sr-only">(Atual)</span>
+                                ) : null /* Se a página atual for a página de carrinho, renderiza um span com a classe sr-only */
+                            }
+                        </a>
+                    </li>
+                    <li className="nav-item">
                         <a className="nav-link" href="/carrinho">
                             Carrinho
                             {
