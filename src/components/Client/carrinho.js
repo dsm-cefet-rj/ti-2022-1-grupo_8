@@ -184,7 +184,8 @@ const Carrinho = () => {
                         </h3>
                     </div>
                 </div>
-                <div className="row section"
+                <div
+                    className="row section"
                     style={{
                         marginBottom: "20px",
                         flexDirection: "row",
