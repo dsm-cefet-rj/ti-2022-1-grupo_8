@@ -29,7 +29,18 @@ const CriarPizza = () => {
 
     // Função que adiciona uma metade
     const handleAddMetade = () => {
+        if (metadeCount >= maxMetades)
+            return;
         setMetadeCount(metadeCount + 1);
+        document.getElementById(`SCROLLMENU${metadeCount - 1}`).scrollIntoView({
+            behavior: "smooth",
+        });
+    };
+
+    const handleRemoveMetade = () => {
+        if (metadeCount <= 1)
+            return;
+        setMetadeCount(metadeCount - 1);
         document.getElementById(`SCROLLMENU${metadeCount - 1}`).scrollIntoView({
             behavior: "smooth",
         });
@@ -278,19 +289,34 @@ const CriarPizza = () => {
                         )
                     }
 
-                    {metadeCount < maxMetades && (
-                        <div className="row section">
-                            <button
-                                type="button"
-                                className="btn btn-primary"
-                                data-toggle="modal"
-                                data-target="#exampleModal"
-                                onClick={handleAddMetade}
-                            >
-                                Adicionar Metade
-                            </button>
-                        </div>    
-                    )}
+                    <div className="row section">
+                        <div className="col-sm-12" style={{display: "flex"}}>
+                            {metadeCount > 1 && (
+                                <button
+                                    type="button"
+                                    style={{width: "100%"}}
+                                    className="btn btn-danger"
+                                    data-toggle="modal"
+                                    data-target="#exampleModal"
+                                    onClick={handleRemoveMetade}
+                                >
+                                    Remover Metade
+                                </button>
+                            )}
+                            {metadeCount < maxMetades && (
+                                <button
+                                    type="button"
+                                    className="btn btn-primary"
+                                    style={{width: "100%"}}
+                                    data-toggle="modal"
+                                    data-target="#exampleModal"
+                                    onClick={handleAddMetade}
+                                >
+                                    Adicionar Metade
+                                </button>
+                            )}
+                        </div>
+                    </div>
 
                 </div>
                 <hr />
