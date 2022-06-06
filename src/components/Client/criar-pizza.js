@@ -29,7 +29,7 @@ const CriarPizza = () => {
 
         // Achatar metades, remover duplicados, e remover molho da lista
         const flatIngredientes = [...new Set(ingredientes.flat())].filter(
-            (id) => id != -2
+            (id) => id != 1
         );
 
         const prefixos = ["de", "com", "e"];
@@ -42,7 +42,6 @@ const CriarPizza = () => {
 
             nome += " " + prefixo + " " + nomeIngrediente;
         }
-        console.log(nome);
         return nome;
     };
 
