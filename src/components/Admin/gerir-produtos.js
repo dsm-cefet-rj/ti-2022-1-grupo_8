@@ -18,11 +18,14 @@ const GerirProdutos = () => {
     const dispatch = useDispatch();
 
     const [erro, setErro] = useState("");
+
     const [nome, setNome] = useState("");
     const [imagem, setImagem] = useState("");
     const [preco, setPreco] = useState(0);
+    const [descricao, setDescricao] = useState("");
+
     const [editando, setEditando] = useState(false);
-    const [metades, setMetades] = useState(0);
+
 
     const handleNome = (e) => {
         setNome(e.target.value);
@@ -42,15 +45,18 @@ const GerirProdutos = () => {
             return;
         }
 
-        let pizza = {
+        let produto = {
             nome: nome,
             imagem: imagem,
-            metades: metades,
+            preco: preco,
+            descricao: descricao,
         };
     };
 
     useEffect(() => {
         // atualiza o array de metades
+
+
     }, []);
 
     return (
@@ -58,12 +64,12 @@ const GerirProdutos = () => {
             <AdminNav Atual="gerir-produtos" />
             <div className="container mb-2 p-1 bg-transparent">
                 <div className="row">
-                    <h1>Gerenciar Pizzas</h1>
+                    <h1>Gerenciar Produtos 🍾</h1>
                     <div className="row section mb-3">
-                        <h4>Adicionar Nova ou Editar Pizza</h4>
+                        <h4> Adicionar Novo ou Editar Produto </h4>
                     </div>
                     <h3>
-                        <b>Pizzas Cadastradas</b>
+                        <b> Produtos Cadastrados 🍾</b>
                     </h3>
                 </div>
                 <div className="row section mb-1">
@@ -133,9 +139,46 @@ const GerirProdutos = () => {
                         </h5>
                     </div>
                     <div className="row section">
+                        <div className="col-md-6">
+                            <label htmlFor="nome">Nome</label>
+                            <input
+                                type="text"
+                                className="form-control"
+                                id="nome"
+                                value={nome}
+                                onChange={(e) => {
+                                    setNome(e.target.value);
+                                }}
+                            />
 
+                            <label htmlFor="imagem">Imagem</label>
+                            <input
+                                type="file"
+                                className="form-control"
+                                id="imagem"
+                                onChange={(e) => {
+                                    setImagem(e.target.files[0]);
+                                }}
+                            />
+
+                            <label htmlFor="preco">Preço</label>
+                            <input
+                                type="number"
+                                className="form-control"
+                                id="preco"
+                                value={preco}
+                                onChange={(e) => setPreco(e.target.value)}
+                            />
+
+                            <label htmlFor="descricao">Descrição</label>
+                            <textarea
+                                className="form-control"
+                                id="descricao"
+                                value={descricao}
+                                onChange={(e) => setDescricao(e.target.value)}
+                            />
+                        </div>
                     </div>
-                   
                     <div style={{ textAlign: "center" }}>
                         <button className="btn btn-primary btn-lg">
                             {editando ? "Salvar" : "Adicionar"}
