@@ -356,43 +356,43 @@ const produtosSlice = createSlice({
         ingredientes: [],
     },
     reducers: {
-        setPizzas: (state, action)  => {
+        setPizzas: (state, action) => {
             state.pizzas = action.payload;
         },
-        setProdutos: (state, action)  => {
+        setProdutos: (state, action) => {
             state.produtos = action.payload;
         },
-        setIngredientes: (state, action)  => {
+        setIngredientes: (state, action) => {
             state.ingredientes = action.payload;
         },
-        getPizzasUsuario: (state, action)  => {
+        getPizzasUsuario: (state, action) => {
             state.pizzas = getPizzasUsuario();
         },
-        getProdutosUsuario: (state, action)  => {
+        getProdutosUsuario: (state, action) => {
             state.produtos = produtos;
         },
-        getIngredientesUsuario: (state, action)  => {
+        getIngredientesUsuario: (state, action) => {
             state.ingredientes = ingredientes;
         },
-        getPizzas: (state, action)  => {
+        getPizzas: (state, action) => {
             state.pizzas = pizzas;
         },
-        getProdutos: (state, action)  => {
+        getProdutos: (state, action) => {
             state.produtos = produtos;
         },
-        getIngredientes: (state, action)  => {
+        getIngredientes: (state, action) => {
             state.ingredientes = ingredientes;
         },
-        addPizza: (state, action)  => {
+        addPizza: (state, action) => {
             state.pizzas.push(action.payload);
         },
-        addProduto: (state, action)  => {
+        addProduto: (state, action) => {
             state.produtos.push(action.payload);
         },
-        addIngrediente: (state, action)  => {
+        addIngrediente: (state, action) => {
             state.ingredientes.push(action.payload);
-        }
-    }
+        },
+    },
 });
 
 export const {
@@ -407,7 +407,7 @@ export const {
     getIngredientes,
     addPizza,
     addProduto,
-    addIngrediente
+    addIngrediente,
 } = produtosSlice.actions;
 
 const reducer = produtosSlice.reducer;
