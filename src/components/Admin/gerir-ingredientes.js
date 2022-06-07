@@ -1,10 +1,8 @@
-import { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { ingredientes } from "../store";
-import AdminNav from "./admin-nav";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { setIdSelecinado } from "../../features/gerir-ingredientesSlice";
-import { useSelector } from "react-redux";
-import { ingredientes as ingredientesDB } from "../store";
+import { ingredientes, ingredientes as ingredientesDB } from "../store";
+import AdminNav from "./admin-nav";
 /* 
 Componente: Ingrediente
 Descrição: Componente que renderiza um ingrediente na pagina de gerir ingredientes
@@ -168,7 +166,7 @@ const GerirIngredientes = () => {
                             />
                         </div>
                         <div className="form-group mb-2">
-                            <label htmlFor="PesoPorcao">Peso Porção</label>
+                            <label htmlFor="PesoPorcao">Peso Porção em g</label>
                             <input
                                 type="number"
                                 className="form-control"
@@ -191,12 +189,11 @@ const GerirIngredientes = () => {
                             />
                         </div>
                     </form>
-                    <button type="submit" className="btn btn-primary mb-3 mt-3">
-                        Adicionar
-                    </button>
-                    <button type="submit" className="btn btn-danger">
-                        Remover
-                    </button>
+                    <button className="btn btn-primary mb-3 mt-3">
+                        {
+                            idSelecinado !== 0 ? "Editar ✅" : "Adicionar ➕"
+                        }</button>
+                    <button className="btn btn-danger">Remover ❌</button>
                 </div>
             </div>
         </>

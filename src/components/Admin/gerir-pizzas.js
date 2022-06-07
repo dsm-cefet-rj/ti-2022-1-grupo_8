@@ -1,10 +1,8 @@
-import AdminNav from "./admin-nav";
-import { pizzas as pizzaBD } from "../store";
+import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import Metade from "../geral/metade-pizza";
-import React, { useEffect } from "react";
-import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { setMetades } from "../../features/ingredientes-metadeSlice";
+import { pizzas as pizzaBD } from "../store";
+import AdminNav from "./admin-nav";
 
 /* 
 Componente: GerirPizzas
@@ -58,12 +56,12 @@ const GerirPizzas = () => {
             <AdminNav Atual="pizzas" />
             <div className="container mb-2 p-1 bg-transparent">
                 <div className="row">
-                    <h1>Gerenciar Pizzas</h1>
+                    <h1>Gerenciar Pizzas 🍕</h1>
                     <div className="row section mb-3">
                         <h4>Adicionar Nova ou Editar Pizza</h4>
                     </div>
                     <h3>
-                        <b>Pizzas Cadastradas</b>
+                        <b>Pizzas Cadastradas 🍕</b>
                     </h3>
                 </div>
                 <div className="row section mb-1">
@@ -196,9 +194,7 @@ const GerirPizzas = () => {
                                 margin: " 0 5px",
                             }}
                             className="btn btn-danger btn-lg"
-                        >
-                            Cancelar
-                        </a>
+                        >Cancelar ❌</a>
                     </div>
                 </form>
             </div>

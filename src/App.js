@@ -1,15 +1,15 @@
-import "./App.css";
 import React from "react";
-import Login from "./login";
 import { Route, Routes } from "react-router-dom";
-import MenuCliente from "./components/Cliente/menu.js";
+import "./App.css";
+import GerirIngredientes from "./components/Admin/gerir-ingredientes";
+import GerirPizzas from "./components/Admin/gerir-pizzas";
+import GerirProdutos from "./components/Admin/gerir-produtos";
+import MenuAdmin from "./components/Admin/menu-admin";
 import Carrinho from "./components/Cliente/carrinho";
 import CriarPizza from "./components/Cliente/criar-pizza";
 import CriarUsuario from "./components/Cliente/criar-usuario";
-import MenuAdmin from "./components/Admin/menu-admin";
-import GerirPizzas from "./components/Admin/gerir-pizzas";
-import GerirIngredientes from "./components/Admin/gerir-ingredientes";
-import GerirProdutos from "./components/Admin/gerir-produtos";
+import MenuCliente from "./components/Cliente/menu.js";
+import Login from "./login";
 /*
 Componente: App
 Descrição: Componente que renderiza a página principal

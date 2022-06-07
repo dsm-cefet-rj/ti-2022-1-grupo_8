@@ -1,10 +1,7 @@
-import AdminNav from "./admin-nav";
+import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import { bebidas as produtosBD } from "../store";
-import Metade from "../geral/metade-pizza";
-import React, { useEffect } from "react";
-import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { setMetades } from "../../features/ingredientes-metadeSlice";
+import AdminNav from "./admin-nav";
 
 /* 
 Componente: GerirPizzas
@@ -189,9 +186,7 @@ const GerirProdutos = () => {
                                 margin: " 0 5px",
                             }}
                             className="btn btn-danger btn-lg"
-                        >
-                            Cancelar
-                        </a>
+                        >Cancelar ❌</a>
                     </div>
                 </form>
             </div>

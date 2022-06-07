@@ -35,7 +35,7 @@ const AdminNav = (props) => {
 
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark p-2">
-            <a className="navbar-brand">Administrador</a>
+            <a className="navbar-brand">Administrador 🔑</a>
             <button className="navbar-toggler" type="button" onClick={toggle}>
                 <span className="navbar-toggler-icon"></span>
             </button>
@@ -49,7 +49,7 @@ const AdminNav = (props) => {
                             Menu Administrador
                             {
                                 atual === "menu" ? (
-                                    <span className="sr-only">(Atual)</span>
+                                    <span className="sr-only">(🧑‍💻)</span>
                                 ) : null /* Se a página atual for a página de menu, renderiza um span com a classe sr-only */
                             }
                         </a>
@@ -59,7 +59,7 @@ const AdminNav = (props) => {
                             Gerir Ingredientes
                             {
                                 atual === "ingredientes" ? (
-                                    <span className="sr-only">(Atual)</span>
+                                    <span className="sr-only">(👩‍💻)</span>
                                 ) : null /* Se a página atual for a página de ingredientes, renderiza um span com a classe sr-only */
                             }
                         </a>
@@ -69,7 +69,7 @@ const AdminNav = (props) => {
                             Gerir Pizzas
                             {
                                 atual === "pizzas" ? (
-                                    <span className="sr-only">(Atual)</span>
+                                    <span className="sr-only">(🧑‍💻)</span>
                                 ) : null /* Se a página atual for a página de pizzas, renderiza um span com a classe sr-only */
                             }
                         </a>
@@ -79,14 +79,14 @@ const AdminNav = (props) => {
                             Gerir Produtos
                             {
                                 atual === "gerir-produtos" ? (
-                                    <span className="sr-only">(Atual)</span>
+                                    <span className="sr-only">(👩‍💻)</span>
                                 ) : null /* Se a página atual for a página de pizzas, renderiza um span com a classe sr-only */
                             }
                         </a>
                     </li>
                     <li className="nav-item">
                         <a className="nav-link" href="/">
-                            Sair
+                            Sair 👋
                         </a>
                     </li>
                 </ul>

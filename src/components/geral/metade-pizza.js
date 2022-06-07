@@ -1,8 +1,7 @@
-import React from "react";
-import { useState } from "react";
-import { ingredientes as ingredientesBD } from "../store";
-import { setMetades } from "../../features/ingredientes-metadeSlice";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+import { setMetades } from "../../features/ingredientes-metadeSlice";
+import { ingredientes as ingredientesBD } from "../store";
 
 /* 
 Componente: Metade

@@ -1,8 +1,8 @@
-import MenuNav from "./menu-nav";
-import { useDispatch } from "react-redux";
-import { setCarrinho, getFromLocalStorage } from "../../features/carrinhoSlice";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { getFromLocalStorage, setCarrinho } from "../../features/carrinhoSlice";
+import MenuNav from "./menu-nav";
 
 /* 
 Componente: Carrinho
@@ -75,7 +75,7 @@ const Carrinho = () => {
             <MenuNav Atual="carrinho" />
             <div className="container mt-5 mb-2 p-5">
                 <div className="row">
-                    <h1 className="text-center">Carrinho</h1>
+                    <h1 className="text-center">Carrinho 🛒</h1>
                 </div>
                 <div className="row">
                     <div className="col-md-12">

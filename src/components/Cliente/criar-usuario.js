@@ -17,7 +17,7 @@ const CriarUsuario = () => {
             </div>
             <div className="container mt-2 mb-5 p-5 bg-transparent">
                 <div className="row mb-2">
-                    <h1 className="titulo">Cadastro</h1>
+                    <h1 className="titulo">Cadastro ✍</h1>
                 </div>
 
                 <form>
@@ -63,13 +63,13 @@ const CriarUsuario = () => {
                     </div>
                     <div className="row mb-2">
                         <Link to="/" className="btn btn-primary btn-block ">
-                            Cadastrar
+                            Cadastrar ✍
                         </Link>
                     </div>
                 </form>
                 <div className="row mb-2">
                     <Link to="/" className="btn btn-primary btn-block ">
-                        Voltar
+                        Voltar ↩
                     </Link>
                 </div>
             </div>

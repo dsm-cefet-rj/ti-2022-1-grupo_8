@@ -1,14 +1,11 @@
-import React, { useEffect } from "react";
-import { useState } from "react";
-import { Link } from "react-router-dom";
-import MenuNav from "./menu-nav";
-import { ingredientes as ingredientesBD } from "../store";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { adicionarAoCarrinho as mandaPCarrinho } from "../../features/carrinhoSlice";
-import { createBrowserHistory } from "history";
-import Metade from "../geral/metade-pizza";
 import { selectMetades } from "../../features/ingredientes-metadeSlice";
-import { ingredientes as ingredientesDB } from "../store";
+import Metade from "../geral/metade-pizza";
+import { ingredientes as ingredientesBD } from "../store";
+import MenuNav from "./menu-nav";
 
 /* 
 Componente: CriarPizza
@@ -49,7 +46,7 @@ const CriarPizza = () => {
 
         // Achatar metades, remover duplicados, e remover molho da lista
         const flatIngredientes = [...new Set(ingredientes.flat())].filter(
-            (id) => id != 1
+            (id) => id !== 1
         );
 
         const prefixos = ["de", "com", "e"];
@@ -66,7 +63,7 @@ const CriarPizza = () => {
     };
 
     const getNomeIngredienteFromId = (id) => {
-        return ingredientesBD.find((ingrediente) => ingrediente.id == id).nome;
+        return ingredientesBD.find((ingrediente) => ingrediente.id === id).nome;
     };
 
     const sortear = (arr) => {
@@ -167,7 +164,7 @@ const CriarPizza = () => {
         } else {
             atualizarPreco();
         }
-    }, [tamanho, ingredientes]);
+    }, [tamanho, ingredientes, erro]);
 
     // Renderiza a página de criação de pizza.
     return (

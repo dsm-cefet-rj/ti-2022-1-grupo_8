@@ -1,5 +1,5 @@
 import { React, useState, useEffect } from "react";
-
+import { getFromLocalStorage } from "../../features/carrinhoSlice";
 /* 
 Componente: MenuNav
 Descrição: Componente que renderiza o menu de navegação para os clientes
@@ -10,6 +10,8 @@ const MenuNav = (props) => {
     const [collapse, setCollapse] = useState(false); // estado que controla o collapse do menu
 
     const toggle = () => setCollapse(!collapse); // função que altera o estado do collapse
+
+    const quantidade = getFromLocalStorage().length; // quantidade de itens no carrinho
 
     // set screen title
     useEffect(() => {
@@ -45,10 +47,10 @@ const MenuNav = (props) => {
                 <ul className="navbar-nav">
                     <li className="nav-item">
                         <a className="nav-link" href="/menu">
-                            Menu
+                            Menu 📑
                             {
                                 atual === "menu" ? (
-                                    <span className="sr-only">(Atual)</span>
+                                    <span className="sr-only">(😋)</span>
                                 ) : null /* Se a página atual for a página de menu, renderiza um span com a classe sr-only */
                             }
                         </a>
@@ -58,7 +60,7 @@ const MenuNav = (props) => {
                             Criar Pizza
                             {
                                 atual === "criar-pizza" ? (
-                                    <span className="sr-only">(Atual)</span>
+                                    <span className="sr-only">(😋)</span>
                                 ) : null /* Se a página atual for a página de carrinho, renderiza um span com a classe sr-only */
                             }
                         </a>
@@ -68,14 +70,19 @@ const MenuNav = (props) => {
                             Carrinho
                             {
                                 atual === "carrinho" ? (
-                                    <span className="sr-only">(Atual)</span>
+                                    <span className="sr-only">(😋)</span>
                                 ) : null /* Se a página atual for a página de carrinho, renderiza um span com a classe sr-only */
+                            }
+                            {
+                                quantidade > 0 ? (
+                                    <span className="badge badge-pill badge-primary">{quantidade} {quantidade !== 1 ? "itens" : "item"} no carrinho</span>
+                                ) : null /* Se a quantidade de itens no carrinho for maior que 0, renderiza um span com a classe badge-pill badge-primary */
                             }
                         </a>
                     </li>
                     <li className="nav-item">
                         <a className="nav-link" href="/">
-                            Sair
+                            Sair 👋
                         </a>
                     </li>
                 </ul>

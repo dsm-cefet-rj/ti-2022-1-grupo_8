@@ -14,7 +14,7 @@ const MenuAdmin = () => {
                     <h1 className="text-center">Relatórios</h1>
                 </div>
                 <div className="row">
-                    <h1 className="text-center">Pizzas Mais Compradas</h1>
+                    <h1 className="text-center">Pizzas Mais Compradas 📈</h1>
                 </div>
                 <div className="row">
                     <table className="table table-striped table-dark">
@@ -50,9 +50,7 @@ const MenuAdmin = () => {
                 </div>
 
                 <div className="row">
-                    <h1 className="text-center">
-                        Ingredientes Mais Utilizados
-                    </h1>
+                    <h1 className="text-center"> Ingredientes Mais Utilizados 📈 </h1>
                 </div>
                 <div className="row">
                     <table className="table table-striped table-dark">

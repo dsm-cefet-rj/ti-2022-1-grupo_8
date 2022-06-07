@@ -1,8 +1,8 @@
-import MenuNav from "./menu-nav";
 import { React } from "react";
 import { Link } from "react-router-dom";
 import ProdutoCard from "../geral/produto-card";
-import { getPizzasUsuario, bebidas as BebidaBD } from "../store";
+import { bebidas as BebidaBD, getPizzasUsuario } from "../store";
+import MenuNav from "./menu-nav";
 
 /* 
 Componente: MenuCliente
