@@ -30,31 +30,7 @@ import MenuCliente from "./components/Cliente/menu.js";
 import Login from "./login";
 import App from "./App";
 
-const renderWithRouter = (
-    ui,
-    {
-        route = "/",
-        history = createMemoryHistory({ initialEntries: [route] }),
-    } = {}
-) => {
-    return {
-        ...render(<Router history={history}>{ui}</Router>),
-        // adding `history` to the returned utilities to allow us
-        // to reference it in our tests (just try to avoid using
-        // this to test implementation details).
-        history,
-    };
-};
-
 // Testes básicos de Renderização
-/*
-  ✕ renderiza a pagina '/' sem erros (63 ms)
-  ✕ renderiza a pagina '/criar-usuario' sem erros (19 ms)
-  ✕ renderiza a pagina '/carrinho' sem erros (14 ms)
-  ✕ renderiza a pagina '/criar-pizza' sem erros (54 ms)
-  ✕ renderiza a pagina '/menu' sem erros (50 ms)
-*/
-
 it("renderiza a pagina '/' sem erros", () => {
     const { getByText } = render(<App />);
     expect(getByText(/login/i)).toBeInTheDocument();
