@@ -101,9 +101,12 @@ const GerirPizzas = () => {
                                         onClick={() => {
                                             setEditando(true);
                                             setNome(pizza.nome);
+
                                             document.getElementById(
                                                 `pizza-${pizza.id}`
                                             ).innerHTML = "Alterando...";
+
+
                                             pizzaBD.map((pizzaOBJ) => {
                                                 if (pizzaOBJ.id !== pizza.id) {
                                                     document.getElementById(
@@ -182,8 +185,8 @@ const GerirPizzas = () => {
                         </div>
                     </div>
                     <div style={{ textAlign: "center" }}>
-                        <button className="btn btn-primary btn-lg">
-                            Criar
+                        <button className="btn btn-primary btn-lg" id="botao-acao">
+                            {editando ? "Salvar" : "Adicionar"}
                         </button>
                         <a
                             href="/menu-admin"
