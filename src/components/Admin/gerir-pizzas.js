@@ -106,7 +106,6 @@ const GerirPizzas = () => {
                                                 `pizza-${pizza.id}`
                                             ).innerHTML = "Alterando...";
 
-
                                             pizzaBD.map((pizzaOBJ) => {
                                                 if (pizzaOBJ.id !== pizza.id) {
                                                     document.getElementById(
@@ -185,7 +184,10 @@ const GerirPizzas = () => {
                         </div>
                     </div>
                     <div style={{ textAlign: "center" }}>
-                        <button className="btn btn-primary btn-lg" id="botao-acao">
+                        <button
+                            className="btn btn-primary btn-lg"
+                            id="botao-acao"
+                        >
                             {editando ? "Salvar" : "Adicionar"}
                         </button>
                         <a

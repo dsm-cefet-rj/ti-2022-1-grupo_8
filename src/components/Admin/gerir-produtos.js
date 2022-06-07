@@ -132,10 +132,8 @@ const GerirProdutos = () => {
                             {erro}
                         </h5>
                     </div>
-                    <div className="row section">
+                    <div className="row section"></div>
 
-                    </div>
-                   
                     <div style={{ textAlign: "center" }}>
                         <button className="btn btn-primary btn-lg">
                             {editando ? "Salvar" : "Adicionar"}
