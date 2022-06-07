@@ -1,6 +1,6 @@
 import AdminNav from "./admin-nav";
 import { pizzas, bebidas, ingredientes } from "../store";
-
+import styles from "./menu-admin.module.scss";
 /* 
 Componente: MenuAdmin
 Descrição: Componente que renderiza a página principal de administração
@@ -96,4 +96,10 @@ const MenuAdmin = () => {
     );
 };
 
-export default MenuAdmin;
+export default () => {
+    return (
+        <div className={styles.body}>
+            <MenuAdmin />
+        </div>
+    )
+};

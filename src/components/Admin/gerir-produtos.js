@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { bebidas as produtosBD } from "../store";
 import AdminNav from "./admin-nav";
+import styles from "./gerir-produtos.module.scss";
 
 /* 
 Componente: GerirPizzas
@@ -193,4 +194,10 @@ const GerirProdutos = () => {
     );
 };
 
-export default GerirProdutos;
+export default () => {
+    return (
+        <div className={styles.body}>
+            <GerirProdutos />
+        </div>
+    )
+};

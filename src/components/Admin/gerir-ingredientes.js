@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setIdSelecinado } from "../../features/gerir-ingredientesSlice";
 import { ingredientes, ingredientes as ingredientesDB } from "../store";
 import AdminNav from "./admin-nav";
+import styles from "./gerir-ingredientes.module.scss";
 /* 
 Componente: Ingrediente
 Descrição: Componente que renderiza um ingrediente na pagina de gerir ingredientes
@@ -199,4 +200,10 @@ const GerirIngredientes = () => {
     );
 };
 
-export default GerirIngredientes;
+export default () => {
+    return (
+        <div className={styles.body}>
+            <GerirIngredientes />
+        </div>
+    )
+}

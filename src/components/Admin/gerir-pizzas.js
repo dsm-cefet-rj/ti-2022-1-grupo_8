@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import Metade from "../geral/metade-pizza";
 import { pizzas as pizzaBD } from "../store";
 import AdminNav from "./admin-nav";
-
+import styles from "./gerir-pizzas.module.scss";
 /* 
 Componente: GerirPizzas
 Descrição: Componente que renderiza a página de gerenciamento de pizzas
@@ -204,4 +204,10 @@ const GerirPizzas = () => {
     );
 };
 
-export default GerirPizzas;
+export default () => {
+    return (
+        <div className={styles.body}>
+            <GerirPizzas />
+        </div>
+    )
+};
