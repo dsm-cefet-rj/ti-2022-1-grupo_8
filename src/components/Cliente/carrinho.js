@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { getFromLocalStorage, setCarrinho } from "../../features/carrinhoSlice";
 import MenuNav from "./menu-nav";
-import styles from "./carrinho.module.scss"
+import styles from "./carrinho.module.scss";
 /* 
 Componente: Carrinho
 Descrição: Componente que renderiza a página de carrinho

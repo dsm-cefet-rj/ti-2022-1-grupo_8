@@ -199,5 +199,5 @@ export default () => {
         <div className={styles.body}>
             <GerirProdutos />
         </div>
-    )
+    );
 };

@@ -209,5 +209,5 @@ export default () => {
         <div className={styles.body}>
             <GerirPizzas />
         </div>
-    )
+    );
 };

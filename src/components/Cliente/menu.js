@@ -107,6 +107,5 @@ export default () => {
         <div className={styles.body}>
             <MenuCliente />
         </div>
-
-    )
+    );
 };

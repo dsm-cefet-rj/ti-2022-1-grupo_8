@@ -83,5 +83,5 @@ export default () => {
         <div className={styles.body}>
             <CriarUsuario />
         </div>
-        )
+    );
 };
