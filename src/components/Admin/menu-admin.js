@@ -50,7 +50,10 @@ const MenuAdmin = () => {
                 </div>
 
                 <div className="row">
-                    <h1 className="text-center"> Ingredientes Mais Utilizados 📈 </h1>
+                    <h1 className="text-center">
+                        {" "}
+                        Ingredientes Mais Utilizados 📈{" "}
+                    </h1>
                 </div>
                 <div className="row">
                     <table className="table table-striped table-dark">
