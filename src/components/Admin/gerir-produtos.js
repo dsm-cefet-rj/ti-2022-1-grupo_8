@@ -23,7 +23,6 @@ const GerirProdutos = () => {
 
     const [editando, setEditando] = useState(false);
 
-
     const handleNome = (e) => {
         setNome(e.target.value);
     };
@@ -52,8 +51,6 @@ const GerirProdutos = () => {
 
     useEffect(() => {
         // atualiza o array de metades
-
-
     }, []);
 
     return (
