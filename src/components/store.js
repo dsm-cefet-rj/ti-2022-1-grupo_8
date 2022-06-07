@@ -306,7 +306,7 @@ let bebidas = [
         descricao: "Refrigerante sabor cola de 2L.",
         imagem: "imgs/coca-cola.webp",
         preco: 8.0,
-        id: 1,
+        id: 100,
         quant_comprada: 125,
     },
     {
@@ -314,7 +314,7 @@ let bebidas = [
         descricao: "Refrigerante sabor laranja de 2L.",
         imagem: "imgs/fanta.webp",
         preco: 8.0,
-        id: 2,
+        id: 102,
         quant_comprada: 125,
     },
     {
@@ -322,7 +322,7 @@ let bebidas = [
         descricao: "Refrigerante sabor guaraná de 2L.",
         imagem: "imgs/guarana.webp",
         preco: 8.0,
-        id: 3,
+        id: 103,
         quant_comprada: 125,
     },
 ];
@@ -333,8 +333,7 @@ const getPizzasUsuario = () => {
         for (let i = 0; i < pizza.ingredientes.length; i++) {
             preco += ingredientes[pizza.ingredientes[i]].preco;
         }
-        preco += pizza.quant_molho * ingredientes[0].preco;
-        preco += pizza.quant_queijo * ingredientes[1].preco;
+        preco += 20;
         return {
             nome: pizza.nome,
             descricao: pizza.descricao,

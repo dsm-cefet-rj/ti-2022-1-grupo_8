@@ -30,7 +30,7 @@ const MenuCliente = () => {
             <MenuNav Atual="menu" />
             <div className="container mb-2 p-1 bg-transparent">
                 <div className="row">
-                    <h1 className="text-center">Mais pedidas</h1>
+                    <h1 className="text-center">Mais pedidas 😋</h1>
                 </div>
                 <div className="row">
                     {pizzas.slice(0, 4).map((pizza) => (
@@ -65,7 +65,7 @@ const MenuCliente = () => {
                 </div>
                 <hr />
                 <div className="row mt-2">
-                    <h3 className="text-center">Bebidas</h3>
+                    <h3 className="text-center">Bebidas e Outros Produtos</h3>
                 </div>
                 <div className="row">
                     {bebidas.slice(0, 4).map((bebida) => (
@@ -82,7 +82,7 @@ const MenuCliente = () => {
                 </div>
                 <hr />
                 <div className="row mt-2">
-                    <h3 className="text-center">Outros Sabores</h3>
+                    <h3 className="text-center">Outros Sabores 🤔</h3>
                 </div>
                 <div className="row">
                     {pizzas.slice(0, pizzas.length).map((pizza) => (

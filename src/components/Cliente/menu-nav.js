@@ -1,4 +1,4 @@
-import { React, useState, useEffect } from "react";
+import { React, useEffect, useState } from "react";
 import { getFromLocalStorage } from "../../features/carrinhoSlice";
 /* 
 Componente: MenuNav
@@ -6,6 +6,7 @@ Descrição: Componente que renderiza o menu de navegação para os clientes
 */
 const MenuNav = (props) => {
     const atual = props.Atual; // Página atual
+    const atualTexto = "😋";
 
     const [collapse, setCollapse] = useState(false); // estado que controla o collapse do menu
 
@@ -33,63 +34,55 @@ const MenuNav = (props) => {
         document.title = title;
     }, [atual]);
 
-    // Renderização do componente
+    /* Renderização do componente */
     return (
-        <nav className="navbar navbar-expand-lg navbar-dark bg-dark p-2">
-            <a className="navbar-brand">Pizzaria ON</a>
+        <nav className="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+            <a className="navbar-brand"
+                style={{
+                    fontSize: "1.5rem",
+                    marginLeft: "1rem",
+                }}>Pizzaria ON</a>
             <button className="navbar-toggler" type="button" onClick={toggle}>
-                <span className="navbar-toggler-icon"></span>
+                <span className="navbar-toggler-icon">
+                    🍕
+                </span>
             </button>
-            <div
-                className={`collapse navbar-collapse ${collapse ? "show" : ""}`}
-                id="navbarNav"
-            >
-                <ul className="navbar-nav">
-                    <li className="nav-item">
-                        <a className="nav-link" href="/menu">
-                            Menu 📑
-                            {
-                                atual === "menu" ? (
-                                    <span className="sr-only">(😋)</span>
-                                ) : null /* Se a página atual for a página de menu, renderiza um span com a classe sr-only */
-                            }
-                        </a>
-                    </li>
-                    <li className="nav-item">
-                        <a className="nav-link" href="/criar-pizza">
-                            Criar Pizza
-                            {
-                                atual === "criar-pizza" ? (
-                                    <span className="sr-only">(😋)</span>
-                                ) : null /* Se a página atual for a página de carrinho, renderiza um span com a classe sr-only */
-                            }
-                        </a>
-                    </li>
-                    <li className="nav-item">
-                        <a className="nav-link" href="/carrinho">
-                            Carrinho
-                            {
-                                atual === "carrinho" ? (
-                                    <span className="sr-only">(😋)</span>
-                                ) : null /* Se a página atual for a página de carrinho, renderiza um span com a classe sr-only */
-                            }
-                            {
-                                quantidade > 0 ? (
-                                    <span className="badge badge-pill badge-primary">
-                                        {quantidade}{" "}
-                                        {quantidade !== 1 ? "itens" : "item"} no
-                                        carrinho
-                                    </span>
-                                ) : null /* Se a quantidade de itens no carrinho for maior que 0, renderiza um span com a classe badge-pill badge-primary */
-                            }
-                        </a>
-                    </li>
-                    <li className="nav-item">
-                        <a className="nav-link" href="/">
-                            Sair 👋
-                        </a>
-                    </li>
-                </ul>
+
+            <div className={`collapse navbar-collapse ${collapse ? "show" : ""}`} id="navbarNav">
+                <div
+                    style={{
+                        display: "flex",
+                        flexDirection: "row",
+                        justifyContent: "space-around",
+                        alignItems: "center",
+                        width: "100%",
+                        padding: "0 2rem 0 2rem",
+                    }}>
+                    <a className="btn btn-primary " href="/menu">
+                        Menu 📑
+                        {atual === "menu" ? (<span className="badge badge-secondary">{atualTexto}</span>) : null}
+                    </a>
+                    <a className="btn btn-primary " href="/criar-pizza">
+                        Criar Pizza
+                        {atual === "criar-pizza" ? (<span className="badge badge-secondary">{atualTexto}</span>) : null}
+                    </a>
+                    <a className="btn btn-primary " href="/carrinho">
+                        Carrinho
+                        {atual === "carrinho" ? (<span className="badge badge-secondary">{atualTexto}</span>) : null}
+                        {quantidade > 0 ? (
+                            <span className="badge"
+                                style={{
+                                    backgroundColor: "white",
+                                    color: "black",
+                                    marginLeft: "0.5rem"
+                                }}>
+                                {quantidade}{" "} {quantidade !== 1 ? "itens" : "item"} no carrinho </span>) : null
+                        }
+                    </a>
+                    <a className="btn btn-danger " href="/">
+                        Sair 👋
+                    </a>
+                </div>
             </div>
         </nav>
     );
