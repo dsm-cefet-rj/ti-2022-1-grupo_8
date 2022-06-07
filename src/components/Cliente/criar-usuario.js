@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import styles from "./criar-usuario.module.scss";
 /* 
 Componente: CriarUsuario
 Descrição: Componente que renderiza a página de criação de usuário
@@ -77,4 +78,10 @@ const CriarUsuario = () => {
     );
 };
 
-export default CriarUsuario;
+export default () => {
+    return (
+        <div className={styles.body}>
+            <CriarUsuario />
+        </div>
+        )
+};

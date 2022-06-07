@@ -5,6 +5,7 @@ import { adicionarAoCarrinho as mandaPCarrinho } from "../../features/carrinhoSl
 import { selectMetades } from "../../features/ingredientes-metadeSlice";
 import Metade from "../geral/metade-pizza";
 import { ingredientes as ingredientesBD } from "../store";
+import styles from "./criar-pizza.module.scss";
 import MenuNav from "./menu-nav";
 
 /* 
@@ -353,4 +354,10 @@ const CriarPizza = () => {
     );
 };
 
-export default CriarPizza;
+export default () => {
+    return (
+        <div className={styles.body}>
+            <CriarPizza />
+        </div>
+    );
+};

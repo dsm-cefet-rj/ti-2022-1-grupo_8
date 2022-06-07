@@ -1,5 +1,6 @@
 import { React, useEffect, useState } from "react";
 import { getFromLocalStorage } from "../../features/carrinhoSlice";
+import styled from "./menu-nav.module.scss";
 /* 
 Componente: MenuNav
 Descrição: Componente que renderiza o menu de navegação para os clientes

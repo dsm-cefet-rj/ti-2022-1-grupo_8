@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import ProdutoCard from "../geral/produto-card";
 import { bebidas as BebidaBD, getPizzasUsuario } from "../store";
 import MenuNav from "./menu-nav";
-
+import styles from "./menu.module.scss";
 /* 
 Componente: MenuCliente
 Descrição: Componente que renderiza a página principal do Cliente
@@ -102,4 +102,11 @@ const MenuCliente = () => {
     );
 };
 
-export default MenuCliente;
+export default () => {
+    return (
+        <div className={styles.body}>
+            <MenuCliente />
+        </div>
+
+    )
+};

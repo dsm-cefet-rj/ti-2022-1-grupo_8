@@ -1,7 +1,7 @@
-import { useEffect, useState, useRef } from "react";
-import { Link } from "react-router-dom";
 import { Parallax, ParallaxLayer } from "@react-spring/parallax";
-import "./login.scss";
+import { useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
+import style from "./login.module.scss";
 /*
 Componente: Login
 Descrição: Componente que renderiza a página de login
@@ -89,7 +89,7 @@ const LoginForm = () => {
 const LoginPage = () => {
     const ref = useRef();
     return (
-        <div className="loginPage">
+        <>
             <Parallax pages={2} ref={ref}>
                 <ParallaxLayer offset={0} speed={0.1}>
                     <h1
@@ -156,8 +156,14 @@ const LoginPage = () => {
                     </div>
                 </ParallaxLayer>
             </Parallax>
-        </div>
+        </>
     );
 };
 
-export default LoginPage;
+export default () => {
+    return (
+        <div className={style.body}>
+            <LoginPage />
+        </div>
+    )
+};
