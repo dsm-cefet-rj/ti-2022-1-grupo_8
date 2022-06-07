@@ -37,11 +37,12 @@ const AdminNav = (props) => {
         <nav className="navbar navbar-expand-lg navbar-light bg-light sticky-top">
             <a className="navbar-brand">Administrador 🔑</a>
             <button className="navbar-toggler" type="button" onClick={toggle}>
-                <span className="navbar-toggler-icon">
-                    🔐
-                </span>
+                <span className="navbar-toggler-icon">🔐</span>
             </button>
-            <div className={`collapse navbar-collapse ${collapse ? "show" : ""}`} id="navbarNav">
+            <div
+                className={`collapse navbar-collapse ${collapse ? "show" : ""}`}
+                id="navbarNav"
+            >
                 <div
                     style={{
                         display: "flex",
@@ -50,29 +51,48 @@ const AdminNav = (props) => {
                         alignItems: "center",
                         width: "100%",
                         padding: "0 2rem 0 2rem",
-                    }}>
+                    }}
+                >
                     <a className="btn btn-primary " href="/menu-admin">
                         Menu Administrador
-                        {atual === "menu" ? (<span className="badge badge-secondary">{atualTexto}</span>) : null}
+                        {atual === "menu" ? (
+                            <span className="badge badge-secondary">
+                                {atualTexto}
+                            </span>
+                        ) : null}
                     </a>
 
                     <a className="btn btn-primary " href="/gerir-ingredientes">
                         Gerir Ingredientes
-                        {atual === "ingredientes" ? (<span className="badge badge-secondary">{atualTexto}</span>) : null}
+                        {atual === "ingredientes" ? (
+                            <span className="badge badge-secondary">
+                                {atualTexto}
+                            </span>
+                        ) : null}
                     </a>
 
                     <a className="btn btn-primary " href="/gerir-pizzas">
                         Gerir Pizzas
-                        {atual === "pizzas" ? (<span className="badge badge-secondary">{atualTexto}</span>) : null}
+                        {atual === "pizzas" ? (
+                            <span className="badge badge-secondary">
+                                {atualTexto}
+                            </span>
+                        ) : null}
                     </a>
 
                     <a className="btn btn-primary " href="/gerir-produtos">
                         Gerir Produtos
-                        {atual === "gerir-produtos" ? (<span className="badge badge-secondary">{atualTexto}</span>) : null}
+                        {atual === "gerir-produtos" ? (
+                            <span className="badge badge-secondary">
+                                {atualTexto}
+                            </span>
+                        ) : null}
                     </a>
-                    <a className="btn btn-danger " href="/"> Sair 👋 </a>
+                    <a className="btn btn-danger " href="/">
+                        {" "}
+                        Sair 👋{" "}
+                    </a>
                 </div>
-
             </div>
         </nav>
     );
