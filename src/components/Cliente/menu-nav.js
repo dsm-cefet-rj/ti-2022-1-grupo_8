@@ -37,18 +37,23 @@ const MenuNav = (props) => {
     /* Renderização do componente */
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light sticky-top">
-            <a className="navbar-brand"
+            <a
+                className="navbar-brand"
                 style={{
                     fontSize: "1.5rem",
                     marginLeft: "1rem",
-                }}>Pizzaria ON</a>
+                }}
+            >
+                Pizzaria ON
+            </a>
             <button className="navbar-toggler" type="button" onClick={toggle}>
-                <span className="navbar-toggler-icon">
-                    🍕
-                </span>
+                <span className="navbar-toggler-icon">🍕</span>
             </button>
 
-            <div className={`collapse navbar-collapse ${collapse ? "show" : ""}`} id="navbarNav">
+            <div
+                className={`collapse navbar-collapse ${collapse ? "show" : ""}`}
+                id="navbarNav"
+            >
                 <div
                     style={{
                         display: "flex",
@@ -57,27 +62,45 @@ const MenuNav = (props) => {
                         alignItems: "center",
                         width: "100%",
                         padding: "0 2rem 0 2rem",
-                    }}>
+                    }}
+                >
                     <a className="btn btn-primary " href="/menu">
                         Menu 📑
-                        {atual === "menu" ? (<span className="badge badge-secondary">{atualTexto}</span>) : null}
+                        {atual === "menu" ? (
+                            <span className="badge badge-secondary">
+                                {atualTexto}
+                            </span>
+                        ) : null}
                     </a>
                     <a className="btn btn-primary " href="/criar-pizza">
                         Criar Pizza
-                        {atual === "criar-pizza" ? (<span className="badge badge-secondary">{atualTexto}</span>) : null}
+                        {atual === "criar-pizza" ? (
+                            <span className="badge badge-secondary">
+                                {atualTexto}
+                            </span>
+                        ) : null}
                     </a>
                     <a className="btn btn-primary " href="/carrinho">
                         Carrinho
-                        {atual === "carrinho" ? (<span className="badge badge-secondary">{atualTexto}</span>) : null}
+                        {atual === "carrinho" ? (
+                            <span className="badge badge-secondary">
+                                {atualTexto}
+                            </span>
+                        ) : null}
                         {quantidade > 0 ? (
-                            <span className="badge"
+                            <span
+                                className="badge"
                                 style={{
                                     backgroundColor: "white",
                                     color: "black",
-                                    marginLeft: "0.5rem"
-                                }}>
-                                {quantidade}{" "} {quantidade !== 1 ? "itens" : "item"} no carrinho </span>) : null
-                        }
+                                    marginLeft: "0.5rem",
+                                }}
+                            >
+                                {quantidade}{" "}
+                                {quantidade !== 1 ? "itens" : "item"} no
+                                carrinho{" "}
+                            </span>
+                        ) : null}
                     </a>
                     <a className="btn btn-danger " href="/">
                         Sair 👋
