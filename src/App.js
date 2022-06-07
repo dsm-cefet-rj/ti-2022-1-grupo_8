@@ -19,23 +19,29 @@ function App() {
     return (
         <>
             <Provider store={store}>
-                    <Router>
-                        <Routes>
-                            <Route path="/" element={<LoginForm />} />
-                            <Route path="/criar-usuario" element={<CriarUsuario />} />
-                            <Route path="/carrinho" element={<Carrinho />} />
-                            <Route path="/criar-pizza" element={<CriarPizza />} />
-                            <Route path="/menu" element={<MenuCliente />} />
+                <Router>
+                    <Routes>
+                        <Route path="/" element={<LoginForm />} />
+                        <Route
+                            path="/criar-usuario"
+                            element={<CriarUsuario />}
+                        />
+                        <Route path="/carrinho" element={<Carrinho />} />
+                        <Route path="/criar-pizza" element={<CriarPizza />} />
+                        <Route path="/menu" element={<MenuCliente />} />
 
-                            <Route path="/menu-admin" element={<MenuAdmin />} />
-                            <Route path="/gerir-pizzas" element={<GerirPizzas />} />
-                            <Route
-                                path="/gerir-ingredientes"
-                                element={<GerirIngredientes />}
-                            />
-                            <Route path="/gerir-produtos" element={<GerirProdutos />} />
-                        </Routes>
-                    </Router>
+                        <Route path="/menu-admin" element={<MenuAdmin />} />
+                        <Route path="/gerir-pizzas" element={<GerirPizzas />} />
+                        <Route
+                            path="/gerir-ingredientes"
+                            element={<GerirIngredientes />}
+                        />
+                        <Route
+                            path="/gerir-produtos"
+                            element={<GerirProdutos />}
+                        />
+                    </Routes>
+                </Router>
             </Provider>
         </>
     );
