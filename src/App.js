@@ -29,7 +29,10 @@ function App() {
 
                     <Route path="/menu-admin" element={<MenuAdmin />} />
                     <Route path="/gerir-pizzas" element={<GerirPizzas />} />
-                    <Route path="/gerir-ingredientes" element={<GerirIngredientes />} />
+                    <Route
+                        path="/gerir-ingredientes"
+                        element={<GerirIngredientes />}
+                    />
                     <Route path="/gerir-produtos" element={<GerirProdutos />} />
                 </Routes>
             </Router>

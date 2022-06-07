@@ -30,16 +30,21 @@ import MenuCliente from "./components/Cliente/menu.js";
 import Login from "./login";
 import App from "./App";
 
-const renderWithRouter = ( ui, { route = '/', history = createMemoryHistory({ initialEntries: [route] }),} = {}) =>{
+const renderWithRouter = (
+    ui,
+    {
+        route = "/",
+        history = createMemoryHistory({ initialEntries: [route] }),
+    } = {}
+) => {
     return {
-      ...render(<Router history={history}>{ui}</Router>),
-      // adding `history` to the returned utilities to allow us
-      // to reference it in our tests (just try to avoid using
-      // this to test implementation details).
-      history,
-    }
-  }
-
+        ...render(<Router history={history}>{ui}</Router>),
+        // adding `history` to the returned utilities to allow us
+        // to reference it in our tests (just try to avoid using
+        // this to test implementation details).
+        history,
+    };
+};
 
 // Testes básicos de Renderização
 /*
@@ -51,16 +56,14 @@ const renderWithRouter = ( ui, { route = '/', history = createMemoryHistory({ in
 */
 
 it("renderiza a pagina '/' sem erros", () => {
-    const { getByText } = render(
-        <App/>
-    );
+    const { getByText } = render(<App />);
     expect(getByText(/login/i)).toBeInTheDocument();
 });
 
 it("renderiza a pagina '/criar-usuario' sem erros", () => {
-    render( <App/> );
+    render(<App />);
     fireEvent.click(screen.getByText(/Criar conta/i));
-    expect(screen.getByText('Cadastro ✍')).toBeInTheDocument();
+    expect(screen.getByText("Cadastro ✍")).toBeInTheDocument();
 });
 
 it("renderiza a pagina '/carrinho' sem erros", () => {
@@ -79,23 +82,43 @@ it("renderiza a pagina '/menu' sem erros", () => {
 });
 
 it("renderiza a pagina '/menu-admin' sem erros", () => {
-    render(<Provider store={store}> <MenuAdmin /> </Provider>);
+    render(
+        <Provider store={store}>
+            {" "}
+            <MenuAdmin />{" "}
+        </Provider>
+    );
     expect(true);
 });
 
 it("renderiza a pagina '/gerir-pizzas' sem erros", () => {
-    render(<Provider store={store}> <GerirPizzas /> </Provider>);
-    expect(screen.getByText('Gerenciar Pizzas 🍕')).toBeInTheDocument();
+    render(
+        <Provider store={store}>
+            {" "}
+            <GerirPizzas />{" "}
+        </Provider>
+    );
+    expect(screen.getByText("Gerenciar Pizzas 🍕")).toBeInTheDocument();
 });
 
 it("renderiza a pagina '/gerir-ingredientes' sem erros", () => {
-    render(<Provider store={store}> <GerirIngredientes /> </Provider>);
-    expect(screen.getByText('Ingredientes Cadastrados')).toBeInTheDocument();
+    render(
+        <Provider store={store}>
+            {" "}
+            <GerirIngredientes />{" "}
+        </Provider>
+    );
+    expect(screen.getByText("Ingredientes Cadastrados")).toBeInTheDocument();
 });
 
 it("renderiza a pagina '/gerir-produtos' sem erros", () => {
-    render(<Provider store={store}> <GerirProdutos /> </Provider>);
-    expect(screen.getByText('Gerenciar Produtos 🍾')).toBeInTheDocument();
+    render(
+        <Provider store={store}>
+            {" "}
+            <GerirProdutos />{" "}
+        </Provider>
+    );
+    expect(screen.getByText("Gerenciar Produtos 🍾")).toBeInTheDocument();
 });
 
-// Teste de 
+// Teste de
