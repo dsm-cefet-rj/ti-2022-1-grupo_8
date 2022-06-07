@@ -165,5 +165,5 @@ export default () => {
         <div className={style.body}>
             <LoginPage />
         </div>
-    )
+    );
 };
