@@ -75,7 +75,11 @@ const MenuNav = (props) => {
                             }
                             {
                                 quantidade > 0 ? (
-                                    <span className="badge badge-pill badge-primary">{quantidade} {quantidade !== 1 ? "itens" : "item"} no carrinho</span>
+                                    <span className="badge badge-pill badge-primary">
+                                        {quantidade}{" "}
+                                        {quantidade !== 1 ? "itens" : "item"} no
+                                        carrinho
+                                    </span>
                                 ) : null /* Se a quantidade de itens no carrinho for maior que 0, renderiza um span com a classe badge-pill badge-primary */
                             }
                         </a>

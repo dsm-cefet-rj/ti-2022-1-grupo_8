@@ -183,7 +183,9 @@ const GerirProdutos = () => {
                                 margin: " 0 5px",
                             }}
                             className="btn btn-danger btn-lg"
-                        >Cancelar ❌</a>
+                        >
+                            Cancelar ❌
+                        </a>
                     </div>
                 </form>
             </div>

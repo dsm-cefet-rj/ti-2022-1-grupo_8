@@ -190,9 +190,8 @@ const GerirIngredientes = () => {
                         </div>
                     </form>
                     <button className="btn btn-primary mb-3 mt-3">
-                        {
-                            idSelecinado !== 0 ? "Editar ✅" : "Adicionar ➕"
-                        }</button>
+                        {idSelecinado !== 0 ? "Editar ✅" : "Adicionar ➕"}
+                    </button>
                     <button className="btn btn-danger">Remover ❌</button>
                 </div>
             </div>
