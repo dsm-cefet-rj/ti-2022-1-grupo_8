@@ -9,7 +9,7 @@ import CriarUsuario from "./components/Cliente/criar-usuario";
 import MenuAdmin from "./components/Admin/menu-admin";
 import GerirPizzas from "./components/Admin/gerir-pizzas";
 import GerirIngredientes from "./components/Admin/gerir-ingredientes";
-
+import GerirProdutos from "./components/Admin/gerir-produtos";
 /*
 Componente: App
 Descrição: Componente que renderiza a página principal
@@ -26,6 +26,7 @@ function App() {
             <Route path="/menu-admin" element={<MenuAdmin />} />
             <Route path="/gerir-pizzas" element={<GerirPizzas />} />
             <Route path="/gerir-ingredientes" element={<GerirIngredientes />} />
+            <Route path="/gerir-produtos" element={<GerirProdutos />} />
         </Routes>
     );
 }

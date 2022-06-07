@@ -14,7 +14,7 @@ const AdminNav = (props) => {
 
     // set screen title
     useEffect(() => {
-        let title = "Adminitrador - Pizzaria ON -";
+        let title = "Adminitrador - Pizzaria ON ";
         switch (atual) {
             case "menu":
                 title += " - Menu";
@@ -25,6 +25,8 @@ const AdminNav = (props) => {
             case "pizzas":
                 title += " - Pizzas";
                 break;
+            case "produtos":
+                title += " - Produtos";
             default:
                 break;
         }
@@ -67,6 +69,16 @@ const AdminNav = (props) => {
                             Gerir Pizzas
                             {
                                 atual === "pizzas" ? (
+                                    <span className="sr-only">(Atual)</span>
+                                ) : null /* Se a página atual for a página de pizzas, renderiza um span com a classe sr-only */
+                            }
+                        </a>
+                    </li>
+                    <li className="nav-item">
+                        <a className="nav-link" href="/gerir-produtos">
+                            Gerir Produtos
+                            {
+                                atual === "gerir-produtos" ? (
                                     <span className="sr-only">(Atual)</span>
                                 ) : null /* Se a página atual for a página de pizzas, renderiza um span com a classe sr-only */
                             }
