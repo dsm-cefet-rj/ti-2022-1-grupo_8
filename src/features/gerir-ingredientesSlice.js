@@ -19,5 +19,8 @@ const geirIngredientesSlice = createSlice({
 export const { setIngredientes, setIdSelecinado } =
     geirIngredientesSlice.actions;
 
+// para ser usado com o UseSelector
+export const selectIngredientes = (state) => state.geirIngredientes.ingredientes;
+export const selectId = (state) => state.gerirIngredientes.idSelecinado;
 const reducer = geirIngredientesSlice.reducer;
 export default reducer;

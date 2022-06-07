@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setIdSelecinado } from "../../features/gerir-ingredientesSlice";
+import { setIdSelecinado , selectId } from "../../features/gerir-ingredientesSlice";
 import { ingredientes, ingredientes as ingredientesDB } from "../store";
 import AdminNav from "./admin-nav";
 import styles from "./gerir-ingredientes.module.scss";
@@ -72,9 +72,7 @@ Componente: GerirIngredientes
 Descrição: Componente que renderiza a página de gerenciamento de ingredientes
 */
 const GerirIngredientes = () => {
-    const idSelecinado = useSelector(
-        (state) => state.gerirIngredientes.idSelecinado
-    );
+    const idSelecinado = useSelector(selectId);
     useEffect(() => {
         if (idSelecinado !== 0) {
             let ingrediente = ingredientesDB.find(
@@ -96,6 +94,23 @@ const GerirIngredientes = () => {
             document.getElementById("imagem-field").hidden = false;
         }
     }, [idSelecinado]);
+
+    const handleButton = (e) => {
+        let nome = document.getElementById("nome").value;
+        let preco = document.getElementById("preco").value;
+        let descricao = document.getElementById("descricao").value;
+        let pesoPorcao = document.getElementById("PesoPorcao").value;
+        let imagem = document.getElementById("imagem").value;
+        const ingrediente = {
+            nome: nome,
+            preco: preco,
+            descricao: descricao,
+            pesoPorcao: pesoPorcao,
+            imagem: imagem,
+        };
+        console.log(ingrediente);
+
+    }
 
     // Renderização do componente
     return (
@@ -167,7 +182,7 @@ const GerirIngredientes = () => {
                             />
                         </div>
                         <div className="form-group mb-2">
-                            <label htmlFor="PesoPorcao">Peso Porção em g</label>
+                            <label htmlFor="PesoPorcao">Peso Porção em gramas</label>
                             <input
                                 type="number"
                                 className="form-control"
@@ -190,7 +205,7 @@ const GerirIngredientes = () => {
                             />
                         </div>
                     </form>
-                    <button className="btn btn-primary mb-3 mt-3">
+                    <button className="btn btn-primary mb-3 mt-3" onClick={handleButton}>
                         {idSelecinado !== 0 ? "Editar ✅" : "Adicionar ➕"}
                     </button>
                     <button className="btn btn-danger">Remover ❌</button>

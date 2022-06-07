@@ -65,6 +65,7 @@ export const {
     carregarCarrinho,
 } = carrinhoSlice.actions;
 
+// para ser usado com o UseSelector
 export const selectCarrinho = (state) => state.carrinho.itens;
 
 const reducer = carrinhoSlice.reducer;
