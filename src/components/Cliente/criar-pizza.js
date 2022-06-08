@@ -42,6 +42,7 @@ const CriarPizza = () => {
         });
     };
 
+    // Função que gera o nome da pizza
     const getNomePizzaFromIngredientes = (ingredientes, tamanho) => {
         let nome = "Pizza " + tamanho;
 
@@ -63,10 +64,15 @@ const CriarPizza = () => {
         return nome;
     };
 
+    // que pega no nome do ingrediente do id passado
     const getNomeIngredienteFromId = (id) => {
-        return ingredientesBD.find((ingrediente) => ingrediente.id === id).nome;
+        let ingrediente = ingredientesBD.find(
+            (ingrediente) => parseInt(ingrediente.id) === parseInt(id)
+        );
+        return "ingrediente.nome";
     };
 
+    // Função que sorteia um ingrediente
     const sortear = (arr) => {
         const item = arr[Math.floor(Math.random() * arr.length)];
         arr.splice(arr.indexOf(item), 1);
@@ -114,7 +120,7 @@ const CriarPizza = () => {
             // Adicionar a pizza customizada ao carrinho
             dispatch(mandaPCarrinho(pizza));
             // Redirecionar para a página de carrinho
-            window.location.replace("/carrinho");
+            //window.location.replace("/carrinho");
         }
     };
 
