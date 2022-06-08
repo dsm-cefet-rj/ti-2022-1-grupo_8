@@ -104,29 +104,47 @@ const GerirPizzas = () => {
                                         onClick={() => {
                                             setEditando(true);
                                             setNome(pizza.nome);
-                                            
-                                            let elem = document.getElementById(`pizza-${pizza.id}`);
-                                            if (elem.classList.contains("btn-success")) {
-                                                elem.classList.remove("btn-success");
-                                                elem.classList.add("btn-danger");
+
+                                            let elem = document.getElementById(
+                                                `pizza-${pizza.id}`
+                                            );
+                                            if (
+                                                elem.classList.contains(
+                                                    "btn-success"
+                                                )
+                                            ) {
+                                                elem.classList.remove(
+                                                    "btn-success"
+                                                );
+                                                elem.classList.add(
+                                                    "btn-danger"
+                                                );
                                                 elem.innerHTML = "Remover";
-                                            }
-                                            else {
-                                                elem.classList.remove("btn-danger");
-                                                elem.classList.add("btn-success");
+                                            } else {
+                                                elem.classList.remove(
+                                                    "btn-danger"
+                                                );
+                                                elem.classList.add(
+                                                    "btn-success"
+                                                );
                                                 elem.innerHTML = "Editar";
                                             }
 
-
                                             pizzaBD.map((pizzaOBJ) => {
                                                 if (pizzaOBJ.id !== pizza.id) {
-                                                    let elem = document.getElementById(`pizza-${pizzaOBJ.id}`)
-                                                    elem.classList.remove("btn-danger");
-                                                    elem.classList.add("btn-success");
+                                                    let elem =
+                                                        document.getElementById(
+                                                            `pizza-${pizzaOBJ.id}`
+                                                        );
+                                                    elem.classList.remove(
+                                                        "btn-danger"
+                                                    );
+                                                    elem.classList.add(
+                                                        "btn-success"
+                                                    );
                                                     elem.innerHTML = "Editar";
                                                 }
                                             });
-
                                         }}
                                     >
                                         Alterar
@@ -211,8 +229,9 @@ const GerirPizzas = () => {
                             style={{
                                 margin: " 0 5px",
                             }}
-                            className="btn btn-outline-danger btn-lg">
-                            {editando ? "Deletar 🗑️": "Cancelar ❌"}
+                            className="btn btn-outline-danger btn-lg"
+                        >
+                            {editando ? "Deletar 🗑️" : "Cancelar ❌"}
                         </a>
                     </div>
                 </div>

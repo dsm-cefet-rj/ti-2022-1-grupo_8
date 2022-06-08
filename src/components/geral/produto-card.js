@@ -41,10 +41,13 @@ const ProdutoCard = (props) => {
 
     return (
         <div className="col-md-6 col-lg-4 col-xl-3">
-            <div className="card mt-3 mb-3" style={{ 
-                maxWidth: "540px",
-                height: "100%",
-                }}>
+            <div
+                className="card mt-3 mb-3"
+                style={{
+                    maxWidth: "540px",
+                    height: "100%",
+                }}
+            >
                 <div className="row g-1">
                     <div className="col-4 col-md-12">
                         <img

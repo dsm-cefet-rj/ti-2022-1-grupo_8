@@ -37,22 +37,17 @@ const ListaPizzasMaisPedidas = () => {
             </div>
         </>
     );
-}
+};
 
 const SecaoCriarPizza = () => {
     return (
         <div className="row justify-content-center mt-2">
             <div className="col-md-4">
                 <div className="card text-center">
-                    <div className="card-header">
-                        Crie sua própria pizza
-                    </div>
+                    <div className="card-header">Crie sua própria pizza</div>
                     <div className="card-body">
                         <h5 className="card-title">Do seu jeitinho</h5>
-                        <Link
-                            to="/criar-pizza"
-                            className="btn btn-primary"
-                        >
+                        <Link to="/criar-pizza" className="btn btn-primary">
                             Clique aqui
                         </Link>
                     </div>
@@ -60,7 +55,7 @@ const SecaoCriarPizza = () => {
             </div>
         </div>
     );
-}
+};
 
 const ListaProdutos = () => {
     // Pegando os produtos do banco de dados
@@ -80,15 +75,15 @@ const ListaProdutos = () => {
                     whiteSpace: "nowrap",
                     display: "flex",
                     flexWrap: "nowrap",
-
-                }}>
+                }}
+            >
                 {produtos.map((produto) => (
                     <div
                         style={{
                             margin: "1rem",
                         }}
-                        key={produto.id}>
-
+                        key={produto.id}
+                    >
                         <ProdutoCard
                             nome={produto.nome}
                             descricao={produto.descricao}
@@ -103,7 +98,7 @@ const ListaProdutos = () => {
             </div>
         </>
     );
-}
+};
 
 const TodasAsPizzas = () => {
     // Pegando os produtos do banco de dados
@@ -132,8 +127,7 @@ const TodasAsPizzas = () => {
             </div>
         </>
     );
-}
-
+};
 
 export default () => {
     const ref = useRef();

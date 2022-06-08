@@ -105,31 +105,52 @@ const GerirProdutos = () => {
                                             setNome(pizza.nome);
                                             setPreco(pizza.preco);
                                             setDescricao(pizza.descricao);
-                                            let elem = document.getElementById(`pizza-${pizza.id}`);
-                                            if (elem.classList.contains("btn-success")) {
-                                                elem.classList.remove("btn-success");
-                                                elem.classList.add("btn-danger");
+                                            let elem = document.getElementById(
+                                                `pizza-${pizza.id}`
+                                            );
+                                            if (
+                                                elem.classList.contains(
+                                                    "btn-success"
+                                                )
+                                            ) {
+                                                elem.classList.remove(
+                                                    "btn-success"
+                                                );
+                                                elem.classList.add(
+                                                    "btn-danger"
+                                                );
                                                 elem.innerHTML = "Remover";
                                             } else {
-                                                elem.classList.remove("btn-danger");
-                                                elem.classList.add("btn-success");
+                                                elem.classList.remove(
+                                                    "btn-danger"
+                                                );
+                                                elem.classList.add(
+                                                    "btn-success"
+                                                );
                                                 elem.innerHTML = "Editar";
 
                                                 setEditando(false);
                                                 setNome("");
                                                 setPreco("");
                                                 setDescricao("");
-
                                             }
                                             produtosBD.map((pizzaOBJ) => {
                                                 if (pizzaOBJ.id !== pizza.id) {
-                                                    let elem = document.getElementById(`pizza-${pizzaOBJ.id}`)
-                                                    elem.classList.remove("btn-danger");
-                                                    elem.classList.add("btn-success");
+                                                    let elem =
+                                                        document.getElementById(
+                                                            `pizza-${pizzaOBJ.id}`
+                                                        );
+                                                    elem.classList.remove(
+                                                        "btn-danger"
+                                                    );
+                                                    elem.classList.add(
+                                                        "btn-success"
+                                                    );
                                                     elem.innerHTML = "Editar";
                                                 }
                                             });
-                                        }}>
+                                        }}
+                                    >
                                         Alterar
                                     </button>
                                 </div>
@@ -191,10 +212,12 @@ const GerirProdutos = () => {
                             />
                         </div>
 
-                        <div style={{
-                            textAlign: "center",
-                            marginTop: "2rem"
-                        }}>
+                        <div
+                            style={{
+                                textAlign: "center",
+                                marginTop: "2rem",
+                            }}
+                        >
                             <button className="btn btn-outline-success btn-lg">
                                 {editando ? "Salvar 💿" : "Adicionar ✅"}
                             </button>
@@ -203,7 +226,8 @@ const GerirProdutos = () => {
                                 style={{
                                     margin: " 0 5px",
                                 }}
-                                className="btn btn-outline-danger btn-lg">
+                                className="btn btn-outline-danger btn-lg"
+                            >
                                 {editando ? "Deletar 🗑️" : "Cancelar ❌"}
                             </a>
                         </div>

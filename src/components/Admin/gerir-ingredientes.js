@@ -213,7 +213,7 @@ const GerirIngredientes = () => {
                         {idSelecinado !== 0 ? "Salvar 💿" : "Adicionar ✅"}
                     </button>
                     <button className="btn btn-outline-danger">
-                        {idSelecinado !== 0? "Deletar 🗑️": "Cancelar ❌"}
+                        {idSelecinado !== 0 ? "Deletar 🗑️" : "Cancelar ❌"}
                     </button>
                 </div>
             </div>

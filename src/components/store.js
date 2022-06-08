@@ -335,7 +335,8 @@ let bebidas = [
     },
     {
         nome: "Mousse de Chocolate 50g",
-        descricao: "Sobremesa leve com base de chocolate em barra meio amargo e creme de leite. Aerada, com leve toque de chocolate branco para dar crocância.",
+        descricao:
+            "Sobremesa leve com base de chocolate em barra meio amargo e creme de leite. Aerada, com leve toque de chocolate branco para dar crocância.",
         imagem: "imgs/mousse-de-chocolate.png",
         preco: 5.0,
         id: 105,
@@ -351,7 +352,8 @@ let bebidas = [
     },
     {
         nome: "Mousse de Maracujá 50g",
-        descricao: "Sobremesa aerada que leva suco de maracujá fresco, creme de leite e leite condensado. Leve, com um sabor cítrico e doce a cada colherada, finaliza qualquer almoço ou jantar.",
+        descricao:
+            "Sobremesa aerada que leva suco de maracujá fresco, creme de leite e leite condensado. Leve, com um sabor cítrico e doce a cada colherada, finaliza qualquer almoço ou jantar.",
         imagem: "imgs/mousse-de-maracuja.png",
         preco: 5.0,
         id: 107,
