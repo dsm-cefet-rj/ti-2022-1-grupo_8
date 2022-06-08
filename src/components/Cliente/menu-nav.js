@@ -32,7 +32,7 @@ const MenuNav = (props) => {
                 break;
         }
         document.title = title;
-    }, [atual,carrinho]);
+    }, [atual, carrinho]);
 
     /* Renderização do componente */
     return (
