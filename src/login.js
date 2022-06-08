@@ -1,5 +1,5 @@
 import { Parallax, ParallaxLayer } from "@react-spring/parallax";
-import { useEffect, useRef } from "react";
+import { React, useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import style from "./login.module.scss";
 /*
@@ -30,13 +30,40 @@ const Cloud = (props) => {
 };
 
 const LoginForm = () => {
-    useEffect(() => {
-        document.title = "Pizzaria ON - Login";
-    }, []);
 
+    const contas = [
+        {
+            login: "admin",
+            senha: "admin",
+            type: "admin",
+        }, {
+            login: "user",
+            senha: "123",
+            type: "user",
+        }
+    ]
+
+    const [login, setLogin] = useState("");
+    const [senha, setSenha] = useState("");
+    const [erro, setErro] = useState("");
+
+    const handleLogin = (e) => {
+        console.log(login, senha);
+        let conta = contas.find(c => c.login === login && c.senha === senha);
+        if (!conta) {
+            setErro("Login ou senha incorretos");
+            return;
+        } else {
+            if (conta.type === "admin") {
+                window.location.href = "/menu-admin";
+            } else {
+                window.location.href = "/menu";
+            }
+        }
+    }
     return (
         <>
-            <div className="logo text-center">
+            <div className={style.formLogo}>
                 <h1>Pizzaria ON</h1>
             </div>
 
@@ -45,6 +72,9 @@ const LoginForm = () => {
                     <h1 className="titulo">Login</h1>
                 </div>
                 <form>
+                    <div>
+                        {erro && <div className="alert alert-danger">{erro}</div>}
+                    </div>
                     <div className="row mb-2">
                         <input
                             id="email"
@@ -54,6 +84,7 @@ const LoginForm = () => {
                             className="form-control"
                             autoComplete="email"
                             required
+                            onChange={(e) => setLogin(e.target.value)}
                         />
                     </div>
                     <div className="row mb-2">
@@ -64,23 +95,26 @@ const LoginForm = () => {
                             className="form-control"
                             autoComplete="password"
                             required
+                            onChange={(e) => setSenha(e.target.value)}
                         />
                     </div>
-                    <div className="row mb-5 ">
-                        <Link to="/menu" className="btn btn-primary btn-block ">
-                            Logar
-                        </Link>
-                    </div>
-                    <div className="row mb-2 ">
-                        <p>Não possui conta? Cadastre-se</p>
-                        <Link
-                            to="/criar-usuario"
-                            className="btn btn-primary btn-block"
-                        >
-                            Criar conta
-                        </Link>
-                    </div>
+
+
                 </form>
+                <div className="row mb-5 ">
+                    <button to="/menu" className="btn btn-primary btn-block"
+                        onClick={handleLogin}>
+                        Logar
+                    </button>
+                </div>
+                <div className="row mb-2 ">
+                    <p>Não possui conta? Cadastre-se</p>
+                    <Link
+                        to="/criar-usuario"
+                        className="btn btn-warning btn-block">
+                        Criar conta
+                    </Link>
+                </div>
             </div>
         </>
     );
@@ -161,6 +195,9 @@ const LoginPage = () => {
 };
 
 export default () => {
+    useEffect(() => {
+        document.title = "Pizzaria ON - Login";
+    }, []);
     return (
         <div className={style.body}>
             <LoginPage />
