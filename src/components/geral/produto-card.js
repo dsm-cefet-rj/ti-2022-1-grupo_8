@@ -11,6 +11,7 @@ Descrição: Componente que renderiza um card de um produto
 */
 const ProdutoCard = (props) => {
     const data = props.data; // Dados do produto
+    const tipo = props.tipo; // Tipo do produto
 
     // Variável que controla se o produto ja esta no carrinho
     const [adicionado, setAdicionado] = useState(
@@ -40,7 +41,10 @@ const ProdutoCard = (props) => {
 
     return (
         <div className="col-md-6 col-lg-4 col-xl-3">
-            <div className="card mt-3 mb-3" style={{ maxWidth: "540px" }}>
+            <div className="card mt-3 mb-3" style={{ 
+                maxWidth: "540px",
+                height: "100%",
+                }}>
                 <div className="row g-1">
                     <div className="col-4 col-md-12">
                         <img

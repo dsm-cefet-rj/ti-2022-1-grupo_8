@@ -126,9 +126,6 @@ const GerirIngredientes = () => {
                         </p>
                         <div className="row section">
                             <div className="col">
-                                <p>
-                                    <b>Metade 1</b>
-                                </p>
                                 <div className="scrollmenu">
                                     {ingredientes.map((ingrediente) => (
                                         <Ingrediente
@@ -210,12 +207,14 @@ const GerirIngredientes = () => {
                         </div>
                     </form>
                     <button
-                        className="btn btn-primary mb-3 mt-3"
+                        className="btn btn-outline-success mb-3 mt-3"
                         onClick={handleButton}
                     >
-                        {idSelecinado !== 0 ? "Editar ✅" : "Adicionar ➕"}
+                        {idSelecinado !== 0 ? "Salvar 💿" : "Adicionar ✅"}
                     </button>
-                    <button className="btn btn-danger">Remover ❌</button>
+                    <button className="btn btn-outline-danger">
+                        {idSelecinado !== 0? "Deletar 🗑️": "Cancelar ❌"}
+                    </button>
                 </div>
             </div>
         </>

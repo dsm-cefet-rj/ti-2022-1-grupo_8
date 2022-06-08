@@ -24,6 +24,11 @@ const GerirPizzas = () => {
 
     const handleNome = (e) => {
         setNome(e.target.value);
+        // carregar ingredientes
+        let ingredientes = [];
+        for (let i = 0; i < metades; i++) {
+            ingredientes.push([]);
+        }
     };
     const handleImagem = (e) => {
         setImagem(e.target.files[0]);
@@ -99,18 +104,29 @@ const GerirPizzas = () => {
                                         onClick={() => {
                                             setEditando(true);
                                             setNome(pizza.nome);
+                                            
+                                            let elem = document.getElementById(`pizza-${pizza.id}`);
+                                            if (elem.classList.contains("btn-success")) {
+                                                elem.classList.remove("btn-success");
+                                                elem.classList.add("btn-danger");
+                                                elem.innerHTML = "Remover";
+                                            }
+                                            else {
+                                                elem.classList.remove("btn-danger");
+                                                elem.classList.add("btn-success");
+                                                elem.innerHTML = "Editar";
+                                            }
 
-                                            document.getElementById(
-                                                `pizza-${pizza.id}`
-                                            ).innerHTML = "Alterando...";
 
                                             pizzaBD.map((pizzaOBJ) => {
                                                 if (pizzaOBJ.id !== pizza.id) {
-                                                    document.getElementById(
-                                                        `pizza-${pizzaOBJ.id}`
-                                                    ).innerHTML = "Alterar";
+                                                    let elem = document.getElementById(`pizza-${pizzaOBJ.id}`)
+                                                    elem.classList.remove("btn-danger");
+                                                    elem.classList.add("btn-success");
+                                                    elem.innerHTML = "Editar";
                                                 }
                                             });
+
                                         }}
                                     >
                                         Alterar
@@ -181,24 +197,25 @@ const GerirPizzas = () => {
                             </h3>
                         </div>
                     </div>
+                </form>
+                <div className="row section">
                     <div style={{ textAlign: "center" }}>
                         <button
-                            className="btn btn-primary btn-lg"
+                            className="btn btn-outline-success btn-lg"
                             id="botao-acao"
                         >
-                            {editando ? "Salvar" : "Adicionar"}
+                            {editando ? "Salvar 💿" : "Adicionar ✅"}
                         </button>
                         <a
                             href="/menu-admin"
                             style={{
                                 margin: " 0 5px",
                             }}
-                            className="btn btn-danger btn-lg"
-                        >
-                            Cancelar ❌
+                            className="btn btn-outline-danger btn-lg">
+                            {editando ? "Deletar 🗑️": "Cancelar ❌"}
                         </a>
                     </div>
-                </form>
+                </div>
             </div>
         </>
     );

@@ -69,7 +69,7 @@ const CriarPizza = () => {
         let ingrediente = ingredientesBD.find(
             (ingrediente) => parseInt(ingrediente.id) === parseInt(id)
         );
-        return "ingrediente.nome";
+        return ingrediente.nome;
     };
 
     // Função que sorteia um ingrediente
@@ -120,7 +120,7 @@ const CriarPizza = () => {
             // Adicionar a pizza customizada ao carrinho
             dispatch(mandaPCarrinho(pizza));
             // Redirecionar para a página de carrinho
-            //window.location.replace("/carrinho");
+            window.location.replace("/carrinho");
         }
     };
 
