@@ -30,18 +30,18 @@ const Cloud = (props) => {
 };
 
 const LoginForm = () => {
-
     const contas = [
         {
             login: "admin",
             senha: "admin",
             type: "admin",
-        }, {
+        },
+        {
             login: "user",
             senha: "123",
             type: "user",
-        }
-    ]
+        },
+    ];
 
     const [login, setLogin] = useState("");
     const [senha, setSenha] = useState("");
@@ -49,7 +49,7 @@ const LoginForm = () => {
 
     const handleLogin = (e) => {
         console.log(login, senha);
-        let conta = contas.find(c => c.login === login && c.senha === senha);
+        let conta = contas.find((c) => c.login === login && c.senha === senha);
         if (!conta) {
             setErro("Login ou senha incorretos");
             return;
@@ -60,7 +60,7 @@ const LoginForm = () => {
                 window.location.href = "/menu";
             }
         }
-    }
+    };
     return (
         <>
             <div className={style.formLogo}>
@@ -73,7 +73,9 @@ const LoginForm = () => {
                 </div>
                 <form>
                     <div>
-                        {erro && <div className="alert alert-danger">{erro}</div>}
+                        {erro && (
+                            <div className="alert alert-danger">{erro}</div>
+                        )}
                     </div>
                     <div className="row mb-2">
                         <input
@@ -98,12 +100,13 @@ const LoginForm = () => {
                             onChange={(e) => setSenha(e.target.value)}
                         />
                     </div>
-
-
                 </form>
                 <div className="row mb-5 ">
-                    <button to="/menu" className="btn btn-primary btn-block"
-                        onClick={handleLogin}>
+                    <button
+                        to="/menu"
+                        className="btn btn-primary btn-block"
+                        onClick={handleLogin}
+                    >
                         Logar
                     </button>
                 </div>
@@ -111,7 +114,8 @@ const LoginForm = () => {
                     <p>Não possui conta? Cadastre-se</p>
                     <Link
                         to="/criar-usuario"
-                        className="btn btn-warning btn-block">
+                        className="btn btn-warning btn-block"
+                    >
                         Criar conta
                     </Link>
                 </div>
