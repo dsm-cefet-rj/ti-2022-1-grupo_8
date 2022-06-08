@@ -9,6 +9,35 @@ import styles from "./menu.module.scss";
 Componente: MenuCliente
 Descrição: Componente que renderiza a página principal do Cliente
 */
+
+const Decoracao = (props) => {
+    let emojis = props.emojis;
+    let quant = props.quant; 
+    const selectRandomEmoji = () => {
+        let index = Math.floor(Math.random() * emojis.length);
+        return emojis[index];
+    }
+    return (
+        <div className={styles.decoracao}>
+        {
+            Array.from({ length: quant }, (_, i) => {
+                return (
+                    <h1 key={i}
+                    style={{
+                        transform: `rotate(${Math.random() * (360 - 0) + 0}deg)`,
+                        transform: `translate(${Math.random() * (100 - 0) + 0}%, ${Math.random() * (100 - 0) + 0}%)`,
+                        textShadow: `0 0 10px black`,
+                        fontSize: `${Math.random() * 10+5}rem`,
+                        }}>
+                        {selectRandomEmoji()}
+                    </h1>
+                );
+            })
+        }
+        </div>
+    );
+}
+
 const ListaPizzasMaisPedidas = () => {
     // Pegando os produtos do banco de dados
     let pizzas = getPizzasUsuario();
@@ -133,8 +162,20 @@ export default () => {
     const ref = useRef();
     return (
         <div className={styles.body}>
-            <Parallax pages={3} ref={ref}>
+            <Parallax pages={2.5} ref={ref}>
                 <MenuNav Atual="menu" />
+                <ParallaxLayer offset={0} speed={0.5}>
+                    <Decoracao 
+                        emojis={[
+                            "🍕","🍕","🍕","🍕",
+                            "🍕","🍕","🍕","😋",
+                            "🧀","🍅","🤘","🥤",
+                            "🍾","🥓","🐷","🧄",
+                            "🧅","🥩","🐥","༼ つ ◕_◕ ༽つ🍰🍔🍕",
+                            "😍","🤌🏼","🍄","👩🏻‍🍳"]}
+                        quant={50}
+                    />
+                </ParallaxLayer>
                 <ParallaxLayer offset={0} speed={2}>
                     <div className="container mb-2 p-1 bg-transparent">
                         <ListaPizzasMaisPedidas />
@@ -147,8 +188,6 @@ export default () => {
                         <ListaProdutos />
                     </div>
                     <hr />
-                </ParallaxLayer>
-                <ParallaxLayer offset={1} speed={2}>
                     <div className="container mb-2 p-1 bg-transparent">
                         <TodasAsPizzas />
                     </div>
