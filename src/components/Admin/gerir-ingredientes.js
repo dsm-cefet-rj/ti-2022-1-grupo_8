@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setIdSelecinado , selectId } from "../../features/gerir-ingredientesSlice";
+import {
+    setIdSelecinado,
+    selectId,
+} from "../../features/gerir-ingredientesSlice";
 import { ingredientes, ingredientes as ingredientesDB } from "../store";
 import AdminNav from "./admin-nav";
 import styles from "./gerir-ingredientes.module.scss";
@@ -109,8 +112,7 @@ const GerirIngredientes = () => {
             imagem: imagem,
         };
         console.log(ingrediente);
-
-    }
+    };
 
     // Renderização do componente
     return (
@@ -182,7 +184,9 @@ const GerirIngredientes = () => {
                             />
                         </div>
                         <div className="form-group mb-2">
-                            <label htmlFor="PesoPorcao">Peso Porção em gramas</label>
+                            <label htmlFor="PesoPorcao">
+                                Peso Porção em gramas
+                            </label>
                             <input
                                 type="number"
                                 className="form-control"
@@ -205,7 +209,10 @@ const GerirIngredientes = () => {
                             />
                         </div>
                     </form>
-                    <button className="btn btn-primary mb-3 mt-3" onClick={handleButton}>
+                    <button
+                        className="btn btn-primary mb-3 mt-3"
+                        onClick={handleButton}
+                    >
                         {idSelecinado !== 0 ? "Editar ✅" : "Adicionar ➕"}
                     </button>
                     <button className="btn btn-danger">Remover ❌</button>
