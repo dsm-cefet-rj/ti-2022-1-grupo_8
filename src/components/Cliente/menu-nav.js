@@ -1,5 +1,6 @@
 import { React, useEffect, useState } from "react";
-import { getFromLocalStorage } from "../../features/carrinhoSlice";
+import { selectCarrinho } from "../../features/carrinhoSlice";
+import { useSelector } from "react-redux";
 import styled from "./menu-nav.module.scss";
 /* 
 Componente: MenuNav
@@ -8,12 +9,10 @@ Descrição: Componente que renderiza o menu de navegação para os clientes
 const MenuNav = (props) => {
     const atual = props.Atual; // Página atual
     const atualTexto = "😋";
-
+    const carrinho = useSelector(selectCarrinho);
     const [collapse, setCollapse] = useState(false); // estado que controla o collapse do menu
 
     const toggle = () => setCollapse(!collapse); // função que altera o estado do collapse
-
-    const quantidade = getFromLocalStorage().length; // quantidade de itens no carrinho
 
     // set screen title
     useEffect(() => {
@@ -33,7 +32,7 @@ const MenuNav = (props) => {
                 break;
         }
         document.title = title;
-    }, [atual]);
+    }, [atual,carrinho]);
 
     /* Renderização do componente */
     return (
@@ -88,7 +87,7 @@ const MenuNav = (props) => {
                                 {atualTexto}
                             </span>
                         ) : null}
-                        {quantidade > 0 ? (
+                        {carrinho.length > 0 ? (
                             <span
                                 className="badge"
                                 style={{
@@ -97,8 +96,8 @@ const MenuNav = (props) => {
                                     marginLeft: "0.5rem",
                                 }}
                             >
-                                {quantidade}{" "}
-                                {quantidade !== 1 ? "itens" : "item"} no
+                                {carrinho.length}{" "}
+                                {carrinho.length !== 1 ? "itens" : "item"} no
                                 carrinho{" "}
                             </span>
                         ) : null}
