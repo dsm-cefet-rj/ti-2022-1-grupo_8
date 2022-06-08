@@ -24,10 +24,12 @@ const Decoracao = (props) => {
                     <h1
                         key={i}
                         style={{
-                            transform: `rotate(${Math.random() * (360 - 0) + 0
-                                }deg)`,
-                            transform: `translate(${Math.random() * (100 - 0) + 0
-                                }%, ${Math.random() * (100 - 0) + 0}%)`,
+                            transform: `rotate(${
+                                Math.random() * (360 - 0) + 0
+                            }deg)`,
+                            transform: `translate(${
+                                Math.random() * (100 - 0) + 0
+                            }%, ${Math.random() * (100 - 0) + 0}%)`,
                             textShadow: `0 0 10px black`,
                             fontSize: `${Math.random() * 10 + 5}rem`,
                         }}
