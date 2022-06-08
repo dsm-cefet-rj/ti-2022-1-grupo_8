@@ -24,12 +24,10 @@ const Decoracao = (props) => {
                     <h1
                         key={i}
                         style={{
-                            transform: `rotate(${
-                                Math.random() * (360 - 0) + 0
-                            }deg)`,
-                            transform: `translate(${
-                                Math.random() * (100 - 0) + 0
-                            }%, ${Math.random() * (100 - 0) + 0}%)`,
+                            transform: `rotate(${Math.random() * (360 - 0) + 0
+                                }deg)`,
+                            transform: `translate(${Math.random() * (100 - 0) + 0
+                                }%, ${Math.random() * (100 - 0) + 0}%)`,
                             textShadow: `0 0 10px black`,
                             fontSize: `${Math.random() * 10 + 5}rem`,
                         }}
@@ -167,7 +165,6 @@ export default () => {
     return (
         <div className={styles.body}>
             <Parallax pages={2.5} ref={ref}>
-                <MenuNav Atual="menu" />
                 <ParallaxLayer offset={0} speed={0.5}>
                     <Decoracao
                         emojis={[
@@ -200,6 +197,7 @@ export default () => {
                     />
                 </ParallaxLayer>
                 <ParallaxLayer offset={0} speed={2}>
+                    <MenuNav Atual="menu" />
                     <div className="container mb-2 p-1 bg-transparent">
                         <ListaPizzasMaisPedidas />
                     </div>
