@@ -13,7 +13,7 @@
 
 `backend`: código do backend
 
-`frontend`: código do frontend
+`src`: código do frontend
 
 # Como rodar o projeto?
 
