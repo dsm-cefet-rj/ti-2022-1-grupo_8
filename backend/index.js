@@ -1,5 +1,5 @@
 const express = require("express");
-require('dotenv').config();
+require("dotenv").config();
 
 const port = process.env.BACKEND_PORT || 3001;
 
