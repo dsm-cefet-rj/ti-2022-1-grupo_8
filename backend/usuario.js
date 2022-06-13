@@ -1,4 +1,4 @@
-var express = require('express');
+var express = require("express");
 var router = express.Router();
 
 const ingredientes = require("./data/ingredientes.json");
@@ -11,8 +11,7 @@ router.get("/usuario/pizza", (req, res) => {
             let preco = 0;
             pizza.ingredientes.forEach((ingrediente) => {
                 preco += ingredientes.find((i) => i.id == ingrediente).preco;
-            }
-            );
+            });
             preco += 20;
             return {
                 nome: pizza.nome,
@@ -22,9 +21,9 @@ router.get("/usuario/pizza", (req, res) => {
                 id: pizza.id,
                 ingredientes: pizza.ingredientes,
                 quant_comprada: pizza.quant_comprada,
-            }
+            };
         });
-    }
+    };
     res.status(200).json(getPrices(pizzas));
 });
 
@@ -42,9 +41,7 @@ router.set("/usuario/pedido", (req, res) => {
     if (usuario) {
         usuario.carrinho = carrinho.carrinho;
         res.status(200).send("Pedido realizado com sucesso!");
-    }
-    else {
+    } else {
         res.status(400).send("Usuário não encontrado!");
     }
 });
-

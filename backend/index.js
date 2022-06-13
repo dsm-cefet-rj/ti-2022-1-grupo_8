@@ -14,17 +14,11 @@ server.get("/", (req, res) => {
     res.status(400).send("Bad Request");
 });
 
-server.set("/criar-usuario", (req, res) => {
+server.set("/criar-usuario", (req, res) => {});
 
-});
+server.set("/criar-pizza", (req, res) => {});
 
-server.set("/criar-pizza", (req, res) => {
-
-});
-
-server.set("/criar-pedido", (req, res) => {
-
-});
+server.set("/criar-pedido", (req, res) => {});
 
 server.get("/pizza", (req, res) => {
     res.status(200).send(pizzas);
@@ -38,8 +32,8 @@ server.get("/ingredientes", (req, res) => {
     res.status(200).json(ingredientes);
 });
 
-
-
 server.listen(port, () => {
-    console.log(`⚠️ ❗ Servidor aberto no endereço http://localhost:${port} ❗⚠️`);
+    console.log(
+        `⚠️ ❗ Servidor aberto no endereço http://localhost:${port} ❗⚠️`
+    );
 });
