@@ -1,5 +1,5 @@
 class Usuario {
-    constructor(id,nome,email,senha,pedidos) {
+    constructor(id, nome, email, senha, pedidos) {
         this.id = id;
         this.nome = nome;
         this.email = email;
@@ -7,18 +7,18 @@ class Usuario {
         this.pedidos = pedidos;
         this.admin = false;
     }
-};
+}
 
 class Ingrediente {
-    constructor(id,imagem,nome,preco,descricao,pesoPorcao,usados) {
+    constructor(id, imagem, nome, preco, descricao, pesoPorcao, usados) {
         this.id = id;
         this.nome = nome;
         this.preco = preco;
     }
-};
+}
 
-class Pizza{
-    constructor(id,nome,descricao,imagem,ingredientes,quant_comprada) {
+class Pizza {
+    constructor(id, nome, descricao, imagem, ingredientes, quant_comprada) {
         this.id = id;
         this.nome = nome;
         this.descricao = descricao;
@@ -28,8 +28,8 @@ class Pizza{
     }
 }
 
-class Produto{
-    constructor(id,nome,descricao,imagem,preco,quant_comprada) {
+class Produto {
+    constructor(id, nome, descricao, imagem, preco, quant_comprada) {
         this.id = id;
         this.nome = nome;
         this.descricao = descricao;
@@ -39,4 +39,4 @@ class Produto{
     }
 }
 
-export {Usuario,Ingrediente,Pizza,Produto};
+export { Usuario, Ingrediente, Pizza, Produto };

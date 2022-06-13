@@ -387,19 +387,20 @@ let produtos = [
 function main() {
     console.log("Iniciando...");
 
-
     // fs module
     const fs = require("fs");
     const prettier = require("prettier");
 
     //save ingredientes in to ingredientes.json
     console.log("Salvado Ingredientes...");
-    fs.writeFile("ingredientes.json",
-    prettier.format(JSON.stringify(ingredientes), { parser: "json" }),
+    fs.writeFile(
+        "ingredientes.json",
+        prettier.format(JSON.stringify(ingredientes), { parser: "json" }),
         (err) => {
             if (err) throw err;
             console.log("The file has been saved!");
-        });
+        }
+    );
 
     //save pizzas in to pizzas.json
     let novasPizzas = pizzas.map((pizza) => {
@@ -409,27 +410,30 @@ function main() {
             descricao: pizza.descricao,
             imagem: pizza.imagem,
             preco: pizza.preco,
-            quant_comprada: pizza.quant_comprada
+            quant_comprada: pizza.quant_comprada,
         };
     });
 
-
     console.log("Salvado Pizzas...");
-    fs.writeFile("pizzas.json",
-    prettier.format(JSON.stringify(novasPizzas), { parser: "json" }),
+    fs.writeFile(
+        "pizzas.json",
+        prettier.format(JSON.stringify(novasPizzas), { parser: "json" }),
         (err) => {
             if (err) throw err;
             console.log("The file has been saved!");
-        });
+        }
+    );
 
     //save produtos in to produtos.json
     console.log("Salvado Produtos...");
-    fs.writeFile("produtos.json",
-    prettier.format(JSON.stringify(produtos), { parser: "json" }),
+    fs.writeFile(
+        "produtos.json",
+        prettier.format(JSON.stringify(produtos), { parser: "json" }),
         (err) => {
             if (err) throw err;
             console.log("The file has been saved!");
-        });
+        }
+    );
 }
 
 main();

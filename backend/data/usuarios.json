@@ -1,17 +1,17 @@
 [
     {
-        "login": "user1",
-        "password": "12345",
-        "admin": false
+        login: "user1",
+        password: "12345",
+        admin: false,
     },
     {
-        "login": "user2",
-        "password": "12345",
-        "admin": false
+        login: "user2",
+        password: "12345",
+        admin: false,
     },
     {
-        "login": "admin",
-        "password": "admin",
-        "admin": true
-    }
-]
+        login: "admin",
+        password: "admin",
+        admin: true,
+    },
+];
