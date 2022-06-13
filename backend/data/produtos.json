@@ -1,84 +1,82 @@
 [
-    {
-        nome: "Coca Cola 2L",
-        descricao: "Refrigerante sabor cola de 2L.",
-        imagem: "imgs/coca-cola.webp",
-        preco: 8,
-        id: 100,
-        quant_comprada: 625,
-    },
-    {
-        nome: "Fanta Laranja 2L",
-        descricao: "Refrigerante sabor laranja de 2L.",
-        imagem: "imgs/fanta.webp",
-        preco: 8,
-        id: 102,
-        quant_comprada: 382,
-    },
-    {
-        nome: "Guaraná 2L",
-        descricao: "Refrigerante sabor guaraná de 2L.",
-        imagem: "imgs/guarana.webp",
-        preco: 8,
-        id: 103,
-        quant_comprada: 425,
-    },
-    {
-        nome: "Heineken 600ml",
-        descricao: "Cerveja HEINEKEN Garrafa 600ml",
-        imagem: "imgs/heineken-original-bottle.png",
-        preco: 8,
-        id: 104,
-        quant_comprada: 348,
-    },
-    {
-        nome: "Mousse de Chocolate 50g",
-        descricao:
-            "Sobremesa leve com base de chocolate em barra meio amargo e creme de leite. Aerada, com leve toque de chocolate branco para dar crocância.",
-        imagem: "imgs/mousse-de-chocolate.png",
-        preco: 5,
-        id: 105,
-        quant_comprada: 123,
-    },
-    {
-        nome: "Mousse de Limão 50g",
-        descricao: "Mousse de Limão",
-        imagem: "imgs/mousse-de-limao.png",
-        preco: 5,
-        id: 106,
-        quant_comprada: 189,
-    },
-    {
-        nome: "Mousse de Maracujá 50g",
-        descricao:
-            "Sobremesa aerada que leva suco de maracujá fresco, creme de leite e leite condensado. Leve, com um sabor cítrico e doce a cada colherada, finaliza qualquer almoço ou jantar.",
-        imagem: "imgs/mousse-de-maracuja.png",
-        preco: 5,
-        id: 107,
-        quant_comprada: 168,
-    },
-    {
-        nome: "Suco de Laranja 1L",
-        descricao: "Suco de Laranja Del Valle sabor Laranja 1L",
-        imagem: "imgs/suco-de-lagranja-com-gominhos-del-valle-1L.png",
-        preco: 4,
-        id: 108,
-        quant_comprada: 125,
-    },
-    {
-        nome: "Suco de Uva 1L",
-        descricao: "Suco de Laranja Del Valle sabor uva 1L",
-        imagem: "imgs/suco-de-uva-del-valle-frut-1l.jpg",
-        preco: 4,
-        id: 109,
-        quant_comprada: 185,
-    },
-    {
-        nome: "Suco de Pêssego 1L",
-        descricao: "Suco de Laranja Del Valle sabor pêssego 1L",
-        imagem: "imgs/suco-pessego-del-valle-frut-1l..png",
-        preco: 4,
-        id: 110,
-        quant_comprada: 158,
-    },
-];
+  {
+    "nome": "Coca Cola 2L",
+    "descricao": "Refrigerante sabor cola de 2L.",
+    "imagem": "imgs/coca-cola.webp",
+    "preco": 8,
+    "id": 100,
+    "quant_comprada": 625
+  },
+  {
+    "nome": "Fanta Laranja 2L",
+    "descricao": "Refrigerante sabor laranja de 2L.",
+    "imagem": "imgs/fanta.webp",
+    "preco": 8,
+    "id": 102,
+    "quant_comprada": 382
+  },
+  {
+    "nome": "Guaraná 2L",
+    "descricao": "Refrigerante sabor guaraná de 2L.",
+    "imagem": "imgs/guarana.webp",
+    "preco": 8,
+    "id": 103,
+    "quant_comprada": 425
+  },
+  {
+    "nome": "Heineken 600ml",
+    "descricao": "Cerveja HEINEKEN Garrafa 600ml",
+    "imagem": "imgs/heineken-original-bottle.png",
+    "preco": 8,
+    "id": 104,
+    "quant_comprada": 348
+  },
+  {
+    "nome": "Mousse de Chocolate 50g",
+    "descricao": "Sobremesa leve com base de chocolate em barra meio amargo e creme de leite. Aerada, com leve toque de chocolate branco para dar crocância.",
+    "imagem": "imgs/mousse-de-chocolate.png",
+    "preco": 5,
+    "id": 105,
+    "quant_comprada": 123
+  },
+  {
+    "nome": "Mousse de Limão 50g",
+    "descricao": "Mousse de Limão",
+    "imagem": "imgs/mousse-de-limao.png",
+    "preco": 5,
+    "id": 106,
+    "quant_comprada": 189
+  },
+  {
+    "nome": "Mousse de Maracujá 50g",
+    "descricao": "Sobremesa aerada que leva suco de maracujá fresco, creme de leite e leite condensado. Leve, com um sabor cítrico e doce a cada colherada, finaliza qualquer almoço ou jantar.",
+    "imagem": "imgs/mousse-de-maracuja.png",
+    "preco": 5,
+    "id": 107,
+    "quant_comprada": 168
+  },
+  {
+    "nome": "Suco de Laranja 1L",
+    "descricao": "Suco de Laranja Del Valle sabor Laranja 1L",
+    "imagem": "imgs/suco-de-lagranja-com-gominhos-del-valle-1L.png",
+    "preco": 4,
+    "id": 108,
+    "quant_comprada": 125
+  },
+  {
+    "nome": "Suco de Uva 1L",
+    "descricao": "Suco de Laranja Del Valle sabor uva 1L",
+    "imagem": "imgs/suco-de-uva-del-valle-frut-1l.jpg",
+    "preco": 4,
+    "id": 109,
+    "quant_comprada": 185
+  },
+  {
+    "nome": "Suco de Pêssego 1L",
+    "descricao": "Suco de Laranja Del Valle sabor pêssego 1L",
+    "imagem": "imgs/suco-pessego-del-valle-frut-1l..png",
+    "preco": 4,
+    "id": 110,
+    "quant_comprada": 158
+  }
+]
