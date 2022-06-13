@@ -402,9 +402,21 @@ function main() {
         });
 
     //save pizzas in to pizzas.json
+    let novasPizzas = pizzas.map((pizza) => {
+        return {
+            id: pizza.id,
+            nome: pizza.nome,
+            descricao: pizza.descricao,
+            imagem: pizza.imagem,
+            preco: pizza.preco,
+            quant_comprada: pizza.quant_comprada
+        };
+    });
+
+
     console.log("Salvado Pizzas...");
     fs.writeFile("pizzas.json",
-    prettier.format(JSON.stringify(pizzas), { parser: "json" }),
+    prettier.format(JSON.stringify(novasPizzas), { parser: "json" }),
         (err) => {
             if (err) throw err;
             console.log("The file has been saved!");
