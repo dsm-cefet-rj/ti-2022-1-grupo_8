@@ -19,6 +19,13 @@
         "web-vitals": "^2.1.4",
         "yup": "^0.32.11"
     },
+      "keywords": [
+            "node.js",
+            "express",
+            "jwt",
+            "authentication",
+            "mongodb"
+        ],
     "scripts": {
         "dev": "concurrently --kill-others \"npm run backend\" \"npm run start\"",
         "start": "react-scripts start",
@@ -52,11 +59,5 @@
         "nodemon": "^2.0.16",
         "prettier": "^2.6.2"
     }
-     "keywords": [
-    "node.js",
-    "express",
-    "jwt",
-    "authentication",
-    "mongodb"
-  ],
+   
 }
