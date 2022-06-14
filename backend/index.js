@@ -1,6 +1,7 @@
 var express = require("express");
 require("dotenv").config();
-
+const cors = require("cors");
+const app = express();
 const port = process.env.BACKEND_PORT || 3001;
 
 const ingredientes = require("./data/ingredientes.json");
