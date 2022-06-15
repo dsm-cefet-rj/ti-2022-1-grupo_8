@@ -1,10 +1,11 @@
-var express = require("express");
-var router = express.Router();
+const { getIngredientes, getPizzas, getProdutos } = require("./data/DAO");
+
+const express = require("express");
+const router = express.Router();
 require("dotenv").config();
 
-router.get("/pizza", (req, res) => {
-    res.status(200).send("Pizza");
-
+router.get("/ingredientes", (req, res) => {
+    res.status(200).json(getIngredientes());
 });
 
 module.exports = router;

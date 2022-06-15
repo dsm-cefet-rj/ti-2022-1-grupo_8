@@ -39,4 +39,9 @@ class Produto {
     }
 }
 
-export { Usuario, Ingrediente, Pizza, Produto };
+module.exports = {
+    Usuario,
+    Ingrediente,
+    Pizza,
+    Produto
+}
