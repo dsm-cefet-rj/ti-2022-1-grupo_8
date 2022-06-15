@@ -2,6 +2,10 @@
     "name": "ti-2022-1-grupo_8",
     "version": "0.1.0",
     "private": true,
+    "proxies": [
+        "http://localhost:3000/",
+        "http://localhost:3001/"
+    ],
     "dependencies": {
         "@react-spring/parallax": "^9.4.5",
         "@reduxjs/toolkit": "^1.8.1",
