@@ -1,6 +1,10 @@
 const { Usuario, Ingrediente, Pizza, Produto } = require("../negocio");
 var database = require("./database.json");
 
+const saveDatabase = () => {
+    require("fs").writeFileSync("./database.json", JSON.stringify(database));
+}
+
 /******** INGREDIENTES ********/
 
 const getAllIngredientes = () => {
