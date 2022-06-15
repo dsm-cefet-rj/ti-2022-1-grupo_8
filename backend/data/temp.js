@@ -1,5 +1,7 @@
 // Cria JSONs do banco de dados falso
 
+const { Usuario } = require("../negocio");
+
 let ingredientes = [
     {
         id: 1,
@@ -384,6 +386,19 @@ let produtos = [
     },
 ];
 
+const usuarios = [
+    {
+        login: "admin",
+        senha: "admin",
+        type: "admin",
+    },
+    {
+        login: "user",
+        senha: "123",
+        type: "user",
+    },
+];
+
 function main() {
     console.log("Iniciando...");
     // fs module
@@ -407,7 +422,9 @@ function main() {
         ingredientes: ingredientes,
         pizzas: novasPizzas,
         produtos: produtos,
+        usuarios: usuarios,
     }
+    
     fs.writeFile(
         "database.json",
         prettier.format(JSON.stringify(database), { parser: "json" }),
