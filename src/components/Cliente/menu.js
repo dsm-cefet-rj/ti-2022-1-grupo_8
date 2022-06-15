@@ -1,10 +1,12 @@
 import { Parallax, ParallaxLayer } from "@react-spring/parallax";
+import { useSelector } from "react-redux";
 import { React, useRef } from "react";
 import { Link } from "react-router-dom";
 import ProdutoCard from "../geral/produto-card";
-import { bebidas as BebidaBD, getPizzasUsuario } from "../store";
 import MenuNav from "./menu-nav";
 import styles from "./menu.module.scss";
+import clienteDatabaseSlic from "../../features/clienteDatabaseSlice";
+import { fetchPizzas, fetchProdutos } from "../../features/clienteDatabaseSlice";
 /* 
 Componente: MenuCliente
 Descrição: Componente que renderiza a página principal do Cliente
@@ -24,12 +26,10 @@ const Decoracao = (props) => {
                     <h1
                         key={i}
                         style={{
-                            transform: `rotate(${
-                                Math.random() * (360 - 0) + 0
-                            }deg)`,
-                            transform: `translate(${
-                                Math.random() * (100 - 0) + 0
-                            }%, ${Math.random() * (100 - 0) + 0}%)`,
+                            transform: `rotate(${Math.random() * (360 - 0) + 0
+                                }deg)`,
+                            transform: `translate(${Math.random() * (100 - 0) + 0
+                                }%, ${Math.random() * (100 - 0) + 0}%)`,
                             textShadow: `0 0 10px black`,
                             fontSize: `${Math.random() * 10 + 5}rem`,
                         }}
@@ -44,11 +44,7 @@ const Decoracao = (props) => {
 
 const ListaPizzasMaisPedidas = () => {
     // Pegando os produtos do banco de dados
-    let pizzas = getPizzasUsuario();
-    // Ordena os produtos obtidos do "banco de dados"
-    pizzas.sort((a, b) => {
-        return b.quant_comprada - a.quant_comprada;
-    });
+    const pizzas = fetchPizzas();
     return (
         <>
             <div className="row">
@@ -92,11 +88,7 @@ const SecaoCriarPizza = () => {
 
 const ListaProdutos = () => {
     // Pegando os produtos do banco de dados
-    let produtos = BebidaBD;
-    // Ordena os bebidas obtida do "banco de dados"
-    produtos.sort((a, b) => {
-        return b.quant_comprada > a.quant_comprada;
-    });
+    let produtos = fetchProdutos();
     return (
         <>
             <div className="row mt-2">
@@ -135,11 +127,9 @@ const ListaProdutos = () => {
 
 const TodasAsPizzas = () => {
     // Pegando os produtos do banco de dados
-    let pizzas = getPizzasUsuario();
-    // Ordena os produtos obtidos do "banco de dados"
-    pizzas.sort((a, b) => {
-        return b.quant_comprada - a.quant_comprada;
-    });
+    const pizzas = fetchPizzas();
+
+    console.log(fetchPizzas());
     return (
         <>
             <div className="row mt-2">
