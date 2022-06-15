@@ -6,7 +6,7 @@ export const fetchProdutos = async () => {
     let data = await response.json();
     console.log(data);
     return data;
-}
+};
 
 export const fetchIngredientes = async () => {
     let url = "http://localhost:3001/usuario/ingredientes";
@@ -14,22 +14,21 @@ export const fetchIngredientes = async () => {
     let data = await response.json();
     console.log(data);
     return data;
-}
+};
 export const fetchPizzas = async () => {
     let url = "http://localhost:3001/usuario/pizzas";
     let response = await fetch(url);
     let data = await response.json();
     console.log(data);
     return data;
-}
-
+};
 
 const clienteDatabaseSlice = createSlice({
     name: "clienteDatabase",
     initialState: {
         ingredientes: [],
         pizzas: [],
-        produtos: []
+        produtos: [],
     },
     reducers: {
         getIngredientes: (state) => {
@@ -40,13 +39,15 @@ const clienteDatabaseSlice = createSlice({
         },
         getProdutos: (state) => {
             state.produtos = fetchProdutos();
-        }
+        },
     },
 });
 
-export const { getIngredientes, getPizzas, getProdutos } = clienteDatabaseSlice.actions;
+export const { getIngredientes, getPizzas, getProdutos } =
+    clienteDatabaseSlice.actions;
 
-export const selectIngredientes = (state) => state.clienteDatabaseSlice.ingredientes;
+export const selectIngredientes = (state) =>
+    state.clienteDatabaseSlice.ingredientes;
 export const selectPizzas = (state) => state.clienteDatabaseSlice.pizzas;
 export const selectProdutos = (state) => state.clienteDatabaseSlice.produtos;
 

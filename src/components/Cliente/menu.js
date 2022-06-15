@@ -5,7 +5,12 @@ import { Link } from "react-router-dom";
 import ProdutoCard from "../geral/produto-card";
 import MenuNav from "./menu-nav";
 import styles from "./menu.module.scss";
-import { selectPizzas, selectProdutos, getPizzas, getProdutos } from "../../features/clienteDatabaseSlice";
+import {
+    selectPizzas,
+    selectProdutos,
+    getPizzas,
+    getProdutos,
+} from "../../features/clienteDatabaseSlice";
 /* 
 Componente: MenuCliente
 Descrição: Componente que renderiza a página principal do Cliente
@@ -25,10 +30,12 @@ const Decoracao = (props) => {
                     <h1
                         key={i}
                         style={{
-                            transform: `rotate(${Math.random() * (360 - 0) + 0
-                                }deg)`,
-                            transform: `translate(${Math.random() * (100 - 0) + 0
-                                }%, ${Math.random() * (100 - 0) + 0}%)`,
+                            transform: `rotate(${
+                                Math.random() * (360 - 0) + 0
+                            }deg)`,
+                            transform: `translate(${
+                                Math.random() * (100 - 0) + 0
+                            }%, ${Math.random() * (100 - 0) + 0}%)`,
                             textShadow: `0 0 10px black`,
                             fontSize: `${Math.random() * 10 + 5}rem`,
                         }}
