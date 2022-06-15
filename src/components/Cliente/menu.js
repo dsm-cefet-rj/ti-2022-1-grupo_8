@@ -128,8 +128,6 @@ const ListaProdutos = () => {
 const TodasAsPizzas = () => {
     // Pegando os produtos do banco de dados
     const pizzas = fetchPizzas();
-
-    console.log(fetchPizzas());
     return (
         <>
             <div className="row mt-2">

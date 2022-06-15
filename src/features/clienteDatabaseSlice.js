@@ -1,29 +1,30 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 export const fetchProdutos = () => {
-    let url = "http://localhost:3001/usuario/produtos/json";
-    let produtos = [];
-    fetch(url).then(response => response.json()).then(data => {
-        produtos = data;
+    let url = "http://localhost:3001/usuario/produtos";
+    return fetch(url).then(response => response.json()).then(data => {
+        console.log(data);
+        return data;
+    }).catch(error => {
+        console.log(error);
     });
-    return produtos;
 }
 
 export const fetchIngredientes = () => {
     let url = "http://localhost:3001/usuario/ingredientes";
-    let ingredientes = [];
-    fetch(url).then(response => response.json()).then(data => {
+    return fetch(url).then(response => response.json()).then(data => {
         return data;
+    }).catch(error => {
+        console.log(error);
     });
-    return ingredientes;
 }
 export const fetchPizzas = () => {
     let url = "http://localhost:3001/usuario/pizzas";
-    let pizzas = [];
-    fetch(url).then(response => response.json()).then(data => {
-        pizzas = data;
+    return fetch(url).then(response => response.json()).then(data => {
+        return data;
+    }).catch(error => {
+        console.log(error);
     });
-    return pizzas;
 }
 
 
