@@ -1,15 +1,11 @@
 import { Parallax, ParallaxLayer } from "@react-spring/parallax";
-import { useSelector } from "react-redux";
-import { React, useRef } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { React, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import ProdutoCard from "../geral/produto-card";
 import MenuNav from "./menu-nav";
 import styles from "./menu.module.scss";
-import clienteDatabaseSlic from "../../features/clienteDatabaseSlice";
-import {
-    fetchPizzas,
-    fetchProdutos,
-} from "../../features/clienteDatabaseSlice";
+import { selectPizzas, selectProdutos, getPizzas, getProdutos } from "../../features/clienteDatabaseSlice";
 /* 
 Componente: MenuCliente
 Descrição: Componente que renderiza a página principal do Cliente
@@ -29,12 +25,10 @@ const Decoracao = (props) => {
                     <h1
                         key={i}
                         style={{
-                            transform: `rotate(${
-                                Math.random() * (360 - 0) + 0
-                            }deg)`,
-                            transform: `translate(${
-                                Math.random() * (100 - 0) + 0
-                            }%, ${Math.random() * (100 - 0) + 0}%)`,
+                            transform: `rotate(${Math.random() * (360 - 0) + 0
+                                }deg)`,
+                            transform: `translate(${Math.random() * (100 - 0) + 0
+                                }%, ${Math.random() * (100 - 0) + 0}%)`,
                             textShadow: `0 0 10px black`,
                             fontSize: `${Math.random() * 10 + 5}rem`,
                         }}
@@ -44,32 +38,6 @@ const Decoracao = (props) => {
                 );
             })}
         </div>
-    );
-};
-
-const ListaPizzasMaisPedidas = () => {
-    // Pegando os produtos do banco de dados
-    const pizzas = fetchPizzas();
-    return (
-        <>
-            <div className="row">
-                <h1 className="text-center">Mais pedidas 😋</h1>
-            </div>
-            <div className={styles.horizontalScroll}>
-                <div className="row">
-                    {pizzas.slice(0, 4).map((pizza) => (
-                        <ProdutoCard
-                            nome={pizza.nome}
-                            descricao={pizza.descricao}
-                            imagem={pizza.imagem}
-                            key={pizza.id}
-                            data={pizza}
-                            tipo="pizza"
-                        />
-                    ))}
-                </div>
-            </div>
-        </>
     );
 };
 
@@ -92,8 +60,16 @@ const SecaoCriarPizza = () => {
 };
 
 const ListaProdutos = () => {
-    // Pegando os produtos do banco de dados
-    let produtos = fetchProdutos();
+    const [produtos, setProdutos] = useState([]);
+    useState(() => {
+        let url = "http://localhost:3001/usuario/produtos";
+        fetch(url)
+            .then((response) => response.json())
+            .then((data) => {
+                console.log(data);
+                setProdutos(data);
+            });
+    }, []);
     return (
         <>
             <div className="row mt-2">
@@ -130,9 +106,51 @@ const ListaProdutos = () => {
     );
 };
 
+const ListaPizzasMaisPedidas = () => {
+    const [pizzas, setPizzas] = useState([]);
+    useState(() => {
+        let url = "http://localhost:3001/usuario/pizzas";
+        fetch(url)
+            .then((response) => response.json())
+            .then((data) => {
+                console.log(data);
+                setPizzas(data);
+            });
+    }, []);
+    return (
+        <>
+            <div className="row">
+                <h1 className="text-center">Mais pedidas 😋</h1>
+            </div>
+            <div className={styles.horizontalScroll}>
+                <div className="row">
+                    {pizzas.slice(0, 4).map((pizza) => (
+                        <ProdutoCard
+                            nome={pizza.nome}
+                            descricao={pizza.descricao}
+                            imagem={pizza.imagem}
+                            key={pizza.id}
+                            data={pizza}
+                            tipo="pizza"
+                        />
+                    ))}
+                </div>
+            </div>
+        </>
+    );
+};
+
 const TodasAsPizzas = () => {
-    // Pegando os produtos do banco de dados
-    const pizzas = fetchPizzas();
+    const [pizzas, setPizzas] = useState([]);
+    useState(() => {
+        let url = "http://localhost:3001/usuario/pizzas";
+        fetch(url)
+            .then((response) => response.json())
+            .then((data) => {
+                console.log(data);
+                setPizzas(data);
+            });
+    }, []);
     return (
         <>
             <div className="row mt-2">
