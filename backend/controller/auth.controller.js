@@ -55,7 +55,7 @@ exports.signup = (req, res) => {
             return;
           }
 
-          res.send({ message: "User was registered successfully!" });
+          res.send({ message: "Conta criada com sucesso!" });
         });
       });
     }
@@ -74,7 +74,7 @@ exports.signin = (req, res) => {
       }
 
       if (!user) {
-        return res.status(404).send({ message: "User Not found." });
+        return res.status(404).send({ message: "Usuário não encontrado!" });
       }
 
       var passwordIsValid = bcrypt.compareSync(
