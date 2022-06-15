@@ -4,11 +4,7 @@ var database = require("./database.json");
 /******** INGREDIENTES ********/
 
 const getAllIngredientes = () => {
-    let ingredientes = database.ingredientes;
-    for (let i = 0; i < ingredientes.length; i++) {
-        ingredientes[i] = Object.assign(new Ingrediente(), ingredientes[i]);
-    }
-    return ingredientes;
+    return database.ingredientes;
 };
 
 const getIngrediente = (id) => {
@@ -19,21 +15,21 @@ const getIngrediente = (id) => {
 };
 
 const addIngrediente = (ingrediente) => {
-    database.ingredientes.push(ingrediente);
-    return database.ingredientes[database.ingredientes.length - 1];
+    let ingredienteDB = database.ingredientes;
+    ingredienteDB.push(ingrediente);
+    return ingredienteDB[ingredienteDB.length - 1];
 };
 
 const editIngrediente = (id, ingrediente) => {
-    let ingredientes = database.ingredientes;
-    let index = ingredientes.findIndex((ingrediente) => ingrediente.id === id);
-    ingredientes[index] = ingrediente;
-    return ingredientes[index];
+    let ingredienteDB = database.ingredientes;
+    let index = ingredienteDB.findIndex((ingrediente) => ingrediente.id === id);
+    return Object.assign(ingredienteDB[index], ingrediente);
 };
 
 const removeIngrediente = (id) => {
-    let ingredientes = database.ingredientes;
-    let index = ingredientes.findIndex((ingrediente) => ingrediente.id === id);
-    let removido = ingredientes.splice(index, 1);
+    let ingredienteDB = database.ingredientes;
+    let index = ingredienteDB.findIndex((ingrediente) => ingrediente.id === id);
+    let removido = ingredienteDB.splice(index, 1);
     return removido;
 };
 
@@ -45,25 +41,25 @@ const getAllPizzas = () => {
 
 const getPizza = (id) => {
     let pizza = database.pizzas.find((pizza) => pizza.id === id);
-    return Object.assign(new pizzas(), pizzas);
+    return Object.assign(new Pizza(), pizza);
 };
 
 const addPizza = (pizzas) => {
-    database.pizzas.push(pizzas);
-    return database.pizzas[database.pizzas.length - 1];
+    let pizzaDB = database.pizzas;
+    pizzaDB.push(pizzas);
+    return pizzaDB[pizzaDB.length - 1];
 };
 
 const editPizza = (id, pizza) => {
-    let pizzas = database.pizzas;
-    let index = pizzas.findIndex((pizza) => pizza.id === id);
-    pizzas[index] = pizza;
-    return pizzas[index];
+    let pizzaDB = database.pizzas;
+    let index = pizzaDB.findIndex((pizza) => pizza.id === id);
+    return Object.assign(pizzaDB[index], pizza);
 };
 
 const removePizza = (id) => {
-    let pizzas = database.pizzas;
-    let index = pizzas.findIndex((pizza) => pizza.id === id);
-    let removido = pizzas.splice(index, 1);
+    let pizzaDB = database.pizzas;
+    let index = pizzaDB.findIndex((pizza) => pizza.id === id);
+    let removido = pizzaDB.splice(index, 1);
     return removido;
 };
 
@@ -75,25 +71,25 @@ const getAllProdutos = () => {
 
 const getProduto = (id) => {
     let produto = database.produtos.find((produto) => produto.id === id);
-    return Object.assign(new produto(), produto);
+    return Object.assign(new Produto(), produto);
 };
 
 const addProduto = (produto) => {
-    database.produtos.push(produto);
-    return database.produtos[database.produtos.length - 1];
+    let produtoDB = database.produtos;
+    produtoDB.push(produto);
+    return produtoDB[database.produtos.length - 1];
 };
 
 const editProduto = (id, produto) => {
-    let produtos = database.produtos;
-    let index = produtos.findIndex((produto) => produto.id === id);
-    produtos[index] = produto;
-    return produtos[index];
+    let produtoDB = database.produtos;
+    let index = produtoDB.findIndex((produto) => produto.id === id);
+    return Object.assign(produtoDB[index], produto);
 };
 
 const removeProduto = (id) => {
-    let produtos = database.produtos;
-    let index = produtos.findIndex((produto) => produto.id === id);
-    let removido = produtos.splice(index, 1);
+    let produtoDB = database.produtos;
+    let index = produtoDB.findIndex((produto) => produto.id === id);
+    let removido = produtoDB.splice(index, 1);
     return removido;
 };
 
@@ -101,13 +97,16 @@ module.exports = {
     getAllIngredientes,
     getIngrediente,
     addIngrediente,
+    editIngrediente,
     removeIngrediente,
     getAllPizzas,
     getPizza,
     addPizza,
+    editPizza,
     removePizza,
     getAllProdutos,
     getProduto,
+    editProduto,
     addProduto,
     removeProduto,
 };
