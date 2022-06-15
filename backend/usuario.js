@@ -1,4 +1,8 @@
-const { getAllIngredientes, getAllPizzas, getAllProdutos } = require("./data/DAO");
+const {
+    getAllIngredientes,
+    getAllPizzas,
+    getAllProdutos,
+} = require("./data/DAO");
 
 const express = require("express");
 const router = express.Router();
@@ -8,7 +12,7 @@ router.get("/ingredientes", (req, res) => {
     res.status(200).json(getAllIngredientes()).end();
 });
 
-router.get("/pizzas", (req, res) => { 
+router.get("/pizzas", (req, res) => {
     res.status(200).json(getAllPizzas());
 });
 
