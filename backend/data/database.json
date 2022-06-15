@@ -169,6 +169,7 @@
       "nome": "Calabresa",
       "descricao": "Deliciosa pizza com molho de tomate, mussarela, calabresa, azeitona e orégano.",
       "imagem": "/imgs/pizza-calabresa.jpg",
+      "ingredientes": [0],
       "quant_comprada": 175
     },
     {
@@ -176,6 +177,7 @@
       "nome": "Pizza de Mussarela",
       "descricao": "Básica mas ainda gostosa, pizza com molho de tomate, mussarela e orégano.",
       "imagem": "/imgs/pizza-mussarela.webp",
+      "ingredientes": [5],
       "quant_comprada": 142
     },
     {
@@ -183,6 +185,7 @@
       "nome": "Da Casa",
       "descricao": "Sabor original da pizzaria, contendo molho de tomate, mussarela, peperoni, cebola e pimentão verde.",
       "imagem": "/imgs/pizza-da-casa.webp",
+      "ingredientes": [15, 6, 7, 8, 11],
       "quant_comprada": 120
     },
     {
@@ -190,6 +193,7 @@
       "nome": "Frango com Requeijão",
       "descricao": "A mais querida! Pizza com molho de tomate, frango desfiado, queijo, requeijão e orégano",
       "imagem": "/imgs/Frango com Requeijão.jpeg",
+      "ingredientes": [9, 10, 14, 15],
       "quant_comprada": 115
     },
     {
@@ -197,6 +201,7 @@
       "nome": "Brócolis",
       "descricao": "Deliciosa pizza com molho de tomate, mussarela, brócolis e orégano.",
       "imagem": "/imgs/brocolis.jpg",
+      "ingredientes": [14, 15, 6],
       "quant_comprada": 45
     },
     {
@@ -204,6 +209,7 @@
       "nome": "Brócolis com Alho",
       "descricao": "Deliciosa pizza com molho de tomate, mussarela, brócolis, alho e orégano.",
       "imagem": "/imgs/brocolis e alho.jpeg",
+      "ingredientes": [14, 15, 3],
       "quant_comprada": 75
     },
     {
@@ -211,6 +217,7 @@
       "nome": "Margherita",
       "descricao": "Deliciosa pizza com molho de tomate, mussarela de búfala, manjericão, queijo parmesão ralado, tomates e azeite.",
       "imagem": "/imgs/Margherita.jpg",
+      "ingredientes": [5, 14, 15, 11],
       "quant_comprada": 74
     },
     {
@@ -218,6 +225,7 @@
       "nome": "Bacon",
       "descricao": "Deliciosa pizza com molho de tomate, mussarela, bacon e orégano.",
       "imagem": "/imgs/bacon.jpg",
+      "ingredientes": [13, 14, 15],
       "quant_comprada": 76
     },
     {
@@ -225,6 +233,7 @@
       "nome": "Portuguesa",
       "descricao": "Uma pizza com calabresa, tomates, mussarela, cebolas e azeitonas pretas.",
       "imagem": "/imgs/Portuguesa.jpg",
+      "ingredientes": [0, 6, 7, 8, 11],
       "quant_comprada": 23
     },
     {
@@ -232,6 +241,7 @@
       "nome": "Napolitana",
       "descricao": "Deliciosa pizza com molho de tomate, mussarela e manjericão.",
       "imagem": "/imgs/pizza-napolitana.jpg",
+      "ingredientes": [5, 14, 15],
       "quant_comprada": 85
     },
     {
@@ -239,6 +249,7 @@
       "nome": "4 Queijos",
       "descricao": "Deliciosa pizza com molho de tomate, mussarela, gorgonzola, requeijão e parmesão.",
       "imagem": "/imgs/4 Queijos.webp",
+      "ingredientes": [5, 14, 15, 6, 11],
       "quant_comprada": 56
     },
     {
@@ -246,6 +257,7 @@
       "nome": "Tropical",
       "descricao": "Deliciosa pizza com mussarela, camarão, bacon e abacaxi.",
       "imagem": "/imgs/Tropical.jpg",
+      "ingredientes": [5, 13, 14, 15],
       "quant_comprada": 14
     }
   ],

@@ -413,6 +413,7 @@ function main() {
             descricao: pizza.descricao,
             imagem: pizza.imagem,
             preco: pizza.preco,
+            ingredientes: pizza.ingredientes,
             quant_comprada: pizza.quant_comprada,
         };
     });
