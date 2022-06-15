@@ -330,5 +330,9 @@
       "id": 110,
       "quant_comprada": 158
     }
+  ],
+  "usuarios": [
+    { "login": "admin", "senha": "admin", "type": "admin" },
+    { "login": "user", "senha": "123", "type": "user" }
   ]
 }
