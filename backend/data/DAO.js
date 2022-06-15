@@ -3,7 +3,7 @@ var database = require("./database.json");
 
 const saveDatabase = () => {
     require("fs").writeFileSync("./database.json", JSON.stringify(database));
-}
+};
 
 /******** INGREDIENTES ********/
 
@@ -110,26 +110,26 @@ const removeProduto = (id) => {
 
 const getAllUsuarios = () => {
     return database.usuarios;
-}
+};
 
 const getUsuario = (id) => {
     let usuario = database.usuarios.find((usuario) => usuario.id === id);
     return Object.assign(new Usuario(), usuario);
-}
+};
 
 const addUsuario = (usuario) => {
     let usuarioDB = database.usuarios;
     usuarioDB.push(usuario);
     saveDatabase();
     return usuarioDB[database.usuarios.length - 1];
-}
+};
 
 const editUsuario = (id, usuario) => {
     let usuarioDB = database.usuarios;
     let index = usuarioDB.findIndex((usuario) => usuario.id === id);
     saveDatabase();
     return Object.assign(usuarioDB[index], usuario);
-}
+};
 
 const removeUsuario = (id) => {
     let usuarioDB = database.usuarios;
@@ -137,7 +137,7 @@ const removeUsuario = (id) => {
     let removido = usuarioDB.splice(index, 1);
     saveDatabase();
     return removido;
-}
+};
 
 module.exports = {
     getAllIngredientes,

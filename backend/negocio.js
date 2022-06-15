@@ -43,5 +43,5 @@ module.exports = {
     Usuario,
     Ingrediente,
     Pizza,
-    Produto
-}
+    Produto,
+};
