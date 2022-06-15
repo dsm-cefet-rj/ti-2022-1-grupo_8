@@ -45,15 +45,14 @@ const clienteDatabaseSlice = createSlice({
         getProdutos: (state) => {
             state.produtos = fetchProdutos();
         },
-    }
+    },
 });
 
-export const { getIngredientes, getPizzas, getProdutos } = clienteDatabaseSlice.actions;
+export const { getIngredientes, getPizzas, getProdutos } =
+    clienteDatabaseSlice.actions;
 
-
-
-export const selectIngredientes = state => state.clienteDatabase.ingredientes;
-export const selectPizzas = state => state.clienteDatabase.pizzas;
-export const selectProdutos = state => state.clienteDatabase.produtos;
+export const selectIngredientes = (state) => state.clienteDatabase.ingredientes;
+export const selectPizzas = (state) => state.clienteDatabase.pizzas;
+export const selectProdutos = (state) => state.clienteDatabase.produtos;
 
 export default clienteDatabaseSlice.reducer;

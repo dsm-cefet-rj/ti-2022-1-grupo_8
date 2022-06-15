@@ -417,14 +417,13 @@ function main() {
         };
     });
 
-
     const database = {
         ingredientes: ingredientes,
         pizzas: novasPizzas,
         produtos: produtos,
         usuarios: usuarios,
-    }
-    
+    };
+
     fs.writeFile(
         "database.json",
         prettier.format(JSON.stringify(database), { parser: "json" }),
