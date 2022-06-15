@@ -23,6 +23,13 @@ const addIngrediente = (ingrediente) => {
     return database.ingredientes[database.ingredientes.length - 1];
 };
 
+const editIngrediente = (id, ingrediente) => {
+    let ingredientes = database.ingredientes;
+    let index = ingredientes.findIndex((ingrediente) => ingrediente.id === id);
+    ingredientes[index] = ingrediente;
+    return ingredientes[index];
+};
+
 const removeIngrediente = (id) => {
     let ingredientes = database.ingredientes;
     let index = ingredientes.findIndex((ingrediente) => ingrediente.id === id);
@@ -46,6 +53,13 @@ const addPizza = (pizzas) => {
     return database.pizzas[database.pizzas.length - 1];
 };
 
+const editPizza = (id, pizza) => {
+    let pizzas = database.pizzas;
+    let index = pizzas.findIndex((pizza) => pizza.id === id);
+    pizzas[index] = pizza;
+    return pizzas[index];
+};
+
 const removePizza = (id) => {
     let pizzas = database.pizzas;
     let index = pizzas.findIndex((pizza) => pizza.id === id);
@@ -67,6 +81,13 @@ const getProduto = (id) => {
 const addProduto = (produto) => {
     database.produtos.push(produto);
     return database.produtos[database.produtos.length - 1];
+};
+
+const editProduto = (id, produto) => {
+    let produtos = database.produtos;
+    let index = produtos.findIndex((produto) => produto.id === id);
+    produtos[index] = produto;
+    return produtos[index];
 };
 
 const removeProduto = (id) => {
