@@ -2,31 +2,39 @@ import { createSlice } from "@reduxjs/toolkit";
 
 export const fetchProdutos = () => {
     let url = "http://localhost:3001/usuario/produtos";
-    return fetch(url).then(response => response.json()).then(data => {
-        console.log(data);
-        return data;
-    }).catch(error => {
-        console.log(error);
-    });
-}
+    return fetch(url)
+        .then((response) => response.json())
+        .then((data) => {
+            console.log(data);
+            return data;
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+};
 
 export const fetchIngredientes = () => {
     let url = "http://localhost:3001/usuario/ingredientes";
-    return fetch(url).then(response => response.json()).then(data => {
-        return data;
-    }).catch(error => {
-        console.log(error);
-    });
-}
+    return fetch(url)
+        .then((response) => response.json())
+        .then((data) => {
+            return data;
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+};
 export const fetchPizzas = () => {
     let url = "http://localhost:3001/usuario/pizzas";
-    return fetch(url).then(response => response.json()).then(data => {
-        return data;
-    }).catch(error => {
-        console.log(error);
-    });
-}
-
+    return fetch(url)
+        .then((response) => response.json())
+        .then((data) => {
+            return data;
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+};
 
 const clienteDatabaseSlice = createSlice({
     name: "clienteDatabase",
