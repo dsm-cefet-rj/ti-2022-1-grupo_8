@@ -8,13 +8,11 @@ Componente: GerirPizzas
 Descrição: Componente que renderiza a página de gerenciamento de pizzas
 */
 const GerirProdutos = () => {
-
     const dispatch = useDispatch();
 
     const ProdutosBD = useSelector(selectProdutos);
 
-
-    const produtos = ProdutosBD
+    const produtos = ProdutosBD;
 
     const [erro, setErro] = useState("");
 

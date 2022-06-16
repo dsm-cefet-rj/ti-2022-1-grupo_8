@@ -11,7 +11,6 @@ const Metade = (props) => {
     // Variavies que controlam os ingredientes do banco de dados.
     const ingredientesBD = useSelector(selectIngredientes);
 
-
     // Variáveis que controlam se a metade esta ative e quanta metades existem.
     const [id] = useState(props.id);
     const max_ingredientes = props.max_ingredientes

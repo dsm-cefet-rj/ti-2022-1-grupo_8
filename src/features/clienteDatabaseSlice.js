@@ -43,10 +43,8 @@ const clienteDatabaseSlice = createSlice({
 export const selectIngredientes = (state) =>
     state.clienteDatabaseSlice.ingredientes;
 
-export const selectPizzas = (state) =>
-    state.clienteDatabaseSlice.pizzas;
+export const selectPizzas = (state) => state.clienteDatabaseSlice.pizzas;
 
-export const selectProdutos = (state) =>
-    state.clienteDatabaseSlice.produtos;
+export const selectProdutos = (state) => state.clienteDatabaseSlice.produtos;
 
 export default clienteDatabaseSlice.reducer;

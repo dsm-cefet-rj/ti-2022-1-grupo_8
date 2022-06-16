@@ -125,9 +125,10 @@ const MenuAdmin = () => {
                                     <td>{produto.nome}</td>
                                     <td>{produto.quant_comprada}</td>
                                     <td>
-                                        {(produto.quant_comprada * produto.preco).toFixed(
-                                            2
-                                        )}
+                                        {(
+                                            produto.quant_comprada *
+                                            produto.preco
+                                        ).toFixed(2)}
                                     </td>
                                 </tr>
                             ))}
@@ -135,11 +136,11 @@ const MenuAdmin = () => {
                     </table>
                     <p>
                         Total: R$
-                        {ProdutosBD
-                            .reduce((total, produto) => {
-                                return total + produto.quant_comprada * produto.preco;
-                            }, 0)
-                            .toFixed(2)}
+                        {ProdutosBD.reduce((total, produto) => {
+                            return (
+                                total + produto.quant_comprada * produto.preco
+                            );
+                        }, 0).toFixed(2)}
                     </p>
                 </div>
             </div>
