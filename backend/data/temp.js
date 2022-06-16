@@ -1,7 +1,5 @@
 // Cria JSONs do banco de dados falso
 
-const { Usuario } = require("../negocio");
-
 let ingredientes = [
     {
         id: 1,
@@ -391,11 +389,19 @@ const usuarios = [
         login: "admin",
         senha: "admin",
         type: "admin",
+        pedidos: [],
+    },
+    {
+        login: "funcionario",
+        senha: "123",
+        type: "funcionario",
+        pedidos: [],
     },
     {
         login: "user",
         senha: "123",
         type: "user",
+        pedidos: [],
     },
 ];
 
