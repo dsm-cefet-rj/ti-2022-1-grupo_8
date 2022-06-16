@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { adicionarAoCarrinho as mandaPCarrinho } from "../../features/carrinhoSlice";
 import { selectMetades } from "../../features/ingredientes-metadeSlice";
 import Metade from "../geral/metade-pizza";
-import { selectIngredientes , getIngredientes } from "../../features/clienteDatabaseSlice";
+import { selectIngredientes, fetchIngredientes } from "../../features/clienteDatabaseSlice";
 import styles from "./criar-pizza.module.scss";
 import MenuNav from "./menu-nav";
 
@@ -15,11 +15,9 @@ Descrição:  Componente que renderiza a página de criação de pizza
 const CriarPizza = () => {
     // Dispatch do Redux
     const dispatch = useDispatch();
-
-    dispatch(getIngredientes())
     // Variavies que controlam os ingredientes do banco de dados.
     const ingredientesBD = useSelector(selectIngredientes);
-    
+
     // Variáveis que controlam estados do componente.
     const [tamanho, setTamanho] = useState("");
     const [precoTotal, setPrecoTotal] = useState(0);
@@ -167,6 +165,7 @@ const CriarPizza = () => {
     };
 
     useEffect(() => {
+        dispatch(fetchIngredientes());
         if (erro) {
             setErro("");
         }
@@ -175,7 +174,7 @@ const CriarPizza = () => {
         } else {
             atualizarPreco();
         }
-    }, [tamanho, ingredientes, erro]);
+    }, [tamanho, ingredientes, erro, ingredientesBD]);
 
     // Renderiza a página de criação de pizza.
     return (

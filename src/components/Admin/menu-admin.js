@@ -1,20 +1,25 @@
 import AdminNav from "./admin-nav";
 import styles from "./menu-admin.module.scss";
-import { getIngredientes, getPizzas, getProdutos, selectIngredientes, selectPizzas, selectProdutos } from "../../features/clienteDatabaseSlice";
+import { fetchIngredientes, fetchPizzas, fetchProdutos, selectIngredientes, selectPizzas, selectProdutos } from "../../features/clienteDatabaseSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
 /* 
 Componente: MenuAdmin
 Descrição: Componente que renderiza a página principal de administração
 */
 const MenuAdmin = () => {
     const dispatch = useDispatch();
-    dispatch(selectIngredientes);
-    dispatch(selectPizzas);
-    dispatch(selectProdutos);
 
-    const pizzasBD = useSelector(getPizzas);
-    const ProdutosBD = useSelector(getProdutos);
-    const ingredientesBD = useSelector(getIngredientes);
+    const pizzasBD = useSelector(selectIngredientes);
+    const ProdutosBD = useSelector(selectPizzas);
+    const ingredientesBD = useSelector(selectProdutos);
+
+    useEffect(() => {
+        dispatch(fetchIngredientes);
+        dispatch(fetchPizzas);
+        dispatch(fetchProdutos);
+    }, [pizzasBD, ProdutosBD, ingredientesBD]);
+
 
     return (
         <>

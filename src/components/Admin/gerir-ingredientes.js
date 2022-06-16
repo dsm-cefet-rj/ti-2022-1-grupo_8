@@ -4,7 +4,7 @@ import {
     setIdSelecinado,
     selectId,
 } from "../../features/gerir-ingredientesSlice";
-import { selectIngredientes, getIngredientes } from "../../features/clienteDatabaseSlice";
+import { selectIngredientes, fetchIngredientes } from "../../features/clienteDatabaseSlice";
 import AdminNav from "./admin-nav";
 import styles from "./gerir-ingredientes.module.scss";
 /* 
@@ -15,7 +15,6 @@ const Ingrediente = (props) => {
     // Dispatch do Redux
     const dispatch = useDispatch();
 
-    dispatch(getIngredientes())
     // Variavies que controlam os ingredientes do banco de dados.
     const ingredientesBD = useSelector(selectIngredientes);
 
@@ -54,6 +53,11 @@ const Ingrediente = (props) => {
             );
         }
     };
+
+    useEffect(() => {
+        dispatch(fetchIngredientes());
+    }, []);
+
     // Renderização do componente
     return (
         <>
@@ -82,7 +86,6 @@ const GerirIngredientes = () => {
     // Dispatch do Redux
     const dispatch = useDispatch();
 
-    dispatch(getIngredientes())
     // Variavies que controlam os ingredientes do banco de dados.
     const ingredientesBD = useSelector(selectIngredientes);
 
@@ -107,6 +110,7 @@ const GerirIngredientes = () => {
             document.getElementById("PesoPorcao").value = "";
             document.getElementById("imagem-field").hidden = false;
         }
+        dispatch(fetchIngredientes());
     }, [idSelecinado]);
 
     const handleButton = (e) => {

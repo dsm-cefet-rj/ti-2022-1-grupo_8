@@ -3,7 +3,7 @@ import Metade from "../geral/metade-pizza";
 import AdminNav from "./admin-nav";
 import styles from "./gerir-pizzas.module.scss";
 import { useDispatch, useSelector } from "react-redux";
-import {selectPizzas,getPizzas} from "../../features/clienteDatabaseSlice";
+import {selectPizzas,fetchPizzas} from "../../features/clienteDatabaseSlice";
 /* 
 Componente: GerirPizzas
 Descrição: Componente que renderiza a página de gerenciamento de pizzas
@@ -11,9 +11,8 @@ Descrição: Componente que renderiza a página de gerenciamento de pizzas
 const GerirPizzas = () => {
     
     const dispatch = useDispatch();
-    dispatch(selectPizzas);
 
-    const pizzasDB = useSelector(getPizzas);
+    const pizzasDB = useSelector(selectPizzas);
     const pizzas = pizzasDB;
 
     const [erro, setErro] = useState("");
@@ -54,7 +53,7 @@ const GerirPizzas = () => {
     };
 
     useEffect(() => {
-        // atualiza o array de metades
+        dispatch(fetchPizzas());
     }, []);
 
     return (

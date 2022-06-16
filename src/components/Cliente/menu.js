@@ -1,6 +1,6 @@
 import { Parallax, ParallaxLayer } from "@react-spring/parallax";
 import { useSelector, useDispatch } from "react-redux";
-import { React, useRef, useState } from "react";
+import { React, useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import ProdutoCard from "../geral/produto-card";
 import MenuNav from "./menu-nav";
@@ -8,8 +8,8 @@ import styles from "./menu.module.scss";
 import {
     selectPizzas,
     selectProdutos,
-    getPizzas,
-    getProdutos,
+    fetchPizzas,
+    fetchProdutos,
 } from "../../features/clienteDatabaseSlice";
 /* 
 Componente: MenuCliente
@@ -30,12 +30,10 @@ const Decoracao = (props) => {
                     <h1
                         key={i}
                         style={{
-                            transform: `rotate(${
-                                Math.random() * (360 - 0) + 0
-                            }deg)`,
-                            transform: `translate(${
-                                Math.random() * (100 - 0) + 0
-                            }%, ${Math.random() * (100 - 0) + 0}%)`,
+                            transform: `rotate(${Math.random() * (360 - 0) + 0
+                                }deg)`,
+                            transform: `translate(${Math.random() * (100 - 0) + 0
+                                }%, ${Math.random() * (100 - 0) + 0}%)`,
                             textShadow: `0 0 10px black`,
                             fontSize: `${Math.random() * 10 + 5}rem`,
                         }}
@@ -67,16 +65,7 @@ const SecaoCriarPizza = () => {
 };
 
 const ListaProdutos = () => {
-    const [produtos, setProdutos] = useState([]);
-    useState(() => {
-        let url = "http://localhost:3001/usuario/produtos";
-        fetch(url)
-            .then((response) => response.json())
-            .then((data) => {
-                console.log(data);
-                setProdutos(data);
-            });
-    }, []);
+    const produtos = useSelector(selectProdutos);
     return (
         <>
             <div className="row mt-2">
@@ -114,16 +103,7 @@ const ListaProdutos = () => {
 };
 
 const ListaPizzasMaisPedidas = () => {
-    const [pizzas, setPizzas] = useState([]);
-    useState(() => {
-        let url = "http://localhost:3001/usuario/pizzas";
-        fetch(url)
-            .then((response) => response.json())
-            .then((data) => {
-                console.log(data);
-                setPizzas(data);
-            });
-    }, []);
+    const pizzas = useSelector(selectPizzas);
     return (
         <>
             <div className="row">
@@ -148,16 +128,7 @@ const ListaPizzasMaisPedidas = () => {
 };
 
 const TodasAsPizzas = () => {
-    const [pizzas, setPizzas] = useState([]);
-    useState(() => {
-        let url = "http://localhost:3001/usuario/pizzas";
-        fetch(url)
-            .then((response) => response.json())
-            .then((data) => {
-                console.log(data);
-                setPizzas(data);
-            });
-    }, []);
+    const pizzas = useSelector(selectPizzas);
     return (
         <>
             <div className="row mt-2">
@@ -181,6 +152,14 @@ const TodasAsPizzas = () => {
 };
 
 export default () => {
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(fetchPizzas());
+        dispatch(fetchProdutos());
+    }, []);
+
+
     const ref = useRef();
     return (
         <div className={styles.body}>
