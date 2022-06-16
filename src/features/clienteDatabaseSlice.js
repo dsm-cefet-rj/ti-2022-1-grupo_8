@@ -1,23 +1,24 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const fetchProdutos = async () => {
+export const fetchProdutos = createAsyncThunk('clienteDatabase/fetchProdutos', async () => {
     let url = "http://localhost:3001/usuario/produtos";
     const response = await axios.get(url);
     return response.data;
-};
+});
 
-const fetchIngredientes = async () => {
+export const fetchIngredientes = createAsyncThunk('clienteDatabase/fetchIngredientes', async () => {
     let url = "http://localhost:3001/usuario/ingredientes";
     const response = await axios.get(url);
+    console.log(response.data);
     return response.data;
-};
+});
 
-const fetchPizzas = async () => {
+export const fetchPizzas = createAsyncThunk('clienteDatabase/fetchPizzas', async () => {
     let url = "http://localhost:3001/usuario/pizzas";
     const response = await axios.get(url);
     return response.data;
-};
+});
 
 const clienteDatabaseSlice = createSlice({
     name: "clienteDatabase",
@@ -26,21 +27,18 @@ const clienteDatabaseSlice = createSlice({
         pizzas: [],
         produtos: [],
     },
-    reducers: {
-        getIngredientes: (state) => {
-            state.ingredientes = fetchIngredientes();
+    extraReducers: {
+        [fetchProdutos.fulfilled]: (state, action) => {
+            state.produtos = action.payload;
         },
-        getPizzas: (state) => {
-            state.pizzas = fetchPizzas();
+        [fetchIngredientes.fulfilled]: (state, action) => {
+            state.ingredientes = action.payload;
         },
-        getProdutos: (state) => {
-            state.produtos = fetchProdutos();
-        },
-    },
+        [fetchPizzas.fulfilled]: (state, action) => {
+            state.pizzas = action.payload;
+        }
+    }
 });
-
-export const { getIngredientes, getPizzas, getProdutos } =
-    clienteDatabaseSlice.actions;
 
 export const selectIngredientes = (state) =>
     state.clienteDatabaseSlice.ingredientes;
