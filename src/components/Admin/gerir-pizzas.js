@@ -3,7 +3,7 @@ import Metade from "../geral/metade-pizza";
 import AdminNav from "./admin-nav";
 import styles from "./gerir-pizzas.module.scss";
 import { useDispatch, useSelector } from "react-redux";
-import {selectPizzas,fetchPizzas} from "../../features/clienteDatabaseSlice";
+import { selectPizzas, fetchPizzas } from "../../features/clienteDatabaseSlice";
 /* 
 Componente: GerirPizzas
 Descrição: Componente que renderiza a página de gerenciamento de pizzas

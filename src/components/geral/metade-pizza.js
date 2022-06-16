@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setMetades } from "../../features/ingredientes-metadeSlice";
-import { selectIngredientes, fetchIngredientes } from "../../features/clienteDatabaseSlice";
+import {
+    selectIngredientes,
+    fetchIngredientes,
+} from "../../features/clienteDatabaseSlice";
 /* 
 Componente: Metade
 Descrição:  Componente que renderiza a metade de um pizza personalizada

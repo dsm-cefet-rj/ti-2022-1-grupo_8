@@ -4,7 +4,10 @@ import { Link } from "react-router-dom";
 import { adicionarAoCarrinho as mandaPCarrinho } from "../../features/carrinhoSlice";
 import { selectMetades } from "../../features/ingredientes-metadeSlice";
 import Metade from "../geral/metade-pizza";
-import { selectIngredientes, fetchIngredientes } from "../../features/clienteDatabaseSlice";
+import {
+    selectIngredientes,
+    fetchIngredientes,
+} from "../../features/clienteDatabaseSlice";
 import styles from "./criar-pizza.module.scss";
 import MenuNav from "./menu-nav";
 

@@ -2,7 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import AdminNav from "./admin-nav";
 import styles from "./gerir-produtos.module.scss";
-import {selectProdutos,fetchProdutos} from "../../features/clienteDatabaseSlice";
+import {
+    selectProdutos,
+    fetchProdutos,
+} from "../../features/clienteDatabaseSlice";
 /* 
 Componente: GerirPizzas
 Descrição: Componente que renderiza a página de gerenciamento de pizzas
