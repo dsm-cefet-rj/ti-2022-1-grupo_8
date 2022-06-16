@@ -4,7 +4,7 @@ import {
     setIdSelecinado,
     selectId,
 } from "../../features/gerir-ingredientesSlice";
-import { ingredientes, ingredientes as ingredientesDB } from "../store";
+import { selectIngredientes, getIngredientes } from "../../features/clienteDatabaseSlice";
 import AdminNav from "./admin-nav";
 import styles from "./gerir-ingredientes.module.scss";
 /* 
@@ -12,13 +12,17 @@ Componente: Ingrediente
 Descrição: Componente que renderiza um ingrediente na pagina de gerir ingredientes
 */
 const Ingrediente = (props) => {
+    // Dispatch do Redux
+    const dispatch = useDispatch();
+
+    dispatch(getIngredientes())
+    // Variavies que controlam os ingredientes do banco de dados.
+    const ingredientesBD = useSelector(selectIngredientes);
+
     // Dados do ingrediente
     const { id, imagem, nome, preco } = props.data;
     // Controle se o ingrediente está selecionado
     const [selecionado, setSelecionado] = useState(false);
-
-    // Dispatch do Redux
-    const dispatch = useDispatch();
 
     // Função que seleciona um ingrediente
     const selecionar = () => {
@@ -34,7 +38,7 @@ const Ingrediente = (props) => {
                 block: "center",
             });
             //descelecionar todos oo outros
-            ingredientes.forEach((ingrediente) => {
+            ingredientesBD.forEach((ingrediente) => {
                 if (ingrediente.id !== id) {
                     let elem = document.getElementById(
                         `ingrediente-${ingrediente.id}`
@@ -75,10 +79,17 @@ Componente: GerirIngredientes
 Descrição: Componente que renderiza a página de gerenciamento de ingredientes
 */
 const GerirIngredientes = () => {
+    // Dispatch do Redux
+    const dispatch = useDispatch();
+
+    dispatch(getIngredientes())
+    // Variavies que controlam os ingredientes do banco de dados.
+    const ingredientesBD = useSelector(selectIngredientes);
+
     const idSelecinado = useSelector(selectId);
     useEffect(() => {
         if (idSelecinado !== 0) {
-            let ingrediente = ingredientesDB.find(
+            let ingrediente = ingredientesBD.find(
                 (ingrediente) => ingrediente.id === idSelecinado
             );
             document.getElementById("nome").value = ingrediente.nome;
@@ -127,7 +138,7 @@ const GerirIngredientes = () => {
                         <div className="row section">
                             <div className="col">
                                 <div className="scrollmenu">
-                                    {ingredientes.map((ingrediente) => (
+                                    {ingredientesBD.map((ingrediente) => (
                                         <Ingrediente
                                             key={ingrediente.id}
                                             data={ingrediente}

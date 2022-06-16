@@ -1,19 +1,21 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import { bebidas as produtosBD } from "../store";
+import { useDispatch, useSelector } from "react-redux";
 import AdminNav from "./admin-nav";
 import styles from "./gerir-produtos.module.scss";
-
+import {selectProdutos,getProdutos} from "../../features/clienteDatabaseSlice";
 /* 
 Componente: GerirPizzas
 Descrição: Componente que renderiza a página de gerenciamento de pizzas
 */
 const GerirProdutos = () => {
-    const produtos = produtosBD.sort((a, b) => {
-        return b.quant_comprada - a.quant_comprada;
-    });
 
     const dispatch = useDispatch();
+    dispatch(selectProdutos);
+
+    const ProdutosBD = useSelector(getProdutos);
+
+
+    const produtos = ProdutosBD
 
     const [erro, setErro] = useState("");
 
@@ -134,7 +136,7 @@ const GerirProdutos = () => {
                                                 setPreco("");
                                                 setDescricao("");
                                             }
-                                            produtosBD.map((pizzaOBJ) => {
+                                            ProdutosBD.map((pizzaOBJ) => {
                                                 if (pizzaOBJ.id !== pizza.id) {
                                                     let elem =
                                                         document.getElementById(

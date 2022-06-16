@@ -1,26 +1,22 @@
 import { createSlice } from "@reduxjs/toolkit";
+import axios from "axios";
 
-export const fetchProdutos = async () => {
+const fetchProdutos = async () => {
     let url = "http://localhost:3001/usuario/produtos";
-    let response = await fetch(url);
-    let data = await response.json();
-    console.log(data);
-    return data;
+    const response = await axios.get(url);
+    return response.data;
 };
 
-export const fetchIngredientes = async () => {
+const fetchIngredientes = async () => {
     let url = "http://localhost:3001/usuario/ingredientes";
-    let response = await fetch(url);
-    let data = await response.json();
-    console.log(data);
-    return data;
+    const response = await axios.get(url);
+    return response.data;
 };
-export const fetchPizzas = async () => {
+
+const fetchPizzas = async () => {
     let url = "http://localhost:3001/usuario/pizzas";
-    let response = await fetch(url);
-    let data = await response.json();
-    console.log(data);
-    return data;
+    const response = await axios.get(url);
+    return response.data;
 };
 
 const clienteDatabaseSlice = createSlice({
@@ -48,7 +44,11 @@ export const { getIngredientes, getPizzas, getProdutos } =
 
 export const selectIngredientes = (state) =>
     state.clienteDatabaseSlice.ingredientes;
-export const selectPizzas = (state) => state.clienteDatabaseSlice.pizzas;
-export const selectProdutos = (state) => state.clienteDatabaseSlice.produtos;
+
+export const selectPizzas = (state) =>
+    state.clienteDatabaseSlice.pizzas;
+
+export const selectProdutos = (state) =>
+    state.clienteDatabaseSlice.produtos;
 
 export default clienteDatabaseSlice.reducer;

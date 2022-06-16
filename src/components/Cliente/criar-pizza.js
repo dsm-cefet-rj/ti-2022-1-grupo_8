@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { adicionarAoCarrinho as mandaPCarrinho } from "../../features/carrinhoSlice";
 import { selectMetades } from "../../features/ingredientes-metadeSlice";
 import Metade from "../geral/metade-pizza";
-import { ingredientes as ingredientesBD } from "../store";
+import { selectIngredientes , getIngredientes } from "../../features/clienteDatabaseSlice";
 import styles from "./criar-pizza.module.scss";
 import MenuNav from "./menu-nav";
 
@@ -16,6 +16,10 @@ const CriarPizza = () => {
     // Dispatch do Redux
     const dispatch = useDispatch();
 
+    dispatch(getIngredientes())
+    // Variavies que controlam os ingredientes do banco de dados.
+    const ingredientesBD = useSelector(selectIngredientes);
+    
     // Variáveis que controlam estados do componente.
     const [tamanho, setTamanho] = useState("");
     const [precoTotal, setPrecoTotal] = useState(0);
