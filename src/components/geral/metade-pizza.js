@@ -1,17 +1,19 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setMetades } from "../../features/ingredientes-metadeSlice";
-import { selectIngredientes,getIngredientes } from "../../features/clienteDatabaseSlice";
+import {
+    selectIngredientes,
+    getIngredientes,
+} from "../../features/clienteDatabaseSlice";
 /* 
 Componente: Metade
 Descrição:  Componente que renderiza a metade de um pizza personalizada
 */
 const Metade = (props) => {
     const dispatch = useDispatch();
-    dispatch(getIngredientes())
+    dispatch(getIngredientes());
     // Variavies que controlam os ingredientes do banco de dados.
     const ingredientesBD = useSelector(selectIngredientes);
-
 
     // Variáveis que controlam se a metade esta ative e quanta metades existem.
     const [id] = useState(props.id);
@@ -22,9 +24,6 @@ const Metade = (props) => {
     // Variáveis que controlam os ingredientes selecionados.
     const [ingredientes, setIngredientes] = useState([]);
 
-    
-    
-    
     // Função que adiciona um ingrediente ao array de ingredientes quando o checkbox esta marcado.
     const handleCheckbox = (e) => {
         let payload = {
@@ -52,7 +51,6 @@ const Metade = (props) => {
         }
         dispatch(setMetades(payload));
     };
-
 
     // Renderiza o componente.
     return (

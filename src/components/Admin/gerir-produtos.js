@@ -2,20 +2,21 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import AdminNav from "./admin-nav";
 import styles from "./gerir-produtos.module.scss";
-import {selectProdutos,getProdutos} from "../../features/clienteDatabaseSlice";
+import {
+    selectProdutos,
+    getProdutos,
+} from "../../features/clienteDatabaseSlice";
 /* 
 Componente: GerirPizzas
 Descrição: Componente que renderiza a página de gerenciamento de pizzas
 */
 const GerirProdutos = () => {
-
     const dispatch = useDispatch();
     dispatch(selectProdutos);
 
     const ProdutosBD = useSelector(getProdutos);
 
-
-    const produtos = ProdutosBD
+    const produtos = ProdutosBD;
 
     const [erro, setErro] = useState("");
 

@@ -4,7 +4,10 @@ import {
     setIdSelecinado,
     selectId,
 } from "../../features/gerir-ingredientesSlice";
-import { selectIngredientes, getIngredientes } from "../../features/clienteDatabaseSlice";
+import {
+    selectIngredientes,
+    getIngredientes,
+} from "../../features/clienteDatabaseSlice";
 import AdminNav from "./admin-nav";
 import styles from "./gerir-ingredientes.module.scss";
 /* 
@@ -15,7 +18,7 @@ const Ingrediente = (props) => {
     // Dispatch do Redux
     const dispatch = useDispatch();
 
-    dispatch(getIngredientes())
+    dispatch(getIngredientes());
     // Variavies que controlam os ingredientes do banco de dados.
     const ingredientesBD = useSelector(selectIngredientes);
 
@@ -82,7 +85,7 @@ const GerirIngredientes = () => {
     // Dispatch do Redux
     const dispatch = useDispatch();
 
-    dispatch(getIngredientes())
+    dispatch(getIngredientes());
     // Variavies que controlam os ingredientes do banco de dados.
     const ingredientesBD = useSelector(selectIngredientes);
 

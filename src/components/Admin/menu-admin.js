@@ -1,6 +1,13 @@
 import AdminNav from "./admin-nav";
 import styles from "./menu-admin.module.scss";
-import { getIngredientes, getPizzas, getProdutos, selectIngredientes, selectPizzas, selectProdutos } from "../../features/clienteDatabaseSlice";
+import {
+    getIngredientes,
+    getPizzas,
+    getProdutos,
+    selectIngredientes,
+    selectPizzas,
+    selectProdutos,
+} from "../../features/clienteDatabaseSlice";
 import { useDispatch, useSelector } from "react-redux";
 /* 
 Componente: MenuAdmin
@@ -120,9 +127,10 @@ const MenuAdmin = () => {
                                     <td>{produto.nome}</td>
                                     <td>{produto.quant_comprada}</td>
                                     <td>
-                                        {(produto.quant_comprada * produto.preco).toFixed(
-                                            2
-                                        )}
+                                        {(
+                                            produto.quant_comprada *
+                                            produto.preco
+                                        ).toFixed(2)}
                                     </td>
                                 </tr>
                             ))}
@@ -130,11 +138,11 @@ const MenuAdmin = () => {
                     </table>
                     <p>
                         Total: R$
-                        {ProdutosBD
-                            .reduce((total, produto) => {
-                                return total + produto.quant_comprada * produto.preco;
-                            }, 0)
-                            .toFixed(2)}
+                        {ProdutosBD.reduce((total, produto) => {
+                            return (
+                                total + produto.quant_comprada * produto.preco
+                            );
+                        }, 0).toFixed(2)}
                     </p>
                 </div>
             </div>
