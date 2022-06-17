@@ -32,7 +32,7 @@
         "mongodb"
     ],
     "scripts": {
-        "dev": "concurrently --kill-others \"npm run backend\" \"npm run start\"",
+        "dev": "concurrently --prefix \"{name} -- \" --kill-others --names \"BACKEND⚙️⚙️ ,FRONTEND📱\" \"npm:backend\" \"npm:start\"",
         "start": "react-scripts start",
         "build": "react-scripts build",
         "test": "react-scripts test",
