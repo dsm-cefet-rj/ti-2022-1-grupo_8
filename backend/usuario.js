@@ -48,21 +48,21 @@ router.get("/produtos", (req, res) => {
 
 router.post("/criar", (req, res) => {
     const { nome, email, senha } = req.body;
-    
+
     if (!nome || !email || !senha) {
         res.status(400).json({
             erro: "Dados insuficientes",
         });
         return;
     }
-    
-    const usuario = { nome, email, senha};
-    
+
+    const usuario = { nome, email, senha };
+
     // usuário ja existe?
     const usuarios = getAllUsuarios();
-    
+
     const usuarioExistente = usuarios.find((usuario) => usuario.email == email);
-    
+
     if (usuarioExistente) {
         res.status(400).json({
             erro: "E-mail já cadastrado",

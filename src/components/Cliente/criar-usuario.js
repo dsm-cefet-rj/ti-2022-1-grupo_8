@@ -15,7 +15,12 @@ const CriarUsuario = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (nome === "" || email === "" || senha === "" || confirmarSenha === "") {
+        if (
+            nome === "" ||
+            email === "" ||
+            senha === "" ||
+            confirmarSenha === ""
+        ) {
             setErro("Preencha todos os campos");
             return;
         }
@@ -32,22 +37,27 @@ const CriarUsuario = () => {
         const usuario = {
             nome: nome,
             email: email,
-            senha: senha
+            senha: senha,
         };
-        const response = axios.post("http://localhost:3001/usuario/criar", usuario);
-        response.then((res) => {
-            if (res.status === 201) {
-                console.log("Usuário cadastrado com sucesso");
-                window.location.href = "/";
-                return;
-            }
-            if (res.status === 400) {
-                setErro(res.body.erro);
-            }
-        }).catch((err) => {
-            console.log(err);
-            setErro("Erro desconhecido");
-        });
+        const response = axios.post(
+            "http://localhost:3001/usuario/criar",
+            usuario
+        );
+        response
+            .then((res) => {
+                if (res.status === 201) {
+                    console.log("Usuário cadastrado com sucesso");
+                    window.location.href = "/";
+                    return;
+                }
+                if (res.status === 400) {
+                    setErro(res.body.erro);
+                }
+            })
+            .catch((err) => {
+                console.log(err);
+                setErro("Erro desconhecido");
+            });
     };
 
     useEffect(() => {
