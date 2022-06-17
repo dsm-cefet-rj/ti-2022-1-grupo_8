@@ -1,6 +1,13 @@
 import AdminNav from "./admin-nav";
 import styles from "./menu-admin.module.scss";
-import { fetchIngredientes, fetchPizzas, fetchProdutos, selectIngredientes, selectPizzas, selectProdutos } from "../../features/clienteDatabaseSlice";
+import {
+    fetchIngredientes,
+    fetchPizzas,
+    fetchProdutos,
+    selectIngredientes,
+    selectPizzas,
+    selectProdutos,
+} from "../../features/clienteDatabaseSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 /* 
@@ -19,7 +26,6 @@ const MenuAdmin = () => {
         dispatch(fetchPizzas);
         dispatch(fetchProdutos);
     }, [pizzasBD, ProdutosBD, ingredientesBD, dispatch]);
-
 
     return (
         <>

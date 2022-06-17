@@ -1,11 +1,14 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-export const fetchProdutos = createAsyncThunk('clienteDatabase/fetchProdutos', async () => {
-    let url = "http://localhost:3001/usuario/produtos";
-    const response = await axios.get(url);
-    return response.data;
-});
+export const fetchProdutos = createAsyncThunk(
+    "clienteDatabase/fetchProdutos",
+    async () => {
+        let url = "http://localhost:3001/usuario/produtos";
+        const response = await axios.get(url);
+        return response.data;
+    }
+);
 
 export const fetchIngredientes = createAsyncThunk('clienteDatabase/fetchIngredientes', async () => {
     let url = "http://localhost:3001/usuario/ingredientes";
@@ -13,11 +16,14 @@ export const fetchIngredientes = createAsyncThunk('clienteDatabase/fetchIngredie
     return response.data;
 });
 
-export const fetchPizzas = createAsyncThunk('clienteDatabase/fetchPizzas', async () => {
-    let url = "http://localhost:3001/usuario/pizzas";
-    const response = await axios.get(url);
-    return response.data;
-});
+export const fetchPizzas = createAsyncThunk(
+    "clienteDatabase/fetchPizzas",
+    async () => {
+        let url = "http://localhost:3001/usuario/pizzas";
+        const response = await axios.get(url);
+        return response.data;
+    }
+);
 
 const clienteDatabaseSlice = createSlice({
     name: "clienteDatabase",
@@ -35,8 +41,8 @@ const clienteDatabaseSlice = createSlice({
         },
         [fetchPizzas.fulfilled]: (state, action) => {
             state.pizzas = action.payload;
-        }
-    }
+        },
+    },
 });
 
 export const selectIngredientes = (state) =>
