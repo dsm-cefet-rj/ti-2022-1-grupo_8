@@ -10,11 +10,14 @@ export const fetchProdutos = createAsyncThunk(
     }
 );
 
-export const fetchIngredientes = createAsyncThunk('clienteDatabase/fetchIngredientes', async () => {
-    let url = "http://localhost:3001/usuario/ingredientes";
-    const response = await axios.get(url);
-    return response.data;
-});
+export const fetchIngredientes = createAsyncThunk(
+    "clienteDatabase/fetchIngredientes",
+    async () => {
+        let url = "http://localhost:3001/usuario/ingredientes";
+        const response = await axios.get(url);
+        return response.data;
+    }
+);
 
 export const fetchPizzas = createAsyncThunk(
     "clienteDatabase/fetchPizzas",
