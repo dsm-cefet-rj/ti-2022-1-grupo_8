@@ -50,7 +50,7 @@ const Metade = (props) => {
 
     useEffect(() => {
         dispatch(fetchIngredientes());
-    }, [ingredientes]);
+    }, [ingredientes,dispatch]);
 
     // Renderiza o componente.
     return (

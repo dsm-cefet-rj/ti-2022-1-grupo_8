@@ -12,8 +12,6 @@ const GerirProdutos = () => {
 
     const ProdutosBD = useSelector(selectProdutos);
 
-    const produtos = ProdutosBD;
-
     const [erro, setErro] = useState("");
 
     const [nome, setNome] = useState("");
@@ -52,7 +50,7 @@ const GerirProdutos = () => {
 
     useEffect(() => {
         dispatch(fetchProdutos);
-    }, []);
+    }, [dispatch]);
 
     return (
         <>
@@ -69,7 +67,7 @@ const GerirProdutos = () => {
                 </div>
                 <div className="row section mb-1">
                     <div className="scrollmenu">
-                        {produtos.map((pizza) => (
+                        {ProdutosBD.map((pizza) => (
                             <div
                                 style={{
                                     width: "18rem",

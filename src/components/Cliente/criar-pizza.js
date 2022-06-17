@@ -174,7 +174,7 @@ const CriarPizza = () => {
         } else {
             atualizarPreco();
         }
-    }, [tamanho, ingredientes, erro, ingredientesBD]);
+    }, [tamanho, ingredientes, erro, ingredientesBD, dispatch]);
 
     // Renderiza a página de criação de pizza.
     return (

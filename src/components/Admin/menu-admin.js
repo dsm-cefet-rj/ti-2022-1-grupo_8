@@ -18,7 +18,7 @@ const MenuAdmin = () => {
         dispatch(fetchIngredientes);
         dispatch(fetchPizzas);
         dispatch(fetchProdutos);
-    }, [pizzasBD, ProdutosBD, ingredientesBD]);
+    }, [pizzasBD, ProdutosBD, ingredientesBD, dispatch]);
 
 
     return (

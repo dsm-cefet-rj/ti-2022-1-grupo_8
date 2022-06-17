@@ -10,7 +10,6 @@ export const fetchProdutos = createAsyncThunk('clienteDatabase/fetchProdutos', a
 export const fetchIngredientes = createAsyncThunk('clienteDatabase/fetchIngredientes', async () => {
     let url = "http://localhost:3001/usuario/ingredientes";
     const response = await axios.get(url);
-    console.log(response.data);
     return response.data;
 });
 
