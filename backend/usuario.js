@@ -2,6 +2,8 @@ const {
     getAllIngredientes,
     getAllPizzas,
     getAllProdutos,
+    addUsuario,
+    getAllUsuarios,
 } = require("./data/DAO");
 
 const express = require("express");
@@ -42,6 +44,37 @@ router.get("/produtos", (req, res) => {
     res.status(200)
         .set("Access-Control-Allow-Origin", "*")
         .json(getAllProdutos());
+});
+
+router.post("/criar", (req, res) => {
+    const { nome, email, senha } = req.body;
+    
+    if (!nome || !email || !senha) {
+        res.status(400).json({
+            erro: "Dados insuficientes",
+        });
+        return;
+    }
+    
+    const usuario = { nome, email, senha};
+    
+    // usuário ja existe?
+    const usuarios = getAllUsuarios();
+    
+    const usuarioExistente = usuarios.find((usuario) => usuario.email == email);
+    
+    if (usuarioExistente) {
+        res.status(400).json({
+            erro: "E-mail já cadastrado",
+        });
+        return;
+    }
+
+    // adicionar usuário
+    addUsuario(usuario);
+    res.status(201).json({
+        mensagem: "Usuário cadastrado com sucesso",
+    });
 });
 
 module.exports = router;
