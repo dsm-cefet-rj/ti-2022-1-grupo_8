@@ -2,7 +2,8 @@ const { Usuario, Ingrediente, Pizza, Produto } = require("../negocio");
 var database = require("./database.json");
 
 const saveDatabase = () => {
-    require("fs").writeFileSync("./database.json", JSON.stringify(database));
+    const prettier = require("prettier");
+    require("fs").writeFileSync("./backend/data/database.json", prettier.format(JSON.stringify(database), { parser: "json" }));
 };
 
 /******** INGREDIENTES ********/

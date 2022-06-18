@@ -39,10 +39,14 @@ const CriarUsuario = () => {
             email: email,
             senha: senha,
         };
-        const response = axios.post(
-            "http://localhost:3001/usuario/criar",
-            usuario
-        );
+        const response = axios({
+            method: "post",
+            url: "http://localhost:3001/criar-usuario",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            data: JSON.stringify(usuario),
+        });
         response
             .then((res) => {
                 if (res.status === 201) {

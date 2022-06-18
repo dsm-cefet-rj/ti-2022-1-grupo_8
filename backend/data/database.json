@@ -344,7 +344,33 @@
     }
   ],
   "usuarios": [
-    { "login": "admin", "senha": "admin", "type": "admin" },
-    { "login": "user", "senha": "123", "type": "user" }
+    {
+      "nome": "Nicolas Vycas Nery",
+      "email": "vycasnicolas@gmail.com",
+      "senha": "$2b$10$H8KWPGBF5x60Sg80lNjXN.4h5S4/s6gx1NKcx8RkiH3WMY9fAD3U2",
+      "type": "user",
+      "pedidos": []
+    },
+    {
+      "nome": "Bernardo Costa",
+      "email": "bernardocosta@gmail.com",
+      "senha": "$2b$10$vjFX73IV8oMRheYZXA5lMO2/m8KMdSgUf5dzlxfH.E6iMt7toyyhq",
+      "type": "user",
+      "pedidos": []
+    },
+    {
+      "nome": "administrador",
+      "email": "administrador@gmail.com",
+      "senha": "$2b$10$Lfa3yysjiSlw4Rx7V5yPj.rjF1NIKYTAKs05.QWcul9/V2wNPieJu",
+      "type": "user",
+      "pedidos": []
+    },
+    {
+      "nome": "funcionario",
+      "email": "funcionario@gmail.com",
+      "senha": "$2b$10$A7WAMKMPcK3d65HRjZVER.IXOTYVcSzPL2B7bKWezjoq1gVnqhJ/W",
+      "type": "user",
+      "pedidos": []
+    }
   ]
 }
