@@ -2,6 +2,7 @@ import { Parallax, ParallaxLayer } from "@react-spring/parallax";
 import { React, useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import style from "./login.module.scss";
+import axios from "axios";
 /*
 Componente: Login
 Descrição: Componente que renderiza a página de login
@@ -30,36 +31,38 @@ const Cloud = (props) => {
 };
 
 const LoginForm = () => {
-    const contas = [
-        {
-            login: "admin",
-            senha: "admin",
-            type: "admin",
-        },
-        {
-            login: "user",
-            senha: "123",
-            type: "user",
-        },
-    ];
-
     const [login, setLogin] = useState("");
     const [senha, setSenha] = useState("");
     const [erro, setErro] = useState("");
 
     const handleLogin = (e) => {
-        console.log(login, senha);
-        let conta = contas.find((c) => c.login === login && c.senha === senha);
-        if (!conta) {
-            setErro("Login ou senha incorretos");
-            return;
-        } else {
-            if (conta.type === "admin") {
-                window.location.href = "/menu-admin";
-            } else {
-                window.location.href = "/menu";
+        e.preventDefault();
+        const loginData = {
+            login: login,
+            senha: senha,
+        };
+        const response = axios({
+            method: "POST",
+            url: "http://localhost:3001/login",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            params: JSON.stringify(loginData),
+        });
+        response.then((res) => {
+            if (res.status === 200) {
+                console.log("Usuário logado com sucesso");
+                // save token in local storage
+                localStorage.setItem("token", res.data.token);
+                localStorage.setItem("usuario", res.data.usuario);
+                // redirect to home page
+                window.location.href = "/";
+                return;
             }
-        }
+            if (res.status === 400) {
+                setErro(res.body.erro);
+            }
+        });
     };
     return (
         <>
@@ -114,8 +117,7 @@ const LoginForm = () => {
                     <p>Não possui conta? Cadastre-se</p>
                     <Link
                         to="/criar-usuario"
-                        className="btn btn-warning btn-block"
-                    >
+                        className="btn btn-warning btn-block">
                         Criar conta
                     </Link>
                 </div>

@@ -76,7 +76,7 @@ server.post("/criar-usuario", (req, res) => {
     });
 });
 
-server.get("/login", (req, res) => {
+server.post("/login", (req, res) => {
     const { email, senha } = req.body;
 
     if (!email || !senha) {
