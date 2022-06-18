@@ -16,11 +16,13 @@ const Cloud = (props) => {
     const y = -1000 + Math.random() * 1000;
 
     return (
-        <div style={{
-            width: `${Math.random() * 50 + 20}px`,
-            zIndex: -2,
-            transform: `translate(${x}px, ${y}px)`,
-        }}>
+        <div
+            style={{
+                width: `${Math.random() * 50 + 20}px`,
+                zIndex: -2,
+                transform: `translate(${x}px, ${y}px)`,
+            }}
+        >
             <img src={`imgs/decorações/${selectedCloud}`} alt="Nuvem" />
         </div>
     );
@@ -45,35 +47,37 @@ const LoginForm = () => {
             },
             data: JSON.stringify(loginData),
         });
-        response.then((res) => {
-            if (res.status === 200) {
-                console.log("Usuário logado com sucesso");
-                // save token in local storage
-                localStorage.setItem("token", res.data.token);
-                localStorage.setItem("usuario", res.data.usuario);
-                // redirect to home page
-                const type = res.data.type;
-                switch (type) {
-                    case "admin":
-                        window.location.href = "/menu-admin";
-                        break;
-                    case "user":
-                        window.location.href = "/menu";
-                        break;
-                    case "funcionario":
-                        window.location.href = "/menu-funcionario";
-                        break;
-                    default:
-                        window.location.href = "/";
+        response
+            .then((res) => {
+                if (res.status === 200) {
+                    console.log("Usuário logado com sucesso");
+                    // save token in local storage
+                    localStorage.setItem("token", res.data.token);
+                    localStorage.setItem("usuario", res.data.usuario);
+                    // redirect to home page
+                    const type = res.data.type;
+                    switch (type) {
+                        case "admin":
+                            window.location.href = "/menu-admin";
+                            break;
+                        case "user":
+                            window.location.href = "/menu";
+                            break;
+                        case "funcionario":
+                            window.location.href = "/menu-funcionario";
+                            break;
+                        default:
+                            window.location.href = "/";
+                    }
+                    return;
                 }
-                return;
-            }
-            if (res.status === 400) {
-                setErro(res.body.erro);
-            }
-        }).catch((err) => {
-            console.log(err);
-        });
+                if (res.status === 400) {
+                    setErro(res.body.erro);
+                }
+            })
+            .catch((err) => {
+                console.log(err);
+            });
     };
     return (
         <>
