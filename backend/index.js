@@ -1,6 +1,8 @@
 const express = require("express");
-const { getAllUsuarios, addUsuario } = require("./data/DAO");
+const jwt = require('jsonwebtoken');
 const bcrypt = require("bcrypt");
+const { getAllUsuarios, addUsuario } = require("./data/DAO");
+
 const saltRounds = 10;
 
 require("dotenv").config();
@@ -104,11 +106,18 @@ server.get("/login", (req, res) => {
             return;
         }
         if (result) {
+            const token = jwt.sign({
+                email: usuarioExistente.email,
+                type: usuarioExistente.type,
+                id: usuarioExistente.id,
+            }, process.env.JWT_SECRET, {
+                expiresIn: "1h"
+            });
             res.status(200).json({
-                mensagem: "Login realizado com sucesso",
+                token,
+                usuario: usuarioExistente,
             }).end();
-        }
-        else {
+        } else {
             res.status(400).json({
                 erro: "Senha incorreta",
             }).end();

@@ -21,6 +21,12 @@ criar arquivo .env com as seguintes informações:
 
 ```ini
 BACKEND_PORT = 3001
+JWT_SECRET={TOKEN_SECRET}
+```
+
+O token secret é um valor aleatório que deve ser usado para criptografar o token, ele pode ser obtido executando o comando em um shell com node:
+```js
+require('crypto').randomBytes(64).toString('hex')
 ```
 
 ## Para rodar o projeto, basta executar os comandos abaixo:
