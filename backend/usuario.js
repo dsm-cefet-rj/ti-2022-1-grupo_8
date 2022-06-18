@@ -11,9 +11,7 @@ const router = express.Router();
 require("dotenv").config();
 
 router.get("/ingredientes", (req, res) => {
-    res.status(200)
-        .json(getAllIngredientes())
-        .end();
+    res.status(200).json(getAllIngredientes()).end();
 });
 
 router.get("/pizzas", (req, res) => {
@@ -40,8 +38,7 @@ router.get("/pizzas", (req, res) => {
 });
 
 router.get("/produtos", (req, res) => {
-    res.status(200)
-        .json(getAllProdutos()).end();
+    res.status(200).json(getAllProdutos()).end();
 });
 
 module.exports = router;

@@ -128,7 +128,8 @@ const LoginForm = () => {
                     <p>Não possui conta? Cadastre-se</p>
                     <Link
                         to="/criar-usuario"
-                        className="btn btn-warning btn-block">
+                        className="btn btn-warning btn-block"
+                    >
                         Criar conta
                     </Link>
                 </div>

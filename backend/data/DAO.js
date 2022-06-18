@@ -3,7 +3,10 @@ var database = require("./database.json");
 
 const saveDatabase = () => {
     const prettier = require("prettier");
-    require("fs").writeFileSync("./backend/data/database.json", prettier.format(JSON.stringify(database), { parser: "json" }));
+    require("fs").writeFileSync(
+        "./backend/data/database.json",
+        prettier.format(JSON.stringify(database), { parser: "json" })
+    );
 };
 
 /******** INGREDIENTES ********/
