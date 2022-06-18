@@ -194,9 +194,7 @@ const CriarPizza = () => {
                             id="erro_message"
                             style={{
                                 color: "red",
-                                textShadow: "0px 0px 10px black",
-                            }}
-                        >
+                            }}>
                             {erro}
                         </h5>
                     </div>
