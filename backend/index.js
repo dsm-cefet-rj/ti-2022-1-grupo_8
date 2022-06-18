@@ -1,7 +1,9 @@
 const express = require("express");
+const session = require("express-session");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const { getAllUsuarios, addUsuario } = require("./data/DAO");
+
 
 const saltRounds = 10;
 
