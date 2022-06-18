@@ -42,15 +42,18 @@ const MenuNav = (props) => {
                 style={{
                     fontSize: "1.5rem",
                     marginLeft: "1rem",
-                }}>
+                }}
+            >
                 Pizzaria ON
             </a>
             <button className="navbar-toggler" type="button" onClick={toggle}>
                 <span className="navbar-toggler-icon">🍕</span>
             </button>
 
-            <div className={`collapse navbar-collapse ${collapse ? "show" : ""}`}
-                id="navbarNav">
+            <div
+                className={`collapse navbar-collapse ${collapse ? "show" : ""}`}
+                id="navbarNav"
+            >
                 <div
                     style={{
                         display: "flex",
@@ -59,7 +62,8 @@ const MenuNav = (props) => {
                         alignItems: "center",
                         width: "100%",
                         padding: "0 2rem 0 2rem",
-                    }}>
+                    }}
+                >
                     <a className="btn btn-primary " href="/menu">
                         Menu 📑
                         {atual === "menu" ? (

@@ -36,12 +36,17 @@ function App() {
                         <Route path="/gerir-pizzas" element={<GerirPizzas />} />
                         <Route
                             path="/gerir-ingredientes"
-                            element={<GerirIngredientes />} />
+                            element={<GerirIngredientes />}
+                        />
                         <Route
                             path="/gerir-produtos"
-                            element={<GerirProdutos />} />
+                            element={<GerirProdutos />}
+                        />
                         {/* <----------------------->Funcionário<-----------------------> */}
-                        <Route path="/menu-funcionario" element={<MenuFuncionario />} />
+                        <Route
+                            path="/menu-funcionario"
+                            element={<MenuFuncionario />}
+                        />
                     </Routes>
                 </Router>
             </Provider>

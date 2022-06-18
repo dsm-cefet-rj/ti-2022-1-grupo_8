@@ -13,6 +13,6 @@ const MenuFuncionario = () => {
             <FuncionarioNav Atual="menu" />
         </>
     );
-}
+};
 
 export default MenuFuncionario;
