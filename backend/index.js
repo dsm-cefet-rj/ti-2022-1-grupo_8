@@ -1,5 +1,5 @@
 const express = require("express");
-const jwt = require('jsonwebtoken');
+const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const { getAllUsuarios, addUsuario } = require("./data/DAO");
 
@@ -11,11 +11,16 @@ const port = process.env.BACKEND_PORT || 3001;
 const server = express();
 const rotasUsuario = require("./usuario");
 
-
 server.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+    res.header(
+        "Access-Control-Allow-Headers",
+        "Origin, X-Requested-With, Content-Type, Accept"
+    );
+    res.header(
+        "Access-Control-Allow-Methods",
+        "GET, POST, PUT, DELETE, OPTIONS"
+    );
     next();
 });
 
@@ -35,13 +40,12 @@ server.post("/criar-usuario", (req, res) => {
         return;
     }
 
-
     const usuario = {
         nome,
         email,
         senha,
         type: "user",
-        pedidos: []
+        pedidos: [],
     };
 
     // usuário ja existe?
@@ -91,36 +95,48 @@ server.post("/login", (req, res) => {
     const usuarioExistente = usuarios.find((usuario) => usuario.email == email);
 
     if (!usuarioExistente) {
-        res.status(400).json({
-            erro: "Usuário não cadastrado",
-        }).end();
+        res.status(400)
+            .json({
+                erro: "Usuário não cadastrado",
+            })
+            .end();
         return;
     }
 
     bcrypt.compare(senha, usuarioExistente.senha, (err, result) => {
         if (err) {
-            res.status(500).json({
-                erro: "Erro desconhecido",
-            }).end();
+            res.status(500)
+                .json({
+                    erro: "Erro desconhecido",
+                })
+                .end();
             console.log(err);
             return;
         }
         if (result) {
-            const token = jwt.sign({
-                email: usuarioExistente.email,
-                type: usuarioExistente.type,
-                id: usuarioExistente.id,
-            }, process.env.JWT_SECRET, {
-                expiresIn: "1h"
-            });
-            res.status(200).json({
-                token,
-                usuario: usuarioExistente,
-            }).end();
+            const token = jwt.sign(
+                {
+                    email: usuarioExistente.email,
+                    type: usuarioExistente.type,
+                    id: usuarioExistente.id,
+                },
+                process.env.JWT_SECRET,
+                {
+                    expiresIn: "1h",
+                }
+            );
+            res.status(200)
+                .json({
+                    token,
+                    usuario: usuarioExistente,
+                })
+                .end();
         } else {
-            res.status(400).json({
-                erro: "Senha incorreta",
-            }).end();
+            res.status(400)
+                .json({
+                    erro: "Senha incorreta",
+                })
+                .end();
         }
     });
 });
