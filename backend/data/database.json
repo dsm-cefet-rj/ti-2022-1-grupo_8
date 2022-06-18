@@ -362,14 +362,14 @@
       "nome": "administrador",
       "email": "administrador@gmail.com",
       "senha": "$2b$10$Lfa3yysjiSlw4Rx7V5yPj.rjF1NIKYTAKs05.QWcul9/V2wNPieJu",
-      "type": "user",
+      "type": "admin",
       "pedidos": []
     },
     {
       "nome": "funcionario",
       "email": "funcionario@gmail.com",
       "senha": "$2b$10$A7WAMKMPcK3d65HRjZVER.IXOTYVcSzPL2B7bKWezjoq1gVnqhJ/W",
-      "type": "user",
+      "type": "funcionario",
       "pedidos": []
     }
   ]
