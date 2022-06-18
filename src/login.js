@@ -14,31 +14,27 @@ const Cloud = (props) => {
         cloudOptions[Math.floor(Math.random() * cloudOptions.length)];
     const x = -1000 + Math.random() * 100;
     const y = -1000 + Math.random() * 1000;
-    const scale = Math.random();
 
     return (
-        <div
-            style={{
-                width: `${Math.random() * 50 + 20}px`,
-                zIndex: -2,
-                transform: `scale(${scale})`,
-                transform: `translate(${x}px, ${y}px)`,
-            }}
-        >
+        <div style={{
+            width: `${Math.random() * 50 + 20}px`,
+            zIndex: -2,
+            transform: `translate(${x}px, ${y}px)`,
+        }}>
             <img src={`imgs/decorações/${selectedCloud}`} alt="Nuvem" />
         </div>
     );
 };
 
 const LoginForm = () => {
-    const [login, setLogin] = useState("");
+    const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
     const [erro, setErro] = useState("");
 
     const handleLogin = (e) => {
         e.preventDefault();
         const loginData = {
-            login: login,
+            email: email,
             senha: senha,
         };
         const response = axios({
@@ -47,7 +43,7 @@ const LoginForm = () => {
             headers: {
                 "Content-Type": "application/json",
             },
-            params: JSON.stringify(loginData),
+            data: JSON.stringify(loginData),
         });
         response.then((res) => {
             if (res.status === 200) {
@@ -56,12 +52,27 @@ const LoginForm = () => {
                 localStorage.setItem("token", res.data.token);
                 localStorage.setItem("usuario", res.data.usuario);
                 // redirect to home page
-                window.location.href = "/";
+                const type = res.data.type;
+                switch (type) {
+                    case "admin":
+                        window.location.href = "/menu-admin";
+                        break;
+                    case "user":
+                        window.location.href = "/menu";
+                        break;
+                    case "funcionario":
+                        window.location.href = "/menu-funcionario";
+                        break;
+                    default:
+                        window.location.href = "/";
+                }
                 return;
             }
             if (res.status === 400) {
                 setErro(res.body.erro);
             }
+        }).catch((err) => {
+            console.log(err);
         });
     };
     return (
@@ -89,7 +100,7 @@ const LoginForm = () => {
                             className="form-control"
                             autoComplete="email"
                             required
-                            onChange={(e) => setLogin(e.target.value)}
+                            onChange={(e) => setEmail(e.target.value)}
                         />
                     </div>
                     <div className="row mb-2">

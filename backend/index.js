@@ -79,6 +79,8 @@ server.post("/criar-usuario", (req, res) => {
 server.post("/login", (req, res) => {
     const { email, senha } = req.body;
 
+    console.log(email, senha);
+
     if (!email || !senha) {
         res.status(400).json({
             erro: "Dados insuficientes",
@@ -116,6 +118,7 @@ server.post("/login", (req, res) => {
             res.status(200).json({
                 token,
                 usuario: usuarioExistente,
+                type: usuarioExistente.type,
             }).end();
         } else {
             res.status(400).json({
