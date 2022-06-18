@@ -9,6 +9,7 @@ import Carrinho from "./components/Cliente/carrinho";
 import CriarPizza from "./components/Cliente/criar-pizza";
 import CriarUsuario from "./components/Cliente/criar-usuario";
 import MenuCliente from "./components/Cliente/menu.js";
+import MenuFuncionario from "./components/funcionario/menuFuncionario";
 import store from "./features/store";
 import LoginForm from "./login";
 /*
@@ -26,20 +27,21 @@ function App() {
                             path="/criar-usuario"
                             element={<CriarUsuario />}
                         />
+                        {/* <----------------------->Usuário<-----------------------> */}
                         <Route path="/carrinho" element={<Carrinho />} />
                         <Route path="/criar-pizza" element={<CriarPizza />} />
                         <Route path="/menu" element={<MenuCliente />} />
-
+                        {/* <----------------------->ADMIN<-----------------------> */}
                         <Route path="/menu-admin" element={<MenuAdmin />} />
                         <Route path="/gerir-pizzas" element={<GerirPizzas />} />
                         <Route
                             path="/gerir-ingredientes"
-                            element={<GerirIngredientes />}
-                        />
+                            element={<GerirIngredientes />} />
                         <Route
                             path="/gerir-produtos"
-                            element={<GerirProdutos />}
-                        />
+                            element={<GerirProdutos />} />
+                        {/* <----------------------->Funcionário<-----------------------> */}
+                        <Route path="/menu-funcionario" element={<MenuFuncionario />} />
                     </Routes>
                 </Router>
             </Provider>

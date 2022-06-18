@@ -35,7 +35,7 @@ const AdminNav = (props) => {
     /* Renderização do componente */
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light sticky-top">
-            <a className="navbar-brand">Administrador 🔑</a>
+            <a className="navbar-brand">Pizzaria ON - Administrador 🔑</a>
             <button className="navbar-toggler" type="button" onClick={toggle}>
                 <span className="navbar-toggler-icon">🔐</span>
             </button>
