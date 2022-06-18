@@ -116,18 +116,24 @@ server.post("/login", (req, res) => {
             return;
         }
         if (result) {
-            const token = jwt.sign({
-                email: usuarioExistente.email,
-                type: usuarioExistente.type,
-                id: usuarioExistente.id,
-            }, process.env.JWT_SECRET, {
-                expiresIn: "1h"
-            });
-            res.status(200).json({
-                token,
-                usuario: usuarioExistente,
-                type: usuarioExistente.type,
-            }).end();
+            const token = jwt.sign(
+                {
+                    email: usuarioExistente.email,
+                    type: usuarioExistente.type,
+                    id: usuarioExistente.id,
+                },
+                process.env.JWT_SECRET,
+                {
+                    expiresIn: "1h",
+                }
+            );
+            res.status(200)
+                .json({
+                    token,
+                    usuario: usuarioExistente,
+                    type: usuarioExistente.type,
+                })
+                .end();
         } else {
             res.status(400)
                 .json({
