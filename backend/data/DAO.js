@@ -116,8 +116,8 @@ const getAllUsuarios = () => {
     return database.usuarios;
 };
 
-const getUsuario = (id) => {
-    let usuario = database.usuarios.find((usuario) => usuario.id === id);
+const getUsuario = (email) => {
+    let usuario = database.usuarios.find((usuario) => usuario.email === email);
     return Object.assign(new Usuario(), usuario);
 };
 
@@ -128,16 +128,16 @@ const addUsuario = (usuario) => {
     return usuarioDB[database.usuarios.length - 1];
 };
 
-const editUsuario = (id, usuario) => {
+const editUsuario = (email, usuario) => {
     let usuarioDB = database.usuarios;
-    let index = usuarioDB.findIndex((usuario) => usuario.id === id);
+    let index = usuarioDB.findIndex((usuario) => usuario.email === email);
     saveDatabase();
     return Object.assign(usuarioDB[index], usuario);
 };
 
-const removeUsuario = (id) => {
+const removeUsuario = (email) => {
     let usuarioDB = database.usuarios;
-    let index = usuarioDB.findIndex((usuario) => usuario.id === id);
+    let index = usuarioDB.findIndex((usuario) => usuario.email === email);
     let removido = usuarioDB.splice(index, 1);
     saveDatabase();
     return removido;
