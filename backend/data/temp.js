@@ -429,6 +429,7 @@ function main() {
         pizzas: novasPizzas,
         produtos: produtos,
         usuarios: usuarios,
+        pedidos: [],
     };
 
     fs.writeFile(

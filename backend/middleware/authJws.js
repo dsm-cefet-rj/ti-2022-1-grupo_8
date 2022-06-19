@@ -1,90 +1,67 @@
+const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const config = require("../config/auth.config.js");
-const db = require("../models");
-const User = db.user;
-const Role = db.role;
+const { getAllUsuarios } = require("../data/DAO");
 
-verifyToken = (req, res, next) => {
-    let token = req.headers["x-access-token"];
+require("dotenv").config();
+
+const jwt_secret = process.env.JWT_SECRET;
+// verifica se o token está válido e se o usuário é o mesmo que o token
+verificarToken = (req, res, next) => {
+    const token = req.headers["x-access-token"];
 
     if (!token) {
-        return res.status(403).send({ message: "No token provided!" });
+        return res.status(401).json({
+            auth: false,
+            message: "Token não encontrado"
+        });
+
+    } else {
+        jwt.verify(token, jwt_secret, (err, decoded) => {
+            if (err) {
+                return res.status(500).json({
+                    auth: false,
+                    message: "Token inválido"
+                });
+            }
+            req.userId = decoded.id;
+            next();
+        });
     }
 
-    jwt.verify(token, config.secret, (err, decoded) => {
-        if (err) {
-            return res.status(401).send({ message: "Unauthorized!" });
-        }
-        req.userId = decoded.id;
-        next();
+    return res.status(200).json({
+        auth: true
     });
-};
+}
 
+// verifica se o usuário é admin
 isAdmin = (req, res, next) => {
-    User.findById(req.userId).exec((err, user) => {
-        if (err) {
-            res.status(500).send({ message: err });
-            return;
-        }
-
-        Role.find(
-            {
-                _id: { $in: user.roles },
-            },
-            (err, roles) => {
-                if (err) {
-                    res.status(500).send({ message: err });
-                    return;
-                }
-
-                for (let i = 0; i < roles.length; i++) {
-                    if (roles[i].name === "admin") {
-                        next();
-                        return;
-                    }
-                }
-
-                res.status(403).send({ message: "Require Admin Role!" });
-                return;
-            }
-        );
+    const usuarios = getAllUsuarios();
+    const usuario = usuarios.find((usuario) => usuario.email == req.user.email);
+    if (usuario.type == "admin") {
+        next();
+    }
+    return res.status(401).json({
+        auth: false,
+        message: "Acesso negado"
     });
-};
+}
 
-isModerator = (req, res, next) => {
-    User.findById(req.userId).exec((err, user) => {
-        if (err) {
-            res.status(500).send({ message: err });
-            return;
-        }
-
-        Role.find(
-            {
-                _id: { $in: user.roles },
-            },
-            (err, roles) => {
-                if (err) {
-                    res.status(500).send({ message: err });
-                    return;
-                }
-
-                for (let i = 0; i < roles.length; i++) {
-                    if (roles[i].name === "moderator") {
-                        next();
-                        return;
-                    }
-                }
-
-                res.status(403).send({ message: "Require Moderator Role!" });
-                return;
-            }
-        );
+// verifica se o usuário é funcionário
+isFuncionario = (req, res, next) => {
+    const usuarios = getAllUsuarios();
+    const usuario = usuarios.find((usuario) => usuario.email == req.user.email);
+    if (usuario.type == "funcionario") {
+        next();
+    }
+    return res.status(401).json({
+        auth: false,
+        message: "Usuário não autorizado"
     });
-};
+}
 
-const authJwt = {
-    verifyToken,
+const authMiddlewares = {
+    verificarToken,
     isAdmin,
-    isModerator,
+    isFuncionario,
 };
-module.exports = authJwt;
+module.exports = authMiddlewares;

@@ -1,15 +1,15 @@
-import AdminNav from "./admin-nav";
-import styles from "./menu-admin.module.scss";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import {
     fetchIngredientes,
     fetchPizzas,
     fetchProdutos,
     selectIngredientes,
     selectPizzas,
-    selectProdutos,
+    selectProdutos
 } from "../../features/clienteDatabaseSlice";
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import AdminNav from "./admin-nav";
+import styles from "./menu-admin.module.scss";
 /* 
 Componente: MenuAdmin
 Descrição: Componente que renderiza a página principal de administração

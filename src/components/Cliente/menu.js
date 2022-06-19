@@ -1,16 +1,14 @@
-import { Parallax, ParallaxLayer } from "@react-spring/parallax";
-import { useSelector, useDispatch } from "react-redux";
-import { React, useEffect, useRef, useState } from "react";
+import { React, useEffect, useRef } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import {
+    fetchPizzas,
+    fetchProdutos, selectPizzas,
+    selectProdutos
+} from "../../features/clienteDatabaseSlice";
 import ProdutoCard from "../geral/produto-card";
 import MenuNav from "./menu-nav";
 import styles from "./menu.module.scss";
-import {
-    selectPizzas,
-    selectProdutos,
-    fetchPizzas,
-    fetchProdutos,
-} from "../../features/clienteDatabaseSlice";
 /* 
 Componente: MenuCliente
 Descrição: Componente que renderiza a página principal do Cliente

@@ -9,6 +9,7 @@ const saltRounds = 10;
 
 require("dotenv").config();
 
+// Rota de login
 router.post("/auth", (req, res) => {
     const { email, senha } = req.body;
 
@@ -73,6 +74,7 @@ router.post("/auth", (req, res) => {
     });
 });
 
+// Rota para cadastrar um novo usuário
 router.post("/criar", (req, res) => {
     const { nome, email, senha } = req.body;
 
@@ -122,5 +124,6 @@ router.post("/criar", (req, res) => {
         });
     });
 });
+
 
 module.exports = router;

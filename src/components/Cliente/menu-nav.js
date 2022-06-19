@@ -1,7 +1,6 @@
 import { React, useEffect, useState } from "react";
-import { selectCarrinho } from "../../features/carrinhoSlice";
 import { useSelector } from "react-redux";
-import styled from "./menu-nav.module.scss";
+import { selectCarrinho } from "../../features/carrinhoSlice";
 /* 
 Componente: MenuNav
 Descrição: Componente que renderiza o menu de navegação para os clientes

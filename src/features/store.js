@@ -1,9 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
 import carrinhoSlice from "./carrinhoSlice";
+import clienteDatabaseSlice from "./clienteDatabaseSlice";
 import criarPizzaSlice from "./criar-pizzaSlice";
 import gerirIngredientesSlice from "./gerir-ingredientesSlice";
 import ingredientesMetadeSlice from "./ingredientes-metadeSlice";
-import clienteDatabaseSlice from "./clienteDatabaseSlice";
+import sessionSlice from "./sessionSlice";
 
 export default configureStore({
     reducer: {
@@ -12,5 +13,6 @@ export default configureStore({
         gerirIngredientes: gerirIngredientesSlice,
         ingredientesMetade: ingredientesMetadeSlice,
         clienteDatabaseSlice: clienteDatabaseSlice,
+        session: sessionSlice,
     },
 });
