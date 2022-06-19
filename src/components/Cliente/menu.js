@@ -3,8 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import {
     fetchPizzas,
-    fetchProdutos, selectPizzas,
-    selectProdutos
+    fetchProdutos,
+    selectPizzas,
+    selectProdutos,
 } from "../../features/clienteDatabaseSlice";
 import ProdutoCard from "../geral/produto-card";
 import MenuNav from "./menu-nav";

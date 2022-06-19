@@ -24,12 +24,10 @@ function App() {
     useEffect(() => {
         dispatch(fetchSession());
         console.log(session);
-    }
-        , [dispatch, session]);
+    }, [dispatch, session]);
 
     return (
         <>
-
             <Router>
                 <Routes>
                     {/* <----------------------->404<-----------------------> */}
@@ -37,10 +35,7 @@ function App() {
                     {/* <----------------------->Login<-----------------------> */}
                     <Route path="/" element={<LoginForm />} />
                     {/* <----------------------->Criar Conta<-----------------------> */}
-                    <Route
-                        path="/criar-usuario"
-                        element={<CriarUsuario />}
-                    />
+                    <Route path="/criar-usuario" element={<CriarUsuario />} />
                     {/* <----------------------->Usuário<-----------------------> */}
                     <Route path="/carrinho" element={<Carrinho />} />
                     <Route path="/criar-pizza" element={<CriarPizza />} />
@@ -52,10 +47,7 @@ function App() {
                         path="/gerir-ingredientes"
                         element={<GerirIngredientes />}
                     />
-                    <Route
-                        path="/gerir-produtos"
-                        element={<GerirProdutos />}
-                    />
+                    <Route path="/gerir-produtos" element={<GerirProdutos />} />
                     {/* <----------------------->Funcionário<-----------------------> */}
                     <Route
                         path="/menu-funcionario"

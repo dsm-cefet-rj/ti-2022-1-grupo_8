@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
-    fetchProdutos, selectProdutos
+    fetchProdutos,
+    selectProdutos,
 } from "../../features/clienteDatabaseSlice";
 import AdminNav from "./admin-nav";
 import styles from "./gerir-produtos.module.scss";

@@ -12,15 +12,14 @@ verificarToken = (req, res, next) => {
     if (!token) {
         return res.status(401).json({
             auth: false,
-            message: "Token não encontrado"
+            message: "Token não encontrado",
         });
-
     } else {
         jwt.verify(token, jwt_secret, (err, decoded) => {
             if (err) {
                 return res.status(500).json({
                     auth: false,
-                    message: "Token inválido"
+                    message: "Token inválido",
                 });
             }
             req.userId = decoded.id;
@@ -29,9 +28,9 @@ verificarToken = (req, res, next) => {
     }
 
     return res.status(200).json({
-        auth: true
+        auth: true,
     });
-}
+};
 
 // verifica se o usuário é admin
 isAdmin = (req, res, next) => {
@@ -42,9 +41,9 @@ isAdmin = (req, res, next) => {
     }
     return res.status(401).json({
         auth: false,
-        message: "Acesso negado"
+        message: "Acesso negado",
     });
-}
+};
 
 // verifica se o usuário é funcionário
 isFuncionario = (req, res, next) => {
@@ -55,9 +54,9 @@ isFuncionario = (req, res, next) => {
     }
     return res.status(401).json({
         auth: false,
-        message: "Usuário não autorizado"
+        message: "Usuário não autorizado",
     });
-}
+};
 
 const authMiddlewares = {
     verificarToken,

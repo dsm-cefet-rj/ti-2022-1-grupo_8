@@ -6,7 +6,7 @@ import {
     fetchProdutos,
     selectIngredientes,
     selectPizzas,
-    selectProdutos
+    selectProdutos,
 } from "../../features/clienteDatabaseSlice";
 import AdminNav from "./admin-nav";
 import styles from "./menu-admin.module.scss";

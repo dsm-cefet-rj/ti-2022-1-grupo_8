@@ -19,7 +19,6 @@ server.use((req, res, next) => {
     );
 
     next();
-
 });
 
 server.use(express.json());
@@ -47,27 +46,29 @@ server.get("/session", (req, res) => {
         res.status(401).json({
             erro: "Nem um usuário logado",
         });
-        return
+        return;
     }
-
 
     if (req.session.usuario) {
-        res.status(200).json({
-            usuario: req.session.usuario,
-            type: req.session.type,
-        }).end();
+        res.status(200)
+            .json({
+                usuario: req.session.usuario,
+                type: req.session.type,
+            })
+            .end();
     } else {
-        res.status(401).json({
-            erro: "Não autorizado",
-        }).end();
+        res.status(401)
+            .json({
+                erro: "Não autorizado",
+            })
+            .end();
     }
 });
-
 
 // definir mensagem de erro para rotas não ultilizadas
 server.use((req, res, next) => {
     res.status(404).json({
-        message: "Rota não existe 😔"
+        message: "Rota não existe 😔",
     });
 });
 

@@ -125,5 +125,4 @@ router.post("/criar", (req, res) => {
     });
 });
 
-
 module.exports = router;

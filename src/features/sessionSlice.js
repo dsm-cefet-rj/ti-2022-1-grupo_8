@@ -1,4 +1,4 @@
-import { createSlice , createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 const getSessionFromLocalStorage = () => {
@@ -7,22 +7,20 @@ const getSessionFromLocalStorage = () => {
         return JSON.parse(session);
     }
     return null;
-}
+};
 
 export const fetchSession = createAsyncThunk(
     "session/fetchSession",
     async () => {
         let url = "http://localhost:3001/session";
-        const response = await axios(
-            url,
-            {
-                headers: {
-                    Authorization: `Bearer ${getSessionFromLocalStorage()}`,
-                },
-            }
-        )
+        const response = await axios(url, {
+            headers: {
+                Authorization: `Bearer ${getSessionFromLocalStorage()}`,
+            },
+        });
         return response.data;
-    });
+    }
+);
 
 const sessionSlice = createSlice({
     name: "session",
@@ -32,8 +30,8 @@ const sessionSlice = createSlice({
     extraReducers: {
         [fetchSession.fulfilled]: (state, action) => {
             state.session = action.payload;
-        }
-    }
+        },
+    },
 });
 
 export const selectSession = (state) => state.session.session;

@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
-    fetchIngredientes, selectIngredientes
+    fetchIngredientes,
+    selectIngredientes,
 } from "../../features/clienteDatabaseSlice";
 import {
-    selectId, setIdSelecinado
+    selectId,
+    setIdSelecinado,
 } from "../../features/gerir-ingredientesSlice";
 import AdminNav from "./admin-nav";
 import styles from "./gerir-ingredientes.module.scss";
