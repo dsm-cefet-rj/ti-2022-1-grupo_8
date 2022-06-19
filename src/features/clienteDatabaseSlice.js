@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import {getSessionFromLocalStorage} from "./sessionSlice";
+import { getSessionFromLocalStorage } from "./sessionSlice";
 import axios from "axios";
 
 export const fetchProdutos = createAsyncThunk(
