@@ -1,4 +1,4 @@
-import { React, useEffect } from "react";
+import { React, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import GerirIngredientes from "./components/Admin/gerir-ingredientes";
@@ -11,7 +11,7 @@ import CriarUsuario from "./components/Cliente/criar-usuario";
 import MenuCliente from "./components/Cliente/menu.js";
 import MenuFuncionario from "./components/funcionario/menuFuncionario";
 import NotFound from "./components/geral/not-found";
-import { fetchSession, selectSession } from "./features/sessionSlice";
+import { setToken, selectToken, getSessionFromLocalStorage } from "./features/sessionSlice";
 import LoginForm from "./login";
 
 /*
@@ -20,11 +20,36 @@ Descrição: Componente que renderiza a página principal
 */
 function App() {
     const dispatch = useDispatch();
-    const session = useSelector(selectSession);
+    const token = useSelector(selectToken);
+    const [userType, setUserType] = useState("");
+    const [loaded, setLoaded] = useState(false);
+
     useEffect(() => {
-        dispatch(fetchSession());
-        console.log(session);
-    }, [dispatch, session]);
+        dispatch(setToken(getSessionFromLocalStorage()));
+        // get user type from token
+        if (token) {
+            const tokenData = JSON.parse(atob(token.split(".")[1]));
+            setUserType(tokenData.type);
+            setLoaded(false);
+        }
+        if (!loaded){
+            switch (userType) { // redirect based on user type
+                case "user":
+                    window.location.href = "/menu";
+                    break;
+                case "admin":
+                    window.location.href = "/menu-admin";
+                    break;
+                case "funcionario":
+                    window.location.href = "/menu-funcionario";
+                    break;
+                default:
+                    break; // No redirect
+            }
+            setLoaded(true);
+        }
+        console.log(token, userType);
+    }, [dispatch, token, userType]);
 
     return (
         <>
@@ -36,23 +61,38 @@ function App() {
                     <Route path="/" element={<LoginForm />} />
                     {/* <----------------------->Criar Conta<-----------------------> */}
                     <Route path="/criar-usuario" element={<CriarUsuario />} />
+
+
                     {/* <----------------------->Usuário<-----------------------> */}
-                    <Route path="/carrinho" element={<Carrinho />} />
-                    <Route path="/criar-pizza" element={<CriarPizza />} />
-                    <Route path="/menu" element={<MenuCliente />} />
+                    {userType === "user" && (
+                        <>
+                            <Route path="/carrinho" element={<Carrinho />} />
+                            <Route path="/criar-pizza" element={<CriarPizza />} />
+                            <Route path="/menu" element={<MenuCliente />} />
+                        </>)
+                    }
+
+
+
                     {/* <----------------------->ADMIN<-----------------------> */}
-                    <Route path="/menu-admin" element={<MenuAdmin />} />
-                    <Route path="/gerir-pizzas" element={<GerirPizzas />} />
-                    <Route
-                        path="/gerir-ingredientes"
-                        element={<GerirIngredientes />}
-                    />
-                    <Route path="/gerir-produtos" element={<GerirProdutos />} />
+                    {userType === "admin" && (
+                        <>
+                            <Route path="/menu-admin" element={<MenuAdmin />} />
+                            <Route path="/gerir-pizzas" element={<GerirPizzas />} />
+                            <Route path="/gerir-ingredientes" element={<GerirIngredientes />} />
+                            <Route path="/gerir-produtos" element={<GerirProdutos />} />
+                        </>)
+                    }
                     {/* <----------------------->Funcionário<-----------------------> */}
-                    <Route
-                        path="/menu-funcionario"
-                        element={<MenuFuncionario />}
-                    />
+                    {userType === "funcionario" && (
+                        <>
+                            <Route
+                                path="/menu-funcionario"
+                                element={<MenuFuncionario />}
+                            />
+                        </>)
+                    }
+
                 </Routes>
             </Router>
         </>

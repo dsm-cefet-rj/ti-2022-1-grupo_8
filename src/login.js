@@ -1,4 +1,5 @@
 import { Parallax, ParallaxLayer } from "@react-spring/parallax";
+import { setSession } from "./features/sessionSlice";
 import { React, useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import style from "./login.module.scss";
@@ -21,8 +22,7 @@ const Cloud = (props) => {
                 width: `${Math.random() * 50 + 20}px`,
                 zIndex: -2,
                 transform: `translate(${x}px, ${y}px)`,
-            }}
-        >
+            }}>
             <img src={`imgs/decorações/${selectedCloud}`} alt="Nuvem" />
         </div>
     );
@@ -123,8 +123,7 @@ const LoginForm = () => {
                     <button
                         to="/menu"
                         className="btn btn-primary btn-block"
-                        onClick={handleLogin}
-                    >
+                        onClick={handleLogin}>
                         Logar
                     </button>
                 </div>
@@ -196,8 +195,7 @@ const LoginPage = () => {
                     <div
                         style={{
                             bottom: "0",
-                        }}
-                    >
+                        }}>
                         <img
                             src="imgs/parallax1.png"
                             alt="Pizzaria ON"

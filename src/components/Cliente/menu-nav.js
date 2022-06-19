@@ -1,6 +1,7 @@
 import { React, useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, dispatch } from "react-redux";
 import { selectCarrinho } from "../../features/carrinhoSlice";
+import { setToken, selectToken, getSessionFromLocalStorage } from "../../features/sessionSlice";
 /* 
 Componente: MenuNav
 Descrição: Componente que renderiza o menu de navegação para os clientes
@@ -8,6 +9,7 @@ Descrição: Componente que renderiza o menu de navegação para os clientes
 const MenuNav = (props) => {
     const atual = props.Atual; // Página atual
     const atualTexto = "😋";
+
     const carrinho = useSelector(selectCarrinho);
     const [collapse, setCollapse] = useState(false); // estado que controla o collapse do menu
 
@@ -33,6 +35,11 @@ const MenuNav = (props) => {
         document.title = title;
     }, [atual, carrinho]);
 
+    const handleLogout = () => {
+        localStorage.removeItem("token");
+        window.location.href = "/";
+    }
+
     /* Renderização do componente */
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light sticky-top">
@@ -41,8 +48,7 @@ const MenuNav = (props) => {
                 style={{
                     fontSize: "1.5rem",
                     marginLeft: "1rem",
-                }}
-            >
+                }}>
                 Pizzaria ON
             </a>
             <button className="navbar-toggler" type="button" onClick={toggle}>
@@ -51,8 +57,7 @@ const MenuNav = (props) => {
 
             <div
                 className={`collapse navbar-collapse ${collapse ? "show" : ""}`}
-                id="navbarNav"
-            >
+                id="navbarNav">
                 <div
                     style={{
                         display: "flex",
@@ -61,8 +66,7 @@ const MenuNav = (props) => {
                         alignItems: "center",
                         width: "100%",
                         padding: "0 2rem 0 2rem",
-                    }}
-                >
+                    }}>
                     <a className="btn btn-primary " href="/menu">
                         Menu 📑
                         {atual === "menu" ? (
@@ -101,9 +105,9 @@ const MenuNav = (props) => {
                             </span>
                         ) : null}
                     </a>
-                    <a className="btn btn-danger " href="/">
+                    <button className="btn btn-danger" onClick={handleLogout}>
                         Sair 👋
-                    </a>
+                    </button>
                 </div>
             </div>
         </nav>

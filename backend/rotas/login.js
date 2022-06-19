@@ -13,8 +13,6 @@ require("dotenv").config();
 router.post("/auth", (req, res) => {
     const { email, senha } = req.body;
 
-    console.log(email, senha);
-
     if (!email || !senha) {
         res.status(400).json({
             erro: "Dados insuficientes",

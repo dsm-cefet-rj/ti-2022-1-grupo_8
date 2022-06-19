@@ -1,11 +1,19 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import {getSessionFromLocalStorage} from "./sessionSlice";
 import axios from "axios";
 
 export const fetchProdutos = createAsyncThunk(
     "clienteDatabase/fetchProdutos",
     async () => {
-        let url = "http://localhost:3001/usuario/produtos";
-        const response = await axios.get(url);
+        const token = getSessionFromLocalStorage();
+        const url = "http://localhost:3001/usuario/produtos";
+        const response = await axios({
+            method: "GET",
+            url: url,
+            headers: {
+                "x-access-token": `Bearer ${token}`,
+            },
+        });
         return response.data;
     }
 );
@@ -13,8 +21,15 @@ export const fetchProdutos = createAsyncThunk(
 export const fetchIngredientes = createAsyncThunk(
     "clienteDatabase/fetchIngredientes",
     async () => {
-        let url = "http://localhost:3001/usuario/ingredientes";
-        const response = await axios.get(url);
+        const token = getSessionFromLocalStorage();
+        const url = "http://localhost:3001/usuario/ingredientes";
+        const response = await axios({
+            method: "GET",
+            url: url,
+            headers: {
+                "x-access-token": `Bearer ${token}`,
+            },
+        });
         return response.data;
     }
 );
@@ -22,8 +37,15 @@ export const fetchIngredientes = createAsyncThunk(
 export const fetchPizzas = createAsyncThunk(
     "clienteDatabase/fetchPizzas",
     async () => {
-        let url = "http://localhost:3001/usuario/pizzas";
-        const response = await axios.get(url);
+        const token = getSessionFromLocalStorage();
+        const url = "http://localhost:3001/usuario/pizzas";
+        const response = await axios({
+            method: "GET",
+            url: url,
+            headers: {
+                "x-access-token": `Bearer ${token}`,
+            },
+        });
         return response.data;
     }
 );
