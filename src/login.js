@@ -41,7 +41,7 @@ const LoginForm = () => {
         };
         const response = axios({
             method: "POST",
-            url: "http://localhost:3001/login",
+            url: "http://localhost:3001/login/auth",
             headers: {
                 "Content-Type": "application/json",
             },

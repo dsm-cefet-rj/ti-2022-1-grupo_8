@@ -10,6 +10,7 @@ import CriarPizza from "./components/Cliente/criar-pizza";
 import CriarUsuario from "./components/Cliente/criar-usuario";
 import MenuCliente from "./components/Cliente/menu.js";
 import MenuFuncionario from "./components/funcionario/menuFuncionario";
+import NotFound from "./components/geral/not-found";
 import store from "./features/store";
 import LoginForm from "./login";
 /*
@@ -22,7 +23,11 @@ function App() {
             <Provider store={store}>
                 <Router>
                     <Routes>
+                        {/* <----------------------->404<-----------------------> */}
+                        <Route path="*" element={ <NotFound /> } />
+                        {/* <----------------------->Login<-----------------------> */}
                         <Route path="/" element={<LoginForm />} />
+                        {/* <----------------------->Criar Conta<-----------------------> */}
                         <Route
                             path="/criar-usuario"
                             element={<CriarUsuario />}

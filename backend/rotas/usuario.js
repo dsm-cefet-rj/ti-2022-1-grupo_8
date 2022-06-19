@@ -4,7 +4,7 @@ const {
     getAllProdutos,
     addUsuario,
     getAllUsuarios,
-} = require("./data/DAO");
+} = require("../data/DAO");
 
 const express = require("express");
 const router = express.Router();

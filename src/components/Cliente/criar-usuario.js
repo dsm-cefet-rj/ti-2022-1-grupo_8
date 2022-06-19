@@ -41,7 +41,7 @@ const CriarUsuario = () => {
         };
         const response = axios({
             method: "post",
-            url: "http://localhost:3001/criar-usuario",
+            url: "http://localhost:3001/login/criar",
             headers: {
                 "Content-Type": "application/json",
             },
