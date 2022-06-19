@@ -16,38 +16,6 @@ Componente: MenuCliente
 Descrição: Componente que renderiza a página principal do Cliente
 */
 
-const Decoracao = (props) => {
-    let emojis = props.emojis;
-    let quant = props.quant;
-    const selectRandomEmoji = () => {
-        let index = Math.floor(Math.random() * emojis.length);
-        return emojis[index];
-    };
-    return (
-        <div className={styles.decoracao}>
-            {Array.from({ length: quant }, (_, i) => {
-                return (
-                    <h1
-                        key={i}
-                        style={{
-                            transform: `rotate(${
-                                Math.random() * (360 - 0) + 0
-                            }deg)`,
-                            transform: `translate(${
-                                Math.random() * (100 - 0) + 0
-                            }%, ${Math.random() * (100 - 0) + 0}%)`,
-                            textShadow: `0 0 10px black`,
-                            fontSize: `${Math.random() * 10 + 5}rem`,
-                        }}
-                    >
-                        {selectRandomEmoji()}
-                    </h1>
-                );
-            })}
-        </div>
-    );
-};
-
 const SecaoCriarPizza = () => {
     return (
         <div className="row justify-content-center mt-2">
@@ -164,57 +132,22 @@ export default () => {
     const ref = useRef();
     return (
         <div className={styles.body}>
-            <Parallax pages={2.5} ref={ref}>
-                <ParallaxLayer offset={0} speed={0.5}>
-                    <Decoracao
-                        emojis={[
-                            "🍕",
-                            "🍕",
-                            "🍕",
-                            "🍕",
-                            "🍕",
-                            "🍕",
-                            "🍕",
-                            "😋",
-                            "🧀",
-                            "🍅",
-                            "🤘",
-                            "🥤",
-                            "🍾",
-                            "🥓",
-                            "🐷",
-                            "🧄",
-                            "🧅",
-                            "🥩",
-                            "🐥",
-                            "༼ つ ◕_◕ ༽つ🍰🍔🍕",
-                            "😍",
-                            "🤌🏼",
-                            "🍄",
-                            "👩🏻‍🍳",
-                        ]}
-                        quant={50}
-                    />
-                </ParallaxLayer>
-                <ParallaxLayer offset={0} speed={2}>
-                    <MenuNav Atual="menu" />
-                    <div className="container mb-2 p-1 bg-transparent">
-                        <ListaPizzasMaisPedidas />
-                    </div>
-                    <hr />
-                    <div className="container mb-2 p-1 bg-transparent">
-                        <SecaoCriarPizza />
-                    </div>
-                    <div className="container mb-2 p-1 bg-transparent">
-                        <ListaProdutos />
-                    </div>
-                    <hr />
-                    <div className="container mb-2 p-1 bg-transparent">
-                        <TodasAsPizzas />
-                    </div>
-                    <hr />
-                </ParallaxLayer>
-            </Parallax>
+            <MenuNav Atual="menu" />
+            <div className="container mb-2 p-1 bg-transparent">
+                <ListaPizzasMaisPedidas />
+            </div>
+            <hr />
+            <div className="container mb-2 p-1 bg-transparent">
+                <SecaoCriarPizza />
+            </div>
+            <div className="container mb-2 p-1 bg-transparent">
+                <ListaProdutos />
+            </div>
+            <hr />
+            <div className="container mb-2 p-1 bg-transparent">
+                <TodasAsPizzas />
+            </div>
+            <hr />
         </div>
     );
 };
