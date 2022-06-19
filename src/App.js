@@ -24,7 +24,7 @@ function App() {
                 <Router>
                     <Routes>
                         {/* <----------------------->404<-----------------------> */}
-                        <Route path="*" element={ <NotFound /> } />
+                        <Route path="*" element={<NotFound />} />
                         {/* <----------------------->Login<-----------------------> */}
                         <Route path="/" element={<LoginForm />} />
                         {/* <----------------------->Criar Conta<-----------------------> */}

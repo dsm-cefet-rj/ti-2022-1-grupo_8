@@ -1,26 +1,26 @@
-.notFound{
+.notFound {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     height: 100vh;
-    background-image: url('/imgs/background.jpg');
+    background-image: url("/imgs/background.jpg");
     background-size: cover;
     text-shadow: 0 0 10px #000;
     text-align: center;
-    h1{
+    h1 {
         font-size: 3rem;
         font-weight: bold;
         color: #fff;
         margin-bottom: 1rem;
     }
-    a{
+    a {
         font-size: 2rem;
         font-weight: bold;
         color: rgb(255, 255, 255);
         text-decoration: none;
         transition: all 0.3s ease-in-out;
-        &:hover{
+        &:hover {
             color: #00a8ff;
         }
     }

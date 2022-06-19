@@ -73,7 +73,6 @@ router.post("/auth", (req, res) => {
     });
 });
 
-
 router.post("/criar", (req, res) => {
     const { nome, email, senha } = req.body;
 
@@ -123,6 +122,5 @@ router.post("/criar", (req, res) => {
         });
     });
 });
-
 
 module.exports = router;
