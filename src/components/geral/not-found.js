@@ -8,6 +8,6 @@ const NotFound = () => {
             <a href="/">Voltar para o início 🍕 😋</a>
         </div>
     );
-}
+};
 
 export default NotFound;
