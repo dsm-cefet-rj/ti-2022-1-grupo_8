@@ -7,7 +7,7 @@ export const fetchPedidos = createAsyncThunk(
     "pedidosCliente/fetchPedidos",
     async () => {
         const token = getSessionFromLocalStorage();
-        const url = "http://localhost:3001/usuario/pedidos";
+        const url = "http://localhost:3001/usuario/pedido";
         const response = await axios.get(url, {
             headers: {
                 authorization: `Bearer ${token}`,
