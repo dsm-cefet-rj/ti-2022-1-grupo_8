@@ -42,7 +42,6 @@ router.get("/produtos", (req, res) => {
 });
 
 router.put("/pedido", (req, res) => {
-    const usuarios = getAllUsuarios();
     const cliente = req.user; // email,type,iat,exp
     const pedido = {
         email: cliente.email,
