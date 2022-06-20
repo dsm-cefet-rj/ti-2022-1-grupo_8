@@ -21,19 +21,17 @@ verificarToken = (req, res, next) => {
         jwt.verify(token, jwt_secret, (err, decoded) => {
             if (err) {
                 // se o token estiver inválido
-                return res
-                    .status(500)
-                    .send({
-                        auth: false,
-                        message: "Failed to authenticate token.",
-                    });
+                return res.status(500).send({
+                    auth: false,
+                    message: "Failed to authenticate token.",
+                });
             } else {
                 // se o token estiver válido
                 req.user = decoded;
                 // Adicionar informações do payload do token no request
                 const tokenPayload = jwt.decode(token); // decodifica o token
                 req.user = tokenPayload;
-                
+
                 next(); // continua a execução da rota
             }
         });

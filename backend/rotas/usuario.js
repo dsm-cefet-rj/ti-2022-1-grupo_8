@@ -50,8 +50,7 @@ router.put("/pedido", (req, res) => {
         endereco: req.body.endereco,
         carrinho: req.body.carrinho,
         estatus: "Feito",
-
-    }
+    };
     addPedido(pedido);
 });
 
