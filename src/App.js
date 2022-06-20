@@ -10,6 +10,7 @@ import CriarPizza from "./components/Cliente/criar-pizza";
 import CriarUsuario from "./components/Cliente/criar-usuario";
 import MenuCliente from "./components/Cliente/menu.js";
 import MenuFuncionario from "./components/funcionario/menuFuncionario";
+import MeusPedidos from "./components/Cliente/meus-pedidos";
 import NotFound from "./components/geral/not-found";
 import {
     setToken,
@@ -77,6 +78,7 @@ function App() {
                                 element={<CriarPizza />}
                             />
                             <Route path="/menu" element={<MenuCliente />} />
+                            <Route path="/meus-pedidos" element={<MeusPedidos />} />
                         </>
                     )}
 

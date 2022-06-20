@@ -1,0 +1,13 @@
+.body {
+    background: rgba(255, 255, 255, 0.5) url("/imgs/background.jpg");
+    background-blend-mode: lighten;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font-family: "Yanone Kaffeesatz", sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Assistant",
+        "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+        "Helvetica Neue", sans-serif;
+    min-height: 100vh;
+    max-width: 100vw;
+}

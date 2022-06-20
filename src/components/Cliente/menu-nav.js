@@ -32,6 +32,9 @@ const MenuNav = (props) => {
             case "criar-pizza":
                 title = "Pizzaria ON - Criar Pizza";
                 break;
+            case "meus-pedidos":
+                title = "Pizzaria ON - Meus Pedidos";
+                break;
             default:
                 title = "Pizzaria ON";
                 break;
@@ -72,8 +75,7 @@ const MenuNav = (props) => {
                         alignItems: "center",
                         width: "100%",
                         padding: "0 2rem 0 2rem",
-                    }}
-                >
+                    }}>
                     <a className="btn btn-primary " href="/menu">
                         Menu 📑
                         {atual === "menu" ? (
@@ -90,6 +92,16 @@ const MenuNav = (props) => {
                             </span>
                         ) : null}
                     </a>
+
+                    <a className="btn btn-primary " href="/meus-pedidos">
+                        Meus Pedidos
+                        {atual === "meus-pedidos" ? (
+                            <span className="badge badge-secondary">
+                                {atualTexto}
+                            </span>
+                        ) : null}
+                    </a>
+
                     <a className="btn btn-primary " href="/carrinho">
                         Carrinho
                         {atual === "carrinho" ? (
