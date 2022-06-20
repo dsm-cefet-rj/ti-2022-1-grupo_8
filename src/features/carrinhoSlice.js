@@ -27,11 +27,17 @@ export const fazerPedido = createAsyncThunk(
             endereco: "Um endereço qualquer",
             carrinho: carinho,
         };
-        const response = await axios.post(url, body, {
-            headers: {
-                Authorization: `Bearer ${token}`,
+        const response = await axios(
+            url,
+            {
+                method: "PUT",
+                headers: {
+                    "x-access-token": `Bearer ${token}`,
+                    "Content-Type": "application/json",
+                },
+                data: body,
             },
-        });
+        )
         return response.data;
     }
 );
@@ -80,6 +86,7 @@ const carrinhoSlice = createSlice({
     },
     extraReducers: {
         [fazerPedido.fulfilled]: (state, action) => {
+            console.log(action.payload);
             state.itens = []; // limpa o carrinho
             saveToLocalStorage(state.itens);
         },

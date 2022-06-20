@@ -371,9 +371,86 @@
       "senha": "$2b$10$A7WAMKMPcK3d65HRjZVER.IXOTYVcSzPL2B7bKWezjoq1gVnqhJ/W",
       "type": "funcionario",
       "pedidos": []
+    },
+    {
+      "nome": "Matheus",
+      "email": "mathues.coelho@gmail.com",
+      "senha": "$2b$10$ZOQpXXsxuj1IdKKx16JSo.NAs6GpaFBHAO.XDLtRjXqLhASF2jKdq",
+      "type": "user",
+      "pedidos": []
     }
   ],
   "pedidos": [
-      
+    {
+      "email": "vycasnicolas@gmail.com",
+      "dataHora": 1655700870151,
+      "endereco": "Um endereço qualquer",
+      "carrinho": [
+        {
+          "nome": "Calabresa",
+          "descricao": "Deliciosa pizza com molho de tomate, mussarela, calabresa, azeitona e orégano.",
+          "imagem": "/imgs/pizza-calabresa.jpg",
+          "preco": 23.31,
+          "id": 0,
+          "tipo": "pizza",
+          "quantidade": 1
+        },
+        {
+          "nome": "Pizza de Mussarela",
+          "descricao": "Básica mas ainda gostosa, pizza com molho de tomate, mussarela e orégano.",
+          "imagem": "/imgs/pizza-mussarela.webp",
+          "preco": 23.81,
+          "id": 1,
+          "tipo": "pizza",
+          "quantidade": 1
+        },
+        {
+          "nome": "Tropical",
+          "descricao": "Deliciosa pizza com mussarela, camarão, bacon e abacaxi.",
+          "imagem": "/imgs/Tropical.jpg",
+          "preco": 32.27,
+          "id": 11,
+          "tipo": "pizza",
+          "quantidade": 1
+        },
+        {
+          "nome": "Fanta Laranja 2L",
+          "descricao": "Refrigerante sabor laranja de 2L.",
+          "imagem": "imgs/fanta.webp",
+          "preco": 8,
+          "id": 102,
+          "tipo": "produto",
+          "quantidade": 1
+        },
+        {
+          "nome": "Guaraná 2L",
+          "descricao": "Refrigerante sabor guaraná de 2L.",
+          "imagem": "imgs/guarana.webp",
+          "preco": 8,
+          "id": 103,
+          "tipo": "produto",
+          "quantidade": 1
+        },
+        {
+          "nome": "Suco de Laranja 1L",
+          "descricao": "Suco de Laranja Del Valle sabor Laranja 1L",
+          "imagem": "imgs/suco-de-lagranja-com-gominhos-del-valle-1L.png",
+          "preco": 4,
+          "id": 108,
+          "tipo": "produto",
+          "quantidade": 1
+        },
+        {
+          "nome": "Suco de Pêssego 1L",
+          "descricao": "Suco de Laranja Del Valle sabor pêssego 1L",
+          "imagem": "imgs/suco-pessego-del-valle-frut-1l..png",
+          "preco": 4,
+          "id": 110,
+          "tipo": "produto",
+          "quantidade": 1
+        }
+      ],
+      "estatus": "Feito"
+    }
   ]
 }

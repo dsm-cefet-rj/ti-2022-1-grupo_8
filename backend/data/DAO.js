@@ -185,4 +185,7 @@ module.exports = {
     addUsuario,
     editUsuario,
     removeUsuario,
+    getAllPedidos,
+    getPedidos,
+    addPedido,
 };
