@@ -53,6 +53,7 @@ router.put("/pedido", (req, res) => {
 
     }
     addPedido(pedido);
+    res.status(200).json(pedido).end();
 });
 
 module.exports = router;
