@@ -1,6 +1,6 @@
 import { React, useEffect, useState } from "react";
-import { useSelector, dispatch } from "react-redux";
-import { selectCarrinho } from "../../features/carrinhoSlice";
+import { useSelector, useDispatch } from "react-redux";
+import { selectCarrinho,setCarrinho } from "../../features/carrinhoSlice";
 import {
     setToken,
     selectToken,
@@ -13,6 +13,8 @@ Descrição: Componente que renderiza o menu de navegação para os clientes
 const MenuNav = (props) => {
     const atual = props.Atual; // Página atual
     const atualTexto = "😋";
+
+    const dispatch = useDispatch();
 
     const carrinho = useSelector(selectCarrinho);
     const [collapse, setCollapse] = useState(false); // estado que controla o collapse do menu
@@ -44,6 +46,7 @@ const MenuNav = (props) => {
 
     const handleLogout = () => {
         localStorage.removeItem("token");
+        dispatch(setCarrinho([]));
         window.location.href = "/";
     };
 
