@@ -89,6 +89,8 @@ const carrinhoSlice = createSlice({
             console.log(action.payload);
             state.itens = []; // limpa o carrinho
             saveToLocalStorage(state.itens);
+            // Redireciona para a página de pedidos
+            window.location.href = "/meus-pedidos";
         },
     },
 });
