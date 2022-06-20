@@ -152,8 +152,8 @@ const getAllPedidos = () => {
 
 const getPedidos = (email) => {
     // retorna todos os pedidos do usuário pelo email
-    let pedido = database.pedidos.find((pedido) => pedido.email === email);
-    return Object.assign(new Pedido(), pedido);
+    let pedidos = database.pedidos.find((pedido) => pedido.email === email);
+    return pedidos;
 };
 
 const addPedido = (pedido) => {
