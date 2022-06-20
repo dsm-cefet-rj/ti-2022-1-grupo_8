@@ -143,6 +143,24 @@ const removeUsuario = (email) => {
     return removido;
 };
 
+/******** Pedidos ********/
+
+const getAllPedidos = () => { // retorna todos os pedidos
+    return database.pedidos;
+}
+
+const getPedidos = (email) => { // retorna todos os pedidos do usuário pelo email
+    let pedido = database.pedidos.find((pedido) => pedido.email === email);
+    return Object.assign(new Pedido(), pedido);
+}
+
+const addPedido = (pedido) => { // adiciona um pedido
+    let pedidoDB = database.pedidos;
+    pedidoDB.push(pedido);
+    saveDatabase();
+    return pedidoDB[database.pedidos.length - 1];
+}
+
 module.exports = {
     getAllIngredientes,
     getIngrediente,

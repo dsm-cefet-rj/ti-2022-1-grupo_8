@@ -2,8 +2,8 @@ const {
     getAllIngredientes,
     getAllPizzas,
     getAllProdutos,
-    addUsuario,
     getAllUsuarios,
+    addPedido,
 } = require("../data/DAO");
 
 const express = require("express");
@@ -39,6 +39,20 @@ router.get("/pizzas", (req, res) => {
 
 router.get("/produtos", (req, res) => {
     res.status(200).json(getAllProdutos()).end();
+});
+
+router.put("/pedido", (req, res) => {
+    const usuarios = getAllUsuarios();
+    const cliente = req.user; // email,type,iat,exp
+    const pedido = {
+        email: cliente.email,
+        dataHora: Date.now(),
+        endereco: req.body.endereco,
+        carrinho: req.body.carrinho,
+        estatus: "Feito",
+
+    }
+    addPedido(pedido);
 });
 
 module.exports = router;
