@@ -16,7 +16,11 @@ verificarToken = (req, res, next) => {
                 return res.status(500).send({ auth: false, message: "Failed to authenticate token." });
             }else{ // se o token estiver válido
                 req.user = decoded;
-                next();
+                // Adicionar informações do payload do token no request
+                const tokenPayload = jwt.decode(token); // decodifica o token
+                req.user = tokenPayload;
+                
+                next(); // continua a execução da rota
             }
         });
     }
