@@ -77,7 +77,7 @@ const Carrinho = () => {
     const finalizarPedido = () => {
         if (itensCarrinho.length > 0) {
             dispatch(fazerPedido());
-        }else{
+        } else {
             console.log("Carrinho vazio");
         }
     };
