@@ -2,7 +2,8 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import { getSessionFromLocalStorage } from "./sessionSlice";
 
-export const fetchPedidos = createAsyncThunk( // função que busca os pedidos do cliente
+export const fetchPedidos = createAsyncThunk(
+    // função que busca os pedidos do cliente
     "pedidosCliente/fetchPedidos",
     async () => {
         const token = getSessionFromLocalStorage();
@@ -24,8 +25,8 @@ const pedidosClienteSlice = createSlice({
     extraReducers: {
         [fetchPedidos.fulfilled]: (state, action) => {
             state.pedidos = action.payload;
-        }
-    }
+        },
+    },
 });
 
 export const selectPedidos = (state) => state.pedidosCliente.pedidos;

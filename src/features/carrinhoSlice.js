@@ -16,7 +16,8 @@ export const saveToLocalStorage = (carrinho) => {
     localStorage.setItem("carrinho", JSON.stringify(carrinho));
 };
 
-export const fazerPedido = createAsyncThunk( // função que faz o pedido do cliente
+export const fazerPedido = createAsyncThunk(
+    // função que faz o pedido do cliente
     "carrinho/fazerPedido",
     async () => {
         const token = getSessionFromLocalStorage();
@@ -25,7 +26,7 @@ export const fazerPedido = createAsyncThunk( // função que faz o pedido do cli
         const body = {
             endereco: "Um endereço qualquer",
             carrinho: carinho,
-        } 
+        };
         const response = await axios.post(url, body, {
             headers: {
                 Authorization: `Bearer ${token}`,
@@ -81,8 +82,8 @@ const carrinhoSlice = createSlice({
         [fazerPedido.fulfilled]: (state, action) => {
             state.itens = []; // limpa o carrinho
             saveToLocalStorage(state.itens);
-        }
-    }
+        },
+    },
 });
 
 export const {

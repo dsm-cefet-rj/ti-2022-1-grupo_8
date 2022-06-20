@@ -78,7 +78,10 @@ function App() {
                                 element={<CriarPizza />}
                             />
                             <Route path="/menu" element={<MenuCliente />} />
-                            <Route path="/meus-pedidos" element={<MeusPedidos />} />
+                            <Route
+                                path="/meus-pedidos"
+                                element={<MeusPedidos />}
+                            />
                         </>
                     )}
 
