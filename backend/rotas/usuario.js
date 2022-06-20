@@ -2,7 +2,7 @@ const {
     getAllIngredientes,
     getAllPizzas,
     getAllProdutos,
-    getAllUsuarios,
+    getPedidos,
     addPedido,
 } = require("../data/DAO");
 
@@ -41,7 +41,7 @@ router.get("/produtos", (req, res) => {
     res.status(200).json(getAllProdutos()).end();
 });
 
-router.put("/pedido", (req, res) => {
+router.put("/pedido", (req, res) => { // Permite um cliente fazer um pedido
     const cliente = req.user; // email,type,iat,exp
     const pedido = {
         email: cliente.email,
@@ -52,6 +52,14 @@ router.put("/pedido", (req, res) => {
     };
     addPedido(pedido);
     res.status(200).json(pedido).end();
+});
+
+router.get("/pedido" , (req, res) => { // Permite um cliente ver todos os pedidos que fez
+    //O usuário está logado e o email é armazenado no objeto req.user.
+    const cliente = req.user; // email,type,iat,exp
+    const email = cliente.email; //O email é extraído do objeto req.user.
+    const pedidos = getPedidos(email); //A matriz pedidos do email é recuperada do banco de dados.
+    res.status(200).json(pedidos).end(); //A matriz de pedidos é enviada ao cliente.
 });
 
 module.exports = router;
