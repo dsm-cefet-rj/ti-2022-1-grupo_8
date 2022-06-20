@@ -1,7 +1,7 @@
 const express = require("express");
 require("dotenv").config();
 
-const cors = require('cors')
+const cors = require("cors");
 const port = process.env.BACKEND_PORT || 3001;
 const server = express();
 const rotasUsuario = require("./rotas/usuario");

@@ -7,14 +7,28 @@ require("dotenv").config();
 const jwt_secret = process.env.JWT_SECRET;
 // verifica se o token está válido e se o usuário é o mesmo que o token
 verificarToken = (req, res, next) => {
-    const token = (req.headers["x-access-token"] || req.headers["authorization"] || req.headers["x-auth-token"]).replace("Bearer ","");
-    if (!token) { // se não existir token
-        return res.status(401).send({ auth: false, message: "No token provided." });
-    }else {
+    const token = (
+        req.headers["x-access-token"] ||
+        req.headers["authorization"] ||
+        req.headers["x-auth-token"]
+    ).replace("Bearer ", "");
+    if (!token) {
+        // se não existir token
+        return res
+            .status(401)
+            .send({ auth: false, message: "No token provided." });
+    } else {
         jwt.verify(token, jwt_secret, (err, decoded) => {
-            if (err) { // se o token estiver inválido
-                return res.status(500).send({ auth: false, message: "Failed to authenticate token." });
-            }else{ // se o token estiver válido
+            if (err) {
+                // se o token estiver inválido
+                return res
+                    .status(500)
+                    .send({
+                        auth: false,
+                        message: "Failed to authenticate token.",
+                    });
+            } else {
+                // se o token estiver válido
                 req.user = decoded;
                 // Adicionar informações do payload do token no request
                 const tokenPayload = jwt.decode(token); // decodifica o token
