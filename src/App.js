@@ -11,7 +11,11 @@ import CriarUsuario from "./components/Cliente/criar-usuario";
 import MenuCliente from "./components/Cliente/menu.js";
 import MenuFuncionario from "./components/funcionario/menuFuncionario";
 import NotFound from "./components/geral/not-found";
-import { setToken, selectToken, getSessionFromLocalStorage } from "./features/sessionSlice";
+import {
+    setToken,
+    selectToken,
+    getSessionFromLocalStorage,
+} from "./features/sessionSlice";
 import LoginForm from "./login";
 
 /*
@@ -32,8 +36,10 @@ function App() {
             setUserType(tokenData.type);
             setLoaded(false);
         }
-        if (!loaded){
-            switch (userType) { // redirect based on user type
+        if (!loaded) {
+            switch (
+                userType // redirect based on user type
+            ) {
                 case "user":
                     window.location.href = "/menu";
                     break;
@@ -62,27 +68,36 @@ function App() {
                     {/* <----------------------->Criar Conta<-----------------------> */}
                     <Route path="/criar-usuario" element={<CriarUsuario />} />
 
-
                     {/* <----------------------->Usuário<-----------------------> */}
                     {userType === "user" && (
                         <>
                             <Route path="/carrinho" element={<Carrinho />} />
-                            <Route path="/criar-pizza" element={<CriarPizza />} />
+                            <Route
+                                path="/criar-pizza"
+                                element={<CriarPizza />}
+                            />
                             <Route path="/menu" element={<MenuCliente />} />
-                        </>)
-                    }
-
-
+                        </>
+                    )}
 
                     {/* <----------------------->ADMIN<-----------------------> */}
                     {userType === "admin" && (
                         <>
                             <Route path="/menu-admin" element={<MenuAdmin />} />
-                            <Route path="/gerir-pizzas" element={<GerirPizzas />} />
-                            <Route path="/gerir-ingredientes" element={<GerirIngredientes />} />
-                            <Route path="/gerir-produtos" element={<GerirProdutos />} />
-                        </>)
-                    }
+                            <Route
+                                path="/gerir-pizzas"
+                                element={<GerirPizzas />}
+                            />
+                            <Route
+                                path="/gerir-ingredientes"
+                                element={<GerirIngredientes />}
+                            />
+                            <Route
+                                path="/gerir-produtos"
+                                element={<GerirProdutos />}
+                            />
+                        </>
+                    )}
                     {/* <----------------------->Funcionário<-----------------------> */}
                     {userType === "funcionario" && (
                         <>
@@ -90,9 +105,8 @@ function App() {
                                 path="/menu-funcionario"
                                 element={<MenuFuncionario />}
                             />
-                        </>)
-                    }
-
+                        </>
+                    )}
                 </Routes>
             </Router>
         </>

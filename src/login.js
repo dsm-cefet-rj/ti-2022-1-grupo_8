@@ -22,7 +22,8 @@ const Cloud = (props) => {
                 width: `${Math.random() * 50 + 20}px`,
                 zIndex: -2,
                 transform: `translate(${x}px, ${y}px)`,
-            }}>
+            }}
+        >
             <img src={`imgs/decorações/${selectedCloud}`} alt="Nuvem" />
         </div>
     );
@@ -123,7 +124,8 @@ const LoginForm = () => {
                     <button
                         to="/menu"
                         className="btn btn-primary btn-block"
-                        onClick={handleLogin}>
+                        onClick={handleLogin}
+                    >
                         Logar
                     </button>
                 </div>
@@ -195,7 +197,8 @@ const LoginPage = () => {
                     <div
                         style={{
                             bottom: "0",
-                        }}>
+                        }}
+                    >
                         <img
                             src="imgs/parallax1.png"
                             alt="Pizzaria ON"

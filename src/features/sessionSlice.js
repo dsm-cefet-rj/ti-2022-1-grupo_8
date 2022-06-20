@@ -11,7 +11,7 @@ export const getSessionFromLocalStorage = () => {
 
 export const saveSessionToLocalStorage = (token) => {
     localStorage.setItem("token", JSON.stringify(token));
-}
+};
 
 const sessionSlice = createSlice({
     name: "session",
@@ -21,8 +21,7 @@ const sessionSlice = createSlice({
     reducers: {
         setToken: (state, action) => {
             state.token = action.payload;
-            
-        }
+        },
     },
 });
 
