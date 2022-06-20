@@ -5,7 +5,8 @@ require("dotenv").config();
 const jwt_secret = process.env.JWT_SECRET;
 // verifica se o token está válido e se o usuário é o mesmo que o token
 verificarToken = (req, res, next) => {
-    let token = req.headers["x-access-token"] ||
+    let token =
+        req.headers["x-access-token"] ||
         req.headers["authorization"] ||
         req.headers["x-auth-token"];
 
@@ -38,7 +39,8 @@ verificarToken = (req, res, next) => {
 
 // verifica se o usuário é admin
 isAdmin = (req, res, next) => {
-    let token = req.headers["x-access-token"] ||
+    let token =
+        req.headers["x-access-token"] ||
         req.headers["authorization"] ||
         req.headers["x-auth-token"];
     if (token) {
@@ -50,7 +52,8 @@ isAdmin = (req, res, next) => {
         }
     }
 
-    return res.status(401).json({ // Usuário não é admin 401
+    return res.status(401).json({
+        // Usuário não é admin 401
         auth: false,
         message: "Acesso negado",
     });
@@ -58,9 +61,10 @@ isAdmin = (req, res, next) => {
 
 // verifica se o usuário é funcionário
 isFuncionario = (req, res, next) => {
-    let token = req.headers["x-access-token"] ||
+    let token =
+        req.headers["x-access-token"] ||
         req.headers["authorization"] ||
-        req.headers["x-auth-token"]
+        req.headers["x-auth-token"];
     if (token) {
         token = token.replace("Bearer ", ""); // remove o Bearer do token
         const tokenPayload = jwt.decode(token); // decodifica o token. Conteúdo: email, type, iat, exp
@@ -69,7 +73,8 @@ isFuncionario = (req, res, next) => {
             next();
         }
     }
-    return res.status(401).json({ // Usuário não é admin 401
+    return res.status(401).json({
+        // Usuário não é admin 401
         auth: false,
         message: "Acesso negado",
     });

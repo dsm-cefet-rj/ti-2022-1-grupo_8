@@ -1,6 +1,6 @@
 import { React, useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { selectCarrinho,setCarrinho } from "../../features/carrinhoSlice";
+import { selectCarrinho, setCarrinho } from "../../features/carrinhoSlice";
 import {
     setToken,
     selectToken,
@@ -78,7 +78,8 @@ const MenuNav = (props) => {
                         alignItems: "center",
                         width: "100%",
                         padding: "0 2rem 0 2rem",
-                    }}>
+                    }}
+                >
                     <a className="btn btn-primary " href="/menu">
                         Menu 📑
                         {atual === "menu" ? (

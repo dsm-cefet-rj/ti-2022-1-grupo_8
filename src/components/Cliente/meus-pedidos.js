@@ -2,7 +2,10 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import MenuNav from "./menu-nav";
 import styles from "./meus-pedidos.module.scss";
-import { fetchPedidos, selectPedidos } from "../../features/pedidos-clienteSlice";
+import {
+    fetchPedidos,
+    selectPedidos,
+} from "../../features/pedidos-clienteSlice";
 
 const Pedido = (props) => {
     const data = props.data; // Data do pedido
@@ -23,7 +26,6 @@ const Pedido = (props) => {
     );
 };
 
-
 /* 
 Componente: MeusPedidos
 Descrição: Componente que renderiza a página de pedidos do cliente
@@ -42,7 +44,7 @@ const MeusPedidos = () => {
                     <h1 className="text-center">Meus Pedidos</h1>
                 </div>
                 <div className="row">
-                    {pedidos.length > 0 ?
+                    {pedidos.length > 0 ? (
                         pedidos.map((pedido) => (
                             <Pedido
                                 data={pedido.data}
@@ -50,8 +52,9 @@ const MeusPedidos = () => {
                                 status={pedido.status}
                             />
                         ))
-                        : (<h2 className="text-center">Nenhum pedido</h2>)
-                    }
+                    ) : (
+                        <h2 className="text-center">Nenhum pedido</h2>
+                    )}
                 </div>
             </div>
         </>
