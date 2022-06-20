@@ -7,29 +7,19 @@ require("dotenv").config();
 const jwt_secret = process.env.JWT_SECRET;
 // verifica se o token está válido e se o usuário é o mesmo que o token
 verificarToken = (req, res, next) => {
-    const token = req.headers["x-access-token"];
-
-    if (!token) {
-        return res.status(401).json({
-            auth: false,
-            message: "Token não encontrado",
-        });
-    } else {
+    const token = (req.headers["x-access-token"] || req.headers["authorization"] || req.headers["x-auth-token"]).replace("Bearer ","");
+    if (!token) { // se não existir token
+        return res.status(401).send({ auth: false, message: "No token provided." });
+    }else {
         jwt.verify(token, jwt_secret, (err, decoded) => {
-            if (err) {
-                return res.status(500).json({
-                    auth: false,
-                    message: "Token inválido",
-                });
+            if (err) { // se o token estiver inválido
+                return res.status(500).send({ auth: false, message: "Failed to authenticate token." });
+            }else{ // se o token estiver válido
+                req.user = decoded;
+                next();
             }
-            req.userId = decoded.id;
-            next();
         });
     }
-
-    return res.status(200).json({
-        auth: true,
-    });
 };
 
 // verifica se o usuário é admin

@@ -1,25 +1,14 @@
 const express = require("express");
 require("dotenv").config();
 
+const cors = require('cors')
 const port = process.env.BACKEND_PORT || 3001;
 const server = express();
 const rotasUsuario = require("./rotas/usuario");
 const rotasLogin = require("./rotas/login");
 const authMiddlewares = require("./middleware/authJws");
 
-server.use((req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header(
-        "Access-Control-Allow-Headers",
-        "Origin, X-Requested-With, Content-Type, Accept"
-    );
-    res.header(
-        "Access-Control-Allow-Methods",
-        "GET, POST, PUT, DELETE, OPTIONS"
-    );
-
-    next();
-});
+server.use(cors());
 
 server.use(express.json());
 
@@ -31,15 +20,6 @@ server.use("/usuario", authMiddlewares.verificarToken, rotasUsuario);
 // rota para verificar se o usuário está logado
 server.get("/session", (req, res) => {
     // use cors para permitir acesso de qualquer origem
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header(
-        "Access-Control-Allow-Headers",
-        "Origin, X-Requested-With, Content-Type, Accept"
-    );
-    res.header(
-        "Access-Control-Allow-Methods",
-        "GET, POST, PUT, DELETE, OPTIONS"
-    );
 
     console.log(req.session);
     if (req.session == undefined) {
