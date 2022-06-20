@@ -55,7 +55,6 @@ function App() {
             }
             setLoaded(true);
         }
-        console.log(token, userType);
     }, [dispatch, token, userType]);
 
     return (
