@@ -75,7 +75,11 @@ const Carrinho = () => {
 
     // Faz o pedido
     const finalizarPedido = () => {
-        dispatch(fazerPedido());
+        if (itensCarrinho.length > 0) {
+            dispatch(fazerPedido());
+        }else{
+            console.log("Carrinho vazio");
+        }
     };
 
     // Renderização do componente
