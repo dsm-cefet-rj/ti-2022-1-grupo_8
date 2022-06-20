@@ -1,4 +1,6 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import axios from "axios";
+import { getSessionFromLocalStorage } from "./sessionSlice";
 
 // recupera os itens do localStorage
 export const getFromLocalStorage = () => {
@@ -13,6 +15,25 @@ export const getFromLocalStorage = () => {
 export const saveToLocalStorage = (carrinho) => {
     localStorage.setItem("carrinho", JSON.stringify(carrinho));
 };
+
+export const fazerPedido = createAsyncThunk( // função que faz o pedido do cliente
+    "carrinho/fazerPedido",
+    async () => {
+        const token = getSessionFromLocalStorage();
+        const url = "http://localhost:3001/usuario/fazer-pedido";
+        const carinho = getFromLocalStorage();
+        const body = {
+            endereco: "Um endereço qualquer",
+            carrinho: carinho,
+        } 
+        const response = await axios.post(url, body, {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        });
+        return response.data;
+    }
+);
 
 const carrinhoSlice = createSlice({
     name: "carrinho",
@@ -56,6 +77,12 @@ const carrinhoSlice = createSlice({
             state.itens = getFromLocalStorage();
         },
     },
+    extraReducers: {
+        [fazerPedido.fulfilled]: (state, action) => {
+            state.itens = []; // limpa o carrinho
+            saveToLocalStorage(state.itens);
+        }
+    }
 });
 
 export const {

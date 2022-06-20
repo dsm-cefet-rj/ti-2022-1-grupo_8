@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { getFromLocalStorage, setCarrinho } from "../../features/carrinhoSlice";
-import MenuNav from "./menu-nav";
+import { fazerPedido, getFromLocalStorage, setCarrinho } from "../../features/carrinhoSlice";
 import styles from "./carrinho.module.scss";
+import MenuNav from "./menu-nav";
 /* 
 Componente: Carrinho
 Descrição: Componente que renderiza a página de carrinho
@@ -69,6 +69,11 @@ const Carrinho = () => {
         dispatch(setCarrinho([]));
     };
 
+    // Faz o pedido
+    const finalizarPedido = () => {
+        dispatch(fazerPedido());
+    }
+
     // Renderização do componente
     return (
         <>
@@ -86,22 +91,19 @@ const Carrinho = () => {
                                     <th
                                         style={{
                                             textAlign: "center",
-                                        }}
-                                    >
+                                        }}>
                                         Preço
                                     </th>
                                     <th
                                         style={{
                                             textAlign: "center",
-                                        }}
-                                    >
+                                        }}>
                                         Quantidade
                                     </th>
                                     <th
                                         style={{
                                             textAlign: "center",
-                                        }}
-                                    >
+                                        }}>
                                         Subtotal
                                     </th>
                                     <th>Ação</th>
@@ -208,7 +210,7 @@ const Carrinho = () => {
                     <button className="btn btn-danger mt-2" onClick={limpar}>
                         Limpar Carrinho
                     </button>
-                    <button className="btn btn-success mt-2">
+                    <button className="btn btn-success mt-2" onClick={finalizarPedido}>
                         Finalizar Compra
                     </button>
                 </div>

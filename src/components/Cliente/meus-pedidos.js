@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 import MenuNav from "./menu-nav";
 import styles from "./meus-pedidos.module.scss";
 import { fetchPedidos, selectPedidos } from "../../features/pedidos-clienteSlice";

@@ -41,7 +41,7 @@ router.get("/produtos", (req, res) => {
     res.status(200).json(getAllProdutos()).end();
 });
 
-router.put("/pedido", (req, res) => { // Permite um cliente fazer um pedido
+router.put("/fazer-pedido", (req, res) => { // Permite um cliente fazer um pedido
     const cliente = req.user; // email,type,iat,exp
     const pedido = {
         email: cliente.email,
