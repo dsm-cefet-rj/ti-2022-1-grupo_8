@@ -13,7 +13,7 @@ router.get("/pedidos/feitos", (req, res) => {
 
 router.get("/pedidos/em-andamento", (req, res) => {
     let pedidos = getAllPedidos();
-    pedidos.filter((pedido) => {
+    pedidos = pedidos.filter((pedido) => {
         return pedido.status == "Em andamento";
     });
     res.status(200).json(pedidos).end();
@@ -21,7 +21,7 @@ router.get("/pedidos/em-andamento", (req, res) => {
 
 router.get("/pedidos/concluidos", (req, res) => {
     let pedidos = getAllPedidos();
-    pedidos.filter((pedido) => {
+    pedidos = pedidos.filter((pedido) => {
         return pedido.status == "Concluído";
     });
     res.status(200).json(pedidos).end();
