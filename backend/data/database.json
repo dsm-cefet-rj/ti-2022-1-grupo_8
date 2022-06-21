@@ -394,6 +394,7 @@
   ],
   "pedidos": [
     {
+      "id": 1,
       "email": "vycasnicolas@gmail.com",
       "dataHora": 1655700870151,
       "endereco": "Um endereço qualquer",
@@ -465,6 +466,7 @@
       "status": "Feito"
     },
     {
+      "id": 2,
       "email": "vycasnicolas@gmail.com",
       "dataHora": 1655778896546,
       "endereco": "Um endereço qualquer",

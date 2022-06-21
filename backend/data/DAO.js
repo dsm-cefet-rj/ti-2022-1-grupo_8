@@ -164,6 +164,8 @@ const getPedidos = (email) => {
 const addPedido = (pedido) => {
     // adiciona um pedido
     let pedidoDB = database.pedidos;
+    let id = pedidoDB.length + 1;
+    pedido.id = id;
     pedidoDB.push(pedido);
     saveDatabase();
     return pedidoDB[database.pedidos.length - 1];
