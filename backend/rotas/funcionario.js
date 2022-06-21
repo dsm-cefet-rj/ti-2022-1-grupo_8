@@ -56,7 +56,7 @@ router.post("/finalizar-pedido/:id", (req, res) => {
         status: "Concluído",
     };
     let pedidoAtualizado = editPedido(id, dados);
-    res.status(200).json({ pedidoAtualizado }).end();
+    res.status(200).json(pedidoAtualizado).end();
 });
 
 module.exports = router;
