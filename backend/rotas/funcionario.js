@@ -48,7 +48,7 @@ router.post("/iniciar-pedido/:id", (req, res) => {
     res.status(200).json(pedidoAtualizado).end();
 });
 
-router.use("/iniciar-pedido/:id", validarIdPedido);
+router.use("/finalizar-pedido/:id", validarIdPedido);
 router.post("/finalizar-pedido/:id", (req, res) => {
     // Permite ao funcionário marcar um pedido como concluído
     let id = parseInt(req.params.id);

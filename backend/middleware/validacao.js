@@ -1,3 +1,5 @@
+const { getAllPedidos } = require("../data/DAO");
+
 const validarIdPedido = (req, res, next) => {
     // Valida se o ID foi informado
     let id = req.params.id;
@@ -5,8 +7,8 @@ const validarIdPedido = (req, res, next) => {
         res.status(400).json({ error: "ID não informado" }).end();
         return;
     }
-    // Valida se o ID é um número
-    if (isNaN(id)) {
+    // Valida se o ID é um número inteiro
+    if (isNaN(id) || parseInt(id) != id) {
         res.status(400).json({ error: "ID inválido" }).end();
         return;
     }
