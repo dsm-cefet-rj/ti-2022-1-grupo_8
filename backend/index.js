@@ -29,35 +29,6 @@ server.use("/admin", authMiddlewares.verificarToken, rotasAdministrador);
 // verificar se o usuário logado é um administrador
 server.use("/admin", authMiddlewares.isAdmin, rotasAdministrador)
 
-
-// rota para verificar se o usuário está logado
-server.get("/session", (req, res) => {
-    // use cors para permitir acesso de qualquer origem
-
-    console.log(req.session);
-    if (req.session == undefined) {
-        res.status(401).json({
-            erro: "Nem um usuário logado",
-        });
-        return;
-    }
-
-    if (req.session.usuario) {
-        res.status(200)
-            .json({
-                usuario: req.session.usuario,
-                type: req.session.type,
-            })
-            .end();
-    } else {
-        res.status(401)
-            .json({
-                erro: "Não autorizado",
-            })
-            .end();
-    }
-});
-
 // definir mensagem de erro para rotas não ultilizadas
 server.use((req, res, next) => {
     res.status(404).json({
