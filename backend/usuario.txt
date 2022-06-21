@@ -1,2 +1,0 @@
-
-As pastas middleware, config, controllers, models e Routes são para criação e autenticação do Usuário.
