@@ -32,20 +32,30 @@ router.get("/pedidos", (req, res) => {
     res.status(200).json(pedidos).end();
 });
 
-router.post("/iniciar-pedido", (req, res) => {
+router.post("/iniciar-pedido/:id", (req, res) => {
     // Permite ao funcionário marcar um pedido como em andamento
-    let id = req.query.id;
-    dados = {
+    let id = req.params.id;
+    if (id == null) {
+        res.status(400).json({ error: "ID não informado" }).end();
+        return;
+    }
+    id = parseInt(id);
+    let dados = {
         status: "Em andamento",
     };
     let pedidoAtualizado = editPedido(id, dados);
     res.status(200).json(pedidoAtualizado).end();
 });
 
-router.post("/finalizar-pedido", (req, res) => {
+router.post("/finalizar-pedido/:id", (req, res) => {
     // Permite ao funcionário marcar um pedido como concluído
-    let id = req.query.id;
-    dados = {
+    let id = req.params.id;
+    if (id == null) {
+        res.status(400).json({ error: "ID não informado" }).end();
+        return;
+    }
+    id = parseInt(id);
+    let dados = {
         status: "Concluído",
     };
     let pedidoAtualizado = editPedido(id, dados);
