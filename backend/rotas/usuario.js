@@ -49,7 +49,7 @@ router.put("/fazer-pedido", (req, res) => {
         dataHora: Date.now(),
         endereco: req.body.endereco,
         carrinho: req.body.carrinho,
-        estatus: "Feito",
+        status: "Feito",
     };
     addPedido(pedido);
     res.status(200).json(pedido).end();

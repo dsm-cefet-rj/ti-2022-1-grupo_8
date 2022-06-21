@@ -152,7 +152,12 @@ const getAllPedidos = () => {
 
 const getPedidos = (email) => {
     // retorna todos os pedidos do usuário pelo email
-    let pedidos = database.pedidos.find((pedido) => pedido.email === email);
+    let pedidos = [];
+    database.pedidos.forEach((pedido) => {
+        if (pedido.email === email) {
+            pedidos.push(pedido);
+        }
+    });
     return pedidos;
 };
 

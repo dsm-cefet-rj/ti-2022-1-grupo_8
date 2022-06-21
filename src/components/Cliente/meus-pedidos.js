@@ -33,9 +33,7 @@ Descrição: Componente que renderiza a página de pedidos do cliente
 const MeusPedidos = () => {
     const dispatch = useDispatch();
     const pedidos = useSelector(selectPedidos);
-    useEffect(() => {
-        dispatch(fetchPedidos());
-    }, [pedidos]);
+    dispatch(fetchPedidos());
     return (
         <>
             <MenuNav Atual="meus-pedidos" />
@@ -44,7 +42,7 @@ const MeusPedidos = () => {
                     <h1 className="text-center">Meus Pedidos</h1>
                 </div>
                 <div className="row">
-                    {pedidos.length > 0 ? (
+                {pedidos.length > 0 ? (
                         pedidos.map((pedido) => (
                             <Pedido
                                 data={pedido.data}
