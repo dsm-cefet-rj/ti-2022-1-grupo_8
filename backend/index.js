@@ -27,7 +27,7 @@ server.use("/funcionario", authMiddlewares.isFuncionario, rotasFuncionario);
 // usar o middleware verificarToken nas rotas de rotasAdministrador
 server.use("/admin", authMiddlewares.verificarToken, rotasAdministrador);
 // verificar se o usuário logado é um administrador
-server.use("/admin", authMiddlewares.isAdmin, rotasAdministrador)
+server.use("/admin", authMiddlewares.isAdmin, rotasAdministrador);
 
 // definir mensagem de erro para rotas não ultilizadas
 server.use((req, res, next) => {

@@ -12,54 +12,31 @@ const {
     editProduto,
     removeProduto,
     editUsuario,
-    removeUsuario } = require("../data/DAO")
+    removeUsuario,
+} = require("../data/DAO");
 
 // Rota para adicionar ou editar um ingrediente
-router.post("/editar-ingrediente", (req, res) => {
-
-
-});
+router.post("/editar-ingrediente", (req, res) => {});
 
 // Rota para adicionar ou editar uma pizza
-router.post("/editar-pizza", (req, res) => {
-
-
-});
+router.post("/editar-pizza", (req, res) => {});
 
 // Rota para adicionar ou editar um produto
-router.post("/editar-produto", (req, res) => {
-
-
-});
+router.post("/editar-produto", (req, res) => {});
 
 // Rota para editar um usuário
-router.post("/editar-usuario", (req, res) => {
-
-
-});
+router.post("/editar-usuario", (req, res) => {});
 
 // Rota para excluir um funcionário
-router.post("/excluir-ingrediente", (req, res) => {
-
-
-});
+router.post("/excluir-ingrediente", (req, res) => {});
 
 // Rota para excluir um funcionário
-router.post("/excluir-pizza", (req, res) => {
-
-
-});
+router.post("/excluir-pizza", (req, res) => {});
 
 // Rota para excluir um funcionário
-router.post("/excluir-produto", (req, res) => {
-
-
-});
+router.post("/excluir-produto", (req, res) => {});
 
 // Rota para excluir um funcionário
-router.post("/excluir-usuario", (req, res) => {
-
-
-});
+router.post("/excluir-usuario", (req, res) => {});
 
 module.exports = router;
