@@ -42,7 +42,7 @@ const MeusPedidos = () => {
                     <h1 className="text-center">Meus Pedidos</h1>
                 </div>
                 <div className="row">
-                {pedidos.length > 0 ? (
+                    {pedidos.length > 0 ? (
                         pedidos.map((pedido) => (
                             <Pedido
                                 data={pedido.data}
