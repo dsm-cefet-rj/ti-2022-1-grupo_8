@@ -1,5 +1,5 @@
 const express = require("express");
-const { getAllPedidos } = require("../data/DAO");
+const { getAllPedidos, editPedido } = require("../data/DAO");
 const router = express.Router();
 require("dotenv").config();
 
@@ -35,20 +35,21 @@ router.get("/pedidos", (req, res) => {
 router.post("/iniciar-pedido", (req, res) => {
     // Permite ao funcionário marcar um pedido como em andamento
     let id = req.query.id;
-    pedido = {
+    dados = {
         status: "Em andamento",
     };
-    editarPedido(pedido);
-    res.status(200).json({ pedido }).end();
+    let pedidoAtualizado = editPedido(id, dados);
+    res.status(200).json(pedidoAtualizado).end();
 });
 
 router.post("/finalizar-pedido", (req, res) => {
     // Permite ao funcionário marcar um pedido como concluído
-    pedido = {
+    let id = req.query.id;
+    dados = {
         status: "Concluído",
     };
-    editarPedido(pedido);
-    res.status(200).json({ pedido }).end();
+    let pedidoAtualizado = editPedido(id, dados);
+    res.status(200).json({ pedidoAtualizado }).end();
 });
 
 module.exports = router;
