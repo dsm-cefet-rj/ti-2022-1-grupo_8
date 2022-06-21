@@ -43,6 +43,16 @@ router.post("/iniciar-pedido/:id", (req, res) => {
         res.status(400).json({ error: "ID não informado" }).end();
         return;
     }
+    if (isNaN(id)) {
+        res.status(400).json({ error: "ID inválido" }).end();
+        return;
+    }
+    let pedidos = getAllPedidos();
+    let pedido = pedidos.find((pedido) => pedido.id == id);
+    if (pedido == null) {
+        res.status(400).json({ error: "Pedido não encontrado" }).end();
+        return;
+    }
     id = parseInt(id);
     let dados = {
         status: "Em andamento",
@@ -56,6 +66,16 @@ router.post("/finalizar-pedido/:id", (req, res) => {
     let id = req.params.id;
     if (id == null) {
         res.status(400).json({ error: "ID não informado" }).end();
+        return;
+    }
+    if (isNaN(id)) {
+        res.status(400).json({ error: "ID inválido" }).end();
+        return;
+    }
+    let pedidos = getAllPedidos();
+    let pedido = pedidos.find((pedido) => pedido.id == id);
+    if (pedido == null) {
+        res.status(400).json({ error: "Pedido não encontrado" }).end();
         return;
     }
     id = parseInt(id);
