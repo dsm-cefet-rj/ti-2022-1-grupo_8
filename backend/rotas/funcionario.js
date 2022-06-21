@@ -1,5 +1,6 @@
 const express = require("express");
 const { getAllPedidos, editPedido } = require("../data/DAO");
+const validarIdPedido = require("../middleware/validacao");
 const router = express.Router();
 require("dotenv").config();
 
@@ -36,24 +37,10 @@ router.get("/pedidos", (req, res) => {
     res.status(200).json(pedidos).end();
 });
 
+router.use("/iniciar-pedido/:id", validarIdPedido);
 router.post("/iniciar-pedido/:id", (req, res) => {
     // Permite ao funcionário marcar um pedido como em andamento
-    let id = req.params.id;
-    if (id == null) {
-        res.status(400).json({ error: "ID não informado" }).end();
-        return;
-    }
-    if (isNaN(id)) {
-        res.status(400).json({ error: "ID inválido" }).end();
-        return;
-    }
-    let pedidos = getAllPedidos();
-    let pedido = pedidos.find((pedido) => pedido.id == id);
-    if (pedido == null) {
-        res.status(400).json({ error: "Pedido não encontrado" }).end();
-        return;
-    }
-    id = parseInt(id);
+    let id = parseInt(req.params.id);
     let dados = {
         status: "Em andamento",
     };
@@ -61,24 +48,10 @@ router.post("/iniciar-pedido/:id", (req, res) => {
     res.status(200).json(pedidoAtualizado).end();
 });
 
+router.use("/iniciar-pedido/:id", validarIdPedido);
 router.post("/finalizar-pedido/:id", (req, res) => {
     // Permite ao funcionário marcar um pedido como concluído
-    let id = req.params.id;
-    if (id == null) {
-        res.status(400).json({ error: "ID não informado" }).end();
-        return;
-    }
-    if (isNaN(id)) {
-        res.status(400).json({ error: "ID inválido" }).end();
-        return;
-    }
-    let pedidos = getAllPedidos();
-    let pedido = pedidos.find((pedido) => pedido.id == id);
-    if (pedido == null) {
-        res.status(400).json({ error: "Pedido não encontrado" }).end();
-        return;
-    }
-    id = parseInt(id);
+    let id = parseInt(req.params.id);
     let dados = {
         status: "Concluído",
     };
