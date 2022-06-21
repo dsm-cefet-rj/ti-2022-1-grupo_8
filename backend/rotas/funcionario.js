@@ -6,7 +6,7 @@ require("dotenv").config();
 router.get("/pedidos/feitos", (req, res) => {
     let pedidos = getAllPedidos();
     pedidos.filter((pedido) => {
-        return pedido.estatus == "Feito";
+        return pedido.status == "Feito";
     });
     res.status(200).json(pedidos).end();
 });
@@ -14,7 +14,7 @@ router.get("/pedidos/feitos", (req, res) => {
 router.get("/pedidos/em-andamento", (req, res) => {
     let pedidos = getAllPedidos();
     pedidos.filter((pedido) => {
-        return pedido.estatus == "Em andamento";
+        return pedido.status == "Em andamento";
     });
     res.status(200).json(pedidos).end();
 });
@@ -22,7 +22,7 @@ router.get("/pedidos/em-andamento", (req, res) => {
 router.get("/pedidos/concluidos", (req, res) => {
     let pedidos = getAllPedidos();
     pedidos.filter((pedido) => {
-        return pedido.estatus == "Concluído";
+        return pedido.status == "Concluído";
     });
     res.status(200).json(pedidos).end();
 });
@@ -36,7 +36,7 @@ router.post("/iniciar-pedido", (req, res) => {
     // Permite ao funcionário marcar um pedido como em andamento
     let id = req.query.id;
     pedido = {
-        estatus: "Em andamento",
+        status: "Em andamento",
     };
     editarPedido(pedido);
     res.status(200).json({ pedido }).end();
@@ -45,7 +45,7 @@ router.post("/iniciar-pedido", (req, res) => {
 router.post("/finalizar-pedido", (req, res) => {
     // Permite ao funcionário marcar um pedido como concluído
     pedido = {
-        estatus: "Concluído",
+        status: "Concluído",
     };
     editarPedido(pedido);
     res.status(200).json({ pedido }).end();
