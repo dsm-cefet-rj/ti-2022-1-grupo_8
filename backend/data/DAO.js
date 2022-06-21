@@ -32,8 +32,9 @@ const addIngrediente = (ingrediente) => {
 const editIngrediente = (id, ingrediente) => {
     let ingredienteDB = database.ingredientes;
     let index = ingredienteDB.findIndex((ingrediente) => ingrediente.id === id);
+    let novoIngrediente = Object.assign(ingredienteDB[index], ingrediente);
     saveDatabase();
-    return Object.assign(ingredienteDB[index], ingrediente);
+    return novoIngrediente;
 };
 
 const removeIngrediente = (id) => {
@@ -65,8 +66,9 @@ const addPizza = (pizzas) => {
 const editPizza = (id, pizza) => {
     let pizzaDB = database.pizzas;
     let index = pizzaDB.findIndex((pizza) => pizza.id === id);
+    let novaPizza = Object.assign(pizzaDB[index], pizza);
     saveDatabase();
-    return Object.assign(pizzaDB[index], pizza);
+    return novaPizza;
 };
 
 const removePizza = (id) => {
@@ -98,8 +100,9 @@ const addProduto = (produto) => {
 const editProduto = (id, produto) => {
     let produtoDB = database.produtos;
     let index = produtoDB.findIndex((produto) => produto.id === id);
+    let novoProduto = Object.assign(produtoDB[index], produto);
     saveDatabase();
-    return Object.assign(produtoDB[index], produto);
+    return novoProduto;
 };
 
 const removeProduto = (id) => {
@@ -131,8 +134,9 @@ const addUsuario = (usuario) => {
 const editUsuario = (email, usuario) => {
     let usuarioDB = database.usuarios;
     let index = usuarioDB.findIndex((usuario) => usuario.email === email);
+    let novoUsuario = Object.assign(usuarioDB[index], usuario);
     saveDatabase();
-    return Object.assign(usuarioDB[index], usuario);
+    return novoUsuario;
 };
 
 const removeUsuario = (email) => {
@@ -174,8 +178,9 @@ const addPedido = (pedido) => {
 const editPedido = (id, pedido) => {
     let pedidoDB = database.pedidos;
     let index = pedidoDB.findIndex((pedido) => pedido.id === id);
+    let novoPedido = Object.assign(pedidoDB[index], pedido);
     saveDatabase();
-    return Object.assign(pedidoDB[index], pedido);
+    return novoPedido;
 };
 
 const removePedido = (id) => {
