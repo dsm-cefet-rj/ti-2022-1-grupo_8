@@ -4,6 +4,7 @@ const router = express.Router();
 require("dotenv").config();
 
 router.get("/pedidos/feitos", (req, res) => {
+    // Permite ao funcionário ver todos os pedidos feitos
     let pedidos = getAllPedidos();
     pedidos.filter((pedido) => {
         return pedido.status == "Feito";
@@ -12,6 +13,7 @@ router.get("/pedidos/feitos", (req, res) => {
 });
 
 router.get("/pedidos/em-andamento", (req, res) => {
+    // Permite ao funcionário ver todos os pedidos que estão em andamento
     let pedidos = getAllPedidos();
     pedidos = pedidos.filter((pedido) => {
         return pedido.status == "Em andamento";
@@ -20,6 +22,7 @@ router.get("/pedidos/em-andamento", (req, res) => {
 });
 
 router.get("/pedidos/concluidos", (req, res) => {
+    // Permite ao funcionário ver todos os pedidos que foram concluídos
     let pedidos = getAllPedidos();
     pedidos = pedidos.filter((pedido) => {
         return pedido.status == "Concluído";
@@ -28,6 +31,7 @@ router.get("/pedidos/concluidos", (req, res) => {
 });
 
 router.get("/pedidos", (req, res) => {
+    // Permite ao funcionário ver todos os pedidos
     let pedidos = getAllPedidos();
     res.status(200).json(pedidos).end();
 });
