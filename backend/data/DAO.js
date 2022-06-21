@@ -169,6 +169,21 @@ const addPedido = (pedido) => {
     return pedidoDB[database.pedidos.length - 1];
 };
 
+const editPedido = (id, pedido) => {
+    let pedidoDB = database.pedidos;
+    let index = pedidoDB.findIndex((pedido) => pedido.id === id);
+    saveDatabase();
+    return Object.assign(pedidoDB[index], pedido);
+};
+
+const removePedido = (id) => {
+    let pedidoDB = database.pedidos;
+    let index = pedidoDB.findIndex((pedido) => pedido.id === id);
+    let removido = pedidoDB.splice(index, 1);
+    saveDatabase();
+    return removido;
+};
+
 module.exports = {
     getAllIngredientes,
     getIngrediente,
@@ -193,4 +208,6 @@ module.exports = {
     getAllPedidos,
     getPedidos,
     addPedido,
+    editPedido,
+    removePedido,
 };
