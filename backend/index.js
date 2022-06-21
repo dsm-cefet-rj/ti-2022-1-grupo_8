@@ -5,6 +5,7 @@ const cors = require("cors");
 const port = process.env.BACKEND_PORT || 3001;
 const server = express();
 const rotasUsuario = require("./rotas/usuario");
+const rotasFuncionario = require("./rotas/funcionario");
 const rotasLogin = require("./rotas/login");
 const authMiddlewares = require("./middleware/authJws");
 
@@ -16,6 +17,11 @@ server.use("/login", rotasLogin);
 
 // usar o middleware verificarToken nas rotas de rotasUsuario
 server.use("/usuario", authMiddlewares.verificarToken, rotasUsuario);
+
+// usar o middleware verificarToken nas rotas de rotasFuncionario
+server.use("/funcionario", authMiddlewares.verificarToken, rotasFuncionario);
+// verificar se o usuário logado é um funcionário
+server.use("/funcionario", authMiddlewares.isFuncionario, rotasFuncionario);
 
 // rota para verificar se o usuário está logado
 server.get("/session", (req, res) => {
