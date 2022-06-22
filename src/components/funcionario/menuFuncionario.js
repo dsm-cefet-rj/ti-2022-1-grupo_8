@@ -33,27 +33,28 @@ const PedidoCard = (props) => {
                 </div>
                 <div className="card-body">
                     <p className="card-text">
-                        <strong>Email:</strong> {email}
+                        <strong>E-mail:</strong> {email}
                     </p>
-                </div>
-                <div className="card-body">
                     <p className="card-text">
                         <strong>Endereço:</strong> {endereco}
                     </p>
-                    <p className="card-text">
-                        <strong>Itens:</strong>
-                    </p>
-                    <ul className="list-group list-group-flush">
-                        {itens.map((item, index) => (
-                            <li key={index} className="list-group-item">
-                                <strong>{item.quantidade}x </strong>
-                                {item.nome}
-                            </li>
-                        ))}
-                    </ul>
                 </div>
+                <ul className="list-group list-group-flush">
+                    <div className="card-body">
+                        <ul className="list-group list-group-flush">
+                            {itens.map((item, index) => (
+                                <li key={index} className="list-group-item">
+                                    <strong>{item.quantidade}x </strong>
+                                    {item.nome}
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                </ul>
                 <div className="card-footer">
-                    <button className="btn btn-primary">Avançar &#62;</button>
+                    <button className="btn btn-primary float-end">
+                        Avançar &#62;
+                    </button>
                 </div>
             </div>
         </>
@@ -118,7 +119,17 @@ const MenuFuncionario = () => {
             carrinho: [
                 {
                     id: 1,
-                    nome: "Pizza",
+                    nome: "Pizza Grande de Frango com Requeijão",
+                    quantidade: 2,
+                },
+                {
+                    id: 2,
+                    nome: "Refrigerante",
+                    quantidade: 5,
+                },
+                {
+                    id: 5,
+                    nome: "Pudim de leite",
                     quantidade: 2,
                 },
             ],
