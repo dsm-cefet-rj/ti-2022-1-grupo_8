@@ -32,8 +32,14 @@ Descrição: Componente que renderiza a página de pedidos do cliente
 */
 const MeusPedidos = () => {
     const dispatch = useDispatch();
+
+    // Carrega os pedidos do cliente ao carregar o componente
+    useEffect(() => {
+        dispatch(fetchPedidos());
+    }, [dispatch]);
+
     const pedidos = useSelector(selectPedidos);
-    dispatch(fetchPedidos());
+
     return (
         <>
             <MenuNav Atual="meus-pedidos" />
