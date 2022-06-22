@@ -22,6 +22,11 @@ const getCorStatus = (status) => {
     }
 };
 
+const converterData = (data) => {
+    const dataConvertida = new Date(data);
+    return dataConvertida.toLocaleString().slice(0, -3);
+};
+
 const Pedido = (props) => {
     const idPedido = props.id; // ID do pedido
     const data = props.data; // Data do pedido
@@ -33,7 +38,7 @@ const Pedido = (props) => {
             <div className="card" style={{ width: "18rem" }}>
                 <div className="card-header text-center">
                     <h5 className="card-title">Pedido #{idPedido}</h5>
-                    <p style={{ marginBottom: 0 }}>{data} 05-04-2022</p>
+                    <p style={{ marginBottom: 0 }}>{converterData(data)}</p>
                 </div>
                 <div className="card-body">
                     <ul className="list-group list-group-flush">
@@ -87,7 +92,7 @@ const MeusPedidos = () => {
                                 <Pedido
                                     key={index}
                                     id={pedido.id}
-                                    data={pedido.data}
+                                    data={pedido.dataHora}
                                     itens={pedido.carrinho}
                                     status={pedido.status}
                                 />
