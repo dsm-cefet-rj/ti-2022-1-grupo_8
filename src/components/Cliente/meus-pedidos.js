@@ -8,19 +8,38 @@ import {
 } from "../../features/pedidos-clienteSlice";
 
 const Pedido = (props) => {
+    const idPedido = props.id;
     const data = props.data; // Data do pedido
     const itens = props.itens; // Itens do pedido
     const status = props.status; // Se o pedido foi entregue
 
     return (
         <>
-            <div className="row section">
-                <h2 className="titulo">Feito em:{data}</h2>
-                <h2 className="titulo">Itens:</h2>
-                {itens.map((item) => (
-                    <></>
-                ))}
-                <h2 className="titulo">Status: {status}</h2>
+            <div className="card" style={{ width: "18rem" }}>
+                <div className="card-header">
+                    <h5 className="card-title text-center">
+                        Pedido #{idPedido}
+                    </h5>
+                </div>
+                <div className="card-body">
+                    <p className="card-text">
+                        <strong>Data:</strong> {data}
+                    </p>
+                    <p className="card-text">
+                        <strong>Status:</strong> {status}
+                    </p>
+                    <p>
+                        <strong>Itens:</strong>
+                    </p>
+                    <ul className="list-group list-group-flush">
+                        {itens.map((item, index) => (
+                            <li key={index} className="list-group-item">
+                                <strong>{item.quantidade}x </strong>
+                                {item.nome}
+                            </li>
+                        ))}
+                    </ul>
+                </div>
             </div>
         </>
     );
@@ -49,15 +68,25 @@ const MeusPedidos = () => {
                 </div>
                 <div className="row">
                     {pedidos.length > 0 ? (
-                        pedidos.map((pedido) => (
-                            <Pedido
-                                data={pedido.data}
-                                itens={pedido.carrinho}
-                                status={pedido.status}
-                            />
+                        pedidos.map((pedido, index) => (
+                            <div className="col-sm-12 col-md-6 col-lg-4 col-xl-3">
+                                <Pedido
+                                    key={index}
+                                    id={pedido.id}
+                                    data={pedido.data}
+                                    itens={pedido.carrinho}
+                                    status={pedido.status}
+                                />
+                            </div>
                         ))
                     ) : (
-                        <h2 className="text-center">Nenhum pedido</h2>
+                        <div className="text-center text-white">
+                            <h2>Poxa, nenhum pedido! 😱</h2>
+                            <h5>
+                                Por que não <a href="/menu">fazer um agora</a>?
+                                😋
+                            </h5>
+                        </div>
                     )}
                 </div>
             </div>
