@@ -846,6 +846,114 @@
       ],
       "status": "Feito",
       "id": 11
+    },
+    {
+      "email": "bernardocosta@gmail.com",
+      "dataHora": 1655885917184,
+      "endereco": "Um endereço qualquer",
+      "carrinho": [
+        {
+          "nome": "Margherita",
+          "descricao": "Deliciosa pizza com molho de tomate, mussarela de búfala, manjericão, queijo parmesão ralado, tomates e azeite.",
+          "imagem": "/imgs/Margherita.jpg",
+          "preco": 31.1,
+          "id": 6,
+          "tipo": "pizza",
+          "quantidade": 1
+        },
+        {
+          "nome": "Bacon",
+          "descricao": "Deliciosa pizza com molho de tomate, mussarela, bacon e orégano.",
+          "imagem": "/imgs/bacon.jpg",
+          "preco": 22.07,
+          "id": 7,
+          "tipo": "pizza",
+          "quantidade": 1
+        },
+        {
+          "id": "edcc0c8d-c19e-498a-a808-f855819079d6",
+          "nome": "Pizza Grande de Frango desfiado com Requeijão e Molho",
+          "preco": 23.580000000000005,
+          "quantidade": 1,
+          "tamanho": "Grande",
+          "Metades": [["1", "2", "6", "12", "13"], [], [], []],
+          "descricao": "Ingredientes: 1, 2, 6, 12, 13"
+        }
+      ],
+      "status": "Feito",
+      "id": 12
+    },
+    {
+      "email": "bernardocosta@gmail.com",
+      "dataHora": 1655885995452,
+      "endereco": "Um endereço qualquer",
+      "carrinho": [
+        {
+          "nome": "Coca Cola 2L",
+          "descricao": "Refrigerante sabor cola de 2L.",
+          "imagem": "imgs/coca-cola.webp",
+          "preco": 8,
+          "id": 100,
+          "tipo": "produto",
+          "quantidade": 1
+        },
+        {
+          "nome": "4 Queijos",
+          "descricao": "Deliciosa pizza com molho de tomate, mussarela, gorgonzola, requeijão e parmesão.",
+          "imagem": "/imgs/4 Queijos.webp",
+          "preco": 37.51,
+          "id": 10,
+          "tipo": "pizza",
+          "quantidade": 1
+        },
+        {
+          "nome": "Frango com Requeijão",
+          "descricao": "A mais querida! Pizza com molho de tomate, frango desfiado, queijo, requeijão e orégano",
+          "imagem": "/imgs/Frango com Requeijão.jpeg",
+          "preco": 40.5,
+          "id": 3,
+          "tipo": "pizza",
+          "quantidade": 1
+        }
+      ],
+      "status": "Feito",
+      "id": 13
+    },
+    {
+      "email": "bernardocosta@gmail.com",
+      "dataHora": 1655886894469,
+      "endereco": "Um endereço qualquer",
+      "carrinho": [
+        {
+          "nome": "Calabresa",
+          "descricao": "Deliciosa pizza com molho de tomate, mussarela, calabresa, azeitona e orégano.",
+          "imagem": "/imgs/pizza-calabresa.jpg",
+          "preco": 29.67,
+          "id": 0,
+          "tipo": "pizza",
+          "quantidade": 1
+        },
+        {
+          "nome": "Coca Cola 2L",
+          "descricao": "Refrigerante sabor cola de 2L.",
+          "imagem": "imgs/coca-cola.webp",
+          "preco": 8,
+          "id": 100,
+          "tipo": "produto",
+          "quantidade": 1
+        },
+        {
+          "nome": "Frango com Requeijão",
+          "descricao": "A mais querida! Pizza com molho de tomate, frango desfiado, queijo, requeijão e orégano",
+          "imagem": "/imgs/Frango com Requeijão.jpeg",
+          "preco": 40.09,
+          "id": 3,
+          "tipo": "pizza",
+          "quantidade": 1
+        }
+      ],
+      "status": "Feito",
+      "id": 14
     }
   ]
 }
