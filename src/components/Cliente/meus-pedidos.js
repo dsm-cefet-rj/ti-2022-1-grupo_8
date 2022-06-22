@@ -7,8 +7,23 @@ import {
     selectPedidos,
 } from "../../features/pedidos-clienteSlice";
 
+const getCorStatus = (status) => {
+    switch (status) {
+        case "Feito":
+            return "danger";
+        case "Em andamento":
+            return "warning";
+        case "Cancelado":
+            return "danger";
+        case "Concluído":
+            return "success";
+        default:
+            return "secondary";
+    }
+};
+
 const Pedido = (props) => {
-    const idPedido = props.id;
+    const idPedido = props.id; // ID do pedido
     const data = props.data; // Data do pedido
     const itens = props.itens; // Itens do pedido
     const status = props.status; // Se o pedido foi entregue
@@ -16,21 +31,11 @@ const Pedido = (props) => {
     return (
         <>
             <div className="card" style={{ width: "18rem" }}>
-                <div className="card-header">
-                    <h5 className="card-title text-center">
-                        Pedido #{idPedido}
-                    </h5>
+                <div className="card-header text-center">
+                    <h5 className="card-title">Pedido #{idPedido}</h5>
+                    <p style={{ marginBottom: 0 }}>{data} 05-04-2022</p>
                 </div>
                 <div className="card-body">
-                    <p className="card-text">
-                        <strong>Data:</strong> {data}
-                    </p>
-                    <p className="card-text">
-                        <strong>Status:</strong> {status}
-                    </p>
-                    <p>
-                        <strong>Itens:</strong>
-                    </p>
                     <ul className="list-group list-group-flush">
                         {itens.map((item, index) => (
                             <li key={index} className="list-group-item">
@@ -39,6 +44,15 @@ const Pedido = (props) => {
                             </li>
                         ))}
                     </ul>
+                </div>
+                <div className="card-footer">
+                    <p
+                        className={
+                            "card-text text-center text-" + getCorStatus(status)
+                        }
+                    >
+                        <strong>Status:</strong> {status}
+                    </p>
                 </div>
             </div>
         </>
