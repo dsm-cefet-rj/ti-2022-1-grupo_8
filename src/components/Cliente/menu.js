@@ -43,7 +43,6 @@ const ListaProdutos = () => {
             <div
                 style={{
                     overflow: "auto",
-                    whiteSpace: "nowrap",
                     display: "flex",
                     flexWrap: "nowrap",
                 }}
