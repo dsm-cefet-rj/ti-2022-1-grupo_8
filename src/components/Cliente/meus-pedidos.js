@@ -46,7 +46,7 @@ const MeusPedidos = () => {
                         pedidos.map((pedido) => (
                             <Pedido
                                 data={pedido.data}
-                                itens={pedido.itens}
+                                itens={pedido.carrinho}
                                 status={pedido.status}
                             />
                         ))
