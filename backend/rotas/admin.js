@@ -27,9 +27,18 @@ router.post("/editar-ingrediente", (req, res) => {
         const ingrediente = getAllIngredientes().find(
             (ingrediente) => ingrediente.id === id
         );
-        if (ingrediente) { // se ingrediente existe, editar
+        if (ingrediente) {
+            // se ingrediente existe, editar
             //editar ingrediente
-            const novoIngrediente = editIngrediente(id, imagem, nome, preco, usados, descricao, pesoPorcao);
+            const novoIngrediente = editIngrediente(
+                id,
+                imagem,
+                nome,
+                preco,
+                usados,
+                descricao,
+                pesoPorcao
+            );
             res.json(novoIngrediente);
         } else {
             res.status(404).json({
@@ -44,15 +53,23 @@ router.post("/editar-ingrediente", (req, res) => {
 
 // Rota para adicionar ou editar uma pizza
 router.post("/editar-pizza", (req, res) => {
-    const {id,nome,descricao,imagem,ingredientes,quant_comprada,preco} = req.body;
+    const { id, nome, descricao, imagem, ingredientes, quant_comprada, preco } =
+        req.body;
     if (id) {
         //verificar se pizza realmente existe
-        const pizza = getAllPizzas().find(
-            (pizza) => pizza.id === id
-        );
-        if (pizza) { // se pizza existe, editar
+        const pizza = getAllPizzas().find((pizza) => pizza.id === id);
+        if (pizza) {
+            // se pizza existe, editar
             //editar pizza
-            const novaPizza = editPizza(id,nome,descricao,imagem,ingredientes,quant_comprada,preco);
+            const novaPizza = editPizza(
+                id,
+                nome,
+                descricao,
+                imagem,
+                ingredientes,
+                quant_comprada,
+                preco
+            );
             res.json(novaPizza);
         } else {
             res.status(404).json({
@@ -60,43 +77,49 @@ router.post("/editar-pizza", (req, res) => {
             });
         }
     } else {
-        addPizza(nome,descricao,imagem,ingredientes,quant_comprada,preco);
+        addPizza(nome, descricao, imagem, ingredientes, quant_comprada, preco);
     }
     res.sendStatus(200);
 });
 
 // Rota para adicionar ou editar um produto
 router.post("/editar-produto", (req, res) => {
-    const {nome,descricao,imagem,preco,id,quant_comprada} = req.body;
-    if(id){
-        const produto = getAllProdutos().find(produto => produto.id === id);
-        if(produto){
-            const novoProduto = editProduto(id,nome,descricao,imagem,preco,quant_comprada);
+    const { nome, descricao, imagem, preco, id, quant_comprada } = req.body;
+    if (id) {
+        const produto = getAllProdutos().find((produto) => produto.id === id);
+        if (produto) {
+            const novoProduto = editProduto(
+                id,
+                nome,
+                descricao,
+                imagem,
+                preco,
+                quant_comprada
+            );
             res.json(novoProduto);
-        }
-        else{
+        } else {
             res.status(404).json({
                 message: `Produto não existe, id: ${id} 😔`,
             });
         }
-    }
-    else{
-        addProduto(nome,descricao,imagem,preco,quant_comprada);
+    } else {
+        addProduto(nome, descricao, imagem, preco, quant_comprada);
     }
     res.sendStatus(200);
 });
 
 // Rota para editar um usuário
 router.post("/editar-usuario", (req, res) => {
-    const { nome,email,senha,type,pedidos} = req.body;
+    const { nome, email, senha, type, pedidos } = req.body;
     if (email) {
         //verificar se usuário realmente existe
         const usuario = getAllUsuarios().find(
             (usuario) => usuario.email === email
         );
-        if (usuario) { // se usuário existe, editar
+        if (usuario) {
+            // se usuário existe, editar
             //editar usuário
-            const novoUsuario = editUsuario(nome,email,senha,type,pedidos);
+            const novoUsuario = editUsuario(nome, email, senha, type, pedidos);
             res.sendStatus(200).json(novoUsuario);
         } else {
             res.status(404).json({
@@ -104,7 +127,7 @@ router.post("/editar-usuario", (req, res) => {
             });
         }
     } else {
-        addUsuario(nome,email,senha,type,pedidos);
+        addUsuario(nome, email, senha, type, pedidos);
         res.sendStatus(200).json({
             message: `Usuário adicionado com sucesso! 😃`,
         });
@@ -119,7 +142,8 @@ router.post("/excluir-ingrediente", (req, res) => {
         const ingrediente = getAllIngredientes().find(
             (ingrediente) => ingrediente.id === id
         );
-        if (ingrediente) { // se ingrediente existe, excluir
+        if (ingrediente) {
+            // se ingrediente existe, excluir
             //excluir ingrediente
             removeIngrediente(id);
         } else {
@@ -139,10 +163,9 @@ router.post("/excluir-pizza", (req, res) => {
     const { id } = req.body;
     if (id) {
         //verificar se pizza realmente existe
-        const pizza = getAllPizzas().find(
-            (pizza) => pizza.id === id
-        );
-        if (pizza) { // se pizza existe, excluir
+        const pizza = getAllPizzas().find((pizza) => pizza.id === id);
+        if (pizza) {
+            // se pizza existe, excluir
             //excluir pizza
             removePizza(id);
             res.sendStatus(200);
@@ -160,13 +183,12 @@ router.post("/excluir-pizza", (req, res) => {
 
 // Rota para excluir um funcionário
 router.post("/excluir-produto", (req, res) => {
-    const {id} = req.body;
+    const { id } = req.body;
     if (id) {
         //verificar se produto realmente existe
-        const produto = getAllProdutos().find(
-            (produto) => produto.id === id
-        );
-        if (produto) { // se produto existe, excluir
+        const produto = getAllProdutos().find((produto) => produto.id === id);
+        if (produto) {
+            // se produto existe, excluir
             //excluir produto
             removeProduto(id);
             res.sendStatus(200);
@@ -184,13 +206,14 @@ router.post("/excluir-produto", (req, res) => {
 
 // Rota para excluir um funcionário
 router.post("/excluir-usuario", (req, res) => {
-    const { email} = req.body;
+    const { email } = req.body;
     if (email) {
         //verificar se usuário realmente existe
         const usuario = getAllUsuarios().find(
             (usuario) => usuario.email === email
         );
-        if (usuario) { // se usuário existe, excluir
+        if (usuario) {
+            // se usuário existe, excluir
             //excluir usuário
             removeUsuario(email);
             res.sendStatus(200).json({
