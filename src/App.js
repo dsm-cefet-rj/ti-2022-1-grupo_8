@@ -1,21 +1,20 @@
-import { React, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import GerirIngredientes from "./components/Admin/gerir-ingredientes";
 import GerirPizzas from "./components/Admin/gerir-pizzas";
 import GerirProdutos from "./components/Admin/gerir-produtos";
+import GerirUsuarios from "./components/Admin/gerir-usuarios";
 import MenuAdmin from "./components/Admin/menu-admin";
 import Carrinho from "./components/Cliente/carrinho";
 import CriarPizza from "./components/Cliente/criar-pizza";
 import CriarUsuario from "./components/Cliente/criar-usuario";
 import MenuCliente from "./components/Cliente/menu.js";
-import MenuFuncionario from "./components/funcionario/menuFuncionario";
 import MeusPedidos from "./components/Cliente/meus-pedidos";
+import MenuFuncionario from "./components/funcionario/menuFuncionario";
 import NotFound from "./components/geral/not-found";
 import {
-    setToken,
-    selectToken,
-    getSessionFromLocalStorage,
+    getSessionFromLocalStorage, selectToken, setToken
 } from "./features/sessionSlice";
 import LoginForm from "./login";
 
@@ -39,7 +38,7 @@ function App() {
         }
         if (!loaded) {
             switch (
-                userType // redirect based on user type
+            userType // redirect based on user type
             ) {
                 case "user":
                     window.location.href = "/menu";
@@ -99,6 +98,10 @@ function App() {
                             <Route
                                 path="/gerir-produtos"
                                 element={<GerirProdutos />}
+                            />
+                            <Route
+                                path="/gerir-usuarios"
+                                element={<GerirUsuarios />}
                             />
                         </>
                     )}

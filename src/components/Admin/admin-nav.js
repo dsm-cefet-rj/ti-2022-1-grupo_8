@@ -26,6 +26,10 @@ const AdminNav = (props) => {
                 break;
             case "produtos":
                 title += " - Produtos";
+                break;
+            case "gerir-usuarios":
+                title += " - Usuários";
+                break;
             default:
                 break;
         }
@@ -88,6 +92,16 @@ const AdminNav = (props) => {
                             </span>
                         ) : null}
                     </a>
+
+                    <a className="btn btn-primary " href="/gerir-usuarios">
+                        Gerir Usuários
+                        {atual === "gerir-usuarios" ? (
+                            <span className="badge badge-secondary">
+                                {atualTexto}
+                            </span>
+                        ) : null}
+                    </a>
+
                     <a className="btn btn-danger " href="/">
                         {" "}
                         Sair 👋{" "}

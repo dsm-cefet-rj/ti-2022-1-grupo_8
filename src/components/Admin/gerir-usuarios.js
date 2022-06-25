@@ -14,7 +14,7 @@ const GerirUsuarios = () => {
 
     return (
         <>
-            <AdminNav Atual="ingredientes" />
+            <AdminNav Atual="gerir-usuarios" />
             <div className="container mb-2 p-1 bg-transparent">
                 <div className="row section">
                     <div className="col">
