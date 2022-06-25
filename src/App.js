@@ -14,7 +14,9 @@ import MeusPedidos from "./components/Cliente/meus-pedidos";
 import MenuFuncionario from "./components/funcionario/menuFuncionario";
 import NotFound from "./components/geral/not-found";
 import {
-    getSessionFromLocalStorage, selectToken, setToken
+    getSessionFromLocalStorage,
+    selectToken,
+    setToken,
 } from "./features/sessionSlice";
 import LoginForm from "./login";
 
@@ -38,7 +40,7 @@ function App() {
         }
         if (!loaded) {
             switch (
-            userType // redirect based on user type
+                userType // redirect based on user type
             ) {
                 case "user":
                     window.location.href = "/menu";
