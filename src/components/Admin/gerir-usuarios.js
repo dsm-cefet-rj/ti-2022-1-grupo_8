@@ -24,49 +24,46 @@ const GerirUsuarios = () => {
                     </div>
                 </div>
 
-                {
-                    email ? (
-                        <>
-                            {/* Se email existir, renderiza o componente de edição */}
-                            <div className="row section">
-                                <div className="col">
-                                    <p> Email: {email} </p>
-
-                                </div>
+                {email ? (
+                    <>
+                        {/* Se email existir, renderiza o componente de edição */}
+                        <div className="row section">
+                            <div className="col">
+                                <p> Email: {email} </p>
                             </div>
-                        </>
-                    ) : (
-                        <>
-                            {/* Se email não existir, renderiza o formulário de pesquisa */}
-                            <form onSubmit={
-                                (e) => {
-                                    e.preventDefault()
-                                    // reload da página com o email do usuário no url
-                                    let url_params = `email=${e.target.email.value}`
-                                    window.location.href = `/gerir-usuarios?${url_params}`
-                                }}>
-                                <div className="form-group">
-                                    <label htmlFor="email">Email</label>
-                                    <input
-                                        type="email"
-                                        className="form-control"
-                                        id="email"
-                                        name="email"
-                                        placeholder="Email"
-                                        autoComplete="on"
-                                    />
-                                </div>
-                                <button type="submit" className="btn btn-primary">
-                                    Pesquisar
-                                </button>
-                            </form>
-                        </>
-                    )
-                }
+                        </div>
+                    </>
+                ) : (
+                    <>
+                        {/* Se email não existir, renderiza o formulário de pesquisa */}
+                        <form
+                            onSubmit={(e) => {
+                                e.preventDefault();
+                                // reload da página com o email do usuário no url
+                                let url_params = `email=${e.target.email.value}`;
+                                window.location.href = `/gerir-usuarios?${url_params}`;
+                            }}
+                        >
+                            <div className="form-group">
+                                <label htmlFor="email">Email</label>
+                                <input
+                                    type="email"
+                                    className="form-control"
+                                    id="email"
+                                    name="email"
+                                    placeholder="Email"
+                                    autoComplete="on"
+                                />
+                            </div>
+                            <button type="submit" className="btn btn-primary">
+                                Pesquisar
+                            </button>
+                        </form>
+                    </>
+                )}
             </div>
         </>
     );
-}
-
+};
 
 export default GerirUsuarios;
