@@ -15,10 +15,12 @@ const GerirUsuarios = () => {
     return (
         <>
             <AdminNav Atual="gerir-usuarios" />
-            <div className={styles.body}
-            style={{
-                height: "100vh",
-            }}>
+            <div
+                className={styles.body}
+                style={{
+                    height: "100vh",
+                }}
+            >
                 <div className="container mb-2 p-1 bg-transparent">
                     <div className="row section">
                         <div className="col">
@@ -59,7 +61,10 @@ const GerirUsuarios = () => {
                                         autoComplete="on"
                                     />
                                 </div>
-                                <button type="submit" className="btn btn-primary">
+                                <button
+                                    type="submit"
+                                    className="btn btn-primary"
+                                >
                                     Pesquisar
                                 </button>
                             </form>
