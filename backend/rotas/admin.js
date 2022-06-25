@@ -26,16 +26,15 @@ router.get("/usuario", (req, res) => {
         const usuario = getUsuario(email);
         if (usuario) {
             res.json(usuario);
-        }else{
+        } else {
             res.status(404).json({
-                message: "Usuário não encontrado"
+                message: "Usuário não encontrado",
             });
         }
-    }else{
+    } else {
         res.status(400).send("Email não encontrado");
     }
 });
-
 
 // Rota para adicionar ou editar um ingrediente
 router.post("/editar-ingrediente", (req, res) => {
