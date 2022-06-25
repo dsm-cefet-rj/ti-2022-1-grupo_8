@@ -17,7 +17,25 @@ const {
     editUsuario,
     removeUsuario,
     getAllUsuarios,
+    getUsuario,
 } = require("../data/DAO");
+
+router.get("/usuario", (req, res) => {
+    const email = req.query.email;
+    if (email) {
+        const usuario = getUsuario(email);
+        if (usuario) {
+            res.json(usuario);
+        }else{
+            res.status(404).json({
+                message: "Usuário não encontrado"
+            });
+        }
+    }else{
+        res.status(400).send("Email não encontrado");
+    }
+});
+
 
 // Rota para adicionar ou editar um ingrediente
 router.post("/editar-ingrediente", (req, res) => {

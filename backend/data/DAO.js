@@ -121,7 +121,7 @@ const getAllUsuarios = () => {
 
 const getUsuario = (email) => {
     let usuario = database.usuarios.find((usuario) => usuario.email === email);
-    return Object.assign(new Usuario(), usuario);
+    return usuario;
 };
 
 const addUsuario = (usuario) => {
