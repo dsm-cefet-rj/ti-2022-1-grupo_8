@@ -1,9 +1,9 @@
 const { Usuario, Ingrediente, Pizza, Produto } = require("../negocio");
 require("dotenv").config();
-const { MongoClient, ServerApiVersion } = require('mongodb');
+const { MongoClient, ServerApiVersion } = require("mongodb");
 
-const username = process.env.MONGODB_USERNAME
-const password = process.env.MONGODB_PASSWORD
+const username = process.env.MONGODB_USERNAME;
+const password = process.env.MONGODB_PASSWORD;
 
 /*
 DataBase: PizzariaOn
@@ -15,9 +15,16 @@ Database collections:
 - pedidos
 */
 
-var uri = process.env.MONGODB_URI.replace("<username>", username).replace("<password>", password);
+var uri = process.env.MONGODB_URI.replace("<username>", username).replace(
+    "<password>",
+    password
+);
 
-const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
+const client = new MongoClient(uri, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    serverApi: ServerApiVersion.v1,
+});
 
 const getConnection = (client) => {
     return new Promise((resolve, reject) => {
@@ -31,37 +38,53 @@ const getConnection = (client) => {
             }
         });
     });
-}
+};
 
 /******** INGREDIENTES ********/
 
 const getAllIngredientes = () => {
     return getConnection(client).then((client) => {
-        return client.db("PizzariaOn").collection("ingredientes").find({}).toArray();
+        return client
+            .db("PizzariaOn")
+            .collection("ingredientes")
+            .find({})
+            .toArray();
     });
 };
 
 const getIngrediente = (id) => {
     let ingrediente = getConnection(client).then((client) => {
-        return client.db("PizzariaOn").collection("ingredientes").findOne({ _id: id });
+        return client
+            .db("PizzariaOn")
+            .collection("ingredientes")
+            .findOne({ _id: id });
     });
 };
 
 const addIngrediente = (ingrediente) => {
     return getConnection(client).then((client) => {
-        return client.db("PizzariaOn").collection("ingredientes").insertOne(ingrediente);
+        return client
+            .db("PizzariaOn")
+            .collection("ingredientes")
+            .insertOne(ingrediente);
     });
 };
 
 const editIngrediente = (id, ingrediente) => {
     return getConnection(client).then((client) => {
-        return client.db("PizzariaOn").collection("ingredientes").updateOne({ _id: id }, { $set: ingrediente });
+        return client
+            .db("PizzariaOn")
+            .collection("ingredientes")
+            .updateOne({ _id: id }, { $set: ingrediente });
     });
 };
 
 const removeIngrediente = (id) => {
     return getConnection(client).then((client) => {
-        return client.db("PizzariaOn").collection("ingredientes").deleteOne({ _id: id });
+        return client
+            .db("PizzariaOn")
+            .collection("ingredientes")
+            .deleteOne({ _id: id });
     });
 };
 
@@ -75,7 +98,10 @@ const getAllPizzas = () => {
 
 const getPizza = (id) => {
     return getConnection(client).then((client) => {
-        return client.db("PizzariaOn").collection("pizzas").findOne({ _id: id });
+        return client
+            .db("PizzariaOn")
+            .collection("pizzas")
+            .findOne({ _id: id });
     });
 };
 
@@ -87,13 +113,19 @@ const addPizza = (pizzas) => {
 
 const editPizza = (id, pizza) => {
     return getConnection(client).then((client) => {
-        return client.db("PizzariaOn").collection("pizzas").updateOne({ _id: id }, { $set: pizza });
+        return client
+            .db("PizzariaOn")
+            .collection("pizzas")
+            .updateOne({ _id: id }, { $set: pizza });
     });
 };
 
 const removePizza = (id) => {
     return getConnection(client).then((client) => {
-        return client.db("PizzariaOn").collection("pizzas").deleteOne({ _id: id });
+        return client
+            .db("PizzariaOn")
+            .collection("pizzas")
+            .deleteOne({ _id: id });
     });
 };
 
@@ -101,31 +133,47 @@ const removePizza = (id) => {
 
 const getAllProdutos = () => {
     return getConnection(client).then((client) => {
-        return client.db("PizzariaOn").collection("produtos").find({}).toArray();
+        return client
+            .db("PizzariaOn")
+            .collection("produtos")
+            .find({})
+            .toArray();
     });
 };
 
 const getProduto = (id) => {
     return getConnection(client).then((client) => {
-        return client.db("PizzariaOn").collection("produtos").findOne({ _id: id });
+        return client
+            .db("PizzariaOn")
+            .collection("produtos")
+            .findOne({ _id: id });
     });
 };
 
 const addProduto = (produto) => {
     return getConnection(client).then((client) => {
-        return client.db("PizzariaOn").collection("produtos").insertOne(produto);
+        return client
+            .db("PizzariaOn")
+            .collection("produtos")
+            .insertOne(produto);
     });
 };
 
 const editProduto = (id, produto) => {
     return getConnection(client).then((client) => {
-        return client.db("PizzariaOn").collection("produtos").updateOne({ _id: id }, { $set: produto });
+        return client
+            .db("PizzariaOn")
+            .collection("produtos")
+            .updateOne({ _id: id }, { $set: produto });
     });
 };
 
 const removeProduto = (id) => {
     return getConnection(client).then((client) => {
-        return client.db("PizzariaOn").collection("produtos").deleteOne({ _id: id });
+        return client
+            .db("PizzariaOn")
+            .collection("produtos")
+            .deleteOne({ _id: id });
     });
 };
 
@@ -133,31 +181,47 @@ const removeProduto = (id) => {
 
 const getAllUsuarios = () => {
     return getConnection(client).then((client) => {
-        return client.db("PizzariaOn").collection("usuarios").find({}).toArray();
+        return client
+            .db("PizzariaOn")
+            .collection("usuarios")
+            .find({})
+            .toArray();
     });
 };
 
 const getUsuario = (email) => {
     return getConnection(client).then((client) => {
-        return client.db("PizzariaOn").collection("usuarios").findOne({ email: email });
+        return client
+            .db("PizzariaOn")
+            .collection("usuarios")
+            .findOne({ email: email });
     });
 };
 
 const addUsuario = (usuario) => {
     return getConnection(client).then((client) => {
-        return client.db("PizzariaOn").collection("usuarios").insertOne(usuario);
+        return client
+            .db("PizzariaOn")
+            .collection("usuarios")
+            .insertOne(usuario);
     });
 };
 
 const editUsuario = (email, usuario) => {
     return getConnection(client).then((client) => {
-        return client.db("PizzariaOn").collection("usuarios").updateOne({ email: email }, { $set: novoUsuario });
+        return client
+            .db("PizzariaOn")
+            .collection("usuarios")
+            .updateOne({ email: email }, { $set: novoUsuario });
     });
 };
 
 const removeUsuario = (email) => {
     return getConnection(client).then((client) => {
-        return client.db("PizzariaOn").collection("usuarios").deleteOne({ email: email });
+        return client
+            .db("PizzariaOn")
+            .collection("usuarios")
+            .deleteOne({ email: email });
     });
 };
 
@@ -173,7 +237,11 @@ const getAllPedidos = () => {
 const getPedidos = (email) => {
     // retorna todos os pedidos do usuário pelo email
     return getConnection(client).then((client) => {
-        return client.db("PizzariaOn").collection("pedidos").find({ email: email }).toArray();
+        return client
+            .db("PizzariaOn")
+            .collection("pedidos")
+            .find({ email: email })
+            .toArray();
     });
 };
 
@@ -185,13 +253,19 @@ const addPedido = (pedido) => {
 
 const editPedido = (id, pedido) => {
     return getConnection(client).then((client) => {
-        return client.db("PizzariaOn").collection("pedidos").updateOne({ _id: id }, { $set: novoPedido });
+        return client
+            .db("PizzariaOn")
+            .collection("pedidos")
+            .updateOne({ _id: id }, { $set: novoPedido });
     });
 };
 
 const removePedido = (id) => {
     return getConnection(client).then((client) => {
-        return client.db("PizzariaOn").collection("pedidos").deleteOne({ _id: id });
+        return client
+            .db("PizzariaOn")
+            .collection("pedidos")
+            .deleteOne({ _id: id });
     });
 };
 
