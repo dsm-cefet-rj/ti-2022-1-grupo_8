@@ -1,9 +1,9 @@
 const { Usuario, Ingrediente, Pizza, Produto } = require("../negocio");
 require("dotenv").config();
-const { MongoClient, ServerApiVersion } = require('mongodb');
+const { MongoClient, ServerApiVersion } = require("mongodb");
 
-const username = process.env.MONGODB_USERNAME
-const password = process.env.MONGODB_PASSWORD
+const username = process.env.MONGODB_USERNAME;
+const password = process.env.MONGODB_PASSWORD;
 
 /*
 DataBase: PizzariaOn
@@ -15,9 +15,16 @@ Database collections:
 - pedidos
 */
 
-var uri = process.env.MONGODB_URI.replace("<username>", username).replace("<password>", password);
+var uri = process.env.MONGODB_URI.replace("<username>", username).replace(
+    "<password>",
+    password
+);
 
-const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
+const client = new MongoClient(uri, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    serverApi: ServerApiVersion.v1,
+});
 
 const getConnection = (client) => {
     new Promise((resolve, reject) => {
@@ -35,7 +42,7 @@ const getConnection = (client) => {
     }).catch((err) => {
         console.log(err);
     });
-}
+};
 
 /******** INGREDIENTES ********/
 
