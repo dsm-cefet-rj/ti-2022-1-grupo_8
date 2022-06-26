@@ -1,194 +1,198 @@
 const { Usuario, Ingrediente, Pizza, Produto } = require("../negocio");
-var database = require("./database.json");
+require("dotenv").config();
+const { MongoClient, ServerApiVersion } = require('mongodb');
 
-const saveDatabase = () => {
-    const prettier = require("prettier");
-    require("fs").writeFileSync(
-        "./backend/data/database.json",
-        prettier.format(JSON.stringify(database), { parser: "json" })
-    );
-};
+const username = process.env.MONGODB_USERNAME
+const password = process.env.MONGODB_PASSWORD
+
+/*
+DataBase: PizzariaOn
+Database collections
+- ingredientes
+- pizzas
+- produtos
+- usuarios
+- pedidos
+*/
+
+var uri = process.env.MONGODB_URI.replace("<username>", username).replace("<password>", password);
+
+const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
+
+const getConnection = (client) => {
+    return new Promise((resolve, reject) => {
+        client.connect((err) => {
+            if (err) {
+                console.log(err);
+                reject(err);
+            } else {
+                console.log("Connected successfully to server");
+                resolve(client);
+            }
+        });
+    });
+}
 
 /******** INGREDIENTES ********/
 
 const getAllIngredientes = () => {
-    return database.ingredientes;
+    return getConnection(client).then((client) => {
+        return client.db("PizzariaOn").collection("ingredientes").find({}).toArray();
+    });
 };
 
 const getIngrediente = (id) => {
-    let ingrediente = database.ingredientes.find(
-        (ingrediente) => ingrediente.id === id
-    );
-    return Object.assign(new Ingrediente(), ingrediente);
+    let ingrediente = getConnection(client).then((client) => {
+        return client.db("PizzariaOn").collection("ingredientes").findOne({ _id: id });
+    });
 };
 
 const addIngrediente = (ingrediente) => {
-    let ingredienteDB = database.ingredientes;
-    ingredienteDB.push(ingrediente);
-    saveDatabase();
-    return ingredienteDB[ingredienteDB.length - 1];
+    return getConnection(client).then((client) => {
+        return client.db("PizzariaOn").collection("ingredientes").insertOne(ingrediente);
+    });
 };
 
 const editIngrediente = (id, ingrediente) => {
-    let ingredienteDB = database.ingredientes;
-    let index = ingredienteDB.findIndex((ingrediente) => ingrediente.id === id);
-    let novoIngrediente = Object.assign(ingredienteDB[index], ingrediente);
-    saveDatabase();
-    return novoIngrediente;
+    return getConnection(client).then((client) => {
+        return client.db("PizzariaOn").collection("ingredientes").updateOne({ _id: id }, { $set: ingrediente });
+    });
 };
 
 const removeIngrediente = (id) => {
-    let ingredienteDB = database.ingredientes;
-    let index = ingredienteDB.findIndex((ingrediente) => ingrediente.id === id);
-    let removido = ingredienteDB.splice(index, 1);
-    saveDatabase();
-    return removido;
+    return getConnection(client).then((client) => {
+        return client.db("PizzariaOn").collection("ingredientes").deleteOne({ _id: id });
+    });
 };
 
 /******** PIZZAS ********/
 
 const getAllPizzas = () => {
-    return database.pizzas;
+    return getConnection(client).then((client) => {
+        return client.db("PizzariaOn").collection("pizzas").find({}).toArray();
+    });
 };
 
 const getPizza = (id) => {
-    let pizza = database.pizzas.find((pizza) => pizza.id === id);
-    return Object.assign(new Pizza(), pizza);
+    return getConnection(client).then((client) => {
+        return client.db("PizzariaOn").collection("pizzas").findOne({ _id: id });
+    });
 };
 
 const addPizza = (pizzas) => {
-    let pizzaDB = database.pizzas;
-    pizzaDB.push(pizzas);
-    saveDatabase();
-    return pizzaDB[pizzaDB.length - 1];
+    return getConnection(client).then((client) => {
+        return client.db("PizzariaOn").collection("pizzas").insertOne(pizzas);
+    });
 };
 
 const editPizza = (id, pizza) => {
-    let pizzaDB = database.pizzas;
-    let index = pizzaDB.findIndex((pizza) => pizza.id === id);
-    let novaPizza = Object.assign(pizzaDB[index], pizza);
-    saveDatabase();
-    return novaPizza;
+    return getConnection(client).then((client) => {
+        return client.db("PizzariaOn").collection("pizzas").updateOne({ _id: id }, { $set: pizza });
+    });
 };
 
 const removePizza = (id) => {
-    let pizzaDB = database.pizzas;
-    let index = pizzaDB.findIndex((pizza) => pizza.id === id);
-    let removido = pizzaDB.splice(index, 1);
-    saveDatabase();
-    return removido;
+    return getConnection(client).then((client) => {
+        return client.db("PizzariaOn").collection("pizzas").deleteOne({ _id: id });
+    });
 };
 
 /******** PRODUTOS ********/
 
 const getAllProdutos = () => {
-    return database.produtos;
+    return getConnection(client).then((client) => {
+        return client.db("PizzariaOn").collection("produtos").find({}).toArray();
+    });
 };
 
 const getProduto = (id) => {
-    let produto = database.produtos.find((produto) => produto.id === id);
-    return Object.assign(new Produto(), produto);
+    return getConnection(client).then((client) => {
+        return client.db("PizzariaOn").collection("produtos").findOne({ _id: id });
+    });
 };
 
 const addProduto = (produto) => {
-    let produtoDB = database.produtos;
-    produtoDB.push(produto);
-    saveDatabase();
-    return produtoDB[database.produtos.length - 1];
+    return getConnection(client).then((client) => {
+        return client.db("PizzariaOn").collection("produtos").insertOne(produto);
+    });
 };
 
 const editProduto = (id, produto) => {
-    let produtoDB = database.produtos;
-    let index = produtoDB.findIndex((produto) => produto.id === id);
-    let novoProduto = Object.assign(produtoDB[index], produto);
-    saveDatabase();
-    return novoProduto;
+    return getConnection(client).then((client) => {
+        return client.db("PizzariaOn").collection("produtos").updateOne({ _id: id }, { $set: produto });
+    });
 };
 
 const removeProduto = (id) => {
-    let produtoDB = database.produtos;
-    let index = produtoDB.findIndex((produto) => produto.id === id);
-    let removido = produtoDB.splice(index, 1);
-    saveDatabase();
-    return removido;
+    return getConnection(client).then((client) => {
+        return client.db("PizzariaOn").collection("produtos").deleteOne({ _id: id });
+    });
 };
 
 /******** Usuários ********/
 
 const getAllUsuarios = () => {
-    return database.usuarios;
+    return getConnection(client).then((client) => {
+        return client.db("PizzariaOn").collection("usuarios").find({}).toArray();
+    });
 };
 
-const getUsuario = (email) => {
-    let usuario = database.usuarios.find((usuario) => usuario.email === email);
-    return usuario;
+const getUsuario = (email) => {);
+    return getConnection(client).then((client) => {
+        return client.db("PizzariaOn").collection("usuarios").findOne({ email: email });
+    });
 };
 
 const addUsuario = (usuario) => {
-    let usuarioDB = database.usuarios;
-    usuarioDB.push(usuario);
-    saveDatabase();
-    return usuarioDB[database.usuarios.length - 1];
+    return getConnection(client).then((client) => {
+        return client.db("PizzariaOn").collection("usuarios").insertOne(usuario);
+    });
 };
 
 const editUsuario = (email, usuario) => {
-    let usuarioDB = database.usuarios;
-    let index = usuarioDB.findIndex((usuario) => usuario.email === email);
-    let novoUsuario = Object.assign(usuarioDB[index], usuario);
-    saveDatabase();
-    return novoUsuario;
+    return getConnection(client).then((client) => {
+        return client.db("PizzariaOn").collection("usuarios").updateOne({ email: email }, { $set: novoUsuario });
+    });
 };
 
 const removeUsuario = (email) => {
-    let usuarioDB = database.usuarios;
-    let index = usuarioDB.findIndex((usuario) => usuario.email === email);
-    let removido = usuarioDB.splice(index, 1);
-    saveDatabase();
-    return removido;
+    return getConnection(client).then((client) => {
+        return client.db("PizzariaOn").collection("usuarios").deleteOne({ email: email });
+    });
 };
 
 /******** Pedidos ********/
 
 const getAllPedidos = () => {
     // retorna todos os pedidos
-    return database.pedidos;
+    return getConnection(client).then((client) => {
+        return client.db("PizzariaOn").collection("pedidos").find({}).toArray();
+    });
 };
 
 const getPedidos = (email) => {
     // retorna todos os pedidos do usuário pelo email
-    let pedidos = [];
-    database.pedidos.forEach((pedido) => {
-        if (pedido.email === email) {
-            pedidos.push(pedido);
-        }
+    return getConnection(client).then((client) => {
+        return client.db("PizzariaOn").collection("pedidos").find({ email: email }).toArray();
     });
-    return pedidos;
 };
 
 const addPedido = (pedido) => {
-    // adiciona um pedido
-    let pedidoDB = database.pedidos;
-    let id = pedidoDB.length + 1;
-    pedido.id = id;
-    pedidoDB.push(pedido);
-    saveDatabase();
-    return pedidoDB[database.pedidos.length - 1];
+    return getConnection(client).then((client) => {
+        return client.db("PizzariaOn").collection("pedidos").insertOne(pedido);
+    });
 };
 
 const editPedido = (id, pedido) => {
-    let pedidoDB = database.pedidos;
-    let index = pedidoDB.findIndex((pedido) => pedido.id === id);
-    let novoPedido = Object.assign(pedidoDB[index], pedido);
-    saveDatabase();
-    return novoPedido;
+    return getConnection(client).then((client) => {
+        return client.db("PizzariaOn").collection("pedidos").updateOne({ _id: id }, { $set: novoPedido });
+    });
 };
 
 const removePedido = (id) => {
-    let pedidoDB = database.pedidos;
-    let index = pedidoDB.findIndex((pedido) => pedido.id === id);
-    let removido = pedidoDB.splice(index, 1);
-    saveDatabase();
-    return removido;
+    return getConnection(client).then((client) => {
+        return client.db("PizzariaOn").collection("pedidos").deleteOne({ _id: id });
+    });
 };
 
 module.exports = {
