@@ -7,7 +7,7 @@ const password = process.env.MONGODB_PASSWORD
 
 /*
 DataBase: PizzariaOn
-Database collections
+Database collections:
 - ingredientes
 - pizzas
 - produtos
@@ -137,7 +137,7 @@ const getAllUsuarios = () => {
     });
 };
 
-const getUsuario = (email) => {);
+const getUsuario = (email) => {
     return getConnection(client).then((client) => {
         return client.db("PizzariaOn").collection("usuarios").findOne({ email: email });
     });
