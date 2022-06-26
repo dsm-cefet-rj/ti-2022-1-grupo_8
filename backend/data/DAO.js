@@ -20,7 +20,7 @@ var uri = process.env.MONGODB_URI.replace("<username>", username).replace("<pass
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
 
 const getConnection = (client) => {
-    return new Promise((resolve, reject) => {
+    new Promise((resolve, reject) => {
         client.connect((err) => {
             if (err) {
                 console.log(err);
@@ -30,134 +30,321 @@ const getConnection = (client) => {
                 resolve(client);
             }
         });
+    }).then((client) => {
+        return client;
+    }).catch((err) => {
+        console.log(err);
     });
 }
 
 /******** INGREDIENTES ********/
 
 const getAllIngredientes = () => {
-    return getConnection(client).then((client) => {
-        return client.db("PizzariaOn").collection("ingredientes").find({}).toArray();
+    new Promise((resolve, reject) => {
+        getConnection(client)
+            .db("PizzariaOn")
+            .collection("ingredientes")
+            .find({}).toArray((err, result) => {
+                if (err) {
+                    console.log(err);
+                    reject(err);
+                } else {
+                    console.log("Ingredientes recuperados com sucesso");
+                    resolve(result);
+                }
+            });
+    }).then((result) => {
+        return result;
+    }).catch((err) => {
+        console.log(err);
     });
 };
 
 const getIngrediente = (id) => {
-    let ingrediente = getConnection(client).then((client) => {
-        return client.db("PizzariaOn").collection("ingredientes").findOne({ _id: id });
+    new Promise((resolve, reject) => {
+        getConnection(client)
+            .db("PizzariaOn")
+            .collection("ingredientes")
+            .findOne({ id: id }, (err, result) => {
+                if (err) {
+                    console.log(err);
+                    reject(err);
+                } else {
+                    console.log("Ingrediente recuperado com sucesso");
+                    resolve(result);
+                }
+            });
+    }).then((result) => {
+        return result;
+    }).catch((err) => {
+        console.log(err);
     });
 };
 
 const addIngrediente = (ingrediente) => {
-    return getConnection(client).then((client) => {
-        return client.db("PizzariaOn").collection("ingredientes").insertOne(ingrediente);
+    new Promise((resolve, reject) => {
+        getConnection(client)
+            .db("PizzariaOn")
+            .collection("ingredientes")
+            .insertOne(ingrediente, (err, result) => {
+                if (err) {
+                    console.log(err);
+                    reject(err);
+                } else {
+                    console.log("Ingrediente adicionado com sucesso");
+                    resolve(result);
+                }
+            });
+    }).then((result) => {
+        return result;
+    }).catch((err) => {
+        console.log(err);
     });
+
 };
 
 const editIngrediente = (id, ingrediente) => {
-    return getConnection(client).then((client) => {
-        return client.db("PizzariaOn").collection("ingredientes").updateOne({ _id: id }, { $set: ingrediente });
+    new Promise((resolve, reject) => {
+        getConnection(client)
+            .db("PizzariaOn")
+            .collection("ingredientes")
+            .updateOne({ id: id }, ingrediente, (err, result) => {
+                if (err) {
+                    console.log(err);
+                    reject(err);
+                } else {
+                    console.log("Ingrediente editado com sucesso");
+                    resolve(result);
+                }
+            });
+    }).then((result) => {
+        return result;
+    }).catch((err) => {
+        console.log(err);
     });
 };
 
 const removeIngrediente = (id) => {
-    return getConnection(client).then((client) => {
-        return client.db("PizzariaOn").collection("ingredientes").deleteOne({ _id: id });
+    new Promise((resolve, reject) => {
+        getConnection(client)
+            .db("PizzariaOn")
+            .collection("ingredientes")
+            .deleteOne({ id: id }, (err, result) => {
+                if (err) {
+                    console.log(err);
+                    reject(err);
+                } else {
+                    console.log("Ingrediente removido com sucesso");
+                    resolve(result);
+                }
+            });
+    }).then((result) => {
+        return result;
+    }).catch((err) => {
+        console.log(err);
     });
 };
 
 /******** PIZZAS ********/
 
 const getAllPizzas = () => {
-    return getConnection(client).then((client) => {
-        return client.db("PizzariaOn").collection("pizzas").find({}).toArray();
+    new Promise((resolve, reject) => {
+        getConnection(client)
+            .db("PizzariaOn")
+            .collection("pizzas")
+            .find({})
+            .toArray();
+    }).then((result) => {
+        return result;
+    }).catch((err) => {
+        console.log(err);
     });
 };
 
 const getPizza = (id) => {
-    return getConnection(client).then((client) => {
-        return client.db("PizzariaOn").collection("pizzas").findOne({ _id: id });
+    new Promise((resolve, reject) => {
+        getConnection(client)
+            .db("PizzariaOn")
+            .collection("pizzas")
+            .findOne({ _id: id });
+    }).then((result) => {
+        return result;
+    }).catch((err) => {
+        console.log(err);
     });
 };
 
 const addPizza = (pizzas) => {
-    return getConnection(client).then((client) => {
-        return client.db("PizzariaOn").collection("pizzas").insertOne(pizzas);
+    new Promise((resolve, reject) => {
+        getConnection(client)
+            .db("PizzariaOn")
+            .collection("pizzas")
+            .insertOne(pizzas);
+    }).then((result) => {
+        return result;
+    }).catch((err) => {
+        console.log(err);
     });
 };
 
 const editPizza = (id, pizza) => {
-    return getConnection(client).then((client) => {
-        return client.db("PizzariaOn").collection("pizzas").updateOne({ _id: id }, { $set: pizza });
+    new Promise((resolve, reject) => {
+        getConnection(client).db("PizzariaOn")
+            .collection("pizzas")
+            .updateOne({ _id: id }, { $set: pizza });
+    }).then((result) => {
+        return result;
+    }).catch((err) => {
+        console.log(err);
     });
 };
 
 const removePizza = (id) => {
-    return getConnection(client).then((client) => {
-        return client.db("PizzariaOn").collection("pizzas").deleteOne({ _id: id });
+    new Promise((resolve, reject) => {
+        getConnection(client)
+            .db("PizzariaOn")
+            .collection("pizzas")
+            .deleteOne({ _id: id });
+    }).then((result) => {
+        return result;
+    }).catch((err) => {
+        console.log(err);
     });
-};
+}
 
 /******** PRODUTOS ********/
 
 const getAllProdutos = () => {
-    return getConnection(client).then((client) => {
-        return client.db("PizzariaOn").collection("produtos").find({}).toArray();
+    new Promise((resolve, reject) => {
+        getConnection(client)
+            .db("PizzariaOn")
+            .collection("produtos")
+            .find({})
+            .toArray()
+    }).then((result) => {
+        return result;
+    }).catch((err) => {
+        console.log(err);
     });
 };
 
 const getProduto = (id) => {
-    return getConnection(client).then((client) => {
-        return client.db("PizzariaOn").collection("produtos").findOne({ _id: id });
+    new Promise((resolve, reject) => {
+        getConnection(client)
+            .db("PizzariaOn")
+            .collection("produtos")
+            .findOne({ _id: id })
+    }).then((result) => {
+        return result;
+    }).catch((err) => {
+        console.log(err);
     });
 };
 
 const addProduto = (produto) => {
-    return getConnection(client).then((client) => {
-        return client.db("PizzariaOn").collection("produtos").insertOne(produto);
+    new Promise((resolve, reject) => {
+        getConnection(client)
+            .db("PizzariaOn")
+            .collection("produtos")
+            .insertOne(produto);
+    }).then((result) => {
+        return result;
+    }).catch((err) => {
+        console.log(err);
     });
 };
 
 const editProduto = (id, produto) => {
-    return getConnection(client).then((client) => {
-        return client.db("PizzariaOn").collection("produtos").updateOne({ _id: id }, { $set: produto });
+    new Promise((resolve, reject) => {
+        getConnection(client)
+            .db("PizzariaOn")
+            .collection("produtos")
+            .updateOne({ _id: id }, { $set: produto });
+    }).then((result) => {
+        return result;
+    }).catch((err) => {
+        console.log(err);
     });
 };
 
 const removeProduto = (id) => {
-    return getConnection(client).then((client) => {
-        return client.db("PizzariaOn").collection("produtos").deleteOne({ _id: id });
+    new Promise((resolve, reject) => {
+        getConnection(client)
+            .db("PizzariaOn")
+            .collection("produtos")
+            .deleteOne({ _id: id });
+    }).then((result) => {
+        return result;
+    }).catch((err) => {
+        console.log(err);
     });
 };
 
 /******** Usuários ********/
 
 const getAllUsuarios = () => {
-    return getConnection(client).then((client) => {
-        return client.db("PizzariaOn").collection("usuarios").find({}).toArray();
+    new Promise((resolve, reject) => {
+        getConnection(client)
+            .db("PizzariaOn")
+            .collection("usuarios")
+            .find({})
+            .toArray();
+    }).then((result) => {
+        return result;
+    }).catch((err) => {
+        console.log(err);
     });
 };
 
 const getUsuario = (email) => {
-    return getConnection(client).then((client) => {
-        return client.db("PizzariaOn").collection("usuarios").findOne({ email: email });
+    new Promise((resolve, reject) => {
+        getConnection(client)
+            .db("PizzariaOn")
+            .collection("usuarios")
+            .findOne({ email: email });
+    }).then((result) => {
+        return result;
+    }).catch((err) => {
+        console.log(err);
     });
 };
 
 const addUsuario = (usuario) => {
-    return getConnection(client).then((client) => {
-        return client.db("PizzariaOn").collection("usuarios").insertOne(usuario);
+    new Promise((resolve, reject) => {
+        getConnection(client)
+            .db("PizzariaOn")
+            .collection("usuarios")
+            .insertOne(usuario);
+    }).then((result) => {
+        return result;
+    }).catch((err) => {
+        console.log(err);
     });
 };
 
 const editUsuario = (email, usuario) => {
-    return getConnection(client).then((client) => {
-        return client.db("PizzariaOn").collection("usuarios").updateOne({ email: email }, { $set: novoUsuario });
+    new Promise((resolve, reject) => {
+        getConnection(client)
+            .db("PizzariaOn")
+            .collection("usuarios")
+            .updateOne({ email: email }, { $set: novoUsuario });
+    }).then((result) => {
+        return result;
+    }).catch((err) => {
+        console.log(err);
     });
 };
 
 const removeUsuario = (email) => {
-    return getConnection(client).then((client) => {
-        return client.db("PizzariaOn").collection("usuarios").deleteOne({ email: email });
+    new Promise((resolve, reject) => {
+        getConnection(client)
+            .db("PizzariaOn")
+            .collection("usuarios")
+            .deleteOne({ email: email });
+    }).then((result) => {
+        return result;
+    }).catch((err) => {
+        console.log(err);
     });
 };
 
@@ -165,33 +352,69 @@ const removeUsuario = (email) => {
 
 const getAllPedidos = () => {
     // retorna todos os pedidos
-    return getConnection(client).then((client) => {
-        return client.db("PizzariaOn").collection("pedidos").find({}).toArray();
+    new Promise((resolve, reject) => {
+        getConnection(client)
+            .db("PizzariaOn")
+            .collection("pedidos")
+            .find({})
+            .toArray();
+    }).then((result) => {
+        return result;
+    }).catch((err) => {
+        console.log(err);
     });
 };
 
 const getPedidos = (email) => {
     // retorna todos os pedidos do usuário pelo email
-    return getConnection(client).then((client) => {
-        return client.db("PizzariaOn").collection("pedidos").find({ email: email }).toArray();
+    new Promise((resolve, reject) => {
+        getConnection(client)
+            .db("PizzariaOn")
+            .collection("pedidos")
+            .find({ email: email })
+            .toArray();
+    }).then((result) => {
+        return result;
+    }).catch((err) => {
+        console.log(err);
     });
 };
 
 const addPedido = (pedido) => {
-    return getConnection(client).then((client) => {
-        return client.db("PizzariaOn").collection("pedidos").insertOne(pedido);
+    new Promise((resolve, reject) => {
+        getConnection(client)
+            .db("PizzariaOn")
+            .collection("pedidos")
+            .insertOne(pedido);
+    }).then((result) => {
+        return result;
+    }).catch((err) => {
+        console.log(err);
     });
 };
 
 const editPedido = (id, pedido) => {
-    return getConnection(client).then((client) => {
-        return client.db("PizzariaOn").collection("pedidos").updateOne({ _id: id }, { $set: novoPedido });
+    new Promise((resolve, reject) => {
+        getConnection(client)
+            .db("PizzariaOn")
+            .collection("pedidos")
+            .updateOne({ _id: id }, { $set: novoPedido });
+    }).then((result) => {
+        return result;
+    }).catch((err) => {
+        console.log(err);
     });
 };
 
 const removePedido = (id) => {
-    return getConnection(client).then((client) => {
-        return client.db("PizzariaOn").collection("pedidos").deleteOne({ _id: id });
+    new Promise((resolve, reject) => {
+        getConnection(client).db("PizzariaOn")
+            .collection("pedidos")
+            .deleteOne({ _id: id });
+    }).then((result) => {
+        return result;
+    }).catch((err) => {
+        console.log(err);
     });
 };
 
