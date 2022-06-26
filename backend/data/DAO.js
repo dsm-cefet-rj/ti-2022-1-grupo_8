@@ -37,11 +37,13 @@ const getConnection = (client) => {
                 resolve(client);
             }
         });
-    }).then((client) => {
-        return client;
-    }).catch((err) => {
-        console.log(err);
-    });
+    })
+        .then((client) => {
+            return client;
+        })
+        .catch((err) => {
+            console.log(err);
+        });
 };
 
 /******** INGREDIENTES ********/
@@ -51,7 +53,8 @@ const getAllIngredientes = () => {
         getConnection(client)
             .db("PizzariaOn")
             .collection("ingredientes")
-            .find({}).toArray((err, result) => {
+            .find({})
+            .toArray((err, result) => {
                 if (err) {
                     console.log(err);
                     reject(err);
@@ -60,11 +63,13 @@ const getAllIngredientes = () => {
                     resolve(result);
                 }
             });
-    }).then((result) => {
-        return result;
-    }).catch((err) => {
-        console.log(err);
-    });
+    })
+        .then((result) => {
+            return result;
+        })
+        .catch((err) => {
+            console.log(err);
+        });
 };
 
 const getIngrediente = (id) => {
@@ -81,11 +86,13 @@ const getIngrediente = (id) => {
                     resolve(result);
                 }
             });
-    }).then((result) => {
-        return result;
-    }).catch((err) => {
-        console.log(err);
-    });
+    })
+        .then((result) => {
+            return result;
+        })
+        .catch((err) => {
+            console.log(err);
+        });
 };
 
 const addIngrediente = (ingrediente) => {
@@ -102,12 +109,13 @@ const addIngrediente = (ingrediente) => {
                     resolve(result);
                 }
             });
-    }).then((result) => {
-        return result;
-    }).catch((err) => {
-        console.log(err);
-    });
-
+    })
+        .then((result) => {
+            return result;
+        })
+        .catch((err) => {
+            console.log(err);
+        });
 };
 
 const editIngrediente = (id, ingrediente) => {
@@ -124,11 +132,13 @@ const editIngrediente = (id, ingrediente) => {
                     resolve(result);
                 }
             });
-    }).then((result) => {
-        return result;
-    }).catch((err) => {
-        console.log(err);
-    });
+    })
+        .then((result) => {
+            return result;
+        })
+        .catch((err) => {
+            console.log(err);
+        });
 };
 
 const removeIngrediente = (id) => {
@@ -145,11 +155,13 @@ const removeIngrediente = (id) => {
                     resolve(result);
                 }
             });
-    }).then((result) => {
-        return result;
-    }).catch((err) => {
-        console.log(err);
-    });
+    })
+        .then((result) => {
+            return result;
+        })
+        .catch((err) => {
+            console.log(err);
+        });
 };
 
 /******** PIZZAS ********/
@@ -161,11 +173,13 @@ const getAllPizzas = () => {
             .collection("pizzas")
             .find({})
             .toArray();
-    }).then((result) => {
-        return result;
-    }).catch((err) => {
-        console.log(err);
-    });
+    })
+        .then((result) => {
+            return result;
+        })
+        .catch((err) => {
+            console.log(err);
+        });
 };
 
 const getPizza = (id) => {
@@ -174,11 +188,13 @@ const getPizza = (id) => {
             .db("PizzariaOn")
             .collection("pizzas")
             .findOne({ _id: id });
-    }).then((result) => {
-        return result;
-    }).catch((err) => {
-        console.log(err);
-    });
+    })
+        .then((result) => {
+            return result;
+        })
+        .catch((err) => {
+            console.log(err);
+        });
 };
 
 const addPizza = (pizzas) => {
@@ -187,23 +203,28 @@ const addPizza = (pizzas) => {
             .db("PizzariaOn")
             .collection("pizzas")
             .insertOne(pizzas);
-    }).then((result) => {
-        return result;
-    }).catch((err) => {
-        console.log(err);
-    });
+    })
+        .then((result) => {
+            return result;
+        })
+        .catch((err) => {
+            console.log(err);
+        });
 };
 
 const editPizza = (id, pizza) => {
     new Promise((resolve, reject) => {
-        getConnection(client).db("PizzariaOn")
+        getConnection(client)
+            .db("PizzariaOn")
             .collection("pizzas")
             .updateOne({ _id: id }, { $set: pizza });
-    }).then((result) => {
-        return result;
-    }).catch((err) => {
-        console.log(err);
-    });
+    })
+        .then((result) => {
+            return result;
+        })
+        .catch((err) => {
+            console.log(err);
+        });
 };
 
 const removePizza = (id) => {
@@ -212,12 +233,14 @@ const removePizza = (id) => {
             .db("PizzariaOn")
             .collection("pizzas")
             .deleteOne({ _id: id });
-    }).then((result) => {
-        return result;
-    }).catch((err) => {
-        console.log(err);
-    });
-}
+    })
+        .then((result) => {
+            return result;
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+};
 
 /******** PRODUTOS ********/
 
@@ -227,12 +250,14 @@ const getAllProdutos = () => {
             .db("PizzariaOn")
             .collection("produtos")
             .find({})
-            .toArray()
-    }).then((result) => {
-        return result;
-    }).catch((err) => {
-        console.log(err);
-    });
+            .toArray();
+    })
+        .then((result) => {
+            return result;
+        })
+        .catch((err) => {
+            console.log(err);
+        });
 };
 
 const getProduto = (id) => {
@@ -240,12 +265,14 @@ const getProduto = (id) => {
         getConnection(client)
             .db("PizzariaOn")
             .collection("produtos")
-            .findOne({ _id: id })
-    }).then((result) => {
-        return result;
-    }).catch((err) => {
-        console.log(err);
-    });
+            .findOne({ _id: id });
+    })
+        .then((result) => {
+            return result;
+        })
+        .catch((err) => {
+            console.log(err);
+        });
 };
 
 const addProduto = (produto) => {
@@ -254,11 +281,13 @@ const addProduto = (produto) => {
             .db("PizzariaOn")
             .collection("produtos")
             .insertOne(produto);
-    }).then((result) => {
-        return result;
-    }).catch((err) => {
-        console.log(err);
-    });
+    })
+        .then((result) => {
+            return result;
+        })
+        .catch((err) => {
+            console.log(err);
+        });
 };
 
 const editProduto = (id, produto) => {
@@ -267,11 +296,13 @@ const editProduto = (id, produto) => {
             .db("PizzariaOn")
             .collection("produtos")
             .updateOne({ _id: id }, { $set: produto });
-    }).then((result) => {
-        return result;
-    }).catch((err) => {
-        console.log(err);
-    });
+    })
+        .then((result) => {
+            return result;
+        })
+        .catch((err) => {
+            console.log(err);
+        });
 };
 
 const removeProduto = (id) => {
@@ -280,11 +311,13 @@ const removeProduto = (id) => {
             .db("PizzariaOn")
             .collection("produtos")
             .deleteOne({ _id: id });
-    }).then((result) => {
-        return result;
-    }).catch((err) => {
-        console.log(err);
-    });
+    })
+        .then((result) => {
+            return result;
+        })
+        .catch((err) => {
+            console.log(err);
+        });
 };
 
 /******** Usuários ********/
@@ -296,11 +329,13 @@ const getAllUsuarios = () => {
             .collection("usuarios")
             .find({})
             .toArray();
-    }).then((result) => {
-        return result;
-    }).catch((err) => {
-        console.log(err);
-    });
+    })
+        .then((result) => {
+            return result;
+        })
+        .catch((err) => {
+            console.log(err);
+        });
 };
 
 const getUsuario = (email) => {
@@ -309,11 +344,13 @@ const getUsuario = (email) => {
             .db("PizzariaOn")
             .collection("usuarios")
             .findOne({ email: email });
-    }).then((result) => {
-        return result;
-    }).catch((err) => {
-        console.log(err);
-    });
+    })
+        .then((result) => {
+            return result;
+        })
+        .catch((err) => {
+            console.log(err);
+        });
 };
 
 const addUsuario = (usuario) => {
@@ -322,11 +359,13 @@ const addUsuario = (usuario) => {
             .db("PizzariaOn")
             .collection("usuarios")
             .insertOne(usuario);
-    }).then((result) => {
-        return result;
-    }).catch((err) => {
-        console.log(err);
-    });
+    })
+        .then((result) => {
+            return result;
+        })
+        .catch((err) => {
+            console.log(err);
+        });
 };
 
 const editUsuario = (email, usuario) => {
@@ -335,11 +374,13 @@ const editUsuario = (email, usuario) => {
             .db("PizzariaOn")
             .collection("usuarios")
             .updateOne({ email: email }, { $set: novoUsuario });
-    }).then((result) => {
-        return result;
-    }).catch((err) => {
-        console.log(err);
-    });
+    })
+        .then((result) => {
+            return result;
+        })
+        .catch((err) => {
+            console.log(err);
+        });
 };
 
 const removeUsuario = (email) => {
@@ -348,11 +389,13 @@ const removeUsuario = (email) => {
             .db("PizzariaOn")
             .collection("usuarios")
             .deleteOne({ email: email });
-    }).then((result) => {
-        return result;
-    }).catch((err) => {
-        console.log(err);
-    });
+    })
+        .then((result) => {
+            return result;
+        })
+        .catch((err) => {
+            console.log(err);
+        });
 };
 
 /******** Pedidos ********/
@@ -365,11 +408,13 @@ const getAllPedidos = () => {
             .collection("pedidos")
             .find({})
             .toArray();
-    }).then((result) => {
-        return result;
-    }).catch((err) => {
-        console.log(err);
-    });
+    })
+        .then((result) => {
+            return result;
+        })
+        .catch((err) => {
+            console.log(err);
+        });
 };
 
 const getPedidos = (email) => {
@@ -380,11 +425,13 @@ const getPedidos = (email) => {
             .collection("pedidos")
             .find({ email: email })
             .toArray();
-    }).then((result) => {
-        return result;
-    }).catch((err) => {
-        console.log(err);
-    });
+    })
+        .then((result) => {
+            return result;
+        })
+        .catch((err) => {
+            console.log(err);
+        });
 };
 
 const addPedido = (pedido) => {
@@ -393,11 +440,13 @@ const addPedido = (pedido) => {
             .db("PizzariaOn")
             .collection("pedidos")
             .insertOne(pedido);
-    }).then((result) => {
-        return result;
-    }).catch((err) => {
-        console.log(err);
-    });
+    })
+        .then((result) => {
+            return result;
+        })
+        .catch((err) => {
+            console.log(err);
+        });
 };
 
 const editPedido = (id, pedido) => {
@@ -406,23 +455,28 @@ const editPedido = (id, pedido) => {
             .db("PizzariaOn")
             .collection("pedidos")
             .updateOne({ _id: id }, { $set: novoPedido });
-    }).then((result) => {
-        return result;
-    }).catch((err) => {
-        console.log(err);
-    });
+    })
+        .then((result) => {
+            return result;
+        })
+        .catch((err) => {
+            console.log(err);
+        });
 };
 
 const removePedido = (id) => {
     new Promise((resolve, reject) => {
-        getConnection(client).db("PizzariaOn")
+        getConnection(client)
+            .db("PizzariaOn")
             .collection("pedidos")
             .deleteOne({ _id: id });
-    }).then((result) => {
-        return result;
-    }).catch((err) => {
-        console.log(err);
-    });
+    })
+        .then((result) => {
+            return result;
+        })
+        .catch((err) => {
+            console.log(err);
+        });
 };
 
 module.exports = {
