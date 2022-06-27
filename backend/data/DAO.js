@@ -17,8 +17,10 @@ Database collections:
 */
 
 // URI do banco de dados
-const uri = process.env.MONGODB_URI.replace("<username>", username)
-    .replace("<password>", password);
+const uri = process.env.MONGODB_URI.replace("<username>", username).replace(
+    "<password>",
+    password
+);
 
 // Cliente de conexão com o MongoDB
 const client = new MongoClient(uri, {
@@ -37,7 +39,8 @@ const getConnection = async () => {
 const getAllIngredientes = async () => {
     const connection = await getConnection(); // conectar ao banco de dados
     // Pegar da coleção ingredientes todos os ingredientes
-    let ingredientes = await connection.collection("ingredientes")
+    let ingredientes = await connection
+        .collection("ingredientes")
         .find()
         .toArray();
     // transformar _id para string e adicionar campo id
@@ -68,14 +71,16 @@ const addIngrediente = async (ingrediente) => {
 const editIngrediente = async (id, ingrediente) => {
     const connection = await getConnection(); // conectar ao banco de dados
     // edita o ingrediente com o id passado da coleção ingredientes
-    await connection.collection("ingredientes")
+    await connection
+        .collection("ingredientes")
         .updateOne({ _id: new Mongo.ObjectID(id) }, ingrediente);
 };
 
 const removeIngrediente = async (id) => {
     const connection = await getConnection(); // conectar ao banco de dados
     // Remove o ingrediente com o _id passado da coleção ingredientes
-    connection.collection("ingredientes")
+    connection
+        .collection("ingredientes")
         .deleteOne({ _id: new Mongo.ObjectID(id) });
 };
 
@@ -125,9 +130,8 @@ const removePizza = async (id) => {
 /******** PRODUTOS ********/
 
 const clearProduto = (produto) => {
-    if(produto.id)
-        delete produto.id;
-}
+    if (produto.id) delete produto.id;
+};
 
 const getAllProdutos = async () => {
     const connection = await getConnection();
@@ -144,7 +148,8 @@ const getAllProdutos = async () => {
 const getProduto = async (_id) => {
     const connection = await getConnection(); // conectar ao banco de dados
     // Busca o produto com o _id passado
-    let produto = connection.collection("produtos")
+    let produto = connection
+        .collection("produtos")
         .findOne({ _id: new Mongo.ObjectID(_id) });
     produto._id = produto._id.toString();
     return produto;
@@ -161,23 +166,24 @@ const editProduto = async (id, produto) => {
     // remove id e manter _id
     clearProduto(produto);
     // Na coleção produtos, atualizar o produto com o id passado
-    await connection.collection("produtos")
+    await connection
+        .collection("produtos")
         .updateOne({ _id: new Mongo.ObjectID(id) }, produto);
 };
 
 const removeProduto = async (_id) => {
     const connection = await getConnection(); // conectar ao banco de dados
     // Da coleção produtos remove o produto com o id passado
-    connection.collection("produtos")
+    connection
+        .collection("produtos")
         .deleteOne({ _id: new Mongo.ObjectID(_id) });
 };
 
 /******** Usuários ********/
 
 const clearUsuarios = (usuario) => {
-    if (usuario.id)
-        delete usuario.id;
-}
+    if (usuario.id) delete usuario.id;
+};
 
 const getAllUsuarios = async () => {
     const connection = await getConnection();
@@ -224,7 +230,8 @@ const editUsuario = async (usuario) => {
     const email = usuario.email;
     clearUsuarios(usuario);
     // Atualizar usuário na coleção usuarios
-    await connection.collection("usuarios")
+    await connection
+        .collection("usuarios")
         .updateOne({ email: email }, usuario);
 };
 
@@ -238,7 +245,8 @@ const removeUsuario = async (email) => {
 
 // Função faz um pequeno tratamento do objeto pedido
 const cleanPedidos = (pedido) => {
-    if (pedido.id) { // Se o pedido tiver id então remove o id mantendo o _id
+    if (pedido.id) {
+        // Se o pedido tiver id então remove o id mantendo o _id
         delete pedido.id;
     }
 };
@@ -260,7 +268,8 @@ const getAllPedidos = async () => {
 const getPedidos = async (email) => {
     const connection = await getConnection(); // conectar ao banco de dados
     // Na coleção pedidos, retorna todos os pedidos onde o email for igual
-    let pedidos = await connection.collection("pedidos")
+    let pedidos = await connection
+        .collection("pedidos")
         .find({ email: email })
         .toArray();
     // transformar _id para string
@@ -285,14 +294,17 @@ const editPedido = async (_id, pedido) => {
     const connection = await getConnection();
     cleanPedidos(pedido);
     // Atualiza o pedido na coleção de pedidos
-    await connection.collection("pedidos")
+    await connection
+        .collection("pedidos")
         .updateOne({ _id: new Mongo.ObjectID(_id) }, pedido);
 };
 
 // Função para remover um pedido
 const removePedido = async (_id) => {
     const connection = await getConnection(); // conectar ao banco de dados
-    connection.collection("pedidos").deleteOne({ _id: new Mongo.ObjectID(_id) });
+    connection
+        .collection("pedidos")
+        .deleteOne({ _id: new Mongo.ObjectID(_id) });
 };
 
 module.exports = {

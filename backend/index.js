@@ -32,7 +32,8 @@ server.use("/admin", authMiddlewares.isAdmin, rotasAdministrador);
 // definir mensagem de erro para rotas não ultilizadas
 server.use((req, res, next) => {
     res.status(404).json({
-        message: "Não existe pizzas 🍕 nessa rota 😠",});
+        message: "Não existe pizzas 🍕 nessa rota 😠",
+    });
 });
 
 server.listen(port, () => {
