@@ -1,6 +1,7 @@
 const { Usuario, Ingrediente, Pizza, Produto } = require("../negocio");
-require("dotenv").config();
 const { MongoClient, ServerApiVersion } = require("mongodb");
+
+require("dotenv").config();
 
 const username = process.env.MONGODB_USERNAME;
 const password = process.env.MONGODB_PASSWORD;
@@ -15,7 +16,7 @@ Database collections:
 - pedidos
 */
 
-var uri = process.env.MONGODB_URI.replace("<username>", username).replace(
+const uri = process.env.MONGODB_URI.replace("<username>", username).replace(
     "<password>",
     password
 );
@@ -26,457 +27,195 @@ const client = new MongoClient(uri, {
     serverApi: ServerApiVersion.v1,
 });
 
-const getConnection = (client) => {
-    new Promise((resolve, reject) => {
-        client.connect((err) => {
-            if (err) {
-                console.log(err);
-                reject(err);
-            } else {
-                console.log("Connected successfully to server");
-                resolve(client);
-            }
-        });
-    })
-        .then((client) => {
-            return client;
-        })
-        .catch((err) => {
-            console.log(err);
-        });
+const getConnection = async () => {
+    const connection = await client.connect();
+    return connection.db("PizzariaOn");
 };
 
 /******** INGREDIENTES ********/
 
-const getAllIngredientes = () => {
-    new Promise((resolve, reject) => {
-        getConnection(client)
-            .db("PizzariaOn")
-            .collection("ingredientes")
-            .find({})
-            .toArray((err, result) => {
-                if (err) {
-                    console.log(err);
-                    reject(err);
-                } else {
-                    console.log("Ingredientes recuperados com sucesso");
-                    resolve(result);
-                }
-            });
-    })
-        .then((result) => {
-            return result;
-        })
-        .catch((err) => {
-            console.log(err);
-        });
+const getAllIngredientes = async () => {
+    const connection = await getConnection();
+    let ingredientes = await connection.collection("ingredientes").find().toArray();
+    // transformar _id para string 
+    ingredientes.map((ingrediente) => {
+        ingrediente._id = ingrediente._id.toString();
+        return ingrediente;
+    });
+    return ingredientes;
 };
 
-const getIngrediente = (id) => {
-    new Promise((resolve, reject) => {
-        getConnection(client)
-            .db("PizzariaOn")
-            .collection("ingredientes")
-            .findOne({ id: id }, (err, result) => {
-                if (err) {
-                    console.log(err);
-                    reject(err);
-                } else {
-                    console.log("Ingrediente recuperado com sucesso");
-                    resolve(result);
-                }
-            });
-    })
-        .then((result) => {
-            return result;
-        })
-        .catch((err) => {
-            console.log(err);
-        });
+const getIngrediente = async (id) => {
+    const connection = await getConnection();
+    let ingrediente = await connection.collection("ingredientes").findOne({
+        _id: new Mongo.ObjectID(id),
+    });
+    ingrediente["_id"] = ingrediente["_id"].toString();
+    return ingrediente;
 };
 
-const addIngrediente = (ingrediente) => {
-    new Promise((resolve, reject) => {
-        getConnection(client)
-            .db("PizzariaOn")
-            .collection("ingredientes")
-            .insertOne(ingrediente, (err, result) => {
-                if (err) {
-                    console.log(err);
-                    reject(err);
-                } else {
-                    console.log("Ingrediente adicionado com sucesso");
-                    resolve(result);
-                }
-            });
-    })
-        .then((result) => {
-            return result;
-        })
-        .catch((err) => {
-            console.log(err);
-        });
+const addIngrediente = async (ingrediente) => {
+    const connection = await getConnection();
+    await connection.insertOne(ingrediente);
 };
 
-const editIngrediente = (id, ingrediente) => {
-    new Promise((resolve, reject) => {
-        getConnection(client)
-            .db("PizzariaOn")
-            .collection("ingredientes")
-            .updateOne({ id: id }, ingrediente, (err, result) => {
-                if (err) {
-                    console.log(err);
-                    reject(err);
-                } else {
-                    console.log("Ingrediente editado com sucesso");
-                    resolve(result);
-                }
-            });
-    })
-        .then((result) => {
-            return result;
-        })
-        .catch((err) => {
-            console.log(err);
-        });
+const editIngrediente = async (id, ingrediente) => {
+    const connection = await getConnection();
+    await connection.collection("ingredientes").updateOne({ _id: new Mongo.ObjectID(id) }, ingrediente);
 };
 
-const removeIngrediente = (id) => {
-    new Promise((resolve, reject) => {
-        getConnection(client)
-            .db("PizzariaOn")
-            .collection("ingredientes")
-            .deleteOne({ id: id }, (err, result) => {
-                if (err) {
-                    console.log(err);
-                    reject(err);
-                } else {
-                    console.log("Ingrediente removido com sucesso");
-                    resolve(result);
-                }
-            });
-    })
-        .then((result) => {
-            return result;
-        })
-        .catch((err) => {
-            console.log(err);
-        });
+const removeIngrediente = async (id) => {
+    const connection = await getConnection();
+    connection.collection("ingredientes").deleteOne({ _id: new Mongo.ObjectID(id) });
 };
 
 /******** PIZZAS ********/
 
-const getAllPizzas = () => {
-    new Promise((resolve, reject) => {
-        getConnection(client)
-            .db("PizzariaOn")
-            .collection("pizzas")
-            .find({})
-            .toArray();
-    })
-        .then((result) => {
-            return result;
-        })
-        .catch((err) => {
-            console.log(err);
-        });
+const getAllPizzas = async () => {
+    const connection = await getConnection();
+    let pizzas = await connection.collection("pizzas").find().toArray();
+    // transformar _id para string
+    pizzas.map((pizza) => {
+        pizza._id = pizza._id.toString();
+        return pizza;
+    });
+    return pizzas;
 };
 
-const getPizza = (id) => {
-    new Promise((resolve, reject) => {
-        getConnection(client)
-            .db("PizzariaOn")
-            .collection("pizzas")
-            .findOne({ _id: id });
-    })
-        .then((result) => {
-            return result;
-        })
-        .catch((err) => {
-            console.log(err);
-        });
+const getPizza = async (id) => {
+    const connection = await getConnection();
+    let pizza = await connection.collection("pizzas").findOne({ _id: new Mongo.ObjectID(id) });
+    pizza["_id"] = pizza["_id"].toString();
+    return pizza;
 };
 
-const addPizza = (pizzas) => {
-    new Promise((resolve, reject) => {
-        getConnection(client)
-            .db("PizzariaOn")
-            .collection("pizzas")
-            .insertOne(pizzas);
-    })
-        .then((result) => {
-            return result;
-        })
-        .catch((err) => {
-            console.log(err);
-        });
+const addPizza = async (pizzas) => {
+    const connection = await getConnection();
+    await connection.collection("pedidos").insertOne(pizzas);
 };
 
-const editPizza = (id, pizza) => {
-    new Promise((resolve, reject) => {
-        getConnection(client)
-            .db("PizzariaOn")
-            .collection("pizzas")
-            .updateOne({ _id: id }, { $set: pizza });
-    })
-        .then((result) => {
-            return result;
-        })
-        .catch((err) => {
-            console.log(err);
-        });
+const editPizza = async (id, pizza) => {
+    const connection = await getConnection();
+    await connection.collection("pizzas").updateOne({ _id: new Mongo.ObjectID(id) }, pizza);
 };
 
-const removePizza = (id) => {
-    new Promise((resolve, reject) => {
-        getConnection(client)
-            .db("PizzariaOn")
-            .collection("pizzas")
-            .deleteOne({ _id: id });
-    })
-        .then((result) => {
-            return result;
-        })
-        .catch((err) => {
-            console.log(err);
-        });
+const removePizza = async (id) => {
+    const connection = await getConnection();
+    connection.collection("pizzas").deleteOne({ _id: new Mongo.ObjectID(id) });
 };
 
 /******** PRODUTOS ********/
 
-const getAllProdutos = () => {
-    new Promise((resolve, reject) => {
-        getConnection(client)
-            .db("PizzariaOn")
-            .collection("produtos")
-            .find({})
-            .toArray();
-    })
-        .then((result) => {
-            return result;
-        })
-        .catch((err) => {
-            console.log(err);
-        });
+const getAllProdutos = async () => {
+    const connection = await getConnection();
+    let produtos = await connection.collection("produtos").find({}).toArray();
+    // transformar _id para string
+    produtos.map((produto) => {
+        produto._id = produto._id.toString();
+        return produto;
+    });
+    return produtos;
 };
 
-const getProduto = (id) => {
-    new Promise((resolve, reject) => {
-        getConnection(client)
-            .db("PizzariaOn")
-            .collection("produtos")
-            .findOne({ _id: id });
-    })
-        .then((result) => {
-            return result;
-        })
-        .catch((err) => {
-            console.log(err);
-        });
+const getProduto = async (id) => {
+    const connection = await getConnection();
+    let produto = connection.collection("produtos").findOne({ _id: new Mongo.ObjectID(id) });
+    produto["_id"] = produto["_id"].toString();
+    return produto;
 };
 
-const addProduto = (produto) => {
-    new Promise((resolve, reject) => {
-        getConnection(client)
-            .db("PizzariaOn")
-            .collection("produtos")
-            .insertOne(produto);
-    })
-        .then((result) => {
-            return result;
-        })
-        .catch((err) => {
-            console.log(err);
-        });
+const addProduto = async (produto) => {
+    const connection = await getConnection();
+    await connection.collection("produtos").insertOne(produto);
 };
 
-const editProduto = (id, produto) => {
-    new Promise((resolve, reject) => {
-        getConnection(client)
-            .db("PizzariaOn")
-            .collection("produtos")
-            .updateOne({ _id: id }, { $set: produto });
-    })
-        .then((result) => {
-            return result;
-        })
-        .catch((err) => {
-            console.log(err);
-        });
+const editProduto = async (id, produto) => {
+    const connection = await getConnection();
+    await connection.collection("produtos").updateOne({ _id: new Mongo.ObjectID(id) }, produto);
 };
 
-const removeProduto = (id) => {
-    new Promise((resolve, reject) => {
-        getConnection(client)
-            .db("PizzariaOn")
-            .collection("produtos")
-            .deleteOne({ _id: id });
-    })
-        .then((result) => {
-            return result;
-        })
-        .catch((err) => {
-            console.log(err);
-        });
+const removeProduto = async (id) => {
+    const connection = await getConnection();
+    connection.collection("produtos").deleteOne({ _id: new Mongo.ObjectID(id) });
 };
 
 /******** Usuários ********/
 
-const getAllUsuarios = () => {
-    new Promise((resolve, reject) => {
-        getConnection(client)
-            .db("PizzariaOn")
-            .collection("usuarios")
-            .find({})
-            .toArray();
-    })
-        .then((result) => {
-            return result;
-        })
-        .catch((err) => {
-            console.log(err);
-        });
+const getAllUsuarios = async () => {
+    const connection = await getConnection();
+    let usuarios = await connection.collection("usuarios")
+        .find()
+        .toArray();
+
+    // transformar _id para string 
+    usuarios.map((usuario) => {
+        usuario._id = usuario._id.toString();
+        return usuario;
+    });
+    return usuarios;
 };
 
-const getUsuario = (email) => {
-    new Promise((resolve, reject) => {
-        getConnection(client)
-            .db("PizzariaOn")
-            .collection("usuarios")
-            .findOne({ email: email });
-    })
-        .then((result) => {
-            return result;
-        })
-        .catch((err) => {
-            console.log(err);
-        });
+const getUsuario = async (email) => {
+    const connection = await getConnection();
+    const usuario = await connection.collection("usuarios").findOne({
+        email: email,
+    });
+    usuario["_id"] = usuario["_id"].toString();
+    return usuario;
 };
 
-const addUsuario = (usuario) => {
-    new Promise((resolve, reject) => {
-        getConnection(client)
-            .db("PizzariaOn")
-            .collection("usuarios")
-            .insertOne(usuario);
-    })
-        .then((result) => {
-            return result;
-        })
-        .catch((err) => {
-            console.log(err);
-        });
+const addUsuario = async (usuario) => {
+    const connection = await getConnection();
+    await connection.collection("usuarios").insertOne(usuario);
 };
 
-const editUsuario = (email, usuario) => {
-    new Promise((resolve, reject) => {
-        getConnection(client)
-            .db("PizzariaOn")
-            .collection("usuarios")
-            .updateOne({ email: email }, { $set: novoUsuario });
-    })
-        .then((result) => {
-            return result;
-        })
-        .catch((err) => {
-            console.log(err);
-        });
+const editUsuario = async (email, usuario) => {
+    const connection = await getConnection();
+    await connection.collection("usuarios").updateOne({ email: email }, usuario);
 };
 
-const removeUsuario = (email) => {
-    new Promise((resolve, reject) => {
-        getConnection(client)
-            .db("PizzariaOn")
-            .collection("usuarios")
-            .deleteOne({ email: email });
-    })
-        .then((result) => {
-            return result;
-        })
-        .catch((err) => {
-            console.log(err);
-        });
+const removeUsuario = async (email) => {
+    const connection = await getConnection();
+    connection.collection("usuarios").deleteOne({ email: email });
 };
 
 /******** Pedidos ********/
 
-const getAllPedidos = () => {
-    // retorna todos os pedidos
-    new Promise((resolve, reject) => {
-        getConnection(client)
-            .db("PizzariaOn")
-            .collection("pedidos")
-            .find({})
-            .toArray();
-    })
-        .then((result) => {
-            return result;
-        })
-        .catch((err) => {
-            console.log(err);
-        });
+const getAllPedidos = async () => {
+    const connection = await getConnection();
+    let pedidos = connection.collection("pedidos").find().toArray();
+    // transformar _id para string
+    pedidos.map((pedido) => {
+        pedido._id = pedido._id.toString();
+        return pedido;
+    });
+    return pedidos;
 };
 
-const getPedidos = (email) => {
-    // retorna todos os pedidos do usuário pelo email
-    new Promise((resolve, reject) => {
-        getConnection(client)
-            .db("PizzariaOn")
-            .collection("pedidos")
-            .find({ email: email })
-            .toArray();
-    })
-        .then((result) => {
-            return result;
-        })
-        .catch((err) => {
-            console.log(err);
-        });
+const getPedidos = async (email) => {
+    const connection = await getConnection();
+    let pedidos = connection.collection("pedidos").find({ email: email }).toArray();
+    // transformar _id para string
+    pedidos.map((pedido) => {
+        pedido._id = pedido._id.toString();
+        return pedido;
+    });
+    return pedidos;
 };
 
-const addPedido = (pedido) => {
-    new Promise((resolve, reject) => {
-        getConnection(client)
-            .db("PizzariaOn")
-            .collection("pedidos")
-            .insertOne(pedido);
-    })
-        .then((result) => {
-            return result;
-        })
-        .catch((err) => {
-            console.log(err);
-        });
+const addPedido = async (pedido) => {
+    const connection = await getConnection();
+    await connection.collection("pedidos").insertOne(pedido);
 };
 
-const editPedido = (id, pedido) => {
-    new Promise((resolve, reject) => {
-        getConnection(client)
-            .db("PizzariaOn")
-            .collection("pedidos")
-            .updateOne({ _id: id }, { $set: novoPedido });
-    })
-        .then((result) => {
-            return result;
-        })
-        .catch((err) => {
-            console.log(err);
-        });
+const editPedido = async (id, pedido) => {
+    const connection = await getConnection();
+    await connection.collection("pedidos").updateOne({ _id: new Mongo.ObjectID(id) }, pedido);
 };
 
-const removePedido = (id) => {
-    new Promise((resolve, reject) => {
-        getConnection(client)
-            .db("PizzariaOn")
-            .collection("pedidos")
-            .deleteOne({ _id: id });
-    })
-        .then((result) => {
-            return result;
-        })
-        .catch((err) => {
-            console.log(err);
-        });
+const removePedido = async (id) => {
+    const connection = await getConnection();
+    connection.collection("pedidos").deleteOne({ _id: new Mongo.ObjectID(id) });
 };
 
 module.exports = {
