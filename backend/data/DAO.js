@@ -224,7 +224,7 @@ const getAllPedidos = async () => {
 
 const getPedidos = async (email) => {
     const connection = await getConnection();
-    let pedidos = connection
+    let pedidos = await connection
         .collection("pedidos")
         .find({ email: email })
         .toArray();
