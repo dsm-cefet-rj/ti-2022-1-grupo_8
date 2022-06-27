@@ -40,6 +40,7 @@ const getAllIngredientes = async () => {
     // transformar _id para string 
     ingredientes.map((ingrediente) => {
         ingrediente._id = ingrediente._id.toString();
+        ingrediente.id = ingrediente._id;
         return ingrediente;
     });
     return ingredientes;
@@ -50,7 +51,8 @@ const getIngrediente = async (id) => {
     let ingrediente = await connection.collection("ingredientes").findOne({
         _id: new Mongo.ObjectID(id),
     });
-    ingrediente["_id"] = ingrediente["_id"].toString();
+    ingrediente._id = ingrediente._id.toString();
+    ingrediente.id = ingrediente._id;
     return ingrediente;
 };
 
@@ -77,6 +79,7 @@ const getAllPizzas = async () => {
     // transformar _id para string
     pizzas.map((pizza) => {
         pizza._id = pizza._id.toString();
+        pizza.id = pizza._id;
         return pizza;
     });
     return pizzas;
@@ -85,7 +88,8 @@ const getAllPizzas = async () => {
 const getPizza = async (id) => {
     const connection = await getConnection();
     let pizza = await connection.collection("pizzas").findOne({ _id: new Mongo.ObjectID(id) });
-    pizza["_id"] = pizza["_id"].toString();
+    pizza._id = pizza._id.toString();
+    pizza.id = pizza._id;
     return pizza;
 };
 
@@ -96,6 +100,8 @@ const addPizza = async (pizzas) => {
 
 const editPizza = async (id, pizza) => {
     const connection = await getConnection();
+    // remove id e manter _id
+    delete pizza.id;
     await connection.collection("pizzas").updateOne({ _id: new Mongo.ObjectID(id) }, pizza);
 };
 
@@ -112,6 +118,7 @@ const getAllProdutos = async () => {
     // transformar _id para string
     produtos.map((produto) => {
         produto._id = produto._id.toString();
+        produto.id = produto._id;
         return produto;
     });
     return produtos;
@@ -120,7 +127,7 @@ const getAllProdutos = async () => {
 const getProduto = async (id) => {
     const connection = await getConnection();
     let produto = connection.collection("produtos").findOne({ _id: new Mongo.ObjectID(id) });
-    produto["_id"] = produto["_id"].toString();
+    produto._id = produto._id.toString();
     return produto;
 };
 
@@ -131,6 +138,8 @@ const addProduto = async (produto) => {
 
 const editProduto = async (id, produto) => {
     const connection = await getConnection();
+    // remove id e manter _id
+    delete produto.id;
     await connection.collection("produtos").updateOne({ _id: new Mongo.ObjectID(id) }, produto);
 };
 
@@ -150,6 +159,7 @@ const getAllUsuarios = async () => {
     // transformar _id para string 
     usuarios.map((usuario) => {
         usuario._id = usuario._id.toString();
+        usuario.id = usuario._id;
         return usuario;
     });
     return usuarios;
@@ -160,7 +170,7 @@ const getUsuario = async (email) => {
     const usuario = await connection.collection("usuarios").findOne({
         email: email,
     });
-    usuario["_id"] = usuario["_id"].toString();
+    usuario._id = usuario._id.toString();
     return usuario;
 };
 
@@ -171,6 +181,8 @@ const addUsuario = async (usuario) => {
 
 const editUsuario = async (email, usuario) => {
     const connection = await getConnection();
+    // remove id e manter _id
+    delete usuario.id;
     await connection.collection("usuarios").updateOne({ email: email }, usuario);
 };
 
@@ -187,6 +199,7 @@ const getAllPedidos = async () => {
     // transformar _id para string
     pedidos.map((pedido) => {
         pedido._id = pedido._id.toString();
+        pedido.id = pedido._id;
         return pedido;
     });
     return pedidos;
@@ -198,6 +211,7 @@ const getPedidos = async (email) => {
     // transformar _id para string
     pedidos.map((pedido) => {
         pedido._id = pedido._id.toString();
+        pedido.id = pedido._id;
         return pedido;
     });
     return pedidos;
@@ -205,11 +219,15 @@ const getPedidos = async (email) => {
 
 const addPedido = async (pedido) => {
     const connection = await getConnection();
+    // remove id e manter _id
+    delete pedido.id;
     await connection.collection("pedidos").insertOne(pedido);
 };
 
 const editPedido = async (id, pedido) => {
     const connection = await getConnection();
+    // remove id e manter _id
+    delete pedido.id;
     await connection.collection("pedidos").updateOne({ _id: new Mongo.ObjectID(id) }, pedido);
 };
 
