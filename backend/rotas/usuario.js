@@ -12,9 +12,7 @@ require("dotenv").config();
 
 router.get("/ingredientes", async (req, res) => {
     const ingredientes = await getAllIngredientes();
-    res.status(200)
-        .json(ingredientes)
-        .end();
+    res.status(200).json(ingredientes).end();
 });
 
 router.get("/pizzas", async (req, res) => {
@@ -42,9 +40,7 @@ router.get("/pizzas", async (req, res) => {
 
 router.get("/produtos", async (req, res) => {
     const produtos = await getAllProdutos();
-    res.status(200)
-        .json(produtos)
-        .end();
+    res.status(200).json(produtos).end();
 });
 
 router.put("/fazer-pedido", async (req, res) => {
@@ -58,9 +54,7 @@ router.put("/fazer-pedido", async (req, res) => {
         status: "Feito",
     };
     await addPedido(pedido);
-    res.status(200)
-        .json(pedido)
-        .end();
+    res.status(200).json(pedido).end();
 });
 
 router.get("/pedido", async (req, res) => {
@@ -68,7 +62,7 @@ router.get("/pedido", async (req, res) => {
     //O usuário está logado e o email é armazenado no objeto req.user.
     const cliente = req.user; // email,type,iat,exp
     const email = cliente.email; //O email é extraído do objeto req.user.
-    const pedidos = await getPedidos(email);  //A matriz pedidos do email é recuperada do banco de dados.
+    const pedidos = await getPedidos(email); //A matriz pedidos do email é recuperada do banco de dados.
     res.status(200) //A matriz de pedidos é enviada ao cliente.
         .json(pedidos)
         .end();
