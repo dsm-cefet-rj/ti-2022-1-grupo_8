@@ -16,11 +16,11 @@ Database collections:
 - pedidos
 */
 
-const uri = process.env.MONGODB_URI.replace("<username>", username).replace(
-    "<password>",
-    password
-);
+// URI do banco de dados
+const uri = process.env.MONGODB_URI.replace("<username>", username)
+.replace("<password>",password);
 
+// Cliente de conexão com o MongoDB
 const client = new MongoClient(uri, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -33,14 +33,14 @@ const getConnection = async () => {
 };
 
 /******** INGREDIENTES ********/
-
+// Função para buscar todos os ingredientes do banco de dados
 const getAllIngredientes = async () => {
-    const connection = await getConnection();
-    let ingredientes = await connection
-        .collection("ingredientes")
+    const connection = await getConnection(); // conectar ao banco de dados
+    // Pegar da coleção ingredientes todos os ingredientes
+    let ingredientes = await connection.collection("ingredientes")
         .find()
         .toArray();
-    // transformar _id para string
+    // transformar _id para string e adicionar campo id
     ingredientes.map((ingrediente) => {
         ingrediente._id = ingrediente._id.toString();
         ingrediente.id = ingrediente._id;
