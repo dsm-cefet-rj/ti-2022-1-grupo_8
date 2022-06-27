@@ -1,6 +1,5 @@
 [
     {
-      "id": 1,
       "imagem": "imgs/igrediente/molho_de_tomate.jpg",
       "nome": "Molho",
       "preco": 0.6,
@@ -9,7 +8,6 @@
       "pesoPorcao": 53
     },
     {
-      "id": 2,
       "imagem": "imgs/igrediente/queijo-musssarela.jpg",
       "nome": "Queijo",
       "preco": 0.52,
@@ -18,7 +16,6 @@
       "pesoPorcao": 29
     },
     {
-      "id": 3,
       "imagem": "imgs/igrediente/Calabresa.jpg",
       "nome": "Calabresa",
       "preco": 0.99,
@@ -27,7 +24,6 @@
       "pesoPorcao": 86
     },
     {
-      "id": 4,
       "imagem": "imgs/igrediente/Presunto.jpg",
       "nome": "Presunto",
       "preco": 0.78,
@@ -36,7 +32,6 @@
       "pesoPorcao": 90
     },
     {
-      "id": 5,
       "imagem": "imgs/igrediente/Camarao.webp",
       "nome": "Camarão",
       "preco": 0.81,
@@ -45,7 +40,6 @@
       "pesoPorcao": 18
     },
     {
-      "id": 6,
       "imagem": "imgs/igrediente/Alho.jpg",
       "nome": "Alho",
       "preco": 0.92,
@@ -54,7 +48,6 @@
       "pesoPorcao": 22
     },
     {
-      "id": 7,
       "imagem": "imgs/igrediente/Ovo.jpg",
       "nome": "Ovo",
       "preco": 0.82,
@@ -63,7 +56,6 @@
       "pesoPorcao": 95
     },
     {
-      "id": 8,
       "imagem": "imgs/igrediente/Azeitona verde.webp",
       "nome": "Azeitona verde",
       "preco": 0.85,
@@ -72,7 +64,6 @@
       "pesoPorcao": 9
     },
     {
-      "id": 9,
       "imagem": "imgs/igrediente/Azeitona preta.jpg",
       "nome": "Azeitona preta",
       "preco": 0.55,
@@ -81,7 +72,6 @@
       "pesoPorcao": 80
     },
     {
-      "id": 10,
       "imagem": "imgs/igrediente/Tomate.jpg",
       "nome": "Tomate",
       "preco": 0.95,
@@ -90,7 +80,6 @@
       "pesoPorcao": 67
     },
     {
-      "id": 11,
       "imagem": "imgs/igrediente/Cebola.png",
       "nome": "Cebola",
       "preco": 0.69,
@@ -99,7 +88,6 @@
       "pesoPorcao": 98
     },
     {
-      "id": 12,
       "imagem": "imgs/igrediente/Frango desfiado.jpg",
       "nome": "Frango desfiado",
       "preco": 0.62,
@@ -108,7 +96,6 @@
       "pesoPorcao": 82
     },
     {
-      "id": 13,
       "imagem": "imgs/igrediente/Requeijão.jpg",
       "nome": "Requeijão",
       "preco": 0.92,
@@ -117,7 +104,6 @@
       "pesoPorcao": 81
     },
     {
-      "id": 14,
       "imagem": "imgs/igrediente/Pimentão verde.webp",
       "nome": "Pimentão verde",
       "preco": 0.51,
@@ -126,7 +112,6 @@
       "pesoPorcao": 66
     },
     {
-      "id": 15,
       "imagem": "imgs/igrediente/Manjericão.jpg",
       "nome": "Manjericão",
       "preco": 0.72,
@@ -135,7 +120,6 @@
       "pesoPorcao": 88
     },
     {
-      "id": 16,
       "imagem": "imgs/igrediente/Bacon.webp",
       "nome": "Bacon",
       "preco": 0.86,
@@ -144,7 +128,6 @@
       "pesoPorcao": 21
     },
     {
-      "id": 17,
       "imagem": "imgs/igrediente/Brócolis.jpg.crdownload",
       "nome": "Brócolis",
       "preco": 0.6,
@@ -153,7 +136,6 @@
       "pesoPorcao": 78
     },
     {
-      "id": 18,
       "imagem": "imgs/igrediente/Pepperoni.webp",
       "nome": "Pepperoni",
       "preco": 0.64,
