@@ -32,12 +32,15 @@ server.use("/admin", authMiddlewares.isAdmin, rotasAdministrador);
 // definir mensagem de erro para rotas não ultilizadas
 server.use((req, res, next) => {
     res.status(404).json({
-        message: "Rota não existe 😔",
-    });
+        message: "Não existe pizzas 🍕 nessa rota 😠",});
 });
 
 server.listen(port, () => {
     console.log(
         `⚠️ ❗ Servidor aberto no endereço http://localhost:${port} ❗⚠️`
+    );
+
+    console.log(
+        `⚠️ ❗ Acesse o endereço http://localhost:3000 para acessar o frontend ❗⚠️`
     );
 });
