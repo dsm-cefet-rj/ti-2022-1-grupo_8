@@ -10,7 +10,7 @@ const saltRounds = 10;
 require("dotenv").config();
 
 // Rota de login
-router.post("/auth", (req, res) => {
+router.post("/auth", async (req, res) => {
     const { email, senha } = req.body;
 
     if (!email || !senha) {
@@ -20,7 +20,7 @@ router.post("/auth", (req, res) => {
         return;
     }
 
-    const usuarios = getAllUsuarios();
+    const usuarios = await getAllUsuarios();
 
     const usuarioExistente = usuarios.find((usuario) => usuario.email == email);
 
