@@ -47,7 +47,7 @@ const PedidoCard = (props) => {
                     headers: {
                         "Content-Type": "application/json",
                         authorization: `Bearer ${token}`,
-                    }
+                    },
                 }).then((response) => {
                     if (response.status === 200) {
                         console.log("Pedido iniciado");
@@ -63,7 +63,7 @@ const PedidoCard = (props) => {
                     headers: {
                         "Content-Type": "application/json",
                         authorization: `Bearer ${token}`,
-                    }
+                    },
                 }).then((response) => {
                     if (response.status === 200) {
                         console.log("Pedido iniciado");
