@@ -1,5 +1,5 @@
 const { Usuario, Ingrediente, Pizza, Produto } = require("../negocio");
-const { MongoClient, ServerApiVersion } = require("mongodb");
+const { MongoClient, ServerApiVersion, ObjectId } = require("mongodb");
 
 require("dotenv").config();
 
@@ -55,7 +55,7 @@ const getAllIngredientes = async () => {
 const getIngrediente = async (id) => {
     const connection = await getConnection(); // conectar ao banco de dados
     let ingrediente = await connection.collection("ingredientes").findOne({
-        _id: new Mongo.ObjectID(id),
+        _id: new ObjectId(id),
     });
     ingrediente._id = ingrediente._id.toString();
     ingrediente.id = ingrediente._id;
@@ -73,7 +73,7 @@ const editIngrediente = async (id, ingrediente) => {
     // edita o ingrediente com o id passado da coleção ingredientes
     await connection
         .collection("ingredientes")
-        .updateOne({ _id: new Mongo.ObjectID(id) }, ingrediente);
+        .updateOne({ _id: new ObjectId(id) }, ingrediente);
 };
 
 const removeIngrediente = async (id) => {
@@ -81,7 +81,7 @@ const removeIngrediente = async (id) => {
     // Remove o ingrediente com o _id passado da coleção ingredientes
     connection
         .collection("ingredientes")
-        .deleteOne({ _id: new Mongo.ObjectID(id) });
+        .deleteOne({ _id: new ObjectId(id) });
 };
 
 /******** PIZZAS ********/
@@ -102,7 +102,7 @@ const getPizza = async (id) => {
     const connection = await getConnection(); // conectar ao banco de dados
     let pizza = await connection
         .collection("pizzas")
-        .findOne({ _id: new Mongo.ObjectID(id) });
+        .findOne({ _id: new ObjectId(id) });
     pizza._id = pizza._id.toString();
     pizza.id = pizza._id;
     return pizza;
@@ -119,12 +119,12 @@ const editPizza = async (id, pizza) => {
     delete pizza.id;
     await connection
         .collection("pizzas")
-        .updateOne({ _id: new Mongo.ObjectID(id) }, pizza);
+        .updateOne({ _id: new ObjectId(id) }, pizza);
 };
 
 const removePizza = async (id) => {
     const connection = await getConnection(); // conectar ao banco de dados
-    connection.collection("pizzas").deleteOne({ _id: new Mongo.ObjectID(id) });
+    connection.collection("pizzas").deleteOne({ _id: new ObjectId(id) });
 };
 
 /******** PRODUTOS ********/
@@ -150,7 +150,7 @@ const getProduto = async (_id) => {
     // Busca o produto com o _id passado
     let produto = connection
         .collection("produtos")
-        .findOne({ _id: new Mongo.ObjectID(_id) });
+        .findOne({ _id: new ObjectId(_id) });
     produto._id = produto._id.toString();
     return produto;
 };
@@ -168,7 +168,7 @@ const editProduto = async (id, produto) => {
     // Na coleção produtos, atualizar o produto com o id passado
     await connection
         .collection("produtos")
-        .updateOne({ _id: new Mongo.ObjectID(id) }, produto);
+        .updateOne({ _id: new ObjectId(id) }, produto);
 };
 
 const removeProduto = async (_id) => {
@@ -176,7 +176,7 @@ const removeProduto = async (_id) => {
     // Da coleção produtos remove o produto com o id passado
     connection
         .collection("produtos")
-        .deleteOne({ _id: new Mongo.ObjectID(_id) });
+        .deleteOne({ _id: new ObjectId(_id) });
 };
 
 /******** Usuários ********/
@@ -296,7 +296,7 @@ const editPedido = async (_id, pedido) => {
     // Atualiza o pedido na coleção de pedidos
     await connection
         .collection("pedidos")
-        .updateOne({ _id: new Mongo.ObjectID(_id) }, pedido);
+        .updateOne({ _id: new ObjectId(_id) }, pedido);
 };
 
 // Função para remover um pedido
@@ -304,7 +304,7 @@ const removePedido = async (_id) => {
     const connection = await getConnection(); // conectar ao banco de dados
     connection
         .collection("pedidos")
-        .deleteOne({ _id: new Mongo.ObjectID(_id) });
+        .deleteOne({ _id: new ObjectId(_id) });
 };
 
 module.exports = {
