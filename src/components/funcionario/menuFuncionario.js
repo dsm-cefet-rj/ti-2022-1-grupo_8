@@ -74,7 +74,7 @@ const PedidoCard = (props) => {
         };
 
         funções[status]();
-        //window.location.reload();
+        window.location.reload();
     };
 
     return (
