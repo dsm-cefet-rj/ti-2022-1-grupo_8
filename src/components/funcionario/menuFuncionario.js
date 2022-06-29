@@ -13,6 +13,12 @@ import {
     selectPedidosFeitos,
 } from "../../features/pedidos-funcionarioSlice";
 
+const status = {
+    Feito: "Pendente",
+    "Em andamento": "Preparando",
+    Concluído: "Pronto",
+};
+
 const converterData = (data) => {
     if (!data) return "Sem Data";
     // Converte de unix timestamp para data
@@ -169,7 +175,7 @@ const MenuFuncionario = () => {
             <div className="container">
                 <div className="row" style={{ padding: "20px" }}>
                     <div className="col-md-4">
-                        <Header titulo="Feitos" cor="danger"></Header>
+                        <Header titulo="Pendentes" cor="danger"></Header>
                         {pedidosFeitos.length > 0 ? (
                             pedidosFeitos.map((pedido) => (
                                 <PedidoCard
@@ -209,7 +215,7 @@ const MenuFuncionario = () => {
                     </div>
 
                     <div className="col-md-4">
-                        <Header titulo="Concluídos" cor="success"></Header>
+                        <Header titulo="Prontos" cor="success"></Header>
                         {pedidosConcluidos.length > 0 ? (
                             // mostra 4 ultimos pedidos concluidos
                             pedidosConcluidos
@@ -229,7 +235,7 @@ const MenuFuncionario = () => {
                                 ))
                         ) : (
                             <p className="text-center">
-                                Nenhum pedido em concluídos!
+                                Nenhum pedido concluído!
                             </p>
                         )}
                     </div>
