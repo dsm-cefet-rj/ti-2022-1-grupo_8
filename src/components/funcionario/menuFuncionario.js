@@ -13,12 +13,6 @@ import {
     selectPedidosFeitos,
 } from "../../features/pedidos-funcionarioSlice";
 
-const status = {
-    Feito: "Pendente",
-    "Em andamento": "Preparando",
-    Concluído: "Pronto",
-};
-
 const converterData = (data) => {
     if (!data) return "Sem Data";
     // Converte de unix timestamp para data

@@ -69,7 +69,7 @@ const Pedido = (props) => {
                             "card-text text-center text-" + getCorStatus(status)
                         }
                     >
-                        <strong>Status:</strong> {status}
+                        <strong>Status:</strong> {getNomeStatus(status)}
                     </p>
                 </div>
             </div>
@@ -107,7 +107,7 @@ const MeusPedidos = () => {
                                     id={pedido.id}
                                     data={pedido.dataHora}
                                     itens={pedido.carrinho}
-                                    status={getNomeStatus(pedido.status)}
+                                    status={pedido.status}
                                 />
                             </div>
                         ))
