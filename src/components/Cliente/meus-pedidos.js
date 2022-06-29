@@ -82,7 +82,13 @@ const Pedido = (props) => {
                     </ul>
                 </div>
                 <div className="card-footer">
-                    <p style={{ display: "inline-block", float: "right" }}>
+                    <p
+                        style={{
+                            display: "inline-block",
+                            float: "right",
+                            marginBottom: 5,
+                        }}
+                    >
                         Total:{" "}
                         <strong>
                             R$
