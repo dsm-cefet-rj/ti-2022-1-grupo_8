@@ -72,7 +72,7 @@ const CriarPizza = () => {
     // que pega no nome do ingrediente do id passado
     const getNomeIngredienteFromId = (id) => {
         let ingrediente = ingredientesBD.find(
-            (ingrediente) => parseInt(ingrediente.id) === parseInt(id)
+            (ingrediente) => ingrediente.id === id
         );
         return ingrediente.nome;
     };
@@ -150,7 +150,7 @@ const CriarPizza = () => {
 
         ingredientes.flat().forEach((id) => {
             let ingredienteObj = ingredientesBD.find((i) => {
-                return i.id === parseInt(id);
+                return i.id === id;
             });
             preco += ingredienteObj.preco;
         });
