@@ -3,7 +3,7 @@ import { React, useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import FuncionarioNav from "./funcionarioNav";
 import { getSessionFromLocalStorage } from "../../features/sessionSlice";
-
+import style from "./menuFuncionario.module.scss";
 import {
     fetchPedidosFeitos,
     fetchPedidosEmAndamento,
@@ -162,7 +162,7 @@ const MenuFuncionario = () => {
     }, [pedidosFeitos, pedidosEmAndamento, pedidosConcluidos]);
 
     return (
-        <>
+        <div className={style.body}>
             <FuncionarioNav Atual="menu" />
             <h2 className="text-center">Pedidos</h2>
             <div className="container">
@@ -228,7 +228,7 @@ const MenuFuncionario = () => {
                     </div>
                 </div>
             </div>
-        </>
+        </div>
     );
 };
 
