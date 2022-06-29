@@ -21,11 +21,15 @@ router.get("/pizzas", async (req, res) => {
     pizzas.map((pizza) => {
         pizza.preco = 20;
         pizza.ingredientes.forEach((id) => {
-            let ingrediente = ingredientes.find(
-                (ingrediente) => ingrediente.id == id
-            );
-            /* console.log(ingrediente.preco); */ // Por algum motivo o preço esta como undefined
-            pizza.preco += Math.random() * 10;
+            let ingrediente = ingredientes.find((i) => {
+                console.log(i._id, id);
+                return i.id === id;
+            });
+
+            if (ingrediente)
+                pizza.preco += ingrediente.preco;
+            else
+                pizza.preco += 0;
             // 2 decimais
             pizza.preco = Math.round(pizza.preco * 100) / 100;
         });
