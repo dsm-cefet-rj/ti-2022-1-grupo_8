@@ -79,9 +79,7 @@ const editIngrediente = async (id, ingrediente) => {
 const removeIngrediente = async (id) => {
     const connection = await getConnection(); // conectar ao banco de dados
     // Remove o ingrediente com o _id passado da coleção ingredientes
-    connection
-        .collection("ingredientes")
-        .deleteOne({ _id: new ObjectId(id) });
+    connection.collection("ingredientes").deleteOne({ _id: new ObjectId(id) });
 };
 
 /******** PIZZAS ********/
@@ -174,9 +172,7 @@ const editProduto = async (id, produto) => {
 const removeProduto = async (_id) => {
     const connection = await getConnection(); // conectar ao banco de dados
     // Da coleção produtos remove o produto com o id passado
-    connection
-        .collection("produtos")
-        .deleteOne({ _id: new ObjectId(_id) });
+    connection.collection("produtos").deleteOne({ _id: new ObjectId(_id) });
 };
 
 /******** Usuários ********/
@@ -302,9 +298,7 @@ const editPedido = async (_id, pedido) => {
 // Função para remover um pedido
 const removePedido = async (_id) => {
     const connection = await getConnection(); // conectar ao banco de dados
-    connection
-        .collection("pedidos")
-        .deleteOne({ _id: new ObjectId(_id) });
+    connection.collection("pedidos").deleteOne({ _id: new ObjectId(_id) });
 };
 
 module.exports = {
