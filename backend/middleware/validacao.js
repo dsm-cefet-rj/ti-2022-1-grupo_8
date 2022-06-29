@@ -1,6 +1,6 @@
 const { getAllPedidos } = require("../data/DAO");
 
-const validarIdPedido = (req, res, next) => {
+const validarIdPedido = async (req, res, next) => {
     // Valida se o ID foi informado
     let id = req.params.id;
     if (id == null) {
@@ -8,7 +8,7 @@ const validarIdPedido = (req, res, next) => {
         return;
     }
     // Valida se o pedido existe
-    let pedidos = getAllPedidos();
+    let pedidos = await getAllPedidos();
     let pedido = pedidos.find((pedido) => pedido.id == id);
     if (pedido == null) {
         res.status(400).json({ error: "Pedido não encontrado" }).end();
