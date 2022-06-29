@@ -73,7 +73,10 @@ const editIngrediente = async (id, ingrediente) => {
     // edita o ingrediente com o id passado da coleção ingredientes
     await connection
         .collection("ingredientes")
-        .updateOne({ _id: new ObjectId(id) }, ingrediente);
+        .updateOne(
+            { _id: new ObjectId(id) },
+            { $set: ingrediente } 
+        );
 };
 
 const removeIngrediente = async (id) => {
@@ -119,7 +122,10 @@ const editPizza = async (id, pizza) => {
     delete pizza.id;
     await connection
         .collection("pizzas")
-        .updateOne({ _id: new ObjectId(id) }, pizza);
+        .updateOne(
+            { _id: new ObjectId(id) },
+            { $set: pizza }
+        );
 };
 
 const removePizza = async (id) => {
@@ -168,7 +174,10 @@ const editProduto = async (id, produto) => {
     // Na coleção produtos, atualizar o produto com o id passado
     await connection
         .collection("produtos")
-        .updateOne({ _id: new ObjectId(id) }, produto);
+        .updateOne(
+            { _id: new ObjectId(id) },
+            { $set: produto }
+        );
 };
 
 const removeProduto = async (_id) => {
@@ -232,7 +241,10 @@ const editUsuario = async (usuario) => {
     // Atualizar usuário na coleção usuarios
     await connection
         .collection("usuarios")
-        .updateOne({ email: email }, usuario);
+        .updateOne(
+            { email: email },
+            { $set: usuario }
+        );
 };
 
 // Função remove um usuário pelo email
@@ -294,9 +306,12 @@ const editPedido = async (_id, pedido) => {
     const connection = await getConnection();
     cleanPedidos(pedido);
     // Atualiza o pedido na coleção de pedidos
-    await connection
+    let result = await connection
         .collection("pedidos")
-        .updateOne({ _id: new ObjectId(_id) }, pedido);
+        .updateOne(
+            { _id: new ObjectId(_id) },
+            { $set: pedido }
+        );
 };
 
 // Função para remover um pedido
