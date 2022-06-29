@@ -42,7 +42,7 @@ router.get("/pedidos", async (req, res) => {
 router.use("/iniciar-pedido/:id", validarIdPedido);
 router.post("/iniciar-pedido/:id", async (req, res) => {
     // Permite ao funcionário marcar um pedido como em andamento
-    let id = parseInt(req.params.id);
+    let id = req.params.id;
     let dados = {
         status: "Em andamento",
     };
@@ -54,7 +54,7 @@ router.post("/iniciar-pedido/:id", async (req, res) => {
 router.use("/finalizar-pedido/:id", validarIdPedido);
 router.post("/finalizar-pedido/:id", async (req, res) => {
     // Permite ao funcionário marcar um pedido como concluído
-    let id = parseInt(req.params.id);
+    let id = req.params.id;
     let dados = {
         status: "Concluído",
     };
