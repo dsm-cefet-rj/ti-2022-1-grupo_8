@@ -31,6 +31,10 @@ O `JWT_SECRET` é um valor aleatório que deve ser usado para criptografar o tok
 ```js
 require('crypto').randomBytes(64).toString('hex')
 ```
+ou usando o comando no shell
+```sh
+node -e 'console.log(require("crypto").randomBytes(64).toString("hex"))'
+```
 
 ## Para rodar o projeto, basta executar os comandos abaixo:
 
