@@ -22,6 +22,19 @@ const getCorStatus = (status) => {
     }
 };
 
+const getNomeStatus = (status) => {
+    switch (status) {
+        case "Feito":
+            return "Pendente";
+        case "Em andamento":
+            return "Preparando";
+        case "Concluído":
+            return "Pronto";
+        default:
+            return status;
+    }
+};
+
 const converterData = (data) => {
     const dataConvertida = new Date(data);
     return dataConvertida.toLocaleString().slice(0, -3);
@@ -94,7 +107,7 @@ const MeusPedidos = () => {
                                     id={pedido.id}
                                     data={pedido.dataHora}
                                     itens={pedido.carrinho}
-                                    status={pedido.status}
+                                    status={getNomeStatus(pedido.status)}
                                 />
                             </div>
                         ))
