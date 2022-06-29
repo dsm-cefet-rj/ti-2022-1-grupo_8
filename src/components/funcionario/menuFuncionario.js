@@ -79,7 +79,7 @@ const PedidoCard = (props) => {
 
     return (
         <>
-            <div className="card" style={{ width: "18rem" }}>
+            <div className="card" style={{ width: "18rem", lineHeight: "1" }}>
                 <div className="card-header text-center">
                     <h5 className="card-title">Pedido #{idPedido}</h5>
                     <p style={{ marginBottom: 0 }}>{converterData(data)}</p>
