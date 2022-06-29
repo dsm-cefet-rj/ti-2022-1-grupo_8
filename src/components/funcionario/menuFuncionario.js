@@ -40,8 +40,8 @@ const PedidoCard = (props) => {
     const avançarPedido = () => {
         const token = getSessionFromLocalStorage();
         let funções = {
-            Feitos: () => {
-                const url = `localhost:3000/iniciar-pedido/${idPedido}`;
+            Feito: () => {
+                const url = `http://localhost:3001/iniciar-pedido/${idPedido}`;
                 fetch(url, {
                     method: "POST",
                     headers: {
@@ -52,12 +52,10 @@ const PedidoCard = (props) => {
                     if (response.status === 200) {
                         console.log("Pedido iniciado");
                     }
-                    // reload page
-                    window.location.reload();
                 });
             },
             "Em andamento": () => {
-                const url = `localhost:3000/finalizar-pedido/${idPedido}`;
+                const url = `http://localhost:3001/finalizar-pedido/${idPedido}`;
                 fetch(url, {
                     method: "POST",
                     headers: {
@@ -68,15 +66,15 @@ const PedidoCard = (props) => {
                     if (response.status === 200) {
                         console.log("Pedido iniciado");
                     }
-                    // reload page
-                    window.location.reload();
                 });
             },
             Concluídos: () => {
                 console.log(":) Pedido concluído");
             },
         };
+
         funções[status]();
+        //window.location.reload();
     };
 
     return (
@@ -112,7 +110,8 @@ const PedidoCard = (props) => {
                     <div className="card-footer">{"Concluído"}</div>
                 ) : (
                     <div className="card-footer">
-                        <button className="btn btn-primary float-end">
+                        <button className="btn btn-primary float-end"
+                        onClick={avançarPedido}>
                             {"Avançar >"}
                         </button>
                     </div>
