@@ -39,21 +39,13 @@ const FuncionarioNav = (props) => {
                     style={{
                         display: "flex",
                         flexDirection: "row",
-                        justifyContent: "space-around",
+                        justifyContent: "right",
                         alignItems: "center",
                         width: "100%",
-                        padding: "0 2rem 0 2rem",
+                        padding: "0 15% 0 2rem",
                     }}
                 >
-                    <a className="btn btn-primary " href="/menu">
-                        Menu 📑
-                        {atual === "menu" ? (
-                            <span className="badge badge-secondary">
-                                {atualTexto}
-                            </span>
-                        ) : null}
-                    </a>
-                    <a className="btn btn-danger " href="/">
+                    <a className="btn btn-danger" href="/">
                         Sair 👋
                     </a>
                 </div>
