@@ -211,7 +211,11 @@ const MenuFuncionario = () => {
                     <div className="col-md-4">
                         <Header titulo="Concluídos" cor="success"></Header>
                         {pedidosConcluidos.length > 0 ? (
-                            pedidosConcluidos.map((pedido) => (
+                            // mostra 4 ultimos pedidos concluidos
+                            pedidosConcluidos.slice(
+                                pedidosConcluidos.length - 4,
+                                pedidosConcluidos.length
+                            ).map((pedido) => (
                                 <PedidoCard
                                     id={pedido.id}
                                     email={pedido.email}
