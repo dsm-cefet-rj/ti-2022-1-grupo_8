@@ -7,11 +7,6 @@ const validarIdPedido = (req, res, next) => {
         res.status(400).json({ error: "ID não informado" }).end();
         return;
     }
-    // Valida se o ID é um número inteiro
-    if (isNaN(id) || parseInt(id) != id) {
-        res.status(400).json({ error: "ID inválido" }).end();
-        return;
-    }
     // Valida se o pedido existe
     let pedidos = getAllPedidos();
     let pedido = pedidos.find((pedido) => pedido.id == id);
