@@ -188,9 +188,13 @@ const MenuFuncionario = () => {
                                 />
                             ))
                         ) : (
-                            <p className="text-center">
-                                Nenhum pedido pendente!
-                            </p>
+                            <div className="card">
+                                <div className="card-body">
+                                    <p className="text-center">
+                                        Nenhum pedido concluído!
+                                    </p>
+                                </div>
+                            </div>
                         )}
                     </div>
 
@@ -208,9 +212,13 @@ const MenuFuncionario = () => {
                                 />
                             ))
                         ) : (
-                            <p className="text-center">
-                                Nenhum pedido em andamento!
-                            </p>
+                            <div className="card">
+                                <div className="card-body">
+                                    <p className="text-center">
+                                        Nenhum pedido em andamento!
+                                    </p>
+                                </div>
+                            </div>
                         )}
                     </div>
 
@@ -234,9 +242,13 @@ const MenuFuncionario = () => {
                                     />
                                 ))
                         ) : (
-                            <p className="text-center">
-                                Nenhum pedido concluído!
-                            </p>
+                            <div className="card">
+                                <div className="card-body">
+                                    <p className="text-center">
+                                        Nenhum pedido concluído!
+                                    </p>
+                                </div>
+                            </div>
                         )}
                     </div>
                 </div>
