@@ -212,19 +212,21 @@ const MenuFuncionario = () => {
                         <Header titulo="Concluídos" cor="success"></Header>
                         {pedidosConcluidos.length > 0 ? (
                             // mostra 4 ultimos pedidos concluidos
-                            pedidosConcluidos.slice(
-                                pedidosConcluidos.length - 4,
-                                pedidosConcluidos.length
-                            ).map((pedido) => (
-                                <PedidoCard
-                                    id={pedido.id}
-                                    email={pedido.email}
-                                    data={pedido.dataHora}
-                                    endereco={pedido.endereco}
-                                    itens={pedido.carrinho}
-                                    status={pedido.status}
-                                />
-                            ))
+                            pedidosConcluidos
+                                .slice(
+                                    pedidosConcluidos.length - 4,
+                                    pedidosConcluidos.length
+                                )
+                                .map((pedido) => (
+                                    <PedidoCard
+                                        id={pedido.id}
+                                        email={pedido.email}
+                                        data={pedido.dataHora}
+                                        endereco={pedido.endereco}
+                                        itens={pedido.carrinho}
+                                        status={pedido.status}
+                                    />
+                                ))
                         ) : (
                             <p className="text-center">
                                 Nenhum pedido em concluídos!
