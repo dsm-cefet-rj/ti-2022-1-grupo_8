@@ -26,10 +26,8 @@ router.get("/pizzas", async (req, res) => {
                 return i.id === id;
             });
 
-            if (ingrediente)
-                pizza.preco += ingrediente.preco;
-            else
-                pizza.preco += 0;
+            if (ingrediente) pizza.preco += ingrediente.preco;
+            else pizza.preco += 0;
             // 2 decimais
             pizza.preco = Math.round(pizza.preco * 100) / 100;
         });
