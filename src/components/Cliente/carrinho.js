@@ -220,12 +220,17 @@ const Carrinho = () => {
                     <Link to="/menu" className="btn btn-warning">
                         Voltar
                     </Link>
-                    <button className="btn btn-danger mt-2" onClick={limpar}>
+                    <button
+                        className="btn btn-danger mt-2"
+                        onClick={limpar}
+                        disabled={itens.length === 0}
+                    >
                         Limpar Carrinho
                     </button>
                     <button
                         className="btn btn-success mt-2"
                         onClick={finalizarPedido}
+                        disabled={itens.length === 0}
                     >
                         Finalizar Compra
                     </button>
