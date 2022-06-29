@@ -150,7 +150,7 @@ const CriarPizza = () => {
 
         ingredientes.flat().forEach((id) => {
             let ingredienteObj = ingredientesBD.find((i) => {
-                return i.id === parseInt(id);
+                return i.id === id;
             });
             preco += ingredienteObj.preco;
         });
@@ -167,8 +167,14 @@ const CriarPizza = () => {
         });
     };
 
+    const [ingredientesCarregados, setIngredientesCarregados] = useState(false);
+
     useEffect(() => {
-        dispatch(fetchIngredientes());
+        if (!ingredientesCarregados) {
+            dispatch(fetchIngredientes());
+            setIngredientesCarregados(true);
+        }
+
         if (erro) {
             setErro("");
         }
