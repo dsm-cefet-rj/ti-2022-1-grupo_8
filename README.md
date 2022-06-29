@@ -20,11 +20,14 @@
 criar arquivo .env com as seguintes informações:
 
 ```ini
-BACKEND_PORT = 3001
 JWT_SECRET={TOKEN_SECRET}
+MONGODB_URI=mongodb+srv://<username>:<password>@cluster0.kjdieka.mongodb.net/?retryWrites=true&w=majority
+MONGODB_USERNAME={username do banco}
+MONGODB_PASSWORD={password do banco}
+BACKEND_PORT=3001
 ```
 
-O token secret é um valor aleatório que deve ser usado para criptografar o token, ele pode ser obtido executando o comando em um shell com node:
+O `JWT_SECRET` é um valor aleatório que deve ser usado para criptografar o token, ele pode ser obtido executando o comando em um shell com node:
 ```js
 require('crypto').randomBytes(64).toString('hex')
 ```
