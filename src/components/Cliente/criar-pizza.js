@@ -53,7 +53,7 @@ const CriarPizza = () => {
 
         // Achatar metades, remover duplicados, e remover molho da lista
         const flatIngredientes = [...new Set(ingredientes.flat())].filter(
-            (id) => id !== 1
+            (id) => getNomeIngredienteFromId(id) !== "Molho"
         );
 
         const prefixos = ["de", "com", "e"];
