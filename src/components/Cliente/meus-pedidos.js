@@ -37,7 +37,7 @@ const getNomeStatus = (status) => {
 
 const converterData = (data) => {
     const dataConvertida = new Date(data);
-    return dataConvertida.toLocaleString().slice(0, -3);
+    return dataConvertida.toLocaleString().slice(0, -3).split(" ").join(" às ");
 };
 
 const Pedido = (props) => {
