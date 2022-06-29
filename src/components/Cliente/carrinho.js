@@ -37,7 +37,8 @@ const Carrinho = () => {
 
     // Manuseio da quantidade de um item
     const mudarQuantidade = (id, quantidade) => {
-        const novoCarrinho = itensCarrinho.map((item) => {
+        let novoCarrinho = JSON.parse(JSON.stringify(itensCarrinho));
+        novoCarrinho = novoCarrinho.map((item) => {
             if (item.id === id) {
                 if (quantidade > 0) item.quantidade = quantidade;
             }
@@ -45,6 +46,7 @@ const Carrinho = () => {
         });
         setItensCarrinho(novoCarrinho);
         setCarrinho(novoCarrinho);
+        dispatch(setCarrinho(novoCarrinho));
         recalcularTotal(novoCarrinho);
     };
 
