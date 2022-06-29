@@ -110,8 +110,10 @@ const PedidoCard = (props) => {
                     <div className="card-footer">{"Concluído"}</div>
                 ) : (
                     <div className="card-footer">
-                        <button className="btn btn-primary float-end"
-                        onClick={avançarPedido}>
+                        <button
+                            className="btn btn-primary float-end"
+                            onClick={avançarPedido}
+                        >
                             {"Avançar >"}
                         </button>
                     </div>
