@@ -41,7 +41,7 @@ const PedidoCard = (props) => {
         const token = getSessionFromLocalStorage();
         let funções = {
             Feito: () => {
-                const url = `http://localhost:3001/iniciar-pedido/${idPedido}`;
+                const url = `http://localhost:3001/funcionario/iniciar-pedido/${idPedido}`;
                 fetch(url, {
                     method: "POST",
                     headers: {
@@ -55,7 +55,7 @@ const PedidoCard = (props) => {
                 });
             },
             "Em andamento": () => {
-                const url = `http://localhost:3001/finalizar-pedido/${idPedido}`;
+                const url = `http://localhost:3001/funcionario/finalizar-pedido/${idPedido}`;
                 fetch(url, {
                     method: "POST",
                     headers: {
