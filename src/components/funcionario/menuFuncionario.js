@@ -24,7 +24,7 @@ const converterData = (data) => {
 
     hora = hora < 10 ? "0" + hora : hora; // Adiciona zero à esquerda
     minuto = minuto < 10 ? "0" + minuto : minuto; // Adiciona zero à esquerda
-    // Formata a data 
+    // Formata a data
     return `${dia}/${mes}/${ano} ${hora}:${minuto}`;
 };
 
@@ -38,12 +38,12 @@ const PedidoCard = (props) => {
 
     const avançarPedido = () => {
         let funções = {
-            "Feitos": () => { },
-            "Em andamento": () => { },
-            "Concluídos": () => { },
-        }
+            Feitos: () => {},
+            "Em andamento": () => {},
+            Concluídos: () => {},
+        };
         funções[status]();
-    }
+    };
 
     return (
         <>
@@ -65,8 +65,9 @@ const PedidoCard = (props) => {
                         <ul className="list-group list-group-flush">
                             {itens.map((item, index) => (
                                 <li key={index} className="list-group-item">
-                                    <strong
-                                        key={index}>{item.quantidade}x </strong>
+                                    <strong key={index}>
+                                        {item.quantidade}x{" "}
+                                    </strong>
                                     {item.nome}
                                 </li>
                             ))}
@@ -74,9 +75,7 @@ const PedidoCard = (props) => {
                     </div>
                 </ul>
                 {"Concluído" === status ? (
-                    <div className="card-footer">
-                        {"Concluído"}
-                    </div>
+                    <div className="card-footer">{"Concluído"}</div>
                 ) : (
                     <div className="card-footer">
                         <button className="btn btn-primary float-end">
