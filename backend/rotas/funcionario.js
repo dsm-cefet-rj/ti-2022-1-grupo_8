@@ -34,7 +34,7 @@ router.get("/pedidos/concluidos", async (req, res) => {
 
 router.get("/pedidos", async (req, res) => {
     // Permite ao funcionário ver todos os pedidos
-    let pedidos =  await getAllPedidos();
+    let pedidos = await getAllPedidos();
     // retorna todos os pedidos
     res.status(200).json(pedidos).end();
 });
@@ -47,7 +47,7 @@ router.post("/iniciar-pedido/:id", async (req, res) => {
         status: "Em andamento",
     };
     // atualiza o status do pedido com o id passado como parâmetro
-    let pedidoAtualizado =  editPedido(id, dados);
+    let pedidoAtualizado = editPedido(id, dados);
     res.status(200).json(pedidoAtualizado).end();
 });
 
