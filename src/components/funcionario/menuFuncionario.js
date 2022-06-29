@@ -2,6 +2,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { React, useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import FuncionarioNav from "./funcionarioNav";
+import { getSessionFromLocalStorage } from "../../features/sessionSlice";
 
 import {
     fetchPedidosFeitos,
@@ -37,10 +38,43 @@ const PedidoCard = (props) => {
     const status = props.status;
 
     const avançarPedido = () => {
+        const token = getSessionFromLocalStorage();
         let funções = {
-            Feitos: () => {},
-            "Em andamento": () => {},
-            Concluídos: () => {},
+            Feitos: () => {
+                const url = `localhost:3000/iniciar-pedido/${idPedido}`;
+                fetch(url, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        authorization: `Bearer ${token}`,
+                    }
+                }).then((response) => {
+                    if (response.status === 200) {
+                        console.log("Pedido iniciado");
+                    }
+                    // reload page
+                    window.location.reload();
+                });
+            },
+            "Em andamento": () => {
+                const url = `localhost:3000/finalizar-pedido/${idPedido}`;
+                fetch(url, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        authorization: `Bearer ${token}`,
+                    }
+                }).then((response) => {
+                    if (response.status === 200) {
+                        console.log("Pedido iniciado");
+                    }
+                    // reload page
+                    window.location.reload();
+                });
+            },
+            Concluídos: () => {
+                console.log(":) Pedido concluído");
+            },
         };
         funções[status]();
     };
