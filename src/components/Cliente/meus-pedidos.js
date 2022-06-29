@@ -83,21 +83,24 @@ const Pedido = (props) => {
                 </div>
                 <div className="card-footer">
                     <p style={{ display: "inline-block", float: "right" }}>
-                        <strong>Total:</strong> R${" "}
-                        {itens
-                            .reduce((acc, item) => {
-                                return acc + item.preco * item.quantidade;
-                            }, 0)
-                            .toFixed(2)}
+                        Total:{" "}
+                        <strong>
+                            R$
+                            {itens
+                                .reduce((acc, item) => {
+                                    return acc + item.preco * item.quantidade;
+                                }, 0)
+                                .toFixed(2)}
+                        </strong>
                     </p>
-                    <p
-                        style={{ display: "inline-block" }}
+
+                    <div
                         className={
-                            "card-text text-center text-" + getCorStatus(status)
+                            "badge rounded-pill bg-" + getCorStatus(status)
                         }
                     >
-                        <strong>Status:</strong> {getNomeStatus(status)}
-                    </p>
+                        {getNomeStatus(status)}
+                    </div>
                 </div>
             </div>
         </>
