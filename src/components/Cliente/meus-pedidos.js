@@ -53,18 +53,45 @@ const Pedido = (props) => {
                     <h5 className="card-title">Pedido #{idPedido}</h5>
                     <p style={{ marginBottom: 0 }}>{converterData(data)}</p>
                 </div>
-                <div className="card-body">
+                <div
+                    className="card-body"
+                    style={{
+                        fontFamily: "BenchNine",
+                        fontSize: "1.25rem",
+                        lineHeight: "1.1",
+                        padding: "0.75rem 0.5rem",
+                    }}
+                >
                     <ul className="list-group list-group-flush">
                         {itens.map((item, index) => (
                             <li key={index} className="list-group-item">
-                                <strong>{item.quantidade}x </strong>
-                                {item.nome}
+                                <div style={{ float: "left" }}>
+                                    <strong>{item.quantidade}x </strong>
+                                    {item.nome}
+                                </div>
+                                <div style={{ float: "right" }}>
+                                    <strong>
+                                        R${" "}
+                                        {(item.preco * item.quantidade).toFixed(
+                                            2
+                                        )}
+                                    </strong>
+                                </div>
                             </li>
                         ))}
                     </ul>
                 </div>
                 <div className="card-footer">
+                    <p style={{ display: "inline-block", float: "right" }}>
+                        <strong>Total:</strong> R${" "}
+                        {itens
+                            .reduce((acc, item) => {
+                                return acc + item.preco * item.quantidade;
+                            }, 0)
+                            .toFixed(2)}
+                    </p>
                     <p
+                        style={{ display: "inline-block" }}
                         className={
                             "card-text text-center text-" + getCorStatus(status)
                         }
