@@ -39,22 +39,20 @@ const ProdutoCard = (props) => {
         setAdicionado(true); // Altera a variável para que o produto não seja adicionado novamente
     };
 
-    let style = 
-    tipo === "produto" ? 
-    {
-        maxWidth: "540px",
-        minWidth: "540px",
-    } : {
-        maxWidth: "540px",
-        height: "100%",
-    }
+    let style =
+        tipo === "produto"
+            ? {
+                  maxWidth: "540px",
+                  minWidth: "540px",
+              }
+            : {
+                  maxWidth: "540px",
+                  height: "100%",
+              };
 
     return (
         <div className="col-md-6 col-lg-4 col-xl-3">
-            <div
-                className="card mt-3 mb-3"
-                style={style}
-            >
+            <div className="card mt-3 mb-3" style={style}>
                 <div className="row g-1">
                     <div className="col-4 col-md-12">
                         <img
