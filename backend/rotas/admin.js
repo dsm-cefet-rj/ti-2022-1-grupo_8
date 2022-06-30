@@ -31,7 +31,7 @@ require("dotenv").config();
 router.get("/usuario/:email", async (req, res) => {
     const email = req.params.email;
     const usuario = await getUsuario(email);
-    usuario.senha = "";
+    delete usuario.senha;
     usuario.pedidos = await getPedidos(email);
     res.status(200).json(usuario).end();
 });
