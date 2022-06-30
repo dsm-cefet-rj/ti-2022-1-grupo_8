@@ -11,26 +11,29 @@ Descrição:  Pagina capaz de pesquisar usuário pro email e exibir botoes para 
 const GerirUsuarios = () => {
     const dispatch = useDispatch(); /* Disparador de ações */
     // Pegar email do url
-    const queryParams = new URLSearchParams(window.location.search)
-    const [email] = useState(queryParams.get("email")); /* Email do usuário a ser editado */
+    const queryParams = new URLSearchParams(window.location.search);
+    const [email] = useState(
+        queryParams.get("email")
+    ); /* Email do usuário a ser editado */
     const [usuario, setUsuario] = useState({}); /* Usuário a ser editado */
     useEffect(() => {
         if (email != null) {
             const token = getSessionFromLocalStorage();
-            const url = `http://localhost:3001/admin/usuario/${email}`
-            axios.get(url, {
-                headers: {
-                    authorization: `Bearer ${token}`
-                }
-            }).then(response => {
-                setUsuario(response.data)
-            }).catch(error => {
-                console.log(error)
-            });
-
+            const url = `http://localhost:3001/admin/usuario/${email}`;
+            axios
+                .get(url, {
+                    headers: {
+                        authorization: `Bearer ${token}`,
+                    },
+                })
+                .then((response) => {
+                    setUsuario(response.data);
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
         }
     }, [email]);
-
 
     return (
         <>
@@ -64,53 +67,76 @@ const GerirUsuarios = () => {
                             <div className="row section mt-2">
                                 <h3>Tipo:</h3>
                                 {/* tipos: user, admin, funcionário */}
-                                <div style={{
-                                    fontSize: "1.3em",
-                                }}>
+                                <div
+                                    style={{
+                                        fontSize: "1.3em",
+                                    }}
+                                >
                                     <div className="form-check form-switch">
-                                        <input className="form-check-input"
+                                        <input
+                                            className="form-check-input"
                                             type="radio"
                                             name="type"
                                             id="user"
                                             value="user"
                                             checked={usuario.type === "user"}
                                             onChange={() => {
-                                                setUsuario({ ...usuario, type: "user" })
-                                            }
-                                            }
+                                                setUsuario({
+                                                    ...usuario,
+                                                    type: "user",
+                                                });
+                                            }}
                                         />
-                                        <label className="form-check-label" for="user">
+                                        <label
+                                            className="form-check-label"
+                                            for="user"
+                                        >
                                             Usuário
                                         </label>
                                     </div>
                                     <div className="form-check form-switch">
-                                        <input className="form-check-input"
+                                        <input
+                                            className="form-check-input"
                                             type="radio"
                                             name="type"
                                             id="admin"
                                             value="admin"
                                             checked={usuario.type === "admin"}
                                             onChange={() => {
-                                                setUsuario({ ...usuario, type: "admin" })
-                                            }
-                                            } />
-                                        <label className="form-check-label" for="admin">
+                                                setUsuario({
+                                                    ...usuario,
+                                                    type: "admin",
+                                                });
+                                            }}
+                                        />
+                                        <label
+                                            className="form-check-label"
+                                            for="admin"
+                                        >
                                             Administrador
                                         </label>
                                     </div>
                                     <div className="form-check form-switch">
-                                        <input className="form-check-input"
+                                        <input
+                                            className="form-check-input"
                                             type="radio"
                                             name="type"
                                             id="funcionário"
                                             value="funcionário"
-                                            checked={usuario.type === "funcionário"}
+                                            checked={
+                                                usuario.type === "funcionário"
+                                            }
                                             onChange={() => {
-                                                setUsuario({ ...usuario, type: "funcionário" })
-                                            }
-                                            }
+                                                setUsuario({
+                                                    ...usuario,
+                                                    type: "funcionário",
+                                                });
+                                            }}
                                         />
-                                        <label className="form-check-label" for="funcionário">
+                                        <label
+                                            className="form-check-label"
+                                            for="funcionário"
+                                        >
                                             Funcionário
                                         </label>
                                         <div class="d-grid gap-2 col-6 mx-auto">
@@ -118,7 +144,6 @@ const GerirUsuarios = () => {
                                                 Altera
                                             </button>
                                         </div>
-
                                     </div>
                                 </div>
                             </div>
