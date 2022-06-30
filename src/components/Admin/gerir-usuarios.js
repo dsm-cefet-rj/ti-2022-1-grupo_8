@@ -102,7 +102,7 @@ const GerirUsuarios = () => {
                                         />
                                         <label
                                             className="form-check-label"
-                                            for="user"
+                                            htmlFor="user"
                                         >
                                             Usuário
                                         </label>
@@ -124,7 +124,7 @@ const GerirUsuarios = () => {
                                         />
                                         <label
                                             className="form-check-label"
-                                            for="admin"
+                                            htmlFor="admin"
                                         >
                                             Administrador
                                         </label>
@@ -148,11 +148,11 @@ const GerirUsuarios = () => {
                                         />
                                         <label
                                             className="form-check-label"
-                                            for="funcionário"
+                                            htmlFor="funcionário"
                                         >
                                             Funcionário
                                         </label>
-                                        <div class="d-grid gap-2 col-6 mx-auto">
+                                        <div className="d-grid gap-2 col-6 mx-auto">
                                             <button className="btn btn-lg btn-danger">
                                                 Altera
                                             </button>
