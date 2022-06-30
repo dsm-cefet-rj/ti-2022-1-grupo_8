@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import AdminNav from "./admin-nav";
 import styles from "./gerir-usuarios.module.scss";
+import { getSessionFromLocalStorage } from "../../features/sessionSlice";
+import axios from "axios";
 /* 
 Componente: GerirUsuário
 Descrição:  Pagina capaz de pesquisar usuário pro email e exibir botoes para promover a administrador, funcionário, ou usuário normal, e excluir usuário
@@ -10,7 +11,26 @@ Descrição:  Pagina capaz de pesquisar usuário pro email e exibir botoes para 
 const GerirUsuarios = () => {
     const dispatch = useDispatch(); /* Disparador de ações */
     // Pegar email do url
-    const { email } = useParams();
+    const queryParams = new URLSearchParams(window.location.search)
+    const [email] = useState(queryParams.get("email")); /* Email do usuário a ser editado */
+    const [usuario, setUsuario] = useState({}); /* Usuário a ser editado */
+    useEffect(() => {
+        if (email != null) {
+            const token = getSessionFromLocalStorage();
+            const url = `http://localhost:3001/admin/usuario/${email}`
+            axios.get(url, {
+                headers: {
+                    authorization: `Bearer ${token}`
+                }
+            }).then(response => {
+                setUsuario(response.data)
+            }).catch(error => {
+                console.log(error)
+            });
+
+        }
+    }, [email]);
+
 
     return (
         <>
@@ -23,20 +43,87 @@ const GerirUsuarios = () => {
             >
                 <div className="container mb-2 p-1 bg-transparent">
                     <div className="row section">
-                        <div className="col">
-                            <p>
-                                <b>Gerir Usuários</b>
-                            </p>
+                        <div className="col text-center">
+                            <h2>Gerir Usuários</h2>
                         </div>
                     </div>
 
                     {email ? (
                         <>
                             {/* Se email existir, renderiza o componente de edição */}
-                            <div className="row section">
-                                <div className="col">
-                                    <p> Email: {email} </p>
+                            <div className="row section mt-2">
+                                <h3>Nome:</h3>
+                                <div>{usuario.nome}</div>
+                            </div>
+
+                            <div className="row section mt-2">
+                                <h3>Email:</h3>
+                                <div>{usuario.email}</div>
+                            </div>
+
+                            <div className="row section mt-2">
+                                <h3>Tipo:</h3>
+                                {/* tipos: user, admin, funcionário */}
+                                <div style={{
+                                    fontSize: "1.3em",
+                                }}>
+                                    <div className="form-check form-switch">
+                                        <input className="form-check-input"
+                                            type="radio"
+                                            name="type"
+                                            id="user"
+                                            value="user"
+                                            checked={usuario.type === "user"}
+                                            onChange={() => {
+                                                setUsuario({ ...usuario, type: "user" })
+                                            }
+                                            }
+                                        />
+                                        <label className="form-check-label" for="user">
+                                            Usuário
+                                        </label>
+                                    </div>
+                                    <div className="form-check form-switch">
+                                        <input className="form-check-input"
+                                            type="radio"
+                                            name="type"
+                                            id="admin"
+                                            value="admin"
+                                            checked={usuario.type === "admin"}
+                                            onChange={() => {
+                                                setUsuario({ ...usuario, type: "admin" })
+                                            }
+                                            } />
+                                        <label className="form-check-label" for="admin">
+                                            Administrador
+                                        </label>
+                                    </div>
+                                    <div className="form-check form-switch">
+                                        <input className="form-check-input"
+                                            type="radio"
+                                            name="type"
+                                            id="funcionário"
+                                            value="funcionário"
+                                            checked={usuario.type === "funcionário"}
+                                            onChange={() => {
+                                                setUsuario({ ...usuario, type: "funcionário" })
+                                            }
+                                            }
+                                        />
+                                        <label className="form-check-label" for="funcionário">
+                                            Funcionário
+                                        </label>
+                                        <div class="d-grid gap-2 col-6 mx-auto">
+                                            <button className="btn btn-lg btn-danger">
+                                                Altera
+                                            </button>
+                                        </div>
+
+                                    </div>
                                 </div>
+                            </div>
+                            <div className="row section mt-2">
+                                <h3>Pedidos Registrados:</h3>
                             </div>
                         </>
                     ) : (
