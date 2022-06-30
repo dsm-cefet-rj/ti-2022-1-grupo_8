@@ -10,25 +10,24 @@ const AdminNav = (props) => {
     const [collapse, setCollapse] = useState(false); // estado que controla o collapse do menu
 
     const toggle = () => setCollapse(!collapse); // função que altera o estado do collapse
-
+    const [title, setTitle] = useState(""); // estado que controla o título do menu
     // set screen title
     useEffect(() => {
-        let title = "Adminitrador - Pizzaria ON ";
         switch (atual) {
             case "menu":
-                title += " - Menu";
+                setTitle("Pizzaria ON Admin - Menu");
                 break;
             case "ingredientes":
-                title += " - Ingredientes";
+                setTitle("Pizzaria ON Admin - Ingredientes");
                 break;
             case "pizzas":
-                title += " - Pizzas";
+                setTitle("Pizzaria ON Admin - Pizzas");
                 break;
             case "produtos":
-                title += " - Produtos";
+                setTitle("Pizzaria ON Admin - Produtos");
                 break;
             case "gerir-usuarios":
-                title += " - Usuários";
+                setTitle("Pizzaria ON Admin - Gerir Usuários");
                 break;
             default:
                 break;
@@ -39,7 +38,7 @@ const AdminNav = (props) => {
     /* Renderização do componente */
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light sticky-top">
-            <a className="navbar-brand">Pizzaria ON - Administrador 🔑</a>
+            <a className="navbar-brand">{title}</a>
             <button className="navbar-toggler" type="button" onClick={toggle}>
                 <span className="navbar-toggler-icon">🔐</span>
             </button>
