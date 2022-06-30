@@ -20,15 +20,18 @@ const GerirUsuarios = () => {
     useEffect(() => {
         if (email != null) {
             const token = getSessionFromLocalStorage();
-            axios.get(`http://localhost:3001/admin/usuario/${email}`, {
-                headers: {
-                    authorization: `Bearer ${token}`,
-                },
-            }).then((response) => {
-                setUsuario(response.data);
-            }).catch((error) => {
-                console.log(error);
-            });
+            axios
+                .get(`http://localhost:3001/admin/usuario/${email}`, {
+                    headers: {
+                        authorization: `Bearer ${token}`,
+                    },
+                })
+                .then((response) => {
+                    setUsuario(response.data);
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
         }
     }, [email]);
 
@@ -38,17 +41,17 @@ const GerirUsuarios = () => {
         const type = usuario.type;
         const email = usuario.email;
         const urls = {
-            "user": `http://localhost:3001/admin/pedidos/${email}`,
-            "admin": `http://localhost:3001/admin/pedidos/${email}`,
-            "funcionário": `http://localhost:3001/admin/pedidos/${email}`,
-        }
+            user: `http://localhost:3001/admin/pedidos/${email}`,
+            admin: `http://localhost:3001/admin/pedidos/${email}`,
+            funcionário: `http://localhost:3001/admin/pedidos/${email}`,
+        };
         axios.post(urls[type], {
             headers: {
-                authorization: `Bearer ${token}`
-            }
+                authorization: `Bearer ${token}`,
+            },
         });
-        window.location.reload()
-    }
+        window.location.reload();
+    };
 
     return (
         <>
@@ -155,15 +158,19 @@ const GerirUsuarios = () => {
                                             Funcionário
                                         </label>
                                         <div className="d-grid gap-2 col-2 mx-auto">
-                                            <button className="btn btn-danger"
+                                            <button
+                                                className="btn btn-danger"
                                                 onClick={AlteraButtonHandler}
                                             >
                                                 Altera
                                             </button>
-                                            <button className="btn btn-warning"
+                                            <button
+                                                className="btn btn-warning"
                                                 onClick={() => {
-                                                    window.location.href = "/gerir-usuarios";
-                                                }}>
+                                                    window.location.href =
+                                                        "/gerir-usuarios";
+                                                }}
+                                            >
                                                 Voltar
                                             </button>
                                         </div>
