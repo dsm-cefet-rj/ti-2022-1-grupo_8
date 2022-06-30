@@ -1,7 +1,7 @@
-const { getConnection } = require ("./DaoConexão");
+const { getConnection } = require("./DaoConexão");
 const { ObjectId } = require("mongodb");
 require("dotenv").config();
-const {PizzaValidTypes} = require("../negocio");
+const { PizzaValidTypes } = require("../negocio");
 
 // Função para validar o pizza
 const validaçãoPedido = (pizza) => {
@@ -12,11 +12,13 @@ const validaçãoPedido = (pizza) => {
             throw new Error(`${key} é um campo obrigatório`);
         }
         if (typeof pizza[key] !== ProdutoValidTypes[key]) {
-            throw new Error(`${key} deve ser do tipo ${ProdutoValidTypes[key]}`);
+            throw new Error(
+                `${key} deve ser do tipo ${ProdutoValidTypes[key]}`
+            );
         }
     });
     if (pizza.id) delete pizza.id;
-}
+};
 
 /******** PIZZAS ********/
 
@@ -66,5 +68,5 @@ module.exports = {
     getPizza,
     addPizza,
     editPizza,
-    removePizza
-}
+    removePizza,
+};

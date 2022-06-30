@@ -1,7 +1,7 @@
-const { getConnection } = require ("./DaoConexão");
+const { getConnection } = require("./DaoConexão");
 const { ObjectId } = require("mongodb");
 require("dotenv").config();
-const {UsuarioValidTypes} = require("../negocio");
+const { UsuarioValidTypes } = require("../negocio");
 
 // Função para validar o usuário
 const validaçãoPedido = (usuario) => {
@@ -12,15 +12,17 @@ const validaçãoPedido = (usuario) => {
             throw new Error(`${key} é um campo obrigatório`);
         }
         if (typeof usuario[key] !== ProdutoValidTypes[key]) {
-            throw new Error(`${key} deve ser do tipo ${ProdutoValidTypes[key]}`);
+            throw new Error(
+                `${key} deve ser do tipo ${ProdutoValidTypes[key]}`
+            );
         }
-        const email_re = /^[a-z0-9.]+@[a-z0-9]+\.[a-z]+\.([a-z]+)?$/i
+        const email_re = /^[a-z0-9.]+@[a-z0-9]+\.[a-z]+\.([a-z]+)?$/i;
         if (key === "email" && !email_re.test(usuario[key])) {
             throw new Error(`${key} deve ser um email válido`);
         }
     });
     if (usuario.id) delete usuario.id;
-}
+};
 
 /******** Usuários ********/
 
@@ -68,7 +70,7 @@ const addUsuario = async (usuario) => {
 const editUsuario = async (usuario) => {
     const connection = await getConnection(); // conectar ao banco de dados
     const email = usuario.email;
-    
+
     validaçãoPedido(usuario);
     // Atualizar usuário na coleção usuarios
     await connection
@@ -88,4 +90,4 @@ module.exports = {
     addUsuario,
     editUsuario,
     removeUsuario,
-}
+};

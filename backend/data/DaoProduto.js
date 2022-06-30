@@ -1,7 +1,7 @@
-const { getConnection } = require ("./DaoConexão");
+const { getConnection } = require("./DaoConexão");
 const { ObjectId } = require("mongodb");
 require("dotenv").config();
-const {IngredienteValidTypes} = require("../negocio");
+const { IngredienteValidTypes } = require("../negocio");
 
 // Função para validar o produto
 const validaçãoPedido = (produto) => {
@@ -12,11 +12,13 @@ const validaçãoPedido = (produto) => {
             throw new Error(`${key} é um campo obrigatório`);
         }
         if (typeof produto[key] !== ProdutoValidTypes[key]) {
-            throw new Error(`${key} deve ser do tipo ${ProdutoValidTypes[key]}`);
+            throw new Error(
+                `${key} deve ser do tipo ${ProdutoValidTypes[key]}`
+            );
         }
     });
     if (produto.id) delete produto.id;
-}
+};
 
 /******** PRODUTOS ********/
 
@@ -70,5 +72,5 @@ module.exports = {
     getProduto,
     addProduto,
     editProduto,
-    removeProduto
-}
+    removeProduto,
+};

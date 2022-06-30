@@ -1,7 +1,7 @@
-const { getAllIngredientes, } = require("../data/DaoIngrediente");
-const { getAllPizzas, } = require("../data/DaoPizza");
-const { getAllProdutos, } = require("../data/DaoProduto");
-const { getPedidos, addPedido, } = require("../data/DaoPedidos");
+const { getAllIngredientes } = require("../data/DaoIngrediente");
+const { getAllPizzas } = require("../data/DaoPizza");
+const { getAllProdutos } = require("../data/DaoProduto");
+const { getPedidos, addPedido } = require("../data/DaoPedidos");
 
 const express = require("express");
 const router = express.Router();

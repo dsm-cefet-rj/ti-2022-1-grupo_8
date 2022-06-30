@@ -1,7 +1,7 @@
-const { getConnection } = require ("./DaoConexão");
+const { getConnection } = require("./DaoConexão");
 const { ObjectId } = require("mongodb");
 require("dotenv").config();
-const {PedidoValidTypes} = require("../negocio");
+const { PedidoValidTypes } = require("../negocio");
 
 // Função para validar o pedido
 const validaçãoPedido = (pedido) => {
@@ -12,14 +12,16 @@ const validaçãoPedido = (pedido) => {
             throw new Error(`${key} é um campo obrigatório`);
         }
         if (typeof pedido[key] !== ProdutoValidTypes[key]) {
-            throw new Error(`${key} deve ser do tipo ${ProdutoValidTypes[key]}`);
+            throw new Error(
+                `${key} deve ser do tipo ${ProdutoValidTypes[key]}`
+            );
         }
-        const email_re = /^[a-z0-9.]+@[a-z0-9]+\.[a-z]+\.([a-z]+)?$/i
+        const email_re = /^[a-z0-9.]+@[a-z0-9]+\.[a-z]+\.([a-z]+)?$/i;
         if (key === "email" && !email_re.test(pedido[key])) {
             throw new Error(`${key} deve ser um email válido`);
         }
     });
-}
+};
 
 /******** Pedidos ********/
 
@@ -65,7 +67,8 @@ const addPedido = async (pedido) => {
 const editPedido = async (_id, pedido) => {
     const connection = await getConnection();
     // Atualiza o pedido na coleção de pedidos
-    let result = await connection.collection("pedidos")
+    let result = await connection
+        .collection("pedidos")
         .updateOne({ _id: new ObjectId(_id) }, { $set: pedido });
 };
 
@@ -81,4 +84,4 @@ module.exports = {
     addPedido,
     editPedido,
     removePedido,
-}
+};

@@ -16,13 +16,11 @@ const client = new MongoClient(uri, {
     serverApi: ServerApiVersion.v1,
 });
 
-
 const getConnection = async () => {
     const connection = await client.connect();
     return connection.db("PizzariaOn");
-}
+};
 
 module.exports = {
     getConnection,
-}
-
+};

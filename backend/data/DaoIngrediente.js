@@ -12,11 +12,13 @@ const validaçãoPedido = (ingrediente) => {
             throw new Error(`${key} é um campo obrigatório`);
         }
         if (typeof ingrediente[key] !== ProdutoValidTypes[key]) {
-            throw new Error(`${key} deve ser do tipo ${ProdutoValidTypes[key]}`);
+            throw new Error(
+                `${key} deve ser do tipo ${ProdutoValidTypes[key]}`
+            );
         }
     });
     if (ingrediente.id) delete ingrediente.id;
-}
+};
 
 /******** INGREDIENTES ********/
 // Função para buscar todos os ingredientes do banco de dados
@@ -79,4 +81,4 @@ module.exports = {
     addIngrediente,
     editIngrediente,
     removeIngrediente,
-}
+};

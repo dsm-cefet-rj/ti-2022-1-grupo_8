@@ -1,10 +1,30 @@
 const express = require("express");
 const router = express.Router();
 require("dotenv").config();
-const { addIngrediente, editIngrediente, getAllIngredientes, removeIngrediente, } = require("../data/DaoIngrediente");
-const { addPizza, editPizza, removePizza, getAllPizzas, } = require("../data/DaoPizza");
-const { addProduto, editProduto, removeProduto, getAllProdutos, } = require("../data/DaoProduto");
-const { editUsuario, removeUsuario, getAllUsuarios, getUsuario, } = require("../data/DaoUsuario");
+const {
+    addIngrediente,
+    editIngrediente,
+    getAllIngredientes,
+    removeIngrediente,
+} = require("../data/DaoIngrediente");
+const {
+    addPizza,
+    editPizza,
+    removePizza,
+    getAllPizzas,
+} = require("../data/DaoPizza");
+const {
+    addProduto,
+    editProduto,
+    removeProduto,
+    getAllProdutos,
+} = require("../data/DaoProduto");
+const {
+    editUsuario,
+    removeUsuario,
+    getAllUsuarios,
+    getUsuario,
+} = require("../data/DaoUsuario");
 
 router.get("/usuario", (req, res) => {
     const email = req.query.email;
@@ -49,7 +69,7 @@ router.post("/editar-ingrediente", (req, res) => {
             });
         }
     } else {
-        try{
+        try {
             addIngrediente({
                 _id: Math.random().toString(),
                 imagem,
@@ -59,7 +79,7 @@ router.post("/editar-ingrediente", (req, res) => {
                 descricao,
                 pesoPorcao,
             });
-        } catch(err){
+        } catch (err) {
             res.status(400).json({
                 message: err.message,
             });
