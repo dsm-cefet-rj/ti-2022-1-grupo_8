@@ -1,47 +1,55 @@
-class Usuario {
-    constructor(id, nome, email, senha, pedidos) {
-        this.id = id;
-        this.nome = nome;
-        this.email = email;
-        this.senha = senha;
-        this.pedidos = pedidos;
-        this.admin = false;
-    }
+/*
+Esse arquivo contém estruturas para a validação de dados.
+*/
+const UsuarioValidTypes = {
+    "_id": "string",
+    "nome": "string",
+    "email": "string",
+    "senha": "string",
+    "type": "string",
 }
 
-class Ingrediente {
-    constructor(id, imagem, nome, preco, descricao, pesoPorcao, usados) {
-        this.id = id;
-        this.nome = nome;
-        this.preco = preco;
-    }
+const IngredienteValidTypes = {
+    "_id": "string",
+    "imagem": "string",
+    "nome": "string",
+    "preco": "number",
+    "usados": "number",
+    "descricao": "string",
+    "pesoPorcao": "number",
 }
 
-class Pizza {
-    constructor(id, nome, descricao, imagem, ingredientes, quant_comprada) {
-        this.id = id;
-        this.nome = nome;
-        this.descricao = descricao;
-        this.imagem = imagem;
-        this.ingredientes = ingredientes;
-        this.quant_comprada = quant_comprada;
-    }
+const PizzaValidTypes = {
+    "_id": "string",
+    "nome": "string",
+    "descricao": "string",
+    "imagem": "string",
+    "ingredientes": "object",
+    "quant_comprada": "number",
+    "preco": "number",
 }
 
-class Produto {
-    constructor(id, nome, descricao, imagem, preco, quant_comprada) {
-        this.id = id;
-        this.nome = nome;
-        this.descricao = descricao;
-        this.imagem = imagem;
-        this.preco = preco;
-        this.quant_comprada = quant_comprada;
-    }
+const ProdutoValidTypes = {
+    "_id": "string",
+    "nome": "string",
+    "descricao": "string",
+    "imagem": "string",
+    "preco": "number",
+    "quant_comprada": "number",
 }
 
+const PedidoValidTypes = {
+    "_id": "string",
+    "email": "string",
+    "dataHora": "string",
+    "endereco": "string",
+    "carrinho": "object",
+    "status": "string",
+}
 module.exports = {
-    Usuario,
-    Ingrediente,
-    Pizza,
-    Produto,
+    UsuarioValidTypes,
+    IngredienteValidTypes,
+    PizzaValidTypes,
+    ProdutoValidTypes,
+    PedidoValidTypes,
 };
