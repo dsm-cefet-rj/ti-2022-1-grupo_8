@@ -1,12 +1,24 @@
 const { getConnection } = require ("./DaoConexão");
 const { ObjectId } = require("mongodb");
 require("dotenv").config();
+const {IngredienteValidTypes} = require("../negocio");
+
+// Função para validar o produto
+const validaçãoPedido = (produto) => {
+    // ProdutoValidTypes keys
+    const keys = Object.keys(IngredienteValidTypes);
+    keys.forEach((key) => {
+        if (!produto[key]) {
+            throw new Error(`${key} é um campo obrigatório`);
+        }
+        if (typeof produto[key] !== ProdutoValidTypes[key]) {
+            throw new Error(`${key} deve ser do tipo ${ProdutoValidTypes[key]}`);
+        }
+    });
+    if (produto.id) delete produto.id;
+}
 
 /******** PRODUTOS ********/
-
-const clearProduto = (produto) => {
-    if (produto.id) delete produto.id;
-};
 
 const getAllProdutos = async () => {
     const connection = await getConnection();
@@ -32,6 +44,7 @@ const getProduto = async (_id) => {
 
 const addProduto = async (produto) => {
     const connection = await getConnection(); // conectar ao banco de dados
+    validaçãoPedido(produto);
     // Inserir produto na coleção produtos
     await connection.collection("produtos").insertOne(produto);
 };
@@ -39,7 +52,7 @@ const addProduto = async (produto) => {
 const editProduto = async (id, produto) => {
     const connection = await getConnection(); // conectar ao banco de dados
     // remove id e manter _id
-    clearProduto(produto);
+    validaçãoPedido(produto);
     // Na coleção produtos, atualizar o produto com o id passado
     await connection
         .collection("produtos")

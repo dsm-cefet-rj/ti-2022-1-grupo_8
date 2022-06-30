@@ -49,7 +49,21 @@ router.post("/editar-ingrediente", (req, res) => {
             });
         }
     } else {
-        addIngrediente(imagem, nome, preco, usados, descricao, pesoPorcao);
+        try{
+            addIngrediente({
+                _id: Math.random().toString(),
+                imagem,
+                nome,
+                preco,
+                usados,
+                descricao,
+                pesoPorcao,
+            });
+        } catch(err){
+            res.status(400).json({
+                message: err.message,
+            });
+        }
     }
     res.sendStatus(200);
 });

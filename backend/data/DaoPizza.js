@@ -1,6 +1,22 @@
 const { getConnection } = require ("./DaoConexão");
 const { ObjectId } = require("mongodb");
 require("dotenv").config();
+const {PizzaValidTypes} = require("../negocio");
+
+// Função para validar o pizza
+const validaçãoPedido = (pizza) => {
+    // ProdutoValidTypes keys
+    const keys = Object.keys(PizzaValidTypes);
+    keys.forEach((key) => {
+        if (!pizza[key]) {
+            throw new Error(`${key} é um campo obrigatório`);
+        }
+        if (typeof pizza[key] !== ProdutoValidTypes[key]) {
+            throw new Error(`${key} deve ser do tipo ${ProdutoValidTypes[key]}`);
+        }
+    });
+    if (pizza.id) delete pizza.id;
+}
 
 /******** PIZZAS ********/
 
@@ -28,13 +44,13 @@ const getPizza = async (id) => {
 
 const addPizza = async (pizzas) => {
     const connection = await getConnection(); // conectar ao banco de dados
+    validaçãoPedido(pizzas);
     await connection.collection("pedidos").insertOne(pizzas);
 };
 
 const editPizza = async (id, pizza) => {
     const connection = await getConnection(); // conectar ao banco de dados
-    // remove id e manter _id
-    delete pizza.id;
+    validaçãoPedido(pizza);
     await connection
         .collection("pizzas")
         .updateOne({ _id: new ObjectId(id) }, { $set: pizza });

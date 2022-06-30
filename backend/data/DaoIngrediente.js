@@ -1,6 +1,22 @@
-const { getConnection } = require ("./DaoConexão");
+const { getConnection } = require("./DaoConexão");
 const { ObjectId } = require("mongodb");
 require("dotenv").config();
+const { IngredienteValidTypes } = require("../negocio");
+
+// Função para validar o ingrediente
+const validaçãoPedido = (ingrediente) => {
+    // ProdutoValidTypes keys
+    const keys = Object.keys(IngredienteValidTypes);
+    keys.forEach((key) => {
+        if (!ingrediente[key]) {
+            throw new Error(`${key} é um campo obrigatório`);
+        }
+        if (typeof ingrediente[key] !== ProdutoValidTypes[key]) {
+            throw new Error(`${key} deve ser do tipo ${ProdutoValidTypes[key]}`);
+        }
+    });
+    if (ingrediente.id) delete ingrediente.id;
+}
 
 /******** INGREDIENTES ********/
 // Função para buscar todos os ingredientes do banco de dados
@@ -32,16 +48,23 @@ const getIngrediente = async (id) => {
 
 const addIngrediente = async (ingrediente) => {
     const connection = await getConnection(); // conectar ao banco de dados
+    // Valida o ingrediente
+    validaçãoPedido(ingrediente);
     // Inserir ingrediente na coleção ingredientes
     await connection.collection("ingredientes").insertOne(ingrediente);
 };
 
-const editIngrediente = async (id, ingrediente) => {
+const editIngrediente = async (ingrediente) => {
     const connection = await getConnection(); // conectar ao banco de dados
+    // Valida o ingrediente
+    validaçãoPedido(ingrediente);
     // edita o ingrediente com o id passado da coleção ingredientes
     await connection
         .collection("ingredientes")
-        .updateOne({ _id: new ObjectId(id) }, { $set: ingrediente });
+        .updateOne(
+            { _id: new ObjectId(ingrediente.id) },
+            { $set: ingrediente }
+        );
 };
 
 const removeIngrediente = async (id) => {

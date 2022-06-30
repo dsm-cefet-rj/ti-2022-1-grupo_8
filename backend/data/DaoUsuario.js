@@ -1,12 +1,28 @@
 const { getConnection } = require ("./DaoConexão");
 const { ObjectId } = require("mongodb");
 require("dotenv").config();
+const {UsuarioValidTypes} = require("../negocio");
+
+// Função para validar o usuário
+const validaçãoPedido = (usuario) => {
+    // ProdutoValidTypes keys
+    const keys = Object.keys(UsuarioValidTypes);
+    keys.forEach((key) => {
+        if (!usuario[key]) {
+            throw new Error(`${key} é um campo obrigatório`);
+        }
+        if (typeof usuario[key] !== ProdutoValidTypes[key]) {
+            throw new Error(`${key} deve ser do tipo ${ProdutoValidTypes[key]}`);
+        }
+        const email_re = /^[a-z0-9.]+@[a-z0-9]+\.[a-z]+\.([a-z]+)?$/i
+        if (key === "email" && !email_re.test(usuario[key])) {
+            throw new Error(`${key} deve ser um email válido`);
+        }
+    });
+    if (usuario.id) delete usuario.id;
+}
 
 /******** Usuários ********/
-
-const clearUsuarios = (usuario) => {
-    if (usuario.id) delete usuario.id;
-};
 
 const getAllUsuarios = async () => {
     const connection = await getConnection();
@@ -44,6 +60,7 @@ const addUsuario = async (usuario) => {
     if (usuarioExistente) {
         throw new Error("Email já existe");
     }
+    validaçãoPedido(usuario);
     // Inserir usuário na coleção usuarios
     await connection.collection("usuarios").insertOne(usuario);
 };
@@ -51,7 +68,8 @@ const addUsuario = async (usuario) => {
 const editUsuario = async (usuario) => {
     const connection = await getConnection(); // conectar ao banco de dados
     const email = usuario.email;
-    clearUsuarios(usuario);
+    
+    validaçãoPedido(usuario);
     // Atualizar usuário na coleção usuarios
     await connection
         .collection("usuarios")
