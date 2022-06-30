@@ -3,7 +3,7 @@ const router = express.Router();
 const session = require("express-session");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
-const { getAllUsuarios, addUsuario } = require("../data/DAOUsuario");
+const { getAllUsuarios, addUsuario } = require("../data/DaoUsuario");
 
 const saltRounds = 10;
 

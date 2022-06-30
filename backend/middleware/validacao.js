@@ -1,4 +1,4 @@
-const { getAllPedidos } = require("../data/DAO");
+const { getAllPedidos } = require("../data/DaoPedidos");
 
 const validarIdPedido = async (req, res, next) => {
     // Valida se o ID foi informado

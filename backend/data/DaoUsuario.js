@@ -1,4 +1,4 @@
-import { getConnection } from "./DAOConexão";
+const { getConnection } = require ("./DaoConexão");
 const { ObjectId } = require("mongodb");
 require("dotenv").config();
 
