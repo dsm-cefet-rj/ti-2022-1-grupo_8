@@ -41,21 +41,24 @@ const GerirUsuarios = () => {
         const type = usuario.type;
         const email = usuario.email;
         const urls = {
-            "user": `http://localhost:3001/admin/promover-user/${email}`,
-            "admin": `http://localhost:3001/admin/promover-admin/${email}`,
-            "funcionário": `http://localhost:3001/admin/promover-funcionario/${email}`,
-        }
-        axios.post(urls[type], {
-            headers: {
-                authorization: `Bearer ${token}`,
-            },
-        }).then((response) => {
-            console.log(response);
-        }).catch((error) => {
-            console.log(error);
-        });
+            user: `http://localhost:3001/admin/promover-user/${email}`,
+            admin: `http://localhost:3001/admin/promover-admin/${email}`,
+            funcionário: `http://localhost:3001/admin/promover-funcionario/${email}`,
+        };
+        axios
+            .post(urls[type], {
+                headers: {
+                    authorization: `Bearer ${token}`,
+                },
+            })
+            .then((response) => {
+                console.log(response);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
         //window.location.reload()
-    }
+    };
 
     return (
         <>
