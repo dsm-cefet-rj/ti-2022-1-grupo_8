@@ -3,56 +3,48 @@
       "nome": "Nicolas Vycas Nery",
       "email": "vycasnicolas@gmail.com",
       "senha": "$2b$10$H8KWPGBF5x60Sg80lNjXN.4h5S4/s6gx1NKcx8RkiH3WMY9fAD3U2",
-      "type": "user",
-      "pedidos": []
+      "type": "user"
     },
     {
       "nome": "Bernardo Costa",
       "email": "bernardocosta@gmail.com",
       "senha": "$2b$10$vjFX73IV8oMRheYZXA5lMO2/m8KMdSgUf5dzlxfH.E6iMt7toyyhq",
-      "type": "user",
-      "pedidos": []
+      "type": "user"
     },
     {
       "nome": "administrador",
       "email": "administrador@gmail.com",
       "senha": "$2b$10$Lfa3yysjiSlw4Rx7V5yPj.rjF1NIKYTAKs05.QWcul9/V2wNPieJu",
-      "type": "admin",
-      "pedidos": []
+      "type": "admin"
     },
     {
       "nome": "funcionario",
       "email": "funcionario@gmail.com",
       "senha": "$2b$10$A7WAMKMPcK3d65HRjZVER.IXOTYVcSzPL2B7bKWezjoq1gVnqhJ/W",
-      "type": "funcionario",
-      "pedidos": []
+      "type": "funcionario"
     },
     {
       "nome": "Matheus",
       "email": "mathues.coelho@gmail.com",
       "senha": "$2b$10$ZOQpXXsxuj1IdKKx16JSo.NAs6GpaFBHAO.XDLtRjXqLhASF2jKdq",
-      "type": "user",
-      "pedidos": []
+      "type": "user"
     },
     {
       "nome": "Matheus Coelho",
       "email": "matheuslmc94@gmail.com",
       "senha": "$2b$10$DWfbY2lIgi3d8KMJVbEHSOoR0URvLEdN7qa97I9tOQM/ekTR7TTbO",
-      "type": "user",
-      "pedidos": []
+      "type": "user"
     },
     {
       "nome": "Matheus Coelho",
       "email": "limaozin15@gmail.com",
       "senha": "$2b$10$BV3n6UnJf8uLsdg6HMM2.OQchLXV6lcL1mUbNl7n9wyPZwZje6xzq",
-      "type": "user",
-      "pedidos": []
+      "type": "user"
     },
     {
       "nome": "Joao",
       "email": "joao@joao.com",
       "senha": "$2b$10$w.wSlmTgUKgvGgBvgfUBA.sL7tymgNgXciMJWSxIt9i4L12NtvX2O",
-      "type": "user",
-      "pedidos": []
+      "type": "user"
     }
   ]
