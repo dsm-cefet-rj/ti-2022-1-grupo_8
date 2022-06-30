@@ -50,7 +50,9 @@ const Pedido = (props) => {
         <>
             <div className="card" style={{ width: "18rem" }}>
                 <div className="card-header text-center">
-                    <h5 className="card-title">Pedido #{idPedido}</h5>
+                    <h5 className="card-title" style={{ fontSize: "1.15rem" }}>
+                        Pedido #{idPedido}
+                    </h5>
                     <p style={{ marginBottom: 0 }}>{converterData(data)}</p>
                 </div>
                 <div
