@@ -11,7 +11,7 @@ import CriarPizza from "./components/Cliente/criar-pizza";
 import CriarUsuario from "./components/Cliente/criar-usuario";
 import MenuCliente from "./components/Cliente/menu.js";
 import MeusPedidos from "./components/Cliente/meus-pedidos";
-import MenuFuncionario from "./components/funcionario/menuFuncionario";
+import MenuFuncionario from "./components/Funcionario/menuFuncionario";
 import NotFound from "./components/geral/not-found";
 import {
     getSessionFromLocalStorage,
