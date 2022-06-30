@@ -32,19 +32,21 @@ const GerirUsuarios = () => {
                 .catch((error) => {
                     console.log(error);
                 });
-            axios.get(`http://localhost:3001/admin/pedidos/${email}`, {
-                headers: {
-                    authorization: `Bearer ${token}`,
-                },
-            }).then((response) => {
-                setUsuario({
-                    ...usuario,
-                    pedidos: response.data,
+            axios
+                .get(`http://localhost:3001/admin/pedidos/${email}`, {
+                    headers: {
+                        authorization: `Bearer ${token}`,
+                    },
+                })
+                .then((response) => {
+                    setUsuario({
+                        ...usuario,
+                        pedidos: response.data,
+                    });
+                })
+                .catch((error) => {
+                    console.log(error);
                 });
-            }).catch((error) => {
-                console.log(error);
-            });
-
         }
     }, [email]);
 
@@ -164,27 +166,24 @@ const GerirUsuarios = () => {
                                 <h3>Pedidos Registrados:</h3>
                             </div>
                             <div className="row section mt-2">
-                                {
-                                    usuario.pedidos ? (
-                                        usuario.pedidos.map((pedido) => {
-                                            return (
-                                                <PedidoCard
-                                                    id={pedido.id}
-                                                    email={pedido.email}
-                                                    data={pedido.dataHora}
-                                                    endereco={pedido.endereco}
-                                                    itens={pedido.carrinho}
-                                                    status={pedido.status}
-                                                    key={pedido.id}
-                                                    context={"gerir-usuarios"}
-                                                />
-                                            );
-                                        })
-                                    ) : (
-                                        <>
-                                        </>
-                                    )
-                                }
+                                {usuario.pedidos ? (
+                                    usuario.pedidos.map((pedido) => {
+                                        return (
+                                            <PedidoCard
+                                                id={pedido.id}
+                                                email={pedido.email}
+                                                data={pedido.dataHora}
+                                                endereco={pedido.endereco}
+                                                itens={pedido.carrinho}
+                                                status={pedido.status}
+                                                key={pedido.id}
+                                                context={"gerir-usuarios"}
+                                            />
+                                        );
+                                    })
+                                ) : (
+                                    <></>
+                                )}
                             </div>
                         </>
                     ) : (

@@ -16,7 +16,7 @@ import NotFound from "./components/geral/not-found";
 import {
     getSessionFromLocalStorage,
     selectToken,
-    setToken
+    setToken,
 } from "./features/sessionSlice";
 import LoginForm from "./login";
 
@@ -24,7 +24,6 @@ function RedirectToLogin() {
     window.location.href = "/login";
     return <></>;
 }
-
 
 /*
 Componente: App

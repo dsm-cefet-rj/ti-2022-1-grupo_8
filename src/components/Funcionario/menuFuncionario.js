@@ -1,15 +1,16 @@
 import { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
-    fetchPedidosConcluidos, fetchPedidosEmAndamento, fetchPedidosFeitos, selectPedidosConcluidos,
+    fetchPedidosConcluidos,
+    fetchPedidosEmAndamento,
+    fetchPedidosFeitos,
+    selectPedidosConcluidos,
     selectPedidosEmAndamento,
-    selectPedidosFeitos
+    selectPedidosFeitos,
 } from "../../features/pedidos-funcionarioSlice";
 import { PedidoCard } from "../geral/pedido-card";
 import FuncionarioNav from "./funcionarioNav";
 import style from "./menuFuncionario.module.scss";
-
-
 
 const Header = (props) => {
     let corClasse = "text-" + props.cor + " border-" + props.cor;

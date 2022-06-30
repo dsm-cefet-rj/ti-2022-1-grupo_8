@@ -81,7 +81,7 @@ export const PedidoCard = (props) => {
                         </ul>
                     </div>
                 </ul>
-                {"Concluído" === status && context !== "gerir-usuarios"? (
+                {"Concluído" === status && context !== "gerir-usuarios" ? (
                     <div className="card-footer">{"Concluído"}</div>
                 ) : (
                     <div className="card-footer">

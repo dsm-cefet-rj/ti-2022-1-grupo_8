@@ -13,4 +13,3 @@ export const converterData = (data) => {
     // Formata a data
     return `${dia}/${mes}/${ano} ${hora}:${minuto}`;
 };
-

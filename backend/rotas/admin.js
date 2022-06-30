@@ -24,9 +24,7 @@ const {
     getAllUsuarios,
     getUsuario,
 } = require("../data/DaoUsuario");
-const {
-    getPedidos
-} = require("../data/DaoPedidos");
+const { getPedidos } = require("../data/DaoPedidos");
 require("dotenv").config();
 
 // Rota para o admin ver as informações de um usuário pelo email
@@ -36,7 +34,7 @@ router.get("/usuario/:email", async (req, res) => {
     res.status(200).json(usuario).end();
 });
 
-// Rota para uma admin promover um usuário a admin pelo email 
+// Rota para uma admin promover um usuário a admin pelo email
 router.get("/promover-admin/:email", async (req, res) => {
     const email = req.params.email;
     const usuario = await getUsuario(email);
@@ -45,7 +43,7 @@ router.get("/promover-admin/:email", async (req, res) => {
     res.status(200).json(usuario).end();
 });
 
-// Rota para uma admin promover um usuário a usuário pelo email 
+// Rota para uma admin promover um usuário a usuário pelo email
 router.get("/promover-user/:email", async (req, res) => {
     const email = req.params.email;
     const usuario = await getUsuario(email);
@@ -54,7 +52,7 @@ router.get("/promover-user/:email", async (req, res) => {
     res.status(200).json(usuario).end();
 });
 
-// Rota para uma admin promover um usuário a funcionário pelo email 
+// Rota para uma admin promover um usuário a funcionário pelo email
 router.get("/promover-funcionario/:email", async (req, res) => {
     const email = req.params.email;
     const usuario = await getUsuario(email);
