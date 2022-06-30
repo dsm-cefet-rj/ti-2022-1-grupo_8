@@ -5,30 +5,21 @@ require("dotenv").config();
 const username = process.env.MONGODB_USERNAME;
 const password = process.env.MONGODB_PASSWORD;
 
+const uri = process.env.MONGODB_URI.replace("<username>", username).replace(
+    "<password>",
+    password
+);
 
-const connectionSingleton = () => {
-    let instance = null;
-    return () => {
-        if (instance === null) {
-            const uri = process.env.MONGODB_URI.replace("<username>", username).replace(
-                "<password>",
-                password
-            );
-            instance = new MongoClient(uri, {
-                useNewUrlParser: true,
-                useUnifiedTopology: true,
-                serverApi: ServerApiVersion.v1,
-            });
-        }
-        return instance;
-    }
-}
+const client = new MongoClient(uri, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    serverApi: ServerApiVersion.v1,
+});
 
 
 const getConnection = async () => {
-    const connection = connectionSingleton();
-    const client = await client.connect();
-    return client.db("PizzariaOn");
+    const connection = await client.connect();
+    return connection.db("PizzariaOn");
 }
 
 module.exports = {
