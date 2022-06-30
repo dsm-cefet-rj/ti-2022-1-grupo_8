@@ -1,129 +1,15 @@
-import { useSelector, useDispatch } from "react-redux";
-import { React, useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
-import FuncionarioNav from "./funcionarioNav";
-import { getSessionFromLocalStorage } from "../../features/sessionSlice";
-import style from "./menuFuncionario.module.scss";
+import { useEffect, useRef } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import {
-    fetchPedidosFeitos,
-    fetchPedidosEmAndamento,
-    fetchPedidosConcluidos,
-    selectPedidosConcluidos,
+    fetchPedidosConcluidos, fetchPedidosEmAndamento, fetchPedidosFeitos, selectPedidosConcluidos,
     selectPedidosEmAndamento,
-    selectPedidosFeitos,
+    selectPedidosFeitos
 } from "../../features/pedidos-funcionarioSlice";
+import { PedidoCard } from "../geral/pedido-card";
+import FuncionarioNav from "./funcionarioNav";
+import style from "./menuFuncionario.module.scss";
 
-const converterData = (data) => {
-    if (!data) return "Sem Data";
-    // Converte de unix timestamp para data
-    let dataFormatada = new Date(data);
-    let dia = dataFormatada.getDate();
-    let mes = dataFormatada.getMonth() + 1;
-    let ano = dataFormatada.getFullYear();
-    let hora = dataFormatada.getHours();
-    let minuto = dataFormatada.getMinutes();
 
-    hora = hora < 10 ? "0" + hora : hora; // Adiciona zero à esquerda
-    minuto = minuto < 10 ? "0" + minuto : minuto; // Adiciona zero à esquerda
-    // Formata a data
-    return `${dia}/${mes}/${ano} ${hora}:${minuto}`;
-};
-
-const PedidoCard = (props) => {
-    const idPedido = props.id;
-    const email = props.email;
-    const data = props.data;
-    const endereco = props.endereco;
-    const itens = props.itens;
-    const status = props.status;
-
-    const avançarPedido = () => {
-        const token = getSessionFromLocalStorage();
-        let funções = {
-            Feito: () => {
-                const url = `http://localhost:3001/funcionario/iniciar-pedido/${idPedido}`;
-                fetch(url, {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                        authorization: `Bearer ${token}`,
-                    },
-                }).then((response) => {
-                    if (response.status === 200) {
-                        console.log("Pedido iniciado");
-                    }
-                });
-            },
-            "Em andamento": () => {
-                const url = `http://localhost:3001/funcionario/finalizar-pedido/${idPedido}`;
-                fetch(url, {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                        authorization: `Bearer ${token}`,
-                    },
-                }).then((response) => {
-                    if (response.status === 200) {
-                        console.log("Pedido iniciado");
-                    }
-                });
-            },
-            Concluídos: () => {
-                console.log(":) Pedido concluído");
-            },
-        };
-
-        funções[status]();
-        window.location.reload();
-    };
-
-    return (
-        <>
-            <div className="card" style={{ width: "18rem", lineHeight: "1" }}>
-                <div className="card-header text-center">
-                    <h5 className="card-title" style={{ fontSize: "1.15rem" }}>
-                        Pedido #{idPedido}
-                    </h5>
-                    <p style={{ marginBottom: 0 }}>{converterData(data)}</p>
-                </div>
-                <div className="card-body">
-                    <p className="card-text">
-                        <strong>E-mail:</strong> {email}
-                    </p>
-                    <p className="card-text">
-                        <strong>Endereço:</strong> {endereco}
-                    </p>
-                </div>
-                <ul className="list-group list-group-flush">
-                    <div className="card-body">
-                        <ul className="list-group list-group-flush">
-                            {itens.map((item, index) => (
-                                <li key={index} className="list-group-item">
-                                    <strong key={index}>
-                                        {item.quantidade}x{" "}
-                                    </strong>
-                                    {item.nome}
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-                </ul>
-                {"Concluído" === status ? (
-                    <div className="card-footer">{"Concluído"}</div>
-                ) : (
-                    <div className="card-footer">
-                        <button
-                            className="btn btn-primary float-end"
-                            onClick={avançarPedido}
-                        >
-                            {"Avançar >"}
-                        </button>
-                    </div>
-                )}
-            </div>
-        </>
-    );
-};
 
 const Header = (props) => {
     let corClasse = "text-" + props.cor + " border-" + props.cor;
@@ -205,6 +91,8 @@ const MenuFuncionario = () => {
                                     endereco={pedido.endereco}
                                     itens={pedido.carrinho}
                                     status={pedido.status}
+                                    key={pedido.id}
+                                    context={"menu-funcionario"}
                                 />
                             ))
                         ) : (
