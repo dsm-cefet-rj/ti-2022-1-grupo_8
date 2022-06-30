@@ -26,20 +26,10 @@ const {
     getUsuario,
 } = require("../data/DaoUsuario");
 
-router.get("/usuario", (req, res) => {
-    const email = req.query.email;
-    if (email) {
-        const usuario = getUsuario(email);
-        if (usuario) {
-            res.json(usuario);
-        } else {
-            res.status(404).json({
-                message: "Usuário não encontrado",
-            });
-        }
-    } else {
-        res.status(400).send("Email não encontrado");
-    }
+router.get("/usuario/:email", async (req, res) => {
+    let id = req.params.email;
+    let usuario = await getUsuario(id);
+    res.status(200).json(usuario).end();
 });
 
 // Rota para adicionar ou editar um ingrediente
