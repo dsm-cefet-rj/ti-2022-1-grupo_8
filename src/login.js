@@ -68,7 +68,7 @@ const LoginForm = () => {
                             window.location.href = "/menu-funcionario";
                             break;
                         default:
-                            window.location.href = "/";
+                            window.location.href = "/login";
                     }
                     return;
                 }

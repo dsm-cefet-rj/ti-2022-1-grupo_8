@@ -47,7 +47,7 @@ const MenuNav = (props) => {
     const handleLogout = () => {
         localStorage.removeItem("token");
         dispatch(setCarrinho([]));
-        window.location.href = "/";
+        window.location.href = "/login";
     };
 
     /* Renderização do componente */

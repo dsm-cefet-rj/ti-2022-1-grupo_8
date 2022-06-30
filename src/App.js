@@ -16,9 +16,15 @@ import NotFound from "./components/geral/not-found";
 import {
     getSessionFromLocalStorage,
     selectToken,
-    setToken,
+    setToken
 } from "./features/sessionSlice";
 import LoginForm from "./login";
+
+function RedirectToLogin() {
+    window.location.href = "/login";
+    return <></>;
+}
+
 
 /*
 Componente: App
@@ -64,8 +70,10 @@ function App() {
                 <Routes>
                     {/* <----------------------->404<-----------------------> */}
                     <Route path="*" element={<NotFound />} />
+                    {/* <----------------------->Raiz<-----------------------> */}
+                    <Route path="/" element={<RedirectToLogin />} />
                     {/* <----------------------->Login<-----------------------> */}
-                    <Route path="/" element={<LoginForm />} />
+                    <Route path="/login" element={<LoginForm />} />
                     {/* <----------------------->Criar Conta<-----------------------> */}
                     <Route path="/criar-usuario" element={<CriarUsuario />} />
 

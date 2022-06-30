@@ -102,7 +102,7 @@ const AdminNav = (props) => {
                         ) : null}
                     </a>
 
-                    <a className="btn btn-danger " href="/">
+                    <a className="btn btn-danger " href="/login">
                         {" "}
                         Sair 👋{" "}
                     </a>

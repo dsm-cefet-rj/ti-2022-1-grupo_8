@@ -51,7 +51,7 @@ const CriarUsuario = () => {
             .then((res) => {
                 if (res.status === 201) {
                     console.log("Usuário cadastrado com sucesso");
-                    window.location.href = "/";
+                    window.location.href = "/login";
                     return;
                 }
                 if (res.status === 400) {
@@ -146,7 +146,7 @@ const CriarUsuario = () => {
                     </div>
                 </form>
                 <div className="row mb-2">
-                    <Link to="/" className="btn btn-primary btn-block ">
+                    <Link to="/login" className="btn btn-primary btn-block ">
                         Voltar ↩
                     </Link>
                 </div>
