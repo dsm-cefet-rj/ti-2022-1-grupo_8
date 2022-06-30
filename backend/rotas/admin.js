@@ -36,6 +36,13 @@ router.get("/usuario/:email", async (req, res) => {
     res.status(200).json(usuario).end();
 });
 
+// Rota para um admin ver todos os pedidos de um email
+router.get("/pedidos/:email", async (req, res) => {
+    const email = req.params.email;
+    const pedidos = await getPedidos(email);
+    res.status(200).json(pedidos).end();
+});
+
 // Rota para uma admin promover um usuário a admin pelo email
 router.post("/promover-admin/:email", async (req, res) => {
     const email = req.params.email;
@@ -43,13 +50,6 @@ router.post("/promover-admin/:email", async (req, res) => {
     usuario.type = "admin";
     await editUsuario(usuario);
     res.status(200).json(usuario).end();
-});
-
-// Rota para um admin ver todos os pedidos de um email
-router.get("/pedidos/:email", async (req, res) => {
-    const email = req.params.email;
-    const pedidos = await getPedidos(email);
-    res.status(200).json(pedidos).end();
 });
 
 // Rota para uma admin promover um usuário a usuário pelo email
