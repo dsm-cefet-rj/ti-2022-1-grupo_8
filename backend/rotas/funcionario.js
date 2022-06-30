@@ -1,5 +1,5 @@
 const express = require("express");
-const { getAllPedidos, editPedido } = require("../data/DAO");
+const { getAllPedidos, editPedido } = require("../data/DaoPedidos");
 const validarIdPedido = require("../middleware/validacao");
 const router = express.Router();
 require("dotenv").config();

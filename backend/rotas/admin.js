@@ -1,24 +1,10 @@
 const express = require("express");
 const router = express.Router();
 require("dotenv").config();
-const {
-    addIngrediente,
-    editIngrediente,
-    getAllIngredientes,
-    removeIngrediente,
-    addPizza,
-    editPizza,
-    removePizza,
-    getAllPizzas,
-    addProduto,
-    editProduto,
-    removeProduto,
-    getAllProdutos,
-    editUsuario,
-    removeUsuario,
-    getAllUsuarios,
-    getUsuario,
-} = require("../data/DAO");
+const { addIngrediente, editIngrediente, getAllIngredientes, removeIngrediente, } = require("../data/DaoIngrediente");
+const { addPizza, editPizza, removePizza, getAllPizzas, } = require("../data/DaoPizza");
+const { addProduto, editProduto, removeProduto, getAllProdutos, } = require("../data/DaoProduto");
+const { editUsuario, removeUsuario, getAllUsuarios, getUsuario, } = require("../data/DaoUsuario");
 
 router.get("/usuario", (req, res) => {
     const email = req.query.email;
