@@ -20,33 +20,15 @@ const GerirUsuarios = () => {
     useEffect(() => {
         if (email != null) {
             const token = getSessionFromLocalStorage();
-            axios
-                .get(`http://localhost:3001/admin/usuario/${email}`, {
-                    headers: {
-                        authorization: `Bearer ${token}`,
-                    },
-                })
-                .then((response) => {
-                    setUsuario(response.data);
-                })
-                .catch((error) => {
-                    console.log(error);
-                });
-            axios
-                .get(`http://localhost:3001/admin/pedidos/${email}`, {
-                    headers: {
-                        authorization: `Bearer ${token}`,
-                    },
-                })
-                .then((response) => {
-                    setUsuario({
-                        ...usuario,
-                        pedidos: response.data,
-                    });
-                })
-                .catch((error) => {
-                    console.log(error);
-                });
+            axios.get(`http://localhost:3001/admin/usuario/${email}`, {
+                headers: {
+                    authorization: `Bearer ${token}`,
+                },
+            }).then((response) => {
+                setUsuario(response.data);
+            }).catch((error) => {
+                console.log(error);
+            });
         }
     }, [email]);
 

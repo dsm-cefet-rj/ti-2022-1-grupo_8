@@ -29,8 +29,10 @@ require("dotenv").config();
 
 // Rota para o admin ver as informações de um usuário pelo email
 router.get("/usuario/:email", async (req, res) => {
-    const id = req.params.email;
-    const usuario = await getUsuario(id);
+    const email = req.params.email;
+    const usuario = await getUsuario(email);
+    usuario.senha = "";
+    usuario.pedidos = await getPedidos(email);
     res.status(200).json(usuario).end();
 });
 
