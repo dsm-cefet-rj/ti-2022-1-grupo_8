@@ -35,28 +35,10 @@ router.get("/usuario/:email", async (req, res) => {
 });
 
 // Rota para uma admin promover um usuário a admin pelo email
-router.get("/promover-admin/:email", async (req, res) => {
+router.post("/promover-admin/:email", async (req, res) => {
     const email = req.params.email;
     const usuario = await getUsuario(email);
     usuario.type = "admin";
-    await editUsuario(usuario);
-    res.status(200).json(usuario).end();
-});
-
-// Rota para uma admin promover um usuário a usuário pelo email
-router.get("/promover-user/:email", async (req, res) => {
-    const email = req.params.email;
-    const usuario = await getUsuario(email);
-    usuario.type = "user";
-    await editUsuario(usuario);
-    res.status(200).json(usuario).end();
-});
-
-// Rota para uma admin promover um usuário a funcionário pelo email
-router.get("/promover-funcionario/:email", async (req, res) => {
-    const email = req.params.email;
-    const usuario = await getUsuario(email);
-    usuario.type = "funcionário";
     await editUsuario(usuario);
     res.status(200).json(usuario).end();
 });
@@ -66,6 +48,24 @@ router.get("/pedidos/:email", async (req, res) => {
     const email = req.params.email;
     const pedidos = await getPedidos(email);
     res.status(200).json(pedidos).end();
+});
+
+// Rota para uma admin promover um usuário a usuário pelo email
+router.post("/promover-user/:email", async (req, res) => {
+    const email = req.params.email;
+    const usuario = await getUsuario(email);
+    usuario.type = "user";
+    await editUsuario(usuario);
+    res.status(200).json(usuario).end();
+});
+
+// Rota para uma admin promover um usuário a funcionário pelo email
+router.post("/promover-funcionario/:email", async (req, res) => {
+    const email = req.params.email;
+    const usuario = await getUsuario(email);
+    usuario.type = "funcionário";
+    await editUsuario(usuario);
+    res.status(200).json(usuario).end();
 });
 
 // Rota para adicionar ou editar um ingrediente

@@ -50,6 +50,24 @@ const GerirUsuarios = () => {
         }
     }, [email]);
 
+    const AlteraButtonHandler = (e) => {
+        e.preventDefault();
+        const token = getSessionFromLocalStorage();
+        const type = usuario.type;
+        const email = usuario.email;
+        const urls = {
+            "user": `http://localhost:3001/admin/pedidos/${email}`,
+            "admin": `http://localhost:3001/admin/pedidos/${email}`,
+            "funcionário": `http://localhost:3001/admin/pedidos/${email}`,
+        }
+        axios.post(urls[type], {
+            headers: {
+                authorization: `Bearer ${token}`
+            }
+        });
+        window.location.reload()
+    }
+
     return (
         <>
             <AdminNav Atual="gerir-usuarios" />
@@ -154,9 +172,17 @@ const GerirUsuarios = () => {
                                         >
                                             Funcionário
                                         </label>
-                                        <div className="d-grid gap-2 col-6 mx-auto">
-                                            <button className="btn btn-lg btn-danger">
+                                        <div className="d-grid gap-2 col-2 mx-auto">
+                                            <button className="btn btn-danger"
+                                                onClick={AlteraButtonHandler}
+                                            >
                                                 Altera
+                                            </button>
+                                            <button className="btn btn-warning"
+                                                onClick={() => {
+                                                    window.location.href = "/gerir-usuarios";
+                                                }}>
+                                                Voltar
                                             </button>
                                         </div>
                                     </div>
@@ -165,7 +191,7 @@ const GerirUsuarios = () => {
                             <div className="row section mt-2">
                                 <h3>Pedidos Registrados:</h3>
                             </div>
-                            <div className="row section mt-2">
+                            <div className="row section mt-2 mx-auto">
                                 {usuario.pedidos ? (
                                     usuario.pedidos.map((pedido) => {
                                         return (
