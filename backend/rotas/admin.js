@@ -1,6 +1,5 @@
 const express = require("express");
 const router = express.Router();
-require("dotenv").config();
 const {
     addIngrediente,
     editIngrediente,
@@ -25,11 +24,50 @@ const {
     getAllUsuarios,
     getUsuario,
 } = require("../data/DaoUsuario");
+const {
+    getPedidos
+} = require("../data/DaoPedidos");
+require("dotenv").config();
 
+// Rota para o admin ver as informações de um usuário pelo email
 router.get("/usuario/:email", async (req, res) => {
-    let id = req.params.email;
-    let usuario = await getUsuario(id);
+    const id = req.params.email;
+    const usuario = await getUsuario(id);
     res.status(200).json(usuario).end();
+});
+
+// Rota para uma admin promover um usuário a admin pelo email 
+router.get("/promover-admin/:email", async (req, res) => {
+    const email = req.params.email;
+    const usuario = await getUsuario(email);
+    usuario.type = "admin";
+    await editUsuario(usuario);
+    res.status(200).json(usuario).end();
+});
+
+// Rota para uma admin promover um usuário a usuário pelo email 
+router.get("/promover-user/:email", async (req, res) => {
+    const email = req.params.email;
+    const usuario = await getUsuario(email);
+    usuario.type = "user";
+    await editUsuario(usuario);
+    res.status(200).json(usuario).end();
+});
+
+// Rota para uma admin promover um usuário a funcionário pelo email 
+router.get("/promover-funcionario/:email", async (req, res) => {
+    const email = req.params.email;
+    const usuario = await getUsuario(email);
+    usuario.type = "funcionário";
+    await editUsuario(usuario);
+    res.status(200).json(usuario).end();
+});
+
+// Rota para um admin ver todos os pedidos de um email
+router.get("/pedidos/:email", async (req, res) => {
+    const email = req.params.email;
+    const pedidos = await getPedidos(email);
+    res.status(200).json(pedidos).end();
 });
 
 // Rota para adicionar ou editar um ingrediente
@@ -186,8 +224,8 @@ router.post("/excluir-ingrediente", (req, res) => {
 });
 
 // Rota para excluir um funcionário
-router.post("/excluir-pizza", (req, res) => {
-    const { id } = req.body;
+router.post("/excluir-pizza/:id", async (req, res) => {
+    const { id } = req.params;
     if (id) {
         //verificar se pizza realmente existe
         const pizza = getAllPizzas().find((pizza) => pizza.id === id);
@@ -209,8 +247,8 @@ router.post("/excluir-pizza", (req, res) => {
 });
 
 // Rota para excluir um funcionário
-router.post("/excluir-produto", (req, res) => {
-    const { id } = req.body;
+router.post("/excluir-produto/:id", async (req, res) => {
+    const { id } = req.params;
     if (id) {
         //verificar se produto realmente existe
         const produto = getAllProdutos().find((produto) => produto.id === id);
