@@ -19,7 +19,6 @@ router.get("/pizzas", async (req, res) => {
         pizza.preco = 20;
         pizza.ingredientes.forEach((id) => {
             let ingrediente = ingredientes.find((i) => {
-                console.log(i._id, id);
                 return i.id === id;
             });
 
