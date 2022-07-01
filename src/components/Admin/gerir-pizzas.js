@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchPizzas, selectPizzas, selectIngredientes, fetchIngredientes } from "../../features/clienteDatabaseSlice";
+import {
+    fetchPizzas,
+    selectPizzas,
+    selectIngredientes,
+    fetchIngredientes,
+} from "../../features/clienteDatabaseSlice";
 import { setMetades, selectGerirPizza } from "../../features/gerir-pizzaSlice";
 import Metade from "../geral/metade-pizza";
 import AdminNav from "./admin-nav";
@@ -29,16 +34,13 @@ const GerirPizzas = () => {
     const [preco, setPreco] = useState(0);
     const [editando, setEditando] = useState(false);
 
-
     const handleSubmit = (e) => {
         e.preventDefault();
         //Atualiza as pizzas carregadas
         dispatch(fetchPizzas());
     };
 
-    const handleCheckbox = (e) => {
-
-    };
+    const handleCheckbox = (e) => {};
 
     useEffect(() => {
         dispatch(fetchPizzas());
@@ -81,7 +83,9 @@ const GerirPizzas = () => {
                                         }}
                                     />
                                     <div className="card-body">
-                                        <h5 className="card-title">{pizza.nome}</h5>
+                                        <h5 className="card-title">
+                                            {pizza.nome}
+                                        </h5>
                                         <button
                                             className="btn btn-lg btn-primary btn-success"
                                             id={`pizza-${pizza.id}`}
@@ -90,9 +94,10 @@ const GerirPizzas = () => {
                                                 setNome(pizza.nome);
                                                 setDescricao(pizza.descricao);
 
-                                                let elem = document.getElementById(
-                                                    `pizza-${pizza.id}`
-                                                );
+                                                let elem =
+                                                    document.getElementById(
+                                                        `pizza-${pizza.id}`
+                                                    );
                                                 if (
                                                     elem.classList.contains(
                                                         "btn-success"
@@ -116,7 +121,9 @@ const GerirPizzas = () => {
                                                 }
 
                                                 pizzas.map((pizzaOBJ) => {
-                                                    if (pizzaOBJ.id !== pizza.id) {
+                                                    if (
+                                                        pizzaOBJ.id !== pizza.id
+                                                    ) {
                                                         let elem =
                                                             document.getElementById(
                                                                 `pizza-${pizzaOBJ.id}`
@@ -127,7 +134,8 @@ const GerirPizzas = () => {
                                                         elem.classList.add(
                                                             "btn-success"
                                                         );
-                                                        elem.innerHTML = "Editar";
+                                                        elem.innerHTML =
+                                                            "Editar";
                                                     }
                                                 });
                                             }}
@@ -161,13 +169,18 @@ const GerirPizzas = () => {
                                     className="form-control"
                                     type="text"
                                     value={descricao}
-                                    onChange={(e) => setDescricao(e.target.value)}
+                                    onChange={(e) =>
+                                        setDescricao(e.target.value)
+                                    }
                                 />
                             </div>
                             {/* Ingredientes*/}
                             <div className="scrollmenu">
                                 {ingredientes.map((ingrediente) => (
-                                    <div className="ingrediente" key={ingrediente.id}>
+                                    <div
+                                        className="ingrediente"
+                                        key={ingrediente.id}
+                                    >
                                         <p
                                             className="form-check-label"
                                             htmlFor={ingrediente.id.toString()}
@@ -217,7 +230,7 @@ const GerirPizzas = () => {
                         <div className="col-md-12">
                             <button
                                 className="btn btn-lg btn-success"
-                                onClick={() => { }}
+                                onClick={() => {}}
                             >
                                 Confirmar
                             </button>

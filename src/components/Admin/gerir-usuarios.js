@@ -219,10 +219,11 @@ const GerirUsuarios = () => {
                                     window.location.href = `/gerir-usuarios?${url_params}`;
                                 }}
                             >
-                                <div className="form-group"
-                                style={{
-                                    fontSize: "1.5em",
-                                }}
+                                <div
+                                    className="form-group"
+                                    style={{
+                                        fontSize: "1.5em",
+                                    }}
                                 >
                                     <label htmlFor="email">Email</label>
                                     <input
