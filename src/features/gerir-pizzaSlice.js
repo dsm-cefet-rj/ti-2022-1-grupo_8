@@ -6,13 +6,16 @@ const gerirPizzaSlice = createSlice({
         ingrediente: [],
     },
     reducers: {
-        setMetades: (state, { payload }) => {
-            state.ingrediente = payload;
+        addIngrediente: (state, action) => {
+            state.ingrediente.push(action.payload);
         },
+        removeIngrediente: (state, action) => {
+            state.ingrediente.splice(action.payload, 1);
+        }
     },
 });
 
-export const { setMetades } = gerirPizzaSlice.actions;
+export const { removeIngrediente,addIngrediente } = gerirPizzaSlice.actions;
 
 export const selectGerirPizza = (state) => state.gerirPizza;
 

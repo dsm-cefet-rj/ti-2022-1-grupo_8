@@ -6,7 +6,7 @@ import {
     selectIngredientes,
     fetchIngredientes,
 } from "../../features/clienteDatabaseSlice";
-import { setMetades, selectGerirPizza } from "../../features/gerir-pizzaSlice";
+import { removeIngrediente, addIngrediente, selectGerirPizza } from "../../features/gerir-pizzaSlice";
 import Metade from "../geral/metade-pizza";
 import AdminNav from "./admin-nav";
 import styles from "./gerir-pizzas.module.scss";
@@ -40,7 +40,17 @@ const GerirPizzas = () => {
         dispatch(fetchPizzas());
     };
 
-    const handleCheckbox = (e) => {};
+    const handleCheckbox = (e) => {
+        const id = e.target.id;
+        const payload = {
+            id: id,
+        };
+        if (e.target.checked) {
+            dispatch(addIngrediente(payload));
+        } else {
+            dispatch(removeIngrediente(payload));
+        }
+    };
 
     useEffect(() => {
         dispatch(fetchPizzas());
@@ -243,7 +253,7 @@ const GerirPizzas = () => {
                         <div className="col-md-12">
                             <button
                                 className="btn btn-lg btn-success"
-                                onClick={() => {}}
+                                onClick={() => { }}
                             >
                                 Confirmar
                             </button>
