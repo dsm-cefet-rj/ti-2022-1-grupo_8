@@ -40,7 +40,7 @@ const GerirPizzas = () => {
         dispatch(fetchPizzas());
     };
 
-    const handleCheckbox = (e) => { };
+    const handleCheckbox = (e) => {};
 
     useEffect(() => {
         dispatch(fetchPizzas());
@@ -182,7 +182,9 @@ const GerirPizzas = () => {
                                     className="form-control"
                                     type="file"
                                     value={imagem}
-                                    onChange={(e) => setImagem(e.target.value[0])}
+                                    onChange={(e) =>
+                                        setImagem(e.target.value[0])
+                                    }
                                 />
                             </div>
                             {/* Ingredientes*/}
@@ -241,7 +243,7 @@ const GerirPizzas = () => {
                         <div className="col-md-12">
                             <button
                                 className="btn btn-lg btn-success"
-                                onClick={() => { }}
+                                onClick={() => {}}
                             >
                                 Confirmar
                             </button>
