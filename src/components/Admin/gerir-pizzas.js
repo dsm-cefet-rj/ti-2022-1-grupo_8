@@ -40,7 +40,7 @@ const GerirPizzas = () => {
         dispatch(fetchPizzas());
     };
 
-    const handleCheckbox = (e) => {};
+    const handleCheckbox = (e) => { };
 
     useEffect(() => {
         dispatch(fetchPizzas());
@@ -174,6 +174,17 @@ const GerirPizzas = () => {
                                     }
                                 />
                             </div>
+                            {/* Imagem */}
+                            <div className="form-group mb-2">
+                                <label htmlFor="imagem">Imagem</label>
+                                <input
+                                    id="imagem"
+                                    className="form-control"
+                                    type="file"
+                                    value={imagem}
+                                    onChange={(e) => setImagem(e.target.value[0])}
+                                />
+                            </div>
                             {/* Ingredientes*/}
                             <div className="scrollmenu">
                                 {ingredientes.map((ingrediente) => (
@@ -230,7 +241,7 @@ const GerirPizzas = () => {
                         <div className="col-md-12">
                             <button
                                 className="btn btn-lg btn-success"
-                                onClick={() => {}}
+                                onClick={() => { }}
                             >
                                 Confirmar
                             </button>
