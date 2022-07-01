@@ -209,7 +209,7 @@ const GerirUsuarios = () => {
                             </div>
                         </>
                     ) : (
-                        <>
+                        <div className="row section mt-2 mx-auto">
                             {/* Se email não existir, renderiza o formulário de pesquisa */}
                             <form
                                 onSubmit={(e) => {
@@ -219,7 +219,11 @@ const GerirUsuarios = () => {
                                     window.location.href = `/gerir-usuarios?${url_params}`;
                                 }}
                             >
-                                <div className="form-group">
+                                <div className="form-group"
+                                style={{
+                                    fontSize: "1.5em",
+                                }}
+                                >
                                     <label htmlFor="email">Email</label>
                                     <input
                                         type="email"
@@ -232,12 +236,12 @@ const GerirUsuarios = () => {
                                 </div>
                                 <button
                                     type="submit"
-                                    className="btn btn-primary"
+                                    className="btn btn-primary btn-lg mt-2"
                                 >
                                     Pesquisar
                                 </button>
                             </form>
-                        </>
+                        </div>
                     )}
                 </div>
             </div>
