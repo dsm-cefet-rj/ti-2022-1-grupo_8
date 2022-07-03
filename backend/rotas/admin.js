@@ -27,6 +27,16 @@ const {
 const { getPedidos } = require("../data/DaoPedidos");
 require("dotenv").config();
 
+
+// multer para upload de imagens
+const multer  = require('multer');
+const { upload } = require("@testing-library/user-event/dist/upload");
+const baseImgPath = './public/imgs/';
+const ingredienteImgDest = multer({ dest: baseImgPath + 'ingredientes' });
+const pizzaImgDest = multer({ dest: baseImgPath + 'pizzas' });
+const produtoImgDest = multer({ dest: baseImgPath + 'produtos' });
+
+
 // Rota para o admin ver as informações de um usuário pelo email
 router.get("/usuario/:email", async (req, res) => {
     const email = req.params.email;
@@ -71,7 +81,9 @@ router.post("/promover-funcionario/:email", async (req, res) => {
 });
 
 // Rota para adicionar ou editar um ingrediente
-router.post("/editar-ingrediente", (req, res) => {
+router.post("/editar-ingrediente", // Caminho da rota
+ingredienteImgDest.single('imagem'), // Middleware para upload de imagens
+async (req, res) => {
     const { id, imagem, nome, preco, usados, descricao, pesoPorcao } = req.body;
     if (id) {
         //verificar se ingrediente realmente existe
@@ -117,7 +129,9 @@ router.post("/editar-ingrediente", (req, res) => {
 });
 
 // Rota para adicionar ou editar uma pizza
-router.post("/editar-pizza", (req, res) => {
+router.post("/editar-pizza",// Caminho da rota
+pizzaImgDest.single('imagem'), // Middleware para upload de imagens
+async (req, res) => {
     const { id, nome, descricao, imagem, ingredientes, quant_comprada, preco } =
         req.body;
     if (id) {
@@ -148,8 +162,10 @@ router.post("/editar-pizza", (req, res) => {
 });
 
 // Rota para adicionar ou editar um produto
-router.post("/editar-produto", (req, res) => {
-    const { nome, descricao, imagem, preco, id, quant_comprada } = req.body;
+router.post("/editar-produto", // Caminho da rota
+produtoImgDest.single('imagem'), // Middleware para upload de imagens
+async(req, res) => {
+    let { nome, descricao, imagem, preco, id, quant_comprada } = req.body;
     if (id) {
         const produto = getAllProdutos().find((produto) => produto.id === id);
         if (produto) {
