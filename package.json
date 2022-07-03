@@ -43,7 +43,9 @@
         "test": "react-scripts test",
         "eject": "react-scripts eject",
         "backend": "nodemon backend/index.js",
-        "format": "prettier --write 'src/**/*.{js,jsx,json}' 'backend/**/*.js' --parser babel --print-width 80 --tab-width 4 && prettier --write 'src/**/*.{scss,css}' --parser scss --print-width 80 --tab-width 4"
+        "format": "prettier --write 'src/**/*.{js,jsx,json}' 'backend/**/*.js' --parser babel --print-width 80 --tab-width 4 && prettier --write 'src/**/*.{scss,css}' --parser scss --print-width 80 --tab-width 4",
+        "doBackup": "node ./DataBaseHealer/BackUp.js",
+        "doRestore": "node ./DataBaseHealer/Restore.js"
     },
     "eslintConfig": {
         "extends": [
