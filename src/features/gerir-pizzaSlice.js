@@ -11,11 +11,11 @@ const gerirPizzaSlice = createSlice({
         },
         removeIngrediente: (state, action) => {
             state.ingrediente.splice(action.payload, 1);
-        }
+        },
     },
 });
 
-export const { removeIngrediente,addIngrediente } = gerirPizzaSlice.actions;
+export const { removeIngrediente, addIngrediente } = gerirPizzaSlice.actions;
 
 export const selectGerirPizza = (state) => state.gerirPizza;
 
