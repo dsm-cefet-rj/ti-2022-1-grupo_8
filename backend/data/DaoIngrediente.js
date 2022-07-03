@@ -1,3 +1,14 @@
+/*
+Esse arquivo disponibiliza as funções que acessam o banco de dados para a entidade Ingrediente.
+Os campos da entidade Ingrediente são:
+    _id: ObjectId
+    nome: string
+    preco: number
+    imagem: string
+    usados: number
+    descrição: string
+    pesoPorcao: number
+*/
 const { getConnection } = require("./DaoConexão");
 const { ObjectId } = require("mongodb");
 require("dotenv").config();

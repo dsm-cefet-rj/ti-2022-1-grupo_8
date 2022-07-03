@@ -1,3 +1,13 @@
+/*
+Esse arquivo disponibiliza as funções que acessam o banco de dados para a entidade Pedido.
+Os campos da entidade Pedido são:
+    _id: ObjectId
+    email: string
+    data: number
+    endereco: string
+    carrinho: array
+    status: string
+*/
 const { getConnection } = require("./DaoConexão");
 const { ObjectId } = require("mongodb");
 require("dotenv").config();

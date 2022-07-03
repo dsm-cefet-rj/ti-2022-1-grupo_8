@@ -1,3 +1,6 @@
+/*
+Esse arquivo disponibiliza a função que retorna a conexão com o banco de dados.
+*/
 const { MongoClient, ServerApiVersion, ObjectId } = require("mongodb");
 
 require("dotenv").config();

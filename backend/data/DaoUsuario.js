@@ -1,3 +1,12 @@
+/*
+Esse arquivo disponibiliza as funções que acessam o banco de dados para a entidade Usuario.
+Os campos da entidade Usuario são:
+    _id: ObjectId
+    nome: string
+    email: string
+    senha: string
+    type: string
+*/
 const { getConnection } = require("./DaoConexão");
 const { ObjectId } = require("mongodb");
 require("dotenv").config();

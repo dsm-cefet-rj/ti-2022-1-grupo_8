@@ -1,3 +1,13 @@
+/*
+Esse arquivo disponibiliza as funções que acessam o banco de dados para a entidade Produto.
+Os campos da entidade Produto são:
+    _id: ObjectId
+    nome: string
+    descrição: string
+    imagem: string
+    preco: number
+    quant_comprada: number
+*/
 const { getConnection } = require("./DaoConexão");
 const { ObjectId } = require("mongodb");
 require("dotenv").config();

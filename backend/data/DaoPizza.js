@@ -1,3 +1,14 @@
+/*
+Esse arquivo disponibiliza as funções que acessam o banco de dados para a entidade Pizza.
+Os campos da entidade Pizza são:
+    _id: ObjectId
+    nome: string
+    descrição: string
+    imagem: string
+    ingredientes: array
+    quant_comprada: number
+    preco: number
+*/
 const { getConnection } = require("./DaoConexão");
 const { ObjectId } = require("mongodb");
 require("dotenv").config();
