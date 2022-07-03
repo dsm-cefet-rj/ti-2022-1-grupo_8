@@ -39,7 +39,7 @@ node -e 'console.log(require("crypto").randomBytes(64).toString("hex"))'
 ## Para rodar o projeto, basta executar os comandos abaixo:
 
 ```bash
-    npm install
+    npm ci
     npm run dev
 ```
 
