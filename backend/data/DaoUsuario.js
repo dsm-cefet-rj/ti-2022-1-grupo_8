@@ -42,9 +42,12 @@ const getUsuario = async (email) => {
     const usuario = await connection.collection("usuarios").findOne({
         email: email,
     });
-    // transformar _id para string
-    usuario._id = usuario._id.toString();
-    usuario.id = usuario._id;
+    if (usuario) {
+        usuario._id = usuario._id.toString();
+        usuario.id = usuario._id;
+    }else {
+        throw new Error("Usuário não encontrado");
+    }
     return usuario;
 };
 
