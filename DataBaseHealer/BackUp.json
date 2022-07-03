@@ -1,0 +1,1659 @@
+{
+  "ingredientes": [
+    {
+      "_id": "62bc0b37ebdf021d97a34de7",
+      "imagem": "imgs/igrediente/molho_de_tomate.jpg",
+      "nome": "Molho",
+      "preco": 0.6,
+      "usados": 15,
+      "descricao": "Molho - 0.75",
+      "pesoPorcao": 53
+    },
+    {
+      "_id": "62bc0b37ebdf021d97a34de8",
+      "imagem": "imgs/igrediente/queijo-musssarela.jpg",
+      "nome": "Queijo",
+      "preco": 0.52,
+      "usados": 16,
+      "descricao": "Queijo - 0.75",
+      "pesoPorcao": 29
+    },
+    {
+      "_id": "62bc0b37ebdf021d97a34de9",
+      "imagem": "imgs/igrediente/Calabresa.jpg",
+      "nome": "Calabresa",
+      "preco": 0.99,
+      "usados": 18,
+      "descricao": "Calabresa - 6.45",
+      "pesoPorcao": 86
+    },
+    {
+      "_id": "62bc0b37ebdf021d97a34dea",
+      "imagem": "imgs/igrediente/Presunto.jpg",
+      "nome": "Presunto",
+      "preco": 0.78,
+      "usados": 35,
+      "descricao": "Presunto - 8.5",
+      "pesoPorcao": 90
+    },
+    {
+      "_id": "62bc0b37ebdf021d97a34deb",
+      "imagem": "imgs/igrediente/Camarao.webp",
+      "nome": "Camarão",
+      "preco": 0.81,
+      "usados": 20,
+      "descricao": "Camarão - 4.86",
+      "pesoPorcao": 18
+    },
+    {
+      "_id": "62bc0b37ebdf021d97a34dec",
+      "imagem": "imgs/igrediente/Alho.jpg",
+      "nome": "Alho",
+      "preco": 0.92,
+      "usados": 92,
+      "descricao": "Alho - 4.75",
+      "pesoPorcao": 22
+    },
+    {
+      "_id": "62bc0b37ebdf021d97a34ded",
+      "imagem": "imgs/igrediente/Ovo.jpg",
+      "nome": "Ovo",
+      "preco": 0.82,
+      "usados": 13,
+      "descricao": "Ovo - 5.32",
+      "pesoPorcao": 95
+    },
+    {
+      "_id": "62bc0b37ebdf021d97a34dee",
+      "imagem": "imgs/igrediente/Azeitona verde.webp",
+      "nome": "Azeitona verde",
+      "preco": 0.85,
+      "usados": 1,
+      "descricao": "Azeitona verde - 5.86",
+      "pesoPorcao": 9
+    },
+    {
+      "_id": "62bc0b37ebdf021d97a34def",
+      "imagem": "imgs/igrediente/Azeitona preta.jpg",
+      "nome": "Azeitona preta",
+      "preco": 0.55,
+      "usados": 13,
+      "descricao": "Azeitona preta - 4",
+      "pesoPorcao": 80
+    },
+    {
+      "_id": "62bc0b37ebdf021d97a34df0",
+      "imagem": "imgs/igrediente/Tomate.jpg",
+      "nome": "Tomate",
+      "preco": 0.95,
+      "usados": 23,
+      "descricao": "Tomate - 4.5",
+      "pesoPorcao": 67
+    },
+    {
+      "_id": "62bc0b37ebdf021d97a34df1",
+      "imagem": "imgs/igrediente/Cebola.png",
+      "nome": "Cebola",
+      "preco": 0.69,
+      "usados": 39,
+      "descricao": "Cebola - 2",
+      "pesoPorcao": 98
+    },
+    {
+      "_id": "62bc0b37ebdf021d97a34df2",
+      "imagem": "imgs/igrediente/Frango desfiado.jpg",
+      "nome": "Frango desfiado",
+      "preco": 0.62,
+      "usados": 79,
+      "descricao": "Frango desfiado - 7.99",
+      "pesoPorcao": 82
+    },
+    {
+      "_id": "62bc0b37ebdf021d97a34df3",
+      "imagem": "imgs/igrediente/Requeijão.jpg",
+      "nome": "Requeijão",
+      "preco": 0.92,
+      "usados": 77,
+      "descricao": "Requeijão - 5",
+      "pesoPorcao": 81
+    },
+    {
+      "_id": "62bc0b37ebdf021d97a34df4",
+      "imagem": "imgs/igrediente/Pimentão verde.webp",
+      "nome": "Pimentão verde",
+      "preco": 0.51,
+      "usados": 23,
+      "descricao": "Pimentão verde - 5.66",
+      "pesoPorcao": 66
+    },
+    {
+      "_id": "62bc0b37ebdf021d97a34df5",
+      "imagem": "imgs/igrediente/Manjericão.jpg",
+      "nome": "Manjericão",
+      "preco": 0.72,
+      "usados": 47,
+      "descricao": "Manjericão - 6.6",
+      "pesoPorcao": 88
+    },
+    {
+      "_id": "62bc0b37ebdf021d97a34df6",
+      "imagem": "imgs/igrediente/Bacon.webp",
+      "nome": "Bacon",
+      "preco": 0.86,
+      "usados": 16,
+      "descricao": "Bacon - 5",
+      "pesoPorcao": 21
+    },
+    {
+      "_id": "62bc0b37ebdf021d97a34df7",
+      "imagem": "imgs/igrediente/Brócolis.jpg.crdownload",
+      "nome": "Brócolis",
+      "preco": 0.6,
+      "usados": 25,
+      "descricao": "Brócolis - 6",
+      "pesoPorcao": 78
+    },
+    {
+      "_id": "62bc0b37ebdf021d97a34df8",
+      "imagem": "imgs/igrediente/Pepperoni.webp",
+      "nome": "Pepperoni",
+      "preco": 0.64,
+      "usados": 23,
+      "descricao": "Pepperoni - 8.55",
+      "pesoPorcao": 46
+    }
+  ],
+  "pedidos": [
+    {
+      "_id": "62b8cb2dc235d6ecd053fdd7",
+      "email": "vycasnicolas@gmail.com",
+      "dataHora": 1655700870151,
+      "endereco": "Um endereço qualquer",
+      "carrinho": [
+        {
+          "nome": "Calabresa",
+          "descricao": "Deliciosa pizza com molho de tomate, mussarela, calabresa, azeitona e orégano.",
+          "imagem": "/imgs/pizza-calabresa.jpg",
+          "preco": 23.31,
+          "id": 0,
+          "tipo": "pizza",
+          "quantidade": 1
+        },
+        {
+          "nome": "Pizza de Mussarela",
+          "descricao": "Básica mas ainda gostosa, pizza com molho de tomate, mussarela e orégano.",
+          "imagem": "/imgs/pizza-mussarela.webp",
+          "preco": 23.81,
+          "id": 1,
+          "tipo": "pizza",
+          "quantidade": 1
+        },
+        {
+          "nome": "Tropical",
+          "descricao": "Deliciosa pizza com mussarela, camarão, bacon e abacaxi.",
+          "imagem": "/imgs/Tropical.jpg",
+          "preco": 32.27,
+          "id": 11,
+          "tipo": "pizza",
+          "quantidade": 1
+        },
+        {
+          "nome": "Fanta Laranja 2L",
+          "descricao": "Refrigerante sabor laranja de 2L.",
+          "imagem": "imgs/fanta.webp",
+          "preco": 8,
+          "id": 102,
+          "tipo": "produto",
+          "quantidade": 1
+        },
+        {
+          "nome": "Guaraná 2L",
+          "descricao": "Refrigerante sabor guaraná de 2L.",
+          "imagem": "imgs/guarana.webp",
+          "preco": 8,
+          "id": 103,
+          "tipo": "produto",
+          "quantidade": 1
+        },
+        {
+          "nome": "Suco de Laranja 1L",
+          "descricao": "Suco de Laranja Del Valle sabor Laranja 1L",
+          "imagem": "imgs/suco-de-lagranja-com-gominhos-del-valle-1L.png",
+          "preco": 4,
+          "id": 108,
+          "tipo": "produto",
+          "quantidade": 1
+        },
+        {
+          "nome": "Suco de Pêssego 1L",
+          "descricao": "Suco de Laranja Del Valle sabor pêssego 1L",
+          "imagem": "imgs/suco-pessego-del-valle-frut-1l..png",
+          "preco": 4,
+          "id": 110,
+          "tipo": "produto",
+          "quantidade": 1
+        }
+      ],
+      "status": "Concluído"
+    },
+    {
+      "_id": "62b8cb2dc235d6ecd053fdd8",
+      "email": "vycasnicolas@gmail.com",
+      "dataHora": 1655778896546,
+      "endereco": "Um endereço qualquer",
+      "carrinho": [
+        {
+          "nome": "Pizza de Mussarela",
+          "descricao": "Básica mas ainda gostosa, pizza com molho de tomate, mussarela e orégano.",
+          "imagem": "/imgs/pizza-mussarela.webp",
+          "preco": 26.06,
+          "id": 1,
+          "tipo": "pizza",
+          "quantidade": 1
+        },
+        {
+          "nome": "Calabresa",
+          "descricao": "Deliciosa pizza com molho de tomate, mussarela, calabresa, azeitona e orégano.",
+          "imagem": "/imgs/pizza-calabresa.jpg",
+          "preco": 21.9,
+          "id": 0,
+          "tipo": "pizza",
+          "quantidade": 1
+        },
+        {
+          "nome": "Brócolis com Alho",
+          "descricao": "Deliciosa pizza com molho de tomate, mussarela, brócolis, alho e orégano.",
+          "imagem": "/imgs/brocolis e alho.jpeg",
+          "preco": 30.72,
+          "id": 5,
+          "tipo": "pizza",
+          "quantidade": 1
+        },
+        {
+          "nome": "Bacon",
+          "descricao": "Deliciosa pizza com molho de tomate, mussarela, bacon e orégano.",
+          "imagem": "/imgs/bacon.jpg",
+          "preco": 38.01,
+          "id": 7,
+          "tipo": "pizza",
+          "quantidade": 1
+        },
+        {
+          "nome": "Coca Cola 2L",
+          "descricao": "Refrigerante sabor cola de 2L.",
+          "imagem": "imgs/coca-cola.webp",
+          "preco": 8,
+          "id": 100,
+          "tipo": "produto",
+          "quantidade": 1
+        },
+        {
+          "nome": "Fanta Laranja 2L",
+          "descricao": "Refrigerante sabor laranja de 2L.",
+          "imagem": "imgs/fanta.webp",
+          "preco": 8,
+          "id": 102,
+          "tipo": "produto",
+          "quantidade": 1
+        },
+        {
+          "id": "575db2c2-112d-48c1-b828-a1468d399a61",
+          "nome": "Pizza Pequena de Calabresa com Cebola e Queijo",
+          "preco": 18.51,
+          "quantidade": 1,
+          "tamanho": "Pequena",
+          "Metades": [
+            ["1", "2", "3", "4"],
+            ["1", "2", "14", "13", "18"],
+            ["1", "2", "12", "11"],
+            []
+          ],
+          "descricao": "Ingredientes: 1, 2, 3, 4, 1, 2, 14, 13, 18, 1, 2, 12, 11"
+        }
+      ],
+      "status": "Concluído"
+    },
+    {
+      "_id": "62b8cb2dc235d6ecd053fdd9",
+      "email": "matheuslmc94@gmail.com",
+      "dataHora": 1655866753306,
+      "endereco": "Um endereço qualquer",
+      "carrinho": [
+        {
+          "nome": "Coca Cola 2L",
+          "descricao": "Refrigerante sabor cola de 2L.",
+          "imagem": "imgs/coca-cola.webp",
+          "preco": 8,
+          "id": 100,
+          "tipo": "produto",
+          "quantidade": 1
+        },
+        {
+          "nome": "Fanta Laranja 2L",
+          "descricao": "Refrigerante sabor laranja de 2L.",
+          "imagem": "imgs/fanta.webp",
+          "preco": 8,
+          "id": 102,
+          "tipo": "produto",
+          "quantidade": 1
+        },
+        {
+          "nome": "Guaraná 2L",
+          "descricao": "Refrigerante sabor guaraná de 2L.",
+          "imagem": "imgs/guarana.webp",
+          "preco": 8,
+          "id": 103,
+          "tipo": "produto",
+          "quantidade": 1
+        },
+        {
+          "nome": "Heineken 600ml",
+          "descricao": "Cerveja HEINEKEN Garrafa 600ml",
+          "imagem": "imgs/heineken-original-bottle.png",
+          "preco": 8,
+          "id": 104,
+          "tipo": "produto",
+          "quantidade": 1
+        }
+      ],
+      "status": "Concluído"
+    },
+    {
+      "_id": "62b8cb2dc235d6ecd053fdda",
+      "email": "matheuslmc94@gmail.com",
+      "dataHora": 1655867010872,
+      "endereco": "Um endereço qualquer",
+      "carrinho": [
+        {
+          "nome": "Napolitana",
+          "descricao": "Deliciosa pizza com molho de tomate, mussarela e manjericão.",
+          "imagem": "/imgs/pizza-napolitana.jpg",
+          "preco": 26.07,
+          "id": 9,
+          "tipo": "pizza",
+          "quantidade": 1
+        },
+        {
+          "nome": "Calabresa",
+          "descricao": "Deliciosa pizza com molho de tomate, mussarela, calabresa, azeitona e orégano.",
+          "imagem": "/imgs/pizza-calabresa.jpg",
+          "preco": 23.71,
+          "id": 0,
+          "tipo": "pizza",
+          "quantidade": 1
+        },
+        {
+          "nome": "Pizza de Mussarela",
+          "descricao": "Básica mas ainda gostosa, pizza com molho de tomate, mussarela e orégano.",
+          "imagem": "/imgs/pizza-mussarela.webp",
+          "preco": 28.76,
+          "id": 1,
+          "tipo": "pizza",
+          "quantidade": 1
+        }
+      ],
+      "status": "Concluído"
+    },
+    {
+      "_id": "62b8cb2dc235d6ecd053fddb",
+      "email": "matheuslmc94@gmail.com",
+      "dataHora": 1655867157770,
+      "endereco": "Um endereço qualquer",
+      "carrinho": [
+        {
+          "nome": "Bacon",
+          "descricao": "Deliciosa pizza com molho de tomate, mussarela, bacon e orégano.",
+          "imagem": "/imgs/bacon.jpg",
+          "preco": 32.61,
+          "id": 7,
+          "tipo": "pizza",
+          "quantidade": 1
+        },
+        {
+          "nome": "Calabresa",
+          "descricao": "Deliciosa pizza com molho de tomate, mussarela, calabresa, azeitona e orégano.",
+          "imagem": "/imgs/pizza-calabresa.jpg",
+          "preco": 26.09,
+          "id": 0,
+          "tipo": "pizza",
+          "quantidade": 1
+        },
+        {
+          "nome": "Napolitana",
+          "descricao": "Deliciosa pizza com molho de tomate, mussarela e manjericão.",
+          "imagem": "/imgs/pizza-napolitana.jpg",
+          "preco": 26.65,
+          "id": 9,
+          "tipo": "pizza",
+          "quantidade": 1
+        }
+      ],
+      "status": "Concluído"
+    },
+    {
+      "_id": "62b8cb2dc235d6ecd053fddc",
+      "email": "matheuslmc94@gmail.com",
+      "dataHora": 1655867398248,
+      "endereco": "Um endereço qualquer",
+      "carrinho": [
+        {
+          "nome": "Calabresa",
+          "descricao": "Deliciosa pizza com molho de tomate, mussarela, calabresa, azeitona e orégano.",
+          "imagem": "/imgs/pizza-calabresa.jpg",
+          "preco": 24.31,
+          "id": 0,
+          "tipo": "pizza",
+          "quantidade": 1
+        },
+        {
+          "nome": "Pizza de Mussarela",
+          "descricao": "Básica mas ainda gostosa, pizza com molho de tomate, mussarela e orégano.",
+          "imagem": "/imgs/pizza-mussarela.webp",
+          "preco": 27.12,
+          "id": 1,
+          "tipo": "pizza",
+          "quantidade": 1
+        }
+      ],
+      "status": "Concluído"
+    },
+    {
+      "_id": "62b8cb2dc235d6ecd053fddd",
+      "email": "joao@joao.com",
+      "dataHora": 1655867529111,
+      "endereco": "Um endereço qualquer",
+      "carrinho": [
+        {
+          "nome": "Calabresa",
+          "descricao": "Deliciosa pizza com molho de tomate, mussarela, calabresa, azeitona e orégano.",
+          "imagem": "/imgs/pizza-calabresa.jpg",
+          "preco": 28.9,
+          "id": 0,
+          "tipo": "pizza",
+          "quantidade": 1
+        },
+        {
+          "nome": "Pizza de Mussarela",
+          "descricao": "Básica mas ainda gostosa, pizza com molho de tomate, mussarela e orégano.",
+          "imagem": "/imgs/pizza-mussarela.webp",
+          "preco": 26.08,
+          "id": 1,
+          "tipo": "pizza",
+          "quantidade": 1
+        },
+        {
+          "id": "8911c5e5-b614-40f8-8329-d101ce4348bc",
+          "nome": "Pizza Media de Azeitona preta com Alho e Camarão",
+          "preco": 26.21,
+          "quantidade": 1,
+          "tamanho": "Media",
+          "Metades": [
+            ["2", "3", "4", "5", "6", "7", "9"],
+            ["3", "4", "5", "6", "7", "10", "9"],
+            [],
+            []
+          ],
+          "descricao": "Ingredientes: 2, 3, 4, 5, 6, 7, 9, 3, 4, 5, 6, 7, 10, 9"
+        }
+      ],
+      "status": "Concluído"
+    },
+    {
+      "_id": "62b8cb2dc235d6ecd053fdde",
+      "email": "joao@joao.com",
+      "dataHora": 1655867548878,
+      "endereco": "Um endereço qualquer",
+      "carrinho": [
+        {
+          "id": "b7b1148b-12c8-4dd6-bd1b-de109d7af6d1",
+          "nome": "Pizza Pequena de Molho com Calabresa e Ovo",
+          "preco": 12.41,
+          "quantidade": 1,
+          "tamanho": "Pequena",
+          "Metades": [["3"], ["1", "7"], [], []],
+          "descricao": "Ingredientes: 3, 1, 7"
+        }
+      ],
+      "status": "Concluído"
+    },
+    {
+      "_id": "62b8cb2dc235d6ecd053fddf",
+      "email": "joao@joao.com",
+      "dataHora": 1655867556337,
+      "endereco": "Um endereço qualquer",
+      "carrinho": [
+        {
+          "nome": "Coca Cola 2L",
+          "descricao": "Refrigerante sabor cola de 2L.",
+          "imagem": "imgs/coca-cola.webp",
+          "preco": 8,
+          "id": 100,
+          "tipo": "produto",
+          "quantidade": 1
+        }
+      ],
+      "status": "Concluído"
+    },
+    {
+      "_id": "62b8cb2dc235d6ecd053fde0",
+      "email": "joao@joao.com",
+      "dataHora": 1655867585285,
+      "endereco": "Um endereço qualquer",
+      "carrinho": [
+        {
+          "nome": "Calabresa",
+          "descricao": "Deliciosa pizza com molho de tomate, mussarela, calabresa, azeitona e orégano.",
+          "imagem": "/imgs/pizza-calabresa.jpg",
+          "preco": 27.2,
+          "id": 0,
+          "tipo": "pizza",
+          "quantidade": 1
+        },
+        {
+          "nome": "4 Queijos",
+          "descricao": "Deliciosa pizza com molho de tomate, mussarela, gorgonzola, requeijão e parmesão.",
+          "imagem": "/imgs/4 Queijos.webp",
+          "preco": 38.2,
+          "id": 10,
+          "tipo": "pizza",
+          "quantidade": 1
+        },
+        {
+          "nome": "Frango com Requeijão",
+          "descricao": "A mais querida! Pizza com molho de tomate, frango desfiado, queijo, requeijão e orégano",
+          "imagem": "/imgs/Frango com Requeijão.jpeg",
+          "preco": 34.42,
+          "id": 3,
+          "tipo": "pizza",
+          "quantidade": 1
+        },
+        {
+          "nome": "Bacon",
+          "descricao": "Deliciosa pizza com molho de tomate, mussarela, bacon e orégano.",
+          "imagem": "/imgs/bacon.jpg",
+          "preco": 35.39,
+          "id": 7,
+          "tipo": "pizza",
+          "quantidade": 1
+        }
+      ],
+      "status": "Concluído"
+    },
+    {
+      "_id": "62b8cb2dc235d6ecd053fde1",
+      "email": "joao@joao.com",
+      "dataHora": 1655867596693,
+      "endereco": "Um endereço qualquer",
+      "carrinho": [
+        {
+          "nome": "Calabresa",
+          "descricao": "Deliciosa pizza com molho de tomate, mussarela, calabresa, azeitona e orégano.",
+          "imagem": "/imgs/pizza-calabresa.jpg",
+          "preco": 21.72,
+          "id": 0,
+          "tipo": "pizza",
+          "quantidade": 1
+        }
+      ],
+      "status": "Concluído"
+    },
+    {
+      "_id": "62b8cb2dc235d6ecd053fde2",
+      "email": "bernardocosta@gmail.com",
+      "dataHora": 1655885917184,
+      "endereco": "Um endereço qualquer",
+      "carrinho": [
+        {
+          "nome": "Margherita",
+          "descricao": "Deliciosa pizza com molho de tomate, mussarela de búfala, manjericão, queijo parmesão ralado, tomates e azeite.",
+          "imagem": "/imgs/Margherita.jpg",
+          "preco": 31.1,
+          "id": 6,
+          "tipo": "pizza",
+          "quantidade": 1
+        },
+        {
+          "nome": "Bacon",
+          "descricao": "Deliciosa pizza com molho de tomate, mussarela, bacon e orégano.",
+          "imagem": "/imgs/bacon.jpg",
+          "preco": 22.07,
+          "id": 7,
+          "tipo": "pizza",
+          "quantidade": 1
+        },
+        {
+          "id": "edcc0c8d-c19e-498a-a808-f855819079d6",
+          "nome": "Pizza Grande de Frango desfiado com Requeijão e Molho",
+          "preco": 23.580000000000005,
+          "quantidade": 1,
+          "tamanho": "Grande",
+          "Metades": [["1", "2", "6", "12", "13"], [], [], []],
+          "descricao": "Ingredientes: 1, 2, 6, 12, 13"
+        }
+      ],
+      "status": "Concluído"
+    },
+    {
+      "_id": "62b8cb2dc235d6ecd053fde3",
+      "email": "bernardocosta@gmail.com",
+      "dataHora": 1655885995452,
+      "endereco": "Um endereço qualquer",
+      "carrinho": [
+        {
+          "nome": "Coca Cola 2L",
+          "descricao": "Refrigerante sabor cola de 2L.",
+          "imagem": "imgs/coca-cola.webp",
+          "preco": 8,
+          "id": 100,
+          "tipo": "produto",
+          "quantidade": 1
+        },
+        {
+          "nome": "4 Queijos",
+          "descricao": "Deliciosa pizza com molho de tomate, mussarela, gorgonzola, requeijão e parmesão.",
+          "imagem": "/imgs/4 Queijos.webp",
+          "preco": 37.51,
+          "id": 10,
+          "tipo": "pizza",
+          "quantidade": 1
+        },
+        {
+          "nome": "Frango com Requeijão",
+          "descricao": "A mais querida! Pizza com molho de tomate, frango desfiado, queijo, requeijão e orégano",
+          "imagem": "/imgs/Frango com Requeijão.jpeg",
+          "preco": 40.5,
+          "id": 3,
+          "tipo": "pizza",
+          "quantidade": 1
+        }
+      ],
+      "status": "Concluído"
+    },
+    {
+      "_id": "62b8cb2dc235d6ecd053fde4",
+      "email": "bernardocosta@gmail.com",
+      "dataHora": 1655886894469,
+      "endereco": "Um endereço qualquer",
+      "carrinho": [
+        {
+          "nome": "Calabresa",
+          "descricao": "Deliciosa pizza com molho de tomate, mussarela, calabresa, azeitona e orégano.",
+          "imagem": "/imgs/pizza-calabresa.jpg",
+          "preco": 29.67,
+          "id": 0,
+          "tipo": "pizza",
+          "quantidade": 1
+        },
+        {
+          "nome": "Coca Cola 2L",
+          "descricao": "Refrigerante sabor cola de 2L.",
+          "imagem": "imgs/coca-cola.webp",
+          "preco": 8,
+          "id": 100,
+          "tipo": "produto",
+          "quantidade": 1
+        },
+        {
+          "nome": "Frango com Requeijão",
+          "descricao": "A mais querida! Pizza com molho de tomate, frango desfiado, queijo, requeijão e orégano",
+          "imagem": "/imgs/Frango com Requeijão.jpeg",
+          "preco": 40.09,
+          "id": 3,
+          "tipo": "pizza",
+          "quantidade": 1
+        }
+      ],
+      "status": "Concluído"
+    },
+    {
+      "_id": "62bbd8deacdae3b2a445a9fb",
+      "email": "bernardocosta@gmail.com",
+      "dataHora": 1656477918520,
+      "endereco": "Um endereço qualquer",
+      "carrinho": [
+        {
+          "nome": "Calabresa",
+          "descricao": "Deliciosa pizza com molho de tomate, mussarela, calabresa, azeitona e orégano.",
+          "imagem": "/imgs/pizza-calabresa.jpg",
+          "preco": 29.56,
+          "id": "62b8cb41c235d6ecd053fde8",
+          "tipo": "pizza",
+          "quantidade": 1
+        },
+        {
+          "nome": "Pizza de Mussarela",
+          "descricao": "Básica mas ainda gostosa, pizza com molho de tomate, mussarela e orégano.",
+          "imagem": "/imgs/pizza-mussarela.webp",
+          "preco": 29.88,
+          "id": "62b8cb41c235d6ecd053fde7",
+          "tipo": "pizza",
+          "quantidade": 1
+        }
+      ],
+      "status": "Concluído"
+    },
+    {
+      "_id": "62bbda9a2b657abad5cc9e79",
+      "email": "vycasnicolas@gmail.com",
+      "dataHora": 1656478362211,
+      "endereco": "Um endereço qualquer",
+      "carrinho": [
+        {
+          "nome": "Calabresa",
+          "descricao": "Deliciosa pizza com molho de tomate, mussarela, calabresa, azeitona e orégano.",
+          "imagem": "/imgs/pizza-calabresa.jpg",
+          "preco": 28.57,
+          "id": "62b8cb41c235d6ecd053fde8",
+          "tipo": "pizza",
+          "quantidade": 1
+        },
+        {
+          "nome": "Pizza de Mussarela",
+          "descricao": "Básica mas ainda gostosa, pizza com molho de tomate, mussarela e orégano.",
+          "imagem": "/imgs/pizza-mussarela.webp",
+          "preco": 24.65,
+          "id": "62b8cb41c235d6ecd053fde7",
+          "tipo": "pizza",
+          "quantidade": 1
+        },
+        {
+          "nome": "Margherita",
+          "descricao": "Deliciosa pizza com molho de tomate, mussarela de búfala, manjericão, queijo parmesão ralado, tomates e azeite.",
+          "imagem": "/imgs/Margherita.jpg",
+          "preco": 29.71,
+          "id": "62b8cb41c235d6ecd053fdf0",
+          "tipo": "pizza",
+          "quantidade": 1
+        },
+        {
+          "nome": "Brócolis com Alho",
+          "descricao": "Deliciosa pizza com molho de tomate, mussarela, brócolis, alho e orégano.",
+          "imagem": "/imgs/brocolis e alho.jpeg",
+          "preco": 30.94,
+          "id": "62b8cb41c235d6ecd053fdea",
+          "tipo": "pizza",
+          "quantidade": 1
+        },
+        {
+          "nome": "Coca Cola 2L",
+          "descricao": "Refrigerante sabor cola de 2L.",
+          "imagem": "imgs/coca-cola.webp",
+          "preco": 8,
+          "id": "62b8cb55c235d6ecd053fdf5",
+          "tipo": "produto",
+          "quantidade": 1
+        },
+        {
+          "nome": "Fanta Laranja 2L",
+          "descricao": "Refrigerante sabor laranja de 2L.",
+          "imagem": "imgs/fanta.webp",
+          "preco": 8,
+          "id": "62b8cb55c235d6ecd053fdf6",
+          "tipo": "produto",
+          "quantidade": 1
+        },
+        {
+          "nome": "Mousse de Maracujá 50g",
+          "descricao": "Sobremesa aerada que leva suco de maracujá fresco, creme de leite e leite condensado. Leve, com um sabor cítrico e doce a cada colherada, finaliza qualquer almoço ou jantar.",
+          "imagem": "imgs/mousse-de-maracuja.png",
+          "preco": 5,
+          "id": "62b8cb55c235d6ecd053fdfb",
+          "tipo": "produto",
+          "quantidade": 1
+        },
+        {
+          "nome": "Suco de Laranja 1L",
+          "descricao": "Suco de Laranja Del Valle sabor Laranja 1L",
+          "imagem": "imgs/suco-de-lagranja-com-gominhos-del-valle-1L.png",
+          "preco": 4,
+          "id": "62b8cb55c235d6ecd053fdfc",
+          "tipo": "produto",
+          "quantidade": 1
+        }
+      ],
+      "status": "Concluído"
+    },
+    {
+      "_id": "62bbdbd9acdae3b2a445a9fc",
+      "email": "bernardocosta@gmail.com",
+      "dataHora": 1656478681699,
+      "endereco": "Um endereço qualquer",
+      "carrinho": [
+        {
+          "nome": "Napolitana",
+          "descricao": "Deliciosa pizza com molho de tomate, mussarela e manjericão.",
+          "imagem": "/imgs/pizza-napolitana.jpg",
+          "preco": 30.09,
+          "id": "62b8cb41c235d6ecd053fdec",
+          "tipo": "pizza",
+          "quantidade": 7
+        }
+      ],
+      "status": "Concluído"
+    },
+    {
+      "_id": "62bbdf3bacdae3b2a445a9fd",
+      "email": "bernardocosta@gmail.com",
+      "dataHora": 1656479547221,
+      "endereco": "Um endereço qualquer",
+      "carrinho": [
+        {
+          "nome": "Calabresa",
+          "descricao": "Deliciosa pizza com molho de tomate, mussarela, calabresa, azeitona e orégano.",
+          "imagem": "/imgs/pizza-calabresa.jpg",
+          "preco": 29.43,
+          "id": "62b8cb41c235d6ecd053fde8",
+          "tipo": "pizza",
+          "quantidade": 8
+        },
+        {
+          "nome": "Napolitana",
+          "descricao": "Deliciosa pizza com molho de tomate, mussarela e manjericão.",
+          "imagem": "/imgs/pizza-napolitana.jpg",
+          "preco": 30.09,
+          "id": "62b8cb41c235d6ecd053fdec",
+          "tipo": "pizza",
+          "quantidade": 4
+        }
+      ],
+      "status": "Concluído"
+    },
+    {
+      "_id": "62bbf1a42f7d107240edfce4",
+      "email": "vycasnicolas@gmail.com",
+      "dataHora": 1656484260475,
+      "endereco": "Um endereço qualquer",
+      "carrinho": [
+        {
+          "id": "22ba7617-aea8-4fee-8a8b-8a614d3dc2f1",
+          "nome": "Pizza Pequena de Presunto com Molho e Calabresa",
+          "preco": 16.589999999999996,
+          "quantidade": 10,
+          "tamanho": "Pequena",
+          "Metades": [
+            [
+              "62b8cb06c235d6ecd053fdc3",
+              "62b8cb06c235d6ecd053fdc4",
+              "62b8cb06c235d6ecd053fdc5",
+              "62b8cb06c235d6ecd053fdc6"
+            ],
+            [
+              "62b8cb06c235d6ecd053fdc3",
+              "62b8cb06c235d6ecd053fdc4",
+              "62b8cb06c235d6ecd053fdc5",
+              "62b8cb06c235d6ecd053fdc6",
+              "62b8cb06c235d6ecd053fdc7"
+            ],
+            [],
+            []
+          ],
+          "descricao": "Ingredientes: 62b8cb06c235d6ecd053fdc3, 62b8cb06c235d6ecd053fdc4, 62b8cb06c235d6ecd053fdc5, 62b8cb06c235d6ecd053fdc6, 62b8cb06c235d6ecd053fdc3, 62b8cb06c235d6ecd053fdc4, 62b8cb06c235d6ecd053fdc5, 62b8cb06c235d6ecd053fdc6, 62b8cb06c235d6ecd053fdc7"
+        }
+      ],
+      "status": "Concluído"
+    },
+    {
+      "_id": "62bbfdf8f260cbead6d4883a",
+      "email": "matheuslmc94@gmail.com",
+      "dataHora": 1656487416306,
+      "endereco": "Um endereço qualquer",
+      "carrinho": [
+        {
+          "nome": "Calabresa",
+          "descricao": "Deliciosa pizza com molho de tomate, mussarela, calabresa, azeitona e orégano.",
+          "imagem": "/imgs/pizza-calabresa.jpg",
+          "preco": 20.87,
+          "id": "62b8cb41c235d6ecd053fde8",
+          "tipo": "pizza",
+          "quantidade": 1
+        }
+      ],
+      "status": "Concluído"
+    },
+    {
+      "_id": "62bc0036f260cbead6d4883b",
+      "email": "matheuslmc94@gmail.com",
+      "dataHora": 1656487990799,
+      "endereco": "Um endereço qualquer",
+      "carrinho": [
+        {
+          "nome": "Pizza de Mussarela",
+          "descricao": "Básica mas ainda gostosa, pizza com molho de tomate, mussarela e orégano.",
+          "imagem": "/imgs/pizza-mussarela.webp",
+          "preco": 29.68,
+          "id": "62b8cb41c235d6ecd053fde7",
+          "tipo": "pizza",
+          "quantidade": 1
+        },
+        {
+          "nome": "Calabresa",
+          "descricao": "Deliciosa pizza com molho de tomate, mussarela, calabresa, azeitona e orégano.",
+          "imagem": "/imgs/pizza-calabresa.jpg",
+          "preco": 28.14,
+          "id": "62b8cb41c235d6ecd053fde8",
+          "tipo": "pizza",
+          "quantidade": 1
+        },
+        {
+          "nome": "Bacon",
+          "descricao": "Deliciosa pizza com molho de tomate, mussarela, bacon e orégano.",
+          "imagem": "/imgs/bacon.jpg",
+          "preco": 23.81,
+          "id": "62b8cb41c235d6ecd053fde9",
+          "tipo": "pizza",
+          "quantidade": 1
+        },
+        {
+          "nome": "Napolitana",
+          "descricao": "Deliciosa pizza com molho de tomate, mussarela e manjericão.",
+          "imagem": "/imgs/pizza-napolitana.jpg",
+          "preco": 29.76,
+          "id": "62b8cb41c235d6ecd053fdec",
+          "tipo": "pizza",
+          "quantidade": 1
+        },
+        {
+          "nome": "Coca Cola 2L",
+          "descricao": "Refrigerante sabor cola de 2L.",
+          "imagem": "imgs/coca-cola.webp",
+          "preco": 8,
+          "id": "62b8cb55c235d6ecd053fdf5",
+          "tipo": "produto",
+          "quantidade": 1
+        }
+      ],
+      "status": "Concluído"
+    },
+    {
+      "_id": "62bc00a4f260cbead6d4883c",
+      "email": "matheuslmc94@gmail.com",
+      "dataHora": 1656488100413,
+      "endereco": "Um endereço qualquer",
+      "carrinho": [
+        {
+          "nome": "Brócolis",
+          "descricao": "Deliciosa pizza com molho de tomate, mussarela, brócolis e orégano.",
+          "imagem": "/imgs/brocolis.jpg",
+          "preco": 26.09,
+          "id": "62b8cb41c235d6ecd053fded",
+          "tipo": "pizza",
+          "quantidade": 1
+        },
+        {
+          "nome": "Pizza de Mussarela",
+          "descricao": "Básica mas ainda gostosa, pizza com molho de tomate, mussarela e orégano.",
+          "imagem": "/imgs/pizza-mussarela.webp",
+          "preco": 23.77,
+          "id": "62b8cb41c235d6ecd053fde7",
+          "tipo": "pizza",
+          "quantidade": 1
+        },
+        {
+          "nome": "Bacon",
+          "descricao": "Deliciosa pizza com molho de tomate, mussarela, bacon e orégano.",
+          "imagem": "/imgs/bacon.jpg",
+          "preco": 28.75,
+          "id": "62b8cb41c235d6ecd053fde9",
+          "tipo": "pizza",
+          "quantidade": 1
+        },
+        {
+          "nome": "Calabresa",
+          "descricao": "Deliciosa pizza com molho de tomate, mussarela, calabresa, azeitona e orégano.",
+          "imagem": "/imgs/pizza-calabresa.jpg",
+          "preco": 28.16,
+          "id": "62b8cb41c235d6ecd053fde8",
+          "tipo": "pizza",
+          "quantidade": 1
+        }
+      ],
+      "status": "Concluído"
+    },
+    {
+      "_id": "62bc00bbf260cbead6d4883d",
+      "email": "matheuslmc94@gmail.com",
+      "dataHora": 1656488123563,
+      "endereco": "Um endereço qualquer",
+      "carrinho": [
+        {
+          "id": "5988b8f7-65a7-454f-a81b-e7debfdc041f",
+          "nome": "Pizza Pequena de Presunto",
+          "preco": 11.559999999999999,
+          "quantidade": 1,
+          "tamanho": "Pequena",
+          "Metades": [
+            ["62b8cb06c235d6ecd053fdc6"],
+            ["62b8cb06c235d6ecd053fdc6"],
+            [],
+            []
+          ],
+          "descricao": "Ingredientes: 62b8cb06c235d6ecd053fdc6, 62b8cb06c235d6ecd053fdc6"
+        }
+      ],
+      "status": "Concluído"
+    },
+    {
+      "_id": "62bc0173ee4e8dc0abffd6e7",
+      "email": "matheuslmc94@gmail.com",
+      "dataHora": 1656488307617,
+      "endereco": "Um endereço qualquer",
+      "carrinho": [
+        {
+          "nome": "Napolitana",
+          "descricao": "Deliciosa pizza com molho de tomate, mussarela e manjericão.",
+          "imagem": "/imgs/pizza-napolitana.jpg",
+          "preco": 26.65,
+          "id": "62b8cb41c235d6ecd053fdec",
+          "tipo": "pizza",
+          "quantidade": 1
+        }
+      ],
+      "status": "Concluído"
+    },
+    {
+      "_id": "62bc04b66cd8cd9b47f9fce4",
+      "email": "matheuslmc94@gmail.com",
+      "dataHora": 1656489142471,
+      "endereco": "Um endereço qualquer",
+      "carrinho": [
+        {
+          "id": "b3506fd5-fcd0-4737-bd9c-926609a492ea",
+          "nome": "Pizza Pequena de Pimentão verde com Camarão e Molho",
+          "preco": 19.26,
+          "quantidade": 1,
+          "tamanho": "Pequena",
+          "Metades": [
+            [
+              "62b8cb06c235d6ecd053fdc4",
+              "62b8cb06c235d6ecd053fdc3",
+              "62b8cb06c235d6ecd053fdc5",
+              "62b8cb06c235d6ecd053fdc6",
+              "62b8cb06c235d6ecd053fdc7",
+              "62b8cb06c235d6ecd053fdc8",
+              "62b8cb06c235d6ecd053fdc9"
+            ],
+            [
+              "62b8cb06c235d6ecd053fdc7",
+              "62b8cb06c235d6ecd053fdc8",
+              "62b8cb06c235d6ecd053fdd1",
+              "62b8cb06c235d6ecd053fdd2",
+              "62b8cb06c235d6ecd053fdd0"
+            ],
+            [],
+            []
+          ],
+          "descricao": "Ingredientes: 62b8cb06c235d6ecd053fdc4, 62b8cb06c235d6ecd053fdc3, 62b8cb06c235d6ecd053fdc5, 62b8cb06c235d6ecd053fdc6, 62b8cb06c235d6ecd053fdc7, 62b8cb06c235d6ecd053fdc8, 62b8cb06c235d6ecd053fdc9, 62b8cb06c235d6ecd053fdc7, 62b8cb06c235d6ecd053fdc8, 62b8cb06c235d6ecd053fdd1, 62b8cb06c235d6ecd053fdd2, 62b8cb06c235d6ecd053fdd0"
+        }
+      ],
+      "status": "Concluído"
+    },
+    {
+      "_id": "62bc050f6cd8cd9b47f9fce5",
+      "email": "matheuslmc94@gmail.com",
+      "dataHora": 1656489231300,
+      "endereco": "Um endereço qualquer",
+      "carrinho": [
+        {
+          "nome": "Calabresa",
+          "descricao": "Deliciosa pizza com molho de tomate, mussarela, calabresa, azeitona e orégano.",
+          "imagem": "/imgs/pizza-calabresa.jpg",
+          "preco": 22.91,
+          "id": "62b8cb41c235d6ecd053fde8",
+          "tipo": "pizza",
+          "quantidade": 1
+        },
+        {
+          "nome": "Bacon",
+          "descricao": "Deliciosa pizza com molho de tomate, mussarela, bacon e orégano.",
+          "imagem": "/imgs/bacon.jpg",
+          "preco": 31.32,
+          "id": "62b8cb41c235d6ecd053fde9",
+          "tipo": "pizza",
+          "quantidade": 1
+        }
+      ],
+      "status": "Concluído"
+    },
+    {
+      "_id": "62bc053a6cd8cd9b47f9fce6",
+      "email": "matheuslmc94@gmail.com",
+      "dataHora": 1656489274892,
+      "endereco": "Um endereço qualquer",
+      "carrinho": [
+        {
+          "nome": "Brócolis com Alho",
+          "descricao": "Deliciosa pizza com molho de tomate, mussarela, brócolis, alho e orégano.",
+          "imagem": "/imgs/brocolis e alho.jpeg",
+          "preco": 23.2,
+          "id": "62b8cb41c235d6ecd053fdea",
+          "tipo": "pizza",
+          "quantidade": 1
+        }
+      ],
+      "status": "Concluído"
+    },
+    {
+      "_id": "62bc0f1d02d3e6c14a84c76e",
+      "email": "bernardocosta@gmail.com",
+      "dataHora": 1656491805084,
+      "endereco": "Um endereço qualquer",
+      "carrinho": [
+        {
+          "nome": "Calabresa",
+          "descricao": "Deliciosa pizza com molho de tomate, mussarela, calabresa, azeitona e orégano.",
+          "imagem": "/imgs/pizza-calabresa.jpg",
+          "preco": 20,
+          "id": "62bc0b7eebdf021d97a34dfc",
+          "tipo": "pizza",
+          "quantidade": 4
+        },
+        {
+          "nome": "Bacon",
+          "descricao": "Deliciosa pizza com molho de tomate, mussarela, bacon e orégano.",
+          "imagem": "/imgs/bacon.jpg",
+          "preco": 20,
+          "id": "62bc0b7eebdf021d97a34dfd",
+          "tipo": "pizza",
+          "quantidade": 1
+        }
+      ],
+      "status": "Concluído"
+    },
+    {
+      "_id": "62bc1b4a02d3e6c14a84c76f",
+      "email": "bernardocosta@gmail.com",
+      "dataHora": 1656494922385,
+      "endereco": "Um endereço qualquer",
+      "carrinho": [
+        {
+          "nome": "Calabresa",
+          "descricao": "Deliciosa pizza com molho de tomate, mussarela, calabresa, azeitona e orégano.",
+          "imagem": "/imgs/pizza-calabresa.jpg",
+          "preco": 20,
+          "id": "62bc0b7eebdf021d97a34dfc",
+          "tipo": "pizza",
+          "quantidade": 1
+        },
+        {
+          "nome": "Bacon",
+          "descricao": "Deliciosa pizza com molho de tomate, mussarela, bacon e orégano.",
+          "imagem": "/imgs/bacon.jpg",
+          "preco": 20,
+          "id": "62bc0b7eebdf021d97a34dfd",
+          "tipo": "pizza",
+          "quantidade": 1
+        },
+        {
+          "nome": "Fanta Laranja 2L",
+          "descricao": "Refrigerante sabor laranja de 2L.",
+          "imagem": "imgs/fanta.webp",
+          "preco": 8,
+          "id": "62b8cb55c235d6ecd053fdf6",
+          "tipo": "produto",
+          "quantidade": 3
+        }
+      ],
+      "status": "Concluído"
+    },
+    {
+      "_id": "62bc1f8b55706982b3a53696",
+      "email": "matheuslmc94@gmail.com",
+      "dataHora": 1656496011274,
+      "endereco": "Um endereço qualquer",
+      "carrinho": [
+        {
+          "nome": "Calabresa",
+          "descricao": "Deliciosa pizza com molho de tomate, mussarela, calabresa, azeitona e orégano.",
+          "imagem": "/imgs/pizza-calabresa.jpg",
+          "preco": 20,
+          "id": "62bc0b7eebdf021d97a34dfc",
+          "tipo": "pizza",
+          "quantidade": 1
+        },
+        {
+          "nome": "Portuguesa",
+          "descricao": "Uma pizza com calabresa, tomates, mussarela, cebolas e azeitonas pretas.",
+          "imagem": "/imgs/Portuguesa.jpg",
+          "preco": 20,
+          "id": "62bc0b7eebdf021d97a34e05",
+          "tipo": "pizza",
+          "quantidade": 1
+        },
+        {
+          "nome": "Bacon",
+          "descricao": "Deliciosa pizza com molho de tomate, mussarela, bacon e orégano.",
+          "imagem": "/imgs/bacon.jpg",
+          "preco": 20,
+          "id": "62bc0b7eebdf021d97a34dfd",
+          "tipo": "pizza",
+          "quantidade": 1
+        }
+      ],
+      "status": "Concluído"
+    },
+    {
+      "_id": "62bc225d52abe88a3962f224",
+      "email": "matheuslmc94@gmail.com",
+      "dataHora": 1656496733949,
+      "endereco": "Um endereço qualquer",
+      "carrinho": [
+        {
+          "nome": "Calabresa",
+          "descricao": "Deliciosa pizza com molho de tomate, mussarela, calabresa, azeitona e orégano.",
+          "imagem": "/imgs/pizza-calabresa.jpg",
+          "preco": 20,
+          "id": "62bc0b7eebdf021d97a34dfc",
+          "tipo": "pizza",
+          "quantidade": 1
+        },
+        {
+          "nome": "Bacon",
+          "descricao": "Deliciosa pizza com molho de tomate, mussarela, bacon e orégano.",
+          "imagem": "/imgs/bacon.jpg",
+          "preco": 20,
+          "id": "62bc0b7eebdf021d97a34dfd",
+          "tipo": "pizza",
+          "quantidade": 1
+        },
+        {
+          "nome": "Brócolis com Alho",
+          "descricao": "Deliciosa pizza com molho de tomate, mussarela, brócolis, alho e orégano.",
+          "imagem": "/imgs/brocolis e alho.jpeg",
+          "preco": 20,
+          "id": "62bc0b7eebdf021d97a34dfe",
+          "tipo": "pizza",
+          "quantidade": 1
+        }
+      ],
+      "status": "Concluído"
+    },
+    {
+      "_id": "62bc226b52abe88a3962f225",
+      "email": "matheuslmc94@gmail.com",
+      "dataHora": 1656496747227,
+      "endereco": "Um endereço qualquer",
+      "carrinho": [
+        {
+          "nome": "Bacon",
+          "descricao": "Deliciosa pizza com molho de tomate, mussarela, bacon e orégano.",
+          "imagem": "/imgs/bacon.jpg",
+          "preco": 20,
+          "id": "62bc0b7eebdf021d97a34dfd",
+          "tipo": "pizza",
+          "quantidade": 1
+        },
+        {
+          "nome": "Brócolis com Alho",
+          "descricao": "Deliciosa pizza com molho de tomate, mussarela, brócolis, alho e orégano.",
+          "imagem": "/imgs/brocolis e alho.jpeg",
+          "preco": 20,
+          "id": "62bc0b7eebdf021d97a34dfe",
+          "tipo": "pizza",
+          "quantidade": 1
+        }
+      ],
+      "status": "Concluído"
+    },
+    {
+      "_id": "62bcda3876b0580c7e7da244",
+      "email": "bernardocosta@gmail.com",
+      "dataHora": 1656543800891,
+      "endereco": "Um endereço qualquer",
+      "carrinho": [
+        {
+          "nome": "Calabresa",
+          "descricao": "Deliciosa pizza com molho de tomate, mussarela, calabresa, azeitona e orégano.",
+          "imagem": "/imgs/pizza-calabresa.jpg",
+          "preco": 20,
+          "id": "62bc0b7eebdf021d97a34dfc",
+          "tipo": "pizza",
+          "quantidade": 2
+        },
+        {
+          "nome": "Coca Cola 2L",
+          "descricao": "Refrigerante sabor cola de 2L.",
+          "imagem": "imgs/coca-cola.webp",
+          "preco": 8,
+          "id": "62b8cb55c235d6ecd053fdf5",
+          "tipo": "produto",
+          "quantidade": 2
+        },
+        {
+          "nome": "Bacon",
+          "descricao": "Deliciosa pizza com molho de tomate, mussarela, bacon e orégano.",
+          "imagem": "/imgs/bacon.jpg",
+          "preco": 20,
+          "id": "62bc0b7eebdf021d97a34dfd",
+          "tipo": "pizza",
+          "quantidade": 1
+        },
+        {
+          "id": "c484ca72-9464-4b73-a42e-7916ccc0e37a",
+          "nome": "Pizza Grande de Alho com Queijo",
+          "preco": 22.040000000000003,
+          "quantidade": 1,
+          "tamanho": "Grande",
+          "Metades": [
+            [
+              "62bc0b37ebdf021d97a34de7",
+              "62bc0b37ebdf021d97a34de8",
+              "62bc0b37ebdf021d97a34dec"
+            ],
+            [],
+            [],
+            []
+          ],
+          "descricao": "Ingredientes: 62bc0b37ebdf021d97a34de7, 62bc0b37ebdf021d97a34de8, 62bc0b37ebdf021d97a34dec"
+        }
+      ],
+      "status": "Concluído"
+    }
+  ],
+  "pizzas": [
+    {
+      "_id": "62bc0b7eebdf021d97a34dfb",
+      "nome": "Pizza de Mussarela",
+      "descricao": "Básica mas ainda gostosa, pizza com molho de tomate, mussarela e orégano.",
+      "imagem": "/imgs/pizza-mussarela.webp",
+      "ingredientes": [
+        "62b8cb06c235d6ecd053fdc3",
+        "62b8cb06c235d6ecd053fdc4",
+        "62b8cb06c235d6ecd053fdcb"
+      ],
+      "quant_comprada": 142,
+      "preco": 20.48
+    },
+    {
+      "_id": "62bc0b7eebdf021d97a34dfc",
+      "nome": "Calabresa",
+      "descricao": "Deliciosa pizza com molho de tomate, mussarela, calabresa, azeitona e orégano.",
+      "imagem": "/imgs/pizza-calabresa.jpg",
+      "ingredientes": [
+        "62b8cb06c235d6ecd053fdc3",
+        "62b8cb06c235d6ecd053fdc4",
+        "62b8cb06c235d6ecd053fdcb",
+        "62b8cb06c235d6ecd053fdcc",
+        "62b8cb06c235d6ecd053fdc5"
+      ],
+      "quant_comprada": 175,
+      "preco": 21.22
+    },
+    {
+      "_id": "62bc0b7eebdf021d97a34dfd",
+      "nome": "Bacon",
+      "descricao": "Deliciosa pizza com molho de tomate, mussarela, bacon e orégano.",
+      "imagem": "/imgs/bacon.jpg",
+      "ingredientes": [
+        "62b8cb06c235d6ecd053fdc3",
+        "62b8cb06c235d6ecd053fdc4",
+        "62b8cb06c235d6ecd053fdcc",
+        "62b8cb06c235d6ecd053fdd2"
+      ],
+      "quant_comprada": 76,
+      "preco": 34.45
+    },
+    {
+      "_id": "62bc0b7eebdf021d97a34dfe",
+      "nome": "Brócolis com Alho",
+      "descricao": "Deliciosa pizza com molho de tomate, mussarela, brócolis, alho e orégano.",
+      "imagem": "/imgs/brocolis e alho.jpeg",
+      "ingredientes": [
+        "62b8cb06c235d6ecd053fdc3",
+        "62b8cb06c235d6ecd053fdc4",
+        "62b8cb06c235d6ecd053fdc8",
+        "62b8cb06c235d6ecd053fdd3"
+      ],
+      "quant_comprada": 75,
+      "preco": 37.9
+    },
+    {
+      "_id": "62bc0b7eebdf021d97a34dff",
+      "nome": "Frango com Requeijão",
+      "descricao": "A mais querida! Pizza com molho de tomate, frango desfiado, queijo, requeijão e orégano",
+      "imagem": "/imgs/Frango com Requeijão.jpeg",
+      "ingredientes": [
+        "62b8cb06c235d6ecd053fdc3",
+        "62b8cb06c235d6ecd053fdc4",
+        "62b8cb06c235d6ecd053fdcc",
+        "62b8cb06c235d6ecd053fdce",
+        "62b8cb06c235d6ecd053fdcf"
+      ],
+      "quant_comprada": 115,
+      "preco": 38.51
+    },
+    {
+      "_id": "62bc0b7eebdf021d97a34e00",
+      "nome": "Napolitana",
+      "descricao": "Deliciosa pizza com molho de tomate, mussarela e manjericão.",
+      "imagem": "/imgs/pizza-napolitana.jpg",
+      "ingredientes": [
+        "62b8cb06c235d6ecd053fdc3",
+        "62b8cb06c235d6ecd053fdc4",
+        "62b8cb06c235d6ecd053fdcc",
+        "62b8cb06c235d6ecd053fdd1"
+      ],
+      "quant_comprada": 85,
+      "preco": 38.91
+    },
+    {
+      "_id": "62bc0b7eebdf021d97a34e01",
+      "nome": "Brócolis",
+      "descricao": "Deliciosa pizza com molho de tomate, mussarela, brócolis e orégano.",
+      "imagem": "/imgs/brocolis.jpg",
+      "ingredientes": ["62b8cb06c235d6ecd053fdc3", "62b8cb06c235d6ecd053fdc4"],
+      "quant_comprada": 45,
+      "preco": 40.7
+    },
+    {
+      "_id": "62bc0b7eebdf021d97a34e02",
+      "nome": "Tropical",
+      "descricao": "Deliciosa pizza com mussarela, camarão, bacon e abacaxi.",
+      "imagem": "/imgs/Tropical.jpg",
+      "ingredientes": [
+        "62b8cb06c235d6ecd053fdc3",
+        "62b8cb06c235d6ecd053fdc4",
+        "62b8cb06c235d6ecd053fdc7",
+        "62b8cb06c235d6ecd053fdd2"
+      ],
+      "quant_comprada": 14,
+      "preco": 45.51
+    },
+    {
+      "_id": "62bc0b7eebdf021d97a34e03",
+      "nome": "Da Casa",
+      "descricao": "Sabor original da pizzaria, contendo molho de tomate, mussarela, peperoni, cebola e pimentão verde.",
+      "imagem": "/imgs/pizza-da-casa.webp",
+      "ingredientes": [
+        "62b8cb06c235d6ecd053fdc3",
+        "62b8cb06c235d6ecd053fdc4",
+        "62b8cb06c235d6ecd053fdca",
+        "62b8cb06c235d6ecd053fdcd",
+        "62b8cb06c235d6ecd053fdd4"
+      ],
+      "quant_comprada": 120,
+      "preco": 47.84
+    },
+    {
+      "_id": "62bc0b7eebdf021d97a34e04",
+      "nome": "Margherita",
+      "descricao": "Deliciosa pizza com molho de tomate, mussarela de búfala, manjericão, queijo parmesão ralado, tomates e azeite.",
+      "imagem": "/imgs/Margherita.jpg",
+      "ingredientes": [
+        "62b8cb06c235d6ecd053fdc3",
+        "62b8cb06c235d6ecd053fdc4",
+        "62b8cb06c235d6ecd053fdcc",
+        "62b8cb06c235d6ecd053fdd1"
+      ],
+      "quant_comprada": 74,
+      "preco": 48.1
+    },
+    {
+      "_id": "62bc0b7eebdf021d97a34e05",
+      "nome": "Portuguesa",
+      "descricao": "Uma pizza com calabresa, tomates, mussarela, cebolas e azeitonas pretas.",
+      "imagem": "/imgs/Portuguesa.jpg",
+      "ingredientes": [
+        "62b8cb06c235d6ecd053fdc3",
+        "62b8cb06c235d6ecd053fdc4",
+        "62b8cb06c235d6ecd053fdc5",
+        "62b8cb06c235d6ecd053fdcb",
+        "62b8cb06c235d6ecd053fdcd"
+      ],
+      "quant_comprada": 23,
+      "preco": 49.11
+    },
+    {
+      "_id": "62bc0b7eebdf021d97a34e06",
+      "nome": "4 Queijos",
+      "descricao": "Deliciosa pizza com molho de tomate, mussarela, gorgonzola, requeijão e parmesão.",
+      "imagem": "/imgs/4 Queijos.webp",
+      "ingredientes": [
+        "62b8cb06c235d6ecd053fdc3",
+        "62b8cb06c235d6ecd053fdc4",
+        "62b8cb06c235d6ecd053fdcf"
+      ],
+      "quant_comprada": 56,
+      "preco": 57.03
+    }
+  ],
+  "produtos": [
+    {
+      "_id": "62b8cb55c235d6ecd053fdf5",
+      "nome": "Coca Cola 2L",
+      "descricao": "Refrigerante sabor cola de 2L.",
+      "imagem": "imgs/coca-cola.webp",
+      "preco": 8,
+      "quant_comprada": 625
+    },
+    {
+      "_id": "62b8cb55c235d6ecd053fdf6",
+      "nome": "Fanta Laranja 2L",
+      "descricao": "Refrigerante sabor laranja de 2L.",
+      "imagem": "imgs/fanta.webp",
+      "preco": 8,
+      "quant_comprada": 382
+    },
+    {
+      "_id": "62b8cb55c235d6ecd053fdf7",
+      "nome": "Guaraná 2L",
+      "descricao": "Refrigerante sabor guaraná de 2L.",
+      "imagem": "imgs/guarana.webp",
+      "preco": 8,
+      "quant_comprada": 425
+    },
+    {
+      "_id": "62b8cb55c235d6ecd053fdf8",
+      "nome": "Heineken 600ml",
+      "descricao": "Cerveja HEINEKEN Garrafa 600ml",
+      "imagem": "imgs/heineken-original-bottle.png",
+      "preco": 8,
+      "quant_comprada": 348
+    },
+    {
+      "_id": "62b8cb55c235d6ecd053fdf9",
+      "nome": "Mousse de Chocolate 50g",
+      "descricao": "Sobremesa leve com base de chocolate em barra meio amargo e creme de leite. Aerada, com leve toque de chocolate branco para dar crocância.",
+      "imagem": "imgs/mousse-de-chocolate.png",
+      "preco": 5,
+      "quant_comprada": 123
+    },
+    {
+      "_id": "62b8cb55c235d6ecd053fdfa",
+      "nome": "Mousse de Limão 50g",
+      "descricao": "Mousse de Limão",
+      "imagem": "imgs/mousse-de-limao.png",
+      "preco": 5,
+      "quant_comprada": 189
+    },
+    {
+      "_id": "62b8cb55c235d6ecd053fdfb",
+      "nome": "Mousse de Maracujá 50g",
+      "descricao": "Sobremesa aerada que leva suco de maracujá fresco, creme de leite e leite condensado. Leve, com um sabor cítrico e doce a cada colherada, finaliza qualquer almoço ou jantar.",
+      "imagem": "imgs/mousse-de-maracuja.png",
+      "preco": 5,
+      "quant_comprada": 168
+    },
+    {
+      "_id": "62b8cb55c235d6ecd053fdfc",
+      "nome": "Suco de Laranja 1L",
+      "descricao": "Suco de Laranja Del Valle sabor Laranja 1L",
+      "imagem": "imgs/suco-de-lagranja-com-gominhos-del-valle-1L.png",
+      "preco": 4,
+      "quant_comprada": 125
+    },
+    {
+      "_id": "62b8cb55c235d6ecd053fdfd",
+      "nome": "Suco de Uva 1L",
+      "descricao": "Suco de Laranja Del Valle sabor uva 1L",
+      "imagem": "imgs/suco-de-uva-del-valle-frut-1l.jpg",
+      "preco": 4,
+      "quant_comprada": 185
+    },
+    {
+      "_id": "62b8cb55c235d6ecd053fdfe",
+      "nome": "Suco de Pêssego 1L",
+      "descricao": "Suco de Laranja Del Valle sabor pêssego 1L",
+      "imagem": "imgs/suco-pessego-del-valle-frut-1l..png",
+      "preco": 4,
+      "quant_comprada": 158
+    }
+  ],
+  "usuarios": [
+    {
+      "_id": "62b8cb62c235d6ecd053fe01",
+      "nome": "Nicolas Vycas Nery",
+      "email": "vycasnicolas@gmail.com",
+      "senha": "$2b$10$H8KWPGBF5x60Sg80lNjXN.4h5S4/s6gx1NKcx8RkiH3WMY9fAD3U2",
+      "type": "user"
+    },
+    {
+      "_id": "62b8cb62c235d6ecd053fe02",
+      "nome": "Bernardo Costa",
+      "email": "bernardocosta@gmail.com",
+      "senha": "$2b$10$vjFX73IV8oMRheYZXA5lMO2/m8KMdSgUf5dzlxfH.E6iMt7toyyhq",
+      "type": "user"
+    },
+    {
+      "_id": "62b8cb62c235d6ecd053fe03",
+      "nome": "administrador",
+      "email": "administrador@gmail.com",
+      "senha": "$2b$10$Lfa3yysjiSlw4Rx7V5yPj.rjF1NIKYTAKs05.QWcul9/V2wNPieJu",
+      "type": "admin"
+    },
+    {
+      "_id": "62b8cb62c235d6ecd053fe04",
+      "nome": "funcionario",
+      "email": "funcionario@gmail.com",
+      "senha": "$2b$10$A7WAMKMPcK3d65HRjZVER.IXOTYVcSzPL2B7bKWezjoq1gVnqhJ/W",
+      "type": "funcionario"
+    },
+    {
+      "_id": "62b8cb62c235d6ecd053fe05",
+      "nome": "Matheus",
+      "email": "mathues.coelho@gmail.com",
+      "senha": "$2b$10$ZOQpXXsxuj1IdKKx16JSo.NAs6GpaFBHAO.XDLtRjXqLhASF2jKdq",
+      "type": "user"
+    },
+    {
+      "_id": "62b8cb62c235d6ecd053fe06",
+      "nome": "Matheus Coelho",
+      "email": "matheuslmc94@gmail.com",
+      "senha": "$2b$10$DWfbY2lIgi3d8KMJVbEHSOoR0URvLEdN7qa97I9tOQM/ekTR7TTbO",
+      "type": "user"
+    },
+    {
+      "_id": "62b8cb62c235d6ecd053fe07",
+      "nome": "Matheus Coelho",
+      "email": "limaozin15@gmail.com",
+      "senha": "$2b$10$BV3n6UnJf8uLsdg6HMM2.OQchLXV6lcL1mUbNl7n9wyPZwZje6xzq",
+      "type": "user"
+    },
+    {
+      "_id": "62b8cb62c235d6ecd053fe08",
+      "nome": "Joao",
+      "email": "joao@joao.com",
+      "senha": "$2b$10$w.wSlmTgUKgvGgBvgfUBA.sL7tymgNgXciMJWSxIt9i4L12NtvX2O",
+      "type": "user"
+    }
+  ]
+}
