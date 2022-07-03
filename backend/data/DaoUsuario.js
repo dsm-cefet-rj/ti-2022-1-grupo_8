@@ -7,7 +7,7 @@ const { UsuarioValidTypes } = require("../negocio");
 const validaçãoUsuário = (usuario) => {
     // ProdutoValidTypes keys
     const keys = Object.keys(UsuarioValidTypes);
-    
+
     if (usuario.id) delete usuario.id;
 };
 
