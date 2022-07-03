@@ -19,7 +19,7 @@ router.post("/auth", async (req, res) => {
         });
         return;
     }
-
+    console.log(email, senha);
     const usuarios = await getAllUsuarios();
 
     const usuarioExistente = usuarios.find((usuario) => usuario.email == email);
@@ -73,7 +73,7 @@ router.post("/auth", async (req, res) => {
 });
 
 // Rota para cadastrar um novo usuário
-router.post("/criar", (req, res) => {
+router.post("/criar", async (req, res) => {
     const { nome, email, senha } = req.body;
 
     if (!nome || !email || !senha) {
@@ -92,7 +92,7 @@ router.post("/criar", (req, res) => {
     };
 
     // usuário ja existe?
-    const usuarios = getAllUsuarios();
+    const usuarios = await getAllUsuarios();
 
     const usuarioExistente = usuarios.find((usuario) => usuario.email == email);
 
