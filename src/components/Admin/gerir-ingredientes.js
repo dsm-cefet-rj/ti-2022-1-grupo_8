@@ -10,7 +10,7 @@ import {
 } from "../../features/gerir-ingredientesSlice";
 import AdminNav from "./admin-nav";
 import styles from "./gerir-ingredientes.module.scss";
-import {getSessionFromLocalStorage} from "../../features/sessionSlice";
+import { getSessionFromLocalStorage } from "../../features/sessionSlice";
 import axios from "axios";
 /* 
 Componente: Ingrediente
@@ -134,26 +134,28 @@ const GerirIngredientes = () => {
         };
 
         if (ingrediente.id === 0) delete ingrediente.id;
-        
+
         const token = getSessionFromLocalStorage();
         const request = {
             method: "POST",
-            url:"http://localhost:3001/admin/editar-ingrediente",
+            url: "http://localhost:3001/admin/editar-ingrediente",
             headers: {
                 "Content-Type": "application/json",
                 "x-access-token": `Bearer ${token}`,
             },
             data: ingrediente,
-        }
+        };
 
-        axios(request).then((response) => {
-            if (response.status === 200) {
-                dispatch(fetchIngredientes());
-                console.log("Ingrediente editado com sucesso!");
-            }else console.log("Erro ao editar ingrediente!");
-        }).catch((error) => {
-            console.log(error);
-        });
+        axios(request)
+            .then((response) => {
+                if (response.status === 200) {
+                    dispatch(fetchIngredientes());
+                    console.log("Ingrediente editado com sucesso!");
+                } else console.log("Erro ao editar ingrediente!");
+            })
+            .catch((error) => {
+                console.log(error);
+            });
     };
 
     // Renderização do componente

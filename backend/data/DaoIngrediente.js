@@ -20,11 +20,17 @@ const validaçãoPedido = (ingrediente, ignoreId = false) => {
     const keys = Object.keys(IngredienteValidTypes);
     keys.forEach((key) => {
         if (!ingrediente[key]) {
-            throw new Error(`${key} é um campo obrigatório objeto ${JSON.stringify(ingrediente)}`);
+            throw new Error(
+                `${key} é um campo obrigatório objeto ${JSON.stringify(
+                    ingrediente
+                )}`
+            );
         }
         if (typeof ingrediente[key] !== ProdutoValidTypes[key]) {
             if (!(ignoreId && key === "id"))
-                throw new Error(`${key} deve ser do tipo ${ProdutoValidTypes[key]} objeto ${ingrediente}`);
+                throw new Error(
+                    `${key} deve ser do tipo ${ProdutoValidTypes[key]} objeto ${ingrediente}`
+                );
         }
     });
     if (ingrediente.id) delete ingrediente.id;
@@ -70,7 +76,7 @@ const editIngrediente = async (ingrediente) => {
     const connection = await getConnection(); // conectar ao banco de dados
     // Valida o ingrediente
     validaçãoPedido(ingrediente);
-    if(ingrediente.imagem == "") delete ingrediente.imagem;
+    if (ingrediente.imagem == "") delete ingrediente.imagem;
     // edita o ingrediente com o id passado da coleção ingredientes
     await connection
         .collection("ingredientes")

@@ -104,28 +104,22 @@ router.post("/promover-funcionario/:email", async (req, res) => {
 });
 
 // Rota para adicionar ou editar um ingrediente
-router.post("/editar-ingrediente", // Caminho da rota
+router.post(
+    "/editar-ingrediente", // Caminho da rota
     ingredienteImgDest.single("imagem"), // Middleware para upload de imagens
     async (req, res) => {
-        const {
-            _id,
-            imagem,
-            nome,
-            preco,
-            descricao,
-            pesoPorcao
-        } = req.body;
+        const { _id, imagem, nome, preco, descricao, pesoPorcao } = req.body;
         const ingrediente = {
             _id,
             imagem,
             nome,
             preco: parseFloat(preco),
-            usados:0,
+            usados: 0,
             descricao,
-            pesoPorcao: parseFloat(pesoPorcao)
-        }
+            pesoPorcao: parseFloat(pesoPorcao),
+        };
         console.table(ingrediente);
-        try{
+        try {
             await editIngrediente(ingrediente);
         } catch (err) {
             res.status(404).json({ error: err.message }).end();
@@ -136,7 +130,8 @@ router.post("/editar-ingrediente", // Caminho da rota
 );
 
 // Rota para adicionar ou editar uma pizza
-router.post("/editar-pizza", // Caminho da rota
+router.post(
+    "/editar-pizza", // Caminho da rota
     pizzaImgDest.single("imagem"), // Middleware para upload de imagens
     async (req, res) => {
         const {
@@ -184,7 +179,8 @@ router.post("/editar-pizza", // Caminho da rota
 );
 
 // Rota para adicionar ou editar um produto
-router.post("/editar-produto", // Caminho da rota
+router.post(
+    "/editar-produto", // Caminho da rota
     produtoImgDest.single("imagem"), // Middleware para upload de imagens
     async (req, res) => {
         let { nome, descricao, imagem, preco, id, quant_comprada } = req.body;
