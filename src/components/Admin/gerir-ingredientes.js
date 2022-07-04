@@ -10,6 +10,8 @@ import {
 } from "../../features/gerir-ingredientesSlice";
 import AdminNav from "./admin-nav";
 import styles from "./gerir-ingredientes.module.scss";
+import {getSessionFromLocalStorage} from "../../features/sessionSlice";
+import axios from "axios";
 /* 
 Componente: Ingrediente
 Descrição: Componente que renderiza um ingrediente na pagina de gerir ingredientes
@@ -123,13 +125,35 @@ const GerirIngredientes = () => {
         let pesoPorcao = document.getElementById("PesoPorcao").value;
         let imagem = document.getElementById("imagem").value;
         const ingrediente = {
+            _id: idSelecinado,
             nome: nome,
             preco: preco,
             descricao: descricao,
             pesoPorcao: pesoPorcao,
             imagem: imagem,
         };
-        console.log(ingrediente);
+
+        if (ingrediente.id === 0) delete ingrediente.id;
+        
+        const token = getSessionFromLocalStorage();
+        const request = {
+            method: "POST",
+            url:"http://localhost:3001/admin/editar-ingrediente",
+            headers: {
+                "Content-Type": "application/json",
+                "x-access-token": `Bearer ${token}`,
+            },
+            data: ingrediente,
+        }
+
+        axios(request).then((response) => {
+            if (response.status === 200) {
+                dispatch(fetchIngredientes());
+                console.log("Ingrediente editado com sucesso!");
+            }else console.log("Erro ao editar ingrediente!");
+        }).catch((error) => {
+            console.log(error);
+        });
     };
 
     // Renderização do componente
@@ -184,6 +208,7 @@ const GerirIngredientes = () => {
                                 id="preco"
                                 name="preco"
                                 placeholder="Preço"
+                                step={0.01}
                                 autoComplete="off"
                             />
                         </div>
@@ -204,6 +229,7 @@ const GerirIngredientes = () => {
                             </label>
                             <input
                                 type="number"
+                                step={0.01}
                                 className="form-control"
                                 id="PesoPorcao"
                                 name="descricao"

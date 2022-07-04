@@ -103,59 +103,39 @@ router.post("/promover-funcionario/:email", async (req, res) => {
 });
 
 // Rota para adicionar ou editar um ingrediente
-router.post(
-    "/editar-ingrediente", // Caminho da rota
+router.post("/editar-ingrediente", // Caminho da rota
     ingredienteImgDest.single("imagem"), // Middleware para upload de imagens
     async (req, res) => {
-        const { id, imagem, nome, preco, usados, descricao, pesoPorcao } =
-            req.body;
-        if (id) {
-            //verificar se ingrediente realmente existe
-            const ingrediente = getAllIngredientes().find(
-                (ingrediente) => ingrediente.id === id
-            );
-            if (ingrediente) {
-                // se ingrediente existe, editar
-                //editar ingrediente
-                const novoIngrediente = editIngrediente(
-                    id,
-                    imagem,
-                    nome,
-                    preco,
-                    usados,
-                    descricao,
-                    pesoPorcao
-                );
-                res.json(novoIngrediente);
-            } else {
-                res.status(404).json({
-                    message: `Ingrediente não existe, id: ${id} 😔`,
-                });
-            }
-        } else {
-            try {
-                addIngrediente({
-                    _id: Math.random().toString(),
-                    imagem,
-                    nome,
-                    preco,
-                    usados,
-                    descricao,
-                    pesoPorcao,
-                });
-            } catch (err) {
-                res.status(400).json({
-                    message: err.message,
-                });
-            }
+        const {
+            _id,
+            imagem,
+            nome,
+            preco,
+            descricao,
+            pesoPorcao
+        } = req.body;
+        const ingrediente = {
+            _id,
+            imagem,
+            nome,
+            preco: parseFloat(preco),
+            usados:0,
+            descricao,
+            pesoPorcao: parseFloat(pesoPorcao)
+        }
+        console.table(ingrediente);
+        try{
+            await editIngrediente(ingrediente);
+        } catch (err) {
+            res.status(404).json({ error: err.message }).end();
+            return;
         }
         res.sendStatus(200);
     }
 );
 
 // Rota para adicionar ou editar uma pizza
-router.post(
-    "/editar-pizza", // Caminho da rota
+router.post("/editar-pizza", // Caminho da rota
     pizzaImgDest.single("imagem"), // Middleware para upload de imagens
     async (req, res) => {
         const {
@@ -203,8 +183,7 @@ router.post(
 );
 
 // Rota para adicionar ou editar um produto
-router.post(
-    "/editar-produto", // Caminho da rota
+router.post("/editar-produto", // Caminho da rota
     produtoImgDest.single("imagem"), // Middleware para upload de imagens
     async (req, res) => {
         let { nome, descricao, imagem, preco, id, quant_comprada } = req.body;
