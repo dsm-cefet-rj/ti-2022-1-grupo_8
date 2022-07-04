@@ -7,6 +7,8 @@ import {
     selectPedidos,
 } from "../../features/pedidos-clienteSlice";
 
+import { converterData } from "../geral/util";
+
 const getCorStatus = (status) => {
     switch (status) {
         case "Feito":
@@ -33,11 +35,6 @@ const getNomeStatus = (status) => {
         default:
             return status;
     }
-};
-
-const converterData = (data) => {
-    const dataConvertida = new Date(data);
-    return dataConvertida.toLocaleString().slice(0, -3).split(" ").join(" às ");
 };
 
 const Pedido = (props) => {
@@ -130,14 +127,16 @@ const MeusPedidos = () => {
     const pedidos = useSelector(selectPedidos);
 
     return (
-        <>
+        <div className={styles.Body}>
             <MenuNav Atual="meus-pedidos" />
             <div className="container mt-2 mb-2 p-0">
                 <div className="row">
                     <h1 className="text-center">Meus Pedidos</h1>
                 </div>
                 <div className="row">
+                    
                     {pedidos.length > 0 ? (
+                        /* Reverse pedidos array */
                         pedidos.map((pedido, index) => (
                             <div className="col-sm-12 col-md-6 col-lg-4 col-xl-3">
                                 <Pedido
@@ -160,7 +159,7 @@ const MeusPedidos = () => {
                     )}
                 </div>
             </div>
-        </>
+        </div>
     );
 };
 

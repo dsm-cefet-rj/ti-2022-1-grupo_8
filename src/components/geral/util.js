@@ -11,5 +11,5 @@ export const converterData = (data) => {
     hora = hora < 10 ? "0" + hora : hora; // Adiciona zero à esquerda
     minuto = minuto < 10 ? "0" + minuto : minuto; // Adiciona zero à esquerda
     // Formata a data
-    return `${dia}/${mes}/${ano} ${hora}:${minuto}`;
+    return `${dia}/${mes}/${ano} às ${hora}:${minuto}`;
 };
