@@ -19,7 +19,6 @@ router.post("/auth", async (req, res) => {
         });
         return;
     }
-    console.log(email, senha);
     const usuarios = await getAllUsuarios();
 
     const usuarioExistente = usuarios.find((usuario) => usuario.email == email);
