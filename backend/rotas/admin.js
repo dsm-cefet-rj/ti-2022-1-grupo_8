@@ -60,7 +60,13 @@ router.get("/pedidos/:email", async (req, res) => {
 // Rota para uma admin promover um usuário a admin pelo email
 router.post("/promover-admin/:email", async (req, res) => {
     const email = req.params.email;
-    const usuario = await getUsuario(email);
+    let usuario;
+    try {
+        usuario = await getUsuario(email);
+    } catch (err) {
+        res.status(404).json({ error: err.message }).end();
+        return;
+    }
     usuario.type = "admin";
     await editUsuario(usuario);
     res.status(200).json(usuario).end();
@@ -69,7 +75,13 @@ router.post("/promover-admin/:email", async (req, res) => {
 // Rota para uma admin promover um usuário a usuário pelo email
 router.post("/promover-user/:email", async (req, res) => {
     const email = req.params.email;
-    const usuario = await getUsuario(email);
+    let usuario;
+    try {
+        usuario = await getUsuario(email);
+    } catch (err) {
+        res.status(404).json({ error: err.message }).end();
+        return;
+    }
     usuario.type = "user";
     await editUsuario(usuario);
     res.status(200).json(usuario).end();
@@ -78,7 +90,13 @@ router.post("/promover-user/:email", async (req, res) => {
 // Rota para uma admin promover um usuário a funcionário pelo email
 router.post("/promover-funcionario/:email", async (req, res) => {
     const email = req.params.email;
-    const usuario = await getUsuario(email);
+    let usuario;
+    try {
+        usuario = await getUsuario(email);
+    } catch (err) {
+        res.status(404).json({ error: err.message }).end();
+        return;
+    }
     usuario.type = "funcionário";
     await editUsuario(usuario);
     res.status(200).json(usuario).end();

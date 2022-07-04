@@ -20,15 +20,15 @@ const GerirUsuarios = () => {
     useEffect(() => {
         if (email != null) {
             const token = getSessionFromLocalStorage();
-            axios
-                .get(`http://localhost:3001/admin/usuario/${email}`, {
-                    headers: {
-                        authorization: `Bearer ${token}`,
-                    },
-                })
-                .then((response) => {
-                    setUsuario(response.data);
-                })
+            axios({
+                method: "GET",
+                url: `http://localhost:3001/admin/usuario/${email}`,
+                headers: {
+                    "x-access-token": `Bearer ${token}`,
+                },
+            }).then((response) => {
+                setUsuario(response.data);
+            })
                 .catch((error) => {
                     console.log(error);
                 });
@@ -38,6 +38,7 @@ const GerirUsuarios = () => {
     const AlteraButtonHandler = (e) => {
         e.preventDefault();
         const token = getSessionFromLocalStorage();
+        console.log(token);
         const type = usuario.type;
         const email = usuario.email;
         const urls = {
@@ -45,18 +46,17 @@ const GerirUsuarios = () => {
             admin: `http://localhost:3001/admin/promover-admin/${email}`,
             funcionário: `http://localhost:3001/admin/promover-funcionario/${email}`,
         };
-        axios
-            .post(urls[type], {
-                headers: {
-                    authorization: `Bearer ${token}`,
-                },
-            })
-            .then((response) => {
-                console.log(response);
-            })
-            .catch((error) => {
-                console.log(error);
-            });
+        axios({
+            method: "POST",
+            url: urls[type],
+            headers: {
+                "x-access-token": `Bearer ${token}`,
+            },
+        }).then((response) => {
+            console.log(response);
+        }).catch((error) => {
+            console.log(error);
+        });
         //window.location.reload()
     };
 

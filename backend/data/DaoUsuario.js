@@ -72,6 +72,9 @@ const editUsuario = async (usuario) => {
 
     validaçãoUsuário(usuario);
     // Atualizar usuário na coleção usuarios
+    if (usuario._id) {
+        delete usuario._id;
+    }
     await connection
         .collection("usuarios")
         .updateOne({ email: email }, { $set: usuario });
