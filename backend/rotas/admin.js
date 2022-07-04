@@ -38,10 +38,10 @@ const produtoImgDest = multer({ dest: baseImgPath + "produtos" });
 // Rota para o admin ver as informações de um usuário pelo email
 router.get("/usuario/:email", async (req, res) => {
     const email = req.params.email;
-    let usuario 
-    try{
+    let usuario;
+    try {
         usuario = await getUsuario(email);
-    } catch(err){
+    } catch (err) {
         res.status(404).json({ error: err.message }).end();
         return;
     }

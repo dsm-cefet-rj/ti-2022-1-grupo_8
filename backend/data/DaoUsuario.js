@@ -45,7 +45,7 @@ const getUsuario = async (email) => {
     if (usuario) {
         usuario._id = usuario._id.toString();
         usuario.id = usuario._id;
-    }else {
+    } else {
         throw new Error("Usuário não encontrado");
     }
     return usuario;
