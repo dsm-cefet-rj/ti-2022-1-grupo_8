@@ -22,11 +22,10 @@ const validaçãoPedido = (pedido) => {
             throw new Error(`${key} é um campo obrigatório`);
         }
         if (typeof pedido[key] !== PedidoValidTypes[key]) {
-            throw new Error(
-                `${key} deve ser do tipo ${PedidoValidTypes[key]}`
-            );
+            throw new Error(`${key} deve ser do tipo ${PedidoValidTypes[key]}`);
         }
-        const email_re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        const email_re =
+            /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         if (key === "email" && !email_re.test(pedido[key])) {
             throw new Error(`${key} deve ser um email válido`);
         }
@@ -55,7 +54,8 @@ const getAllPedidos = async () => {
 // Função retorna todos os pedidos do banco de dados com status = "Feito"
 const getAllPedidosFeito = async () => {
     const connection = await getConnection(); // conectar ao banco de dados
-    let pedidos = await connection.collection("pedidos")
+    let pedidos = await connection
+        .collection("pedidos")
         .find({
             status: "Feito",
         })
@@ -73,7 +73,8 @@ const getAllPedidosFeito = async () => {
 // Função retorna todos os pedidos do banco de dados com status = "Em andamento"
 const getAllPedidosEmAndamento = async () => {
     const connection = await getConnection(); // conectar ao banco de dados
-    let pedidos = await connection.collection("pedidos")
+    let pedidos = await connection
+        .collection("pedidos")
         .find({
             status: "Em andamento",
         })
@@ -91,7 +92,8 @@ const getAllPedidosEmAndamento = async () => {
 // Função retorna todos os pedidos do banco de dados com status = "Concluído"
 const getAllPedidosConcluido = async () => {
     const connection = await getConnection(); // conectar ao banco de dados
-    let pedidos = await connection.collection("pedidos")
+    let pedidos = await connection
+        .collection("pedidos")
         .find({
             status: "Concluído",
         })
@@ -105,9 +107,6 @@ const getAllPedidosConcluido = async () => {
     });
     return pedidos;
 };
-
-
-
 
 // Função retorna todos os pedidos de um email do banco de dados
 const getPedidos = async (email) => {
@@ -158,5 +157,5 @@ module.exports = {
     removePedido,
     getAllPedidosFeito,
     getAllPedidosEmAndamento,
-    getAllPedidosConcluido
+    getAllPedidosConcluido,
 };

@@ -26,9 +26,10 @@ const GerirUsuarios = () => {
                 headers: {
                     "x-access-token": `Bearer ${token}`,
                 },
-            }).then((response) => {
-                setUsuario(response.data);
             })
+                .then((response) => {
+                    setUsuario(response.data);
+                })
                 .catch((error) => {
                     console.log(error);
                 });
@@ -52,11 +53,13 @@ const GerirUsuarios = () => {
             headers: {
                 "x-access-token": `Bearer ${token}`,
             },
-        }).then((response) => {
-            console.log(response);
-        }).catch((error) => {
-            console.log(error);
-        });
+        })
+            .then((response) => {
+                console.log(response);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
         //window.location.reload()
     };
 
