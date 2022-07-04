@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import AdminNav from "./admin-nav";
 import styles from "./gerir-usuarios.module.scss";
 import { getSessionFromLocalStorage } from "../../features/sessionSlice";
@@ -10,7 +9,6 @@ Componente: GerirUsuário
 Descrição:  Pagina capaz de pesquisar usuário pro email e exibir botoes para promover a administrador, funcionário, ou usuário normal, e excluir usuário
 */
 const GerirUsuarios = () => {
-    const dispatch = useDispatch(); /* Disparador de ações */
     // Pegar email do url
     const queryParams = new URLSearchParams(window.location.search);
     const [email] = useState(

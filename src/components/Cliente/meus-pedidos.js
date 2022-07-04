@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import MenuNav from "./menu-nav";
 import styles from "./meus-pedidos.module.scss";
@@ -127,7 +127,7 @@ const MeusPedidos = () => {
     const pedidos = useSelector(selectPedidos);
 
     return (
-        <div className={styles.Body}>
+        <div className={styles.body}>
             <MenuNav Atual="meus-pedidos" />
             <div className="container mt-2 mb-2 p-0">
                 <div className="row">
@@ -139,7 +139,7 @@ const MeusPedidos = () => {
                         pedidos.map((pedido, index) => (
                             <div className="col-sm-12 col-md-6 col-lg-4 col-xl-3">
                                 <Pedido
-                                    key={index}
+                                    key={pedido.id + pedido.data + pedido.status + pedido.dataHora + index}
                                     id={pedido.id}
                                     data={pedido.dataHora}
                                     itens={pedido.carrinho}
