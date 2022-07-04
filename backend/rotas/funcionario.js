@@ -1,5 +1,11 @@
 const express = require("express");
-const { getAllPedidos, editPedido,getAllPedidosFeito,getAllPedidosEmAndamento,getAllPedidosConcluido } = require("../data/DaoPedidos");
+const {
+    getAllPedidos,
+    editPedido,
+    getAllPedidosFeito,
+    getAllPedidosEmAndamento,
+    getAllPedidosConcluido,
+} = require("../data/DaoPedidos");
 const validarIdPedido = require("../middleware/validacao");
 const router = express.Router();
 require("dotenv").config();
@@ -57,4 +63,3 @@ router.post("/finalizar-pedido/:id", async (req, res) => {
 });
 
 module.exports = router;
- 
