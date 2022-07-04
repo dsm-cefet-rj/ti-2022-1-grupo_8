@@ -15,6 +15,7 @@ const GerirUsuarios = () => {
         queryParams.get("email")
     ); /* Email do usuário a ser editado */
     const [usuario, setUsuario] = useState({}); /* Usuário a ser editado */
+    const [erro,setErro] = useState(""); /* Erro ao editar usuário */
     useEffect(() => {
         if (email != null) {
             const token = getSessionFromLocalStorage();
@@ -27,8 +28,10 @@ const GerirUsuarios = () => {
             })
                 .then((response) => {
                     setUsuario(response.data);
+                    setErro("");
                 })
                 .catch((error) => {
+                    setErro(error.message);
                     console.log(error);
                 });
         }
@@ -54,9 +57,11 @@ const GerirUsuarios = () => {
         })
             .then((response) => {
                 console.log(response);
+                setErro("");
             })
             .catch((error) => {
                 console.log(error);
+                setErro(error.message);
             });
     };
     const ExcluirButtonHandler = (e) => {
@@ -71,8 +76,10 @@ const GerirUsuarios = () => {
             },
         }).then((response) => {
             console.log(response);
+            setErro("");
         }).catch((error) => {
             console.log(error);
+            setErro(error.message);
         });
         window.location.href ="/gerir-usuarios";
     };
@@ -92,8 +99,11 @@ const GerirUsuarios = () => {
                             <h2>Gerir Usuários</h2>
                         </div>
                     </div>
+                    <div className="row ">
+                        {erro}
+                    </div>
 
-                    {email ? (
+                    {email && erro === "" ? (
                         <>
                             {/* Se email existir, renderiza o componente de edição */}
                             <div className="row section mt-2">
