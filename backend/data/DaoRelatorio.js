@@ -17,6 +17,7 @@ const atualizarRelatorioIngredientes = (relatorio, ingrediente) => {
     id = ingrediente.id;
     if (!relatorio[id]) {
         relatorio[id] = {
+            id: ingrediente.id,
             nome: ingrediente.nome,
             quantidade: 0,
             lucro: 0,
@@ -32,6 +33,7 @@ const atualizarRelatorioPizzas = (relatorio, pizza) => {
     id = pizza.id;
     if (!relatorio[id]) {
         relatorio[id] = {
+            id: pizza.id,
             nome: pizza.nome,
             porcoes: 0,
             custo: 0,
@@ -47,6 +49,7 @@ const atualizarRelatorioProdutos = (relatorio, produto) => {
     id = produto.id;
     if (!relatorio[id]) {
         relatorio[id] = {
+            id: produto.id,
             nome: produto.nome,
             quantidade: 0,
             lucro: 0,
