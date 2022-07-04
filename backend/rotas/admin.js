@@ -345,7 +345,7 @@ router.get("/relatorios", (req, res) => {
         dataInicio = dataFim - 1000 * 60 * 60 * 24 * 30;
     }
 
-    const relatorio = gerarRelatorios(dataInicio, dataFim).then((relatorio) =>
+    gerarRelatorios(dataInicio, dataFim).then((relatorio) =>
         res.status(200).json(relatorio)
     );
 });
