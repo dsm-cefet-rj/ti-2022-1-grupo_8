@@ -58,7 +58,23 @@ const GerirUsuarios = () => {
             .catch((error) => {
                 console.log(error);
             });
-        //window.location.reload()
+    };
+    const ExcluirButtonHandler = (e) => {
+        e.preventDefault();
+        const url = `http://localhost:3001/admin/usuario-excluir/${email}`;
+        const token = getSessionFromLocalStorage();
+        axios({
+            method: "DELETE",
+            url: url,
+            headers: {
+                "x-access-token": `Bearer ${token}`,
+            },
+        }).then((response) => {
+            console.log(response);
+        }).catch((error) => {
+            console.log(error);
+        });
+        window.location.href ="/gerir-usuarios";
     };
 
     return (
@@ -167,7 +183,7 @@ const GerirUsuarios = () => {
                                         </label>
                                         <div className="d-grid gap-2 col-2 mx-auto">
                                             <button
-                                                className="btn btn-danger"
+                                                className="btn btn-success"
                                                 onClick={AlteraButtonHandler}
                                             >
                                                 Confirmar
@@ -180,6 +196,12 @@ const GerirUsuarios = () => {
                                                 }}
                                             >
                                                 Voltar
+                                            </button>
+                                            <button
+                                                className="btn btn-danger"
+                                                onClick={ExcluirButtonHandler}
+                                            >
+                                                Excluir
                                             </button>
                                         </div>
                                     </div>
