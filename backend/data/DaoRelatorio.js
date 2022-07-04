@@ -1,7 +1,6 @@
-const { getAllPedidos } = require("../../data/DaoPedidos");
+const { getAllPedidos } = require("./DaoPedidos");
 
 const filtrarPedidosPorData = (pedidos, dataInicio, dataFim) => {
-    const pedidos = getAllPedidos();
     return pedidos.filter((pedido) => {
         return pedido.data >= dataInicio && pedido.data <= dataFim;
     });
@@ -55,7 +54,7 @@ const atualizarRelatorioProdutos = (relatorio, produto) => {
 const gerarRelatorios = function (dataInicio, dataFim) {
     // Gera o relatório de ingredientes, pizzas e produtos dos pedidos entre duas datas.
 
-    const pedidos = filtrarPedidosPorData(dataInicio, dataFim);
+    const pedidos = filtrarPedidosPorData(getAllPedidos(), dataInicio, dataFim);
 
     const relatorioIngredientes = {};
     const relatorioPizzas = {};
