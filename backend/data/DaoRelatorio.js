@@ -84,3 +84,7 @@ const gerarRelatorios = function (dataInicio, dataFim) {
         produtos: relatorioProdutos.values(),
     };
 };
+
+module.exports = {
+    gerarRelatorios,
+};

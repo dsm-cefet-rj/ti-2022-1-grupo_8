@@ -25,6 +25,7 @@ const {
     getUsuario,
 } = require("../data/DaoUsuario");
 const { getPedidos } = require("../data/DaoPedidos");
+const { gerarRelatorios } = require("../data/DaoRelatorio");
 require("dotenv").config();
 
 // multer para upload de imagens
@@ -355,6 +356,22 @@ router.post("/excluir-usuario", (req, res) => {
             message: "Email não informado 😔",
         });
     }
+});
+
+router.get("/relatorios", (req, res) => {
+    const { dataInicio, dataFim } = req.body;
+
+    if (!dataFim) {
+        // Se a data de fim não foi informada, considerar a data de hoje
+        dataFim = new Date();
+    }
+    if (!dataInicio) {
+        // Se a data de início não for informada, considerar 30 dias antes da data de fim
+        dataInicio = dataFim - 1000 * 60 * 60 * 24 * 30;
+    }
+
+    const relatorio = getRelatorio(dataInicio, dataFim);
+    res.sendStatus(200).json(relatorio);
 });
 
 module.exports = router;
