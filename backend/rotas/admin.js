@@ -43,12 +43,12 @@ router.get("/usuario/:email", async (req, res) => {
     try {
         usuario = await getUsuario(email);
     } catch (err) {
-        res.status(404).json({ error: err.message }).end();
+        res.status(404).json({ error: err.message });
         return;
     }
     delete usuario.senha;
     usuario.pedidos = await getPedidos(email);
-    res.status(200).json(usuario).end();
+    res.status(200).json(usuario);
 });
 
 // Rota para um admin ver todos os pedidos de um email
@@ -104,8 +104,7 @@ router.post("/promover-funcionario/:email", async (req, res) => {
 });
 
 // Rota para adicionar ou editar um ingrediente
-router.post(
-    "/editar-ingrediente", // Caminho da rota
+router.post("/editar-ingrediente", // Caminho da rota
     ingredienteImgDest.single("imagem"), // Middleware para upload de imagens
     async (req, res) => {
         const { _id, imagem, nome, preco, descricao, pesoPorcao } = req.body;
@@ -130,8 +129,7 @@ router.post(
 );
 
 // Rota para adicionar ou editar uma pizza
-router.post(
-    "/editar-pizza", // Caminho da rota
+router.patch("/editar-pizza", // Caminho da rota
     pizzaImgDest.single("imagem"), // Middleware para upload de imagens
     async (req, res) => {
         const {
@@ -179,8 +177,7 @@ router.post(
 );
 
 // Rota para adicionar ou editar um produto
-router.post(
-    "/editar-produto", // Caminho da rota
+router.patch("/editar-produto", // Caminho da rota
     produtoImgDest.single("imagem"), // Middleware para upload de imagens
     async (req, res) => {
         let { nome, descricao, imagem, preco, id, quant_comprada } = req.body;
@@ -210,58 +207,36 @@ router.post(
     }
 );
 
-// Rota para editar um usuário
-router.post("/editar-usuario", (req, res) => {
-    const { nome, email, senha, type, pedidos } = req.body;
-    if (email) {
-        //verificar se usuário realmente existe
-        const usuario = getAllUsuarios().find(
-            (usuario) => usuario.email === email
-        );
-        if (usuario) {
-            // se usuário existe, editar
-            //editar usuário
-            const novoUsuario = editUsuario(nome, email, senha, type, pedidos);
-            res.sendStatus(200).json(novoUsuario);
-        } else {
-            res.status(404).json({
-                message: `Usuário não existe, email: ${email} 😔`,
-            });
-        }
-    } else {
-        addUsuario(nome, email, senha, type, pedidos);
-        res.sendStatus(200).json({
-            message: `Usuário adicionado com sucesso! 😃`,
-        });
+//Rota para excluir um usuário pelo email
+router.delete("/usuario-excluir/:email", async (req, res) => {
+    const email = req.params.email;
+    let usuario;
+    try {
+        usuario = await getUsuario(email);
+    } catch (err) {
+        res.status(404).json({ error: err.message }).end();
+        return;
     }
+    await removeUsuario(email);
+    res.status(200).json(usuario).end();
+}); 
+
+// Rota para excluir um ingrediente pelo id
+router.delete("/excluir-ingrediente/:id", async (req, res) => {
+    const id = req.params.id;
+    let ingrediente;
+    try {
+        ingrediente = await getIngrediente(id);
+    } catch (err) {
+        res.status(404).json({ error: err.message }).end();
+        return;
+    }
+    await removeIngrediente(id);
+    res.status(200).json(ingrediente).end();
 });
 
-// Rota para excluir um funcionário
-router.post("/excluir-ingrediente", (req, res) => {
-    const { id } = req.body;
-    if (id) {
-        //verificar se ingrediente realmente existe
-        const ingrediente = getAllIngredientes().find(
-            (ingrediente) => ingrediente.id === id
-        );
-        if (ingrediente) {
-            // se ingrediente existe, excluir
-            //excluir ingrediente
-            removeIngrediente(id);
-        } else {
-            res.status(404).json({
-                message: `Ingrediente não existe, id: ${id} 😔`,
-            });
-        }
-    } else {
-        res.status(400).json({
-            message: "Id não informado 😔",
-        });
-    }
-});
-
-// Rota para excluir um funcionário
-router.post("/excluir-pizza/:id", async (req, res) => {
+// Rota para excluir uma pizza pelo id
+router.delete("/excluir-pizza/:id", async (req, res) => {
     const { id } = req.params;
     if (id) {
         //verificar se pizza realmente existe
@@ -283,8 +258,8 @@ router.post("/excluir-pizza/:id", async (req, res) => {
     }
 });
 
-// Rota para excluir um funcionário
-router.post("/excluir-produto/:id", async (req, res) => {
+// Rota para excluir um produto pelo id
+router.delete("/excluir-produto/:id", async (req, res) => {
     const { id } = req.params;
     if (id) {
         //verificar se produto realmente existe
@@ -302,33 +277,6 @@ router.post("/excluir-produto/:id", async (req, res) => {
     } else {
         res.status(400).json({
             message: "Id não informado 😔",
-        });
-    }
-});
-
-// Rota para excluir um funcionário
-router.post("/excluir-usuario", (req, res) => {
-    const { email } = req.body;
-    if (email) {
-        //verificar se usuário realmente existe
-        const usuario = getAllUsuarios().find(
-            (usuario) => usuario.email === email
-        );
-        if (usuario) {
-            // se usuário existe, excluir
-            //excluir usuário
-            removeUsuario(email);
-            res.sendStatus(200).json({
-                message: `Usuário excluído com sucesso! 😃`,
-            });
-        } else {
-            res.status(404).json({
-                message: `Usuário não existe, email: ${email} 😔`,
-            });
-        }
-    } else {
-        res.status(400).json({
-            message: "Email não informado 😔",
         });
     }
 });
