@@ -139,7 +139,13 @@ const MeusPedidos = () => {
                         pedidos.map((pedido, index) => (
                             <div className="col-sm-12 col-md-6 col-lg-4 col-xl-3">
                                 <Pedido
-                                    key={pedido.id + pedido.data + pedido.status + pedido.dataHora + index}
+                                    key={
+                                        pedido.id +
+                                        pedido.data +
+                                        pedido.status +
+                                        pedido.dataHora +
+                                        index
+                                    }
                                     id={pedido.id}
                                     data={pedido.dataHora}
                                     itens={pedido.carrinho}
