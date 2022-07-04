@@ -1,6 +1,3 @@
-const express = require("express");
-const router = express.Router();
-
 const { getAllPedidos } = require("../../data/DaoPedidos");
 
 const filtrarPedidosPorData = (pedidos, dataInicio, dataFim) => {
