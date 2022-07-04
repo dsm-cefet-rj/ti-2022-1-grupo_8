@@ -15,7 +15,7 @@ const GerirUsuarios = () => {
         queryParams.get("email")
     ); /* Email do usuário a ser editado */
     const [usuario, setUsuario] = useState({}); /* Usuário a ser editado */
-    const [erro,setErro] = useState(""); /* Erro ao editar usuário */
+    const [erro, setErro] = useState(""); /* Erro ao editar usuário */
     useEffect(() => {
         if (email != null) {
             const token = getSessionFromLocalStorage();
@@ -74,14 +74,16 @@ const GerirUsuarios = () => {
             headers: {
                 "x-access-token": `Bearer ${token}`,
             },
-        }).then((response) => {
-            console.log(response);
-            setErro("");
-        }).catch((error) => {
-            console.log(error);
-            setErro(error.message);
-        });
-        window.location.href ="/gerir-usuarios";
+        })
+            .then((response) => {
+                console.log(response);
+                setErro("");
+            })
+            .catch((error) => {
+                console.log(error);
+                setErro(error.message);
+            });
+        window.location.href = "/gerir-usuarios";
     };
 
     return (
@@ -99,9 +101,7 @@ const GerirUsuarios = () => {
                             <h2>Gerir Usuários</h2>
                         </div>
                     </div>
-                    <div className="row ">
-                        {erro}
-                    </div>
+                    <div className="row ">{erro}</div>
 
                     {email && erro === "" ? (
                         <>
