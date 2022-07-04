@@ -47,16 +47,18 @@ const isAdmin = (req, res, next) => {
         token = token.replace("Bearer ", ""); // remove o Bearer do token
         const tokenPayload = jwt.decode(token); // decodifica o token. Conteúdo: email, type, iat, exp
         const type = tokenPayload.type;
-        if (type == "admin") {
+        if (type === "admin") {
             next();
+            return;
         }
     }
 
-    return res.status(401).json({
+    res.status(401).json({
         // Usuário não é admin 401
         auth: false,
-        message: "Acesso negado",
-    });
+        message: "Acesso negado , não é admin",
+    }).end();
+    return;
 };
 
 // verifica se o usuário é funcionário
@@ -71,13 +73,15 @@ const isFuncionario = (req, res, next) => {
         const type = tokenPayload.type;
         if (type == "funcionario") {
             next();
+            return;
         }
     }
-    return res.status(401).json({
+    res.status(401).json({
         // Usuário não é admin 401
         auth: false,
         message: "Acesso negado",
-    });
+    }).end();
+    return;
 };
 
 const authMiddlewares = {
