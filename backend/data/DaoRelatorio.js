@@ -1,15 +1,20 @@
 const { getAllPedidos } = require("./DaoPedidos");
 
+let relatorioIngredientes = {};
+let relatorioPizzas = {};
+let relatorioProdutos = {};
+
 const filtrarPedidosPorData = (pedidos, dataInicio, dataFim) => {
+    // Filtra os pedidos entre duas datas.
     return pedidos.filter((pedido) => {
-        return pedido.data >= dataInicio && pedido.data <= dataFim;
+        return pedido.dataHora >= dataInicio && pedido.dataHora <= dataFim;
     });
 };
 
 const atualizarRelatorioIngredientes = (relatorio, ingrediente) => {
     // Recebe um objeto contendo um relatório de ingredientes e um ingrediente,
     // e atualiza o relatório com o ingrediente recebido.
-    ingrediente = ingrediente.id;
+    id = ingrediente.id;
     if (!relatorio[id]) {
         relatorio[id] = {
             nome: ingrediente.nome,
@@ -66,8 +71,8 @@ const gerarRelatorios = async function (dataInicio, dataFim) {
     relatorioPizzas = {};
     relatorioProdutos = {};
 
-    for (let pedido of pedidos) {
-        for (let item of pedido.itens) {
+    for (let pedido of pedidosIntervalo) {
+        for (let item of pedido.carrinho) {
             if (item.tipo === "pizza") {
                 // Consolidar ingredientes
                 atualizarRelatorioIngredientes(relatorioIngredientes, item);
@@ -84,9 +89,9 @@ const gerarRelatorios = async function (dataInicio, dataFim) {
     }
 
     return {
-        ingredientes: relatorioIngredientes.values(),
-        pizzas: relatorioPizzas.values(),
-        produtos: relatorioProdutos.values(),
+        ingredientes: Object.values(relatorioIngredientes),
+        pizzas: Object.values(relatorioPizzas),
+        produtos: Object.values(relatorioProdutos),
     };
 };
 
