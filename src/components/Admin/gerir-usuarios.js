@@ -69,12 +69,14 @@ const GerirUsuarios = () => {
             headers: {
                 "x-access-token": `Bearer ${token}`,
             },
-        }).then((response) => {
-            console.log(response);
-        }).catch((error) => {
-            console.log(error);
-        });
-        window.location.href ="/gerir-usuarios";
+        })
+            .then((response) => {
+                console.log(response);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+        window.location.href = "/gerir-usuarios";
     };
 
     return (

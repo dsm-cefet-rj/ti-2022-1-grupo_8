@@ -104,7 +104,8 @@ router.post("/promover-funcionario/:email", async (req, res) => {
 });
 
 // Rota para adicionar ou editar um ingrediente
-router.post("/editar-ingrediente", // Caminho da rota
+router.post(
+    "/editar-ingrediente", // Caminho da rota
     ingredienteImgDest.single("imagem"), // Middleware para upload de imagens
     async (req, res) => {
         const { _id, imagem, nome, preco, descricao, pesoPorcao } = req.body;
@@ -129,7 +130,8 @@ router.post("/editar-ingrediente", // Caminho da rota
 );
 
 // Rota para adicionar ou editar uma pizza
-router.patch("/editar-pizza", // Caminho da rota
+router.patch(
+    "/editar-pizza", // Caminho da rota
     pizzaImgDest.single("imagem"), // Middleware para upload de imagens
     async (req, res) => {
         const {
@@ -177,7 +179,8 @@ router.patch("/editar-pizza", // Caminho da rota
 );
 
 // Rota para adicionar ou editar um produto
-router.patch("/editar-produto", // Caminho da rota
+router.patch(
+    "/editar-produto", // Caminho da rota
     produtoImgDest.single("imagem"), // Middleware para upload de imagens
     async (req, res) => {
         let { nome, descricao, imagem, preco, id, quant_comprada } = req.body;
@@ -219,7 +222,7 @@ router.delete("/usuario-excluir/:email", async (req, res) => {
     }
     await removeUsuario(email);
     res.status(200).json(usuario).end();
-}); 
+});
 
 // Rota para excluir um ingrediente pelo id
 router.delete("/excluir-ingrediente/:id", async (req, res) => {
