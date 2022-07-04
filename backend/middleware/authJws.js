@@ -4,7 +4,7 @@ require("dotenv").config();
 
 const jwt_secret = process.env.JWT_SECRET;
 // verifica se o token está válido e se o usuário é o mesmo que o token
-verificarToken = (req, res, next) => {
+const verificarToken = (req, res, next) => {
     let token =
         req.headers["x-access-token"] ||
         req.headers["authorization"] ||
@@ -38,7 +38,7 @@ verificarToken = (req, res, next) => {
 };
 
 // verifica se o usuário é admin
-isAdmin = (req, res, next) => {
+const isAdmin = (req, res, next) => {
     let token =
         req.headers["x-access-token"] ||
         req.headers["authorization"] ||
@@ -60,7 +60,7 @@ isAdmin = (req, res, next) => {
 };
 
 // verifica se o usuário é funcionário
-isFuncionario = (req, res, next) => {
+const isFuncionario = (req, res, next) => {
     let token =
         req.headers["x-access-token"] ||
         req.headers["authorization"] ||
