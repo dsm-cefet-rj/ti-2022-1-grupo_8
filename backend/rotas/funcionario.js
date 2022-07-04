@@ -1,34 +1,27 @@
 const express = require("express");
-const { getAllPedidos, editPedido } = require("../data/DaoPedidos");
+const { getAllPedidos, editPedido,getAllPedidosFeito,getAllPedidosEmAndamento,getAllPedidosConcluido } = require("../data/DaoPedidos");
 const validarIdPedido = require("../middleware/validacao");
 const router = express.Router();
 require("dotenv").config();
 
 router.get("/pedidos/feitos", async (req, res) => {
     // Permite ao funcionário ver todos os pedidos feitos
-    let pedidos = await getAllPedidos();
+    let pedidos = await getAllPedidosFeito();
     // filtra todos os pedidos com pedido.status = "Feito"
-    pedidos = pedidos.filter((pedido) => pedido.status === "Feito");
     res.status(200).json(pedidos).end();
 });
 
 router.get("/pedidos/em-andamento", async (req, res) => {
     // Permite ao funcionário ver todos os pedidos que estão em andamento
-    let pedidos = await getAllPedidos();
+    let pedidos = await getAllPedidosEmAndamento();
     // filtra todos os pedidos com pedido.status = "Em andamento"
-    pedidos = pedidos.filter((pedido) => {
-        return pedido.status == "Em andamento";
-    });
     res.status(200).json(pedidos).end();
 });
 
 router.get("/pedidos/concluidos", async (req, res) => {
     // Permite ao funcionário ver todos os pedidos que foram concluídos
-    let pedidos = await getAllPedidos();
+    let pedidos = await getAllPedidosConcluido();
     // filtra todos os pedidos com pedido.status = "Concluído"
-    pedidos = pedidos.filter((pedido) => {
-        return pedido.status == "Concluído";
-    });
     res.status(200).json(pedidos).end();
 });
 
@@ -64,3 +57,4 @@ router.post("/finalizar-pedido/:id", async (req, res) => {
 });
 
 module.exports = router;
+ 

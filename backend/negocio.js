@@ -2,7 +2,6 @@
 Esse arquivo contém estruturas para a validação de dados.
 */
 const UsuarioValidTypes = {
-    _id: "string",
     nome: "string",
     email: "string",
     senha: "string",
@@ -10,7 +9,6 @@ const UsuarioValidTypes = {
 };
 
 const IngredienteValidTypes = {
-    _id: "string",
     imagem: "string",
     nome: "string",
     preco: "number",
@@ -20,7 +18,6 @@ const IngredienteValidTypes = {
 };
 
 const PizzaValidTypes = {
-    _id: "string",
     nome: "string",
     descricao: "string",
     imagem: "string",
@@ -30,7 +27,6 @@ const PizzaValidTypes = {
 };
 
 const ProdutoValidTypes = {
-    _id: "string",
     nome: "string",
     descricao: "string",
     imagem: "string",
@@ -39,13 +35,13 @@ const ProdutoValidTypes = {
 };
 
 const PedidoValidTypes = {
-    _id: "string",
     email: "string",
-    dataHora: "string",
+    dataHora: "number",
     endereco: "string",
     carrinho: "object",
     status: "string",
 };
+
 module.exports = {
     UsuarioValidTypes,
     IngredienteValidTypes,

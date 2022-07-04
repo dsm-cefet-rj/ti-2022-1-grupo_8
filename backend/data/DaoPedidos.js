@@ -21,12 +21,12 @@ const validaçãoPedido = (pedido) => {
         if (!pedido[key]) {
             throw new Error(`${key} é um campo obrigatório`);
         }
-        if (typeof pedido[key] !== ProdutoValidTypes[key]) {
+        if (typeof pedido[key] !== PedidoValidTypes[key]) {
             throw new Error(
-                `${key} deve ser do tipo ${ProdutoValidTypes[key]}`
+                `${key} deve ser do tipo ${PedidoValidTypes[key]}`
             );
         }
-        const email_re = /^[a-z0-9.]+@[a-z0-9]+\.[a-z]+\.([a-z]+)?$/i;
+        const email_re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         if (key === "email" && !email_re.test(pedido[key])) {
             throw new Error(`${key} deve ser um email válido`);
         }
@@ -50,6 +50,63 @@ const getAllPedidos = async () => {
     });
     return pedidos;
 };
+
+// Função retorna todos os pedidos do banco de dados com status = "Feito"
+const getAllPedidosFeito = async () => {
+    const connection = await getConnection(); // conectar ao banco de dados
+    let pedidos = await connection.collection("pedidos")
+        .find({
+            status: "Feito",
+        })
+        .sort({ dataHora: 1 })
+        .toArray();
+    // transformar _id para string
+    pedidos.map((pedido) => {
+        pedido._id = pedido._id.toString();
+        pedido.id = pedido._id;
+        return pedido;
+    });
+    return pedidos;
+};
+
+// Função retorna todos os pedidos do banco de dados com status = "Em andamento"
+const getAllPedidosEmAndamento = async () => {
+    const connection = await getConnection(); // conectar ao banco de dados
+    let pedidos = await connection.collection("pedidos")
+        .find({
+            status: "Em andamento",
+        })
+        .sort({ dataHora: 1 })
+        .toArray();
+    // transformar _id para string
+    pedidos.map((pedido) => {
+        pedido._id = pedido._id.toString();
+        pedido.id = pedido._id;
+        return pedido;
+    });
+    return pedidos;
+};
+
+// Função retorna todos os pedidos do banco de dados com status = "Concluído"
+const getAllPedidosConcluido = async () => {
+    const connection = await getConnection(); // conectar ao banco de dados
+    let pedidos = await connection.collection("pedidos")
+        .find({
+            status: "Concluído",
+        })
+        .sort({ dataHora: 1 })
+        .toArray();
+    // transformar _id para string
+    pedidos.map((pedido) => {
+        pedido._id = pedido._id.toString();
+        pedido.id = pedido._id;
+        return pedido;
+    });
+    return pedidos;
+};
+
+
+
 
 // Função retorna todos os pedidos de um email do banco de dados
 const getPedidos = async (email) => {
@@ -98,4 +155,7 @@ module.exports = {
     addPedido,
     editPedido,
     removePedido,
+    getAllPedidosFeito,
+    getAllPedidosEmAndamento,
+    getAllPedidosConcluido
 };
