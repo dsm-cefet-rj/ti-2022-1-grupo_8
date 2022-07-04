@@ -359,7 +359,7 @@ router.post("/excluir-usuario", (req, res) => {
 });
 
 router.get("/relatorios", (req, res) => {
-    const { dataInicio, dataFim } = req.body;
+    let { dataInicio, dataFim } = req.body;
 
     if (!dataFim) {
         // Se a data de fim não foi informada, considerar a data de hoje
@@ -370,7 +370,7 @@ router.get("/relatorios", (req, res) => {
         dataInicio = dataFim - 1000 * 60 * 60 * 24 * 30;
     }
 
-    const relatorio = getRelatorio(dataInicio, dataFim);
+    const relatorio = gerarRelatorios(dataInicio, dataFim);
     res.sendStatus(200).json(relatorio);
 });
 
