@@ -53,11 +53,13 @@ const isAdmin = (req, res, next) => {
         }
     }
 
-    res.status(401).json({
-        // Usuário não é admin 401
-        auth: false,
-        message: "Acesso negado , não é admin",
-    }).end();
+    res.status(401)
+        .json({
+            // Usuário não é admin 401
+            auth: false,
+            message: "Acesso negado , não é admin",
+        })
+        .end();
     return;
 };
 
@@ -76,11 +78,13 @@ const isFuncionario = (req, res, next) => {
             return;
         }
     }
-    res.status(401).json({
-        // Usuário não é admin 401
-        auth: false,
-        message: "Acesso negado",
-    }).end();
+    res.status(401)
+        .json({
+            // Usuário não é admin 401
+            auth: false,
+            message: "Acesso negado",
+        })
+        .end();
     return;
 };
 
