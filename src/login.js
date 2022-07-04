@@ -167,14 +167,7 @@ const LoginPage = () => {
                             marginBottom: "2rem",
                         }}
                     >
-                        <button
-                            onClick={() => {
-                                document
-                                    .getElementById("email")
-                                    .scrollIntoView({
-                                        block: "center",
-                                    });
-                            }}
+                        <p
                             style={{
                                 backgroundColor: "transparent",
                                 border: "none",
@@ -185,7 +178,7 @@ const LoginPage = () => {
                             }}
                         >
                             👇
-                        </button>
+                        </p>
                         {/* Generate 5 random clouds */}
                         {Array.from(Array(3)).map((_, i) => {
                             return <Cloud key={i} />;
