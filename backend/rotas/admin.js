@@ -346,7 +346,7 @@ router.get("/relatorios", (req, res) => {
     }
 
     const relatorio = gerarRelatorios(dataInicio, dataFim);
-    res.sendStatus(200).json(relatorio);
+    res.status(200).json(relatorio);
 });
 
 module.exports = router;
