@@ -38,7 +38,8 @@ const validaçãoPedido = (pedido) => {
 // Função retorna todos os pedidos do banco de dados
 const getAllPedidos = async () => {
     const connection = await getConnection(); // conectar ao banco de dados
-    let pedidos = await connection.collection("pedidos")
+    let pedidos = await connection
+        .collection("pedidos")
         .find()
         .sort({ dataHora: 1 })
         .toArray();
