@@ -51,14 +51,20 @@ const atualizarRelatorioProdutos = (relatorio, produto) => {
     }
 };
 
-const gerarRelatorios = function (dataInicio, dataFim) {
+const gerarRelatorios = async function (dataInicio, dataFim) {
     // Gera o relatório de ingredientes, pizzas e produtos dos pedidos entre duas datas.
 
-    const pedidos = filtrarPedidosPorData(getAllPedidos(), dataInicio, dataFim);
+    const pedidos = await getAllPedidos();
 
-    const relatorioIngredientes = {};
-    const relatorioPizzas = {};
-    const relatorioProdutos = {};
+    const pedidosIntervalo = filtrarPedidosPorData(
+        pedidos,
+        dataInicio,
+        dataFim
+    );
+
+    relatorioIngredientes = {};
+    relatorioPizzas = {};
+    relatorioProdutos = {};
 
     for (let pedido of pedidos) {
         for (let item of pedido.itens) {
