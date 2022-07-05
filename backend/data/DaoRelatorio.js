@@ -61,25 +61,25 @@ const atualizarRelatorioPizzas = (relatorio, pizza) => {
             porcoes: 0,
             custo: 0,
         };
-        relatorio[id]["porcoes"] += pizza.quantidade;
         relatorio[id]["custo"] += pizza.preco;
     }
+    relatorio[id]["porcoes"] += pizza.quantidade;
 };
 
 const atualizarRelatorioProdutos = (relatorio, produto) => {
     // Recebe um objeto contendo um relatório de produtos e um produto,
     // e atualiza o relatório com o produto recebido.
     id = produto.id;
-    if (!relatorio[id]) {
+    if (relatorio[id] == undefined) {
         relatorio[id] = {
             id: produto.id,
             nome: produto.nome,
             quantidade: 0,
             lucro: 0,
         };
-        relatorio[id]["quantidade"] += produto.quantidade;
         relatorio[id]["lucro"] += produto.preco;
     }
+    relatorio[id]["quantidade"] += produto.quantidade;
 };
 
 const gerarRelatorios = async function (dataInicio, dataFim) {
