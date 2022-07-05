@@ -58,12 +58,12 @@ const atualizarRelatorioPizzas = (relatorio, pizza) => {
         relatorio[id] = {
             id: pizza.id,
             nome: pizza.nome,
-            porcoes: 0,
-            custo: 0,
+            quantidade: 0,
+            lucro: 0,
         };
     }
-    relatorio[id]["porcoes"] += pizza.quantidade;
-    relatorio[id]["custo"] += pizza.preco * pizza.quantidade;
+    relatorio[id]["quantidade"] += pizza.quantidade;
+    relatorio[id]["lucro"] += pizza.preco * pizza.quantidade;
 };
 
 const atualizarRelatorioProdutos = (relatorio, produto) => {
@@ -123,7 +123,7 @@ const gerarRelatorios = async function (dataInicio, dataFim) {
             (a, b) => b.quantidade - a.quantidade
         ),
         pizzas: Object.values(relatorioPizzas).sort(
-            (a, b) => b.porcoes - a.porcoes
+            (a, b) => b.quantidade - a.quantidade
         ),
         produtos: Object.values(relatorioProdutos).sort(
             (a, b) => b.quantidade - a.quantidade

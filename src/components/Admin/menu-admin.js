@@ -42,8 +42,8 @@ const MenuAdmin = () => {
                             {pizzas.map((pizza) => (
                                 <tr key={pizza.id}>
                                     <td>{pizza.nome}</td>
-                                    <td>{pizza.porcoes}</td>
-                                    <td>R$ {pizza.custo.toFixed(2)}</td>
+                                    <td>{pizza.quantidade}</td>
+                                    <td>R$ {pizza.lucro.toFixed(2)}</td>
                                 </tr>
                             ))}
                         </tbody>
@@ -54,7 +54,7 @@ const MenuAdmin = () => {
                             R$
                             {pizzas
                                 .reduce((total, pizza) => {
-                                    return total + pizza.custo;
+                                    return total + pizza.lucro;
                                 }, 0)
                                 .toFixed(2)}
                         </span>
