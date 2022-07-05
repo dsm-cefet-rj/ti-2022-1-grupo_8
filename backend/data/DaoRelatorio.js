@@ -1,4 +1,5 @@
 const { getAllPedidos } = require("./DaoPedidos");
+const { getAllIngredientes } = require("./DaoIngrediente");
 
 let relatorioIngredientes = {};
 let relatorioPizzas = {};
@@ -11,19 +12,41 @@ const filtrarPedidosPorData = (pedidos, dataInicio, dataFim) => {
     });
 };
 
-const atualizarRelatorioIngredientes = (relatorio, ingrediente) => {
-    // Recebe um objeto contendo um relatório de ingredientes e um ingrediente,
-    // e atualiza o relatório com o ingrediente recebido.
-    id = ingrediente.id;
-    if (!relatorio[id]) {
-        relatorio[id] = {
-            id: ingrediente.id,
-            nome: ingrediente.nome,
-            quantidade: 0,
-            lucro: 0,
-        };
-        relatorio[id]["quantidade"] += ingrediente.quantidade;
-        relatorio[id]["lucro"] += ingrediente.preco;
+const atualizarRelatorioIngredientes = (ingredientesBD, relatorio, pizza) => {
+    // Recebe um objeto contendo um relatório de ingredientes e uma pizza,
+    // e atualiza o relatório com os ingredientes da pizza recebida.
+
+    for (let metade of pizza.Metades) {
+        for (let ingredienteID of metade) {
+            //
+            // TODO: gambiarra para lidar com IDs numéricos que ainda estão no banco
+            const ingrediente = Number.isInteger(Number(ingredienteID))
+                ? ingredientesBD[Number.parseInt(ingredienteID) - 1]
+                : ingredientesBD.find(
+                      (ingrediente) => ingrediente.id === ingredienteID
+                  );
+            //end of gambiarra
+
+            if (ingrediente == undefined) {
+                // Ingrediente não existe mais.
+                console.log(`Ingrediente não encontrado: ${ingredienteID}`);
+                continue;
+            }
+
+            console.log(`Ingrediente ENCONTRADO: ${ingredienteID}`);
+
+            id = ingrediente.id;
+            if (relatorio[id] == undefined) {
+                relatorio[id] = {
+                    id: ingrediente.id,
+                    nome: ingrediente.nome,
+                    quantidade: 0,
+                    lucro: 0,
+                };
+            }
+            relatorio[id]["quantidade"] += pizza.quantidade;
+            relatorio[id]["lucro"] += ingrediente.preco * pizza.quantidade;
+        }
     }
 };
 
@@ -63,6 +86,7 @@ const gerarRelatorios = async function (dataInicio, dataFim) {
     // Gera o relatório de ingredientes, pizzas e produtos dos pedidos entre duas datas.
 
     const pedidos = await getAllPedidos();
+    const ingredientes = await getAllIngredientes();
 
     const pedidosIntervalo = filtrarPedidosPorData(
         pedidos,
@@ -77,14 +101,17 @@ const gerarRelatorios = async function (dataInicio, dataFim) {
     for (let pedido of pedidosIntervalo) {
         for (let item of pedido.carrinho) {
             if (item.tipo === "pizza") {
-                // Consolidar ingredientes
-                atualizarRelatorioIngredientes(relatorioIngredientes, item);
-
-                // Consolidar pizzas
-                if (item.descricao !== "") {
-                    // Pizzas customizadas têm a descrição vazia
-                    atualizarRelatorioPizzas(relatorioPizzas, item);
-                }
+                // Consolidar pizzas padrão
+                atualizarRelatorioPizzas(relatorioPizzas, item);
+            } else if (item.Metades) {
+                // Consolidar ingredientes das pizzas customizadas
+                // (pizzas customizadas têm o atributo Metades)
+                console.log(Object.values(relatorioIngredientes).length);
+                atualizarRelatorioIngredientes(
+                    ingredientes,
+                    relatorioIngredientes,
+                    item
+                );
             } else if (item.tipo === "produto") {
                 atualizarRelatorioProdutos(relatorioProdutos, item);
             }
