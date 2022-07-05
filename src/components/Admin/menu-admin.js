@@ -29,7 +29,7 @@ const MenuAdmin = () => {
                 <div className="row">
                     <h1 className="text-center">Pizzas Mais Compradas 📈</h1>
                 </div>
-                <div className="row">
+                <div className="row" style={{ width: "90%", margin: "auto" }}>
                     <table className="table table-striped table-dark">
                         <thead>
                             <tr>
@@ -43,27 +43,32 @@ const MenuAdmin = () => {
                                 <tr key={pizza.id}>
                                     <td>{pizza.nome}</td>
                                     <td>{pizza.porcoes}</td>
-                                    <td>{pizza.custo.toFixed(2)}</td>
+                                    <td>R$ {pizza.custo.toFixed(2)}</td>
                                 </tr>
                             ))}
                         </tbody>
                     </table>
-                    <p>
-                        Total: R$
-                        {pizzas
-                            .reduce((total, pizza) => {
-                                return total + pizza.lucro;
-                            }, 0)
-                            .toFixed(2)}
-                    </p>
+                    <h3 style={{ fontSize: "1.5rem", textAlign: "right" }}>
+                        Total:{" "}
+                        <span style={{ fontSize: "2.5rem" }}>
+                            R$
+                            {pizzas
+                                .reduce((total, pizza) => {
+                                    return total + pizza.custo;
+                                }, 0)
+                                .toFixed(2)}
+                        </span>
+                    </h3>
                 </div>
+
+                <hr />
 
                 <div className="row">
                     <h1 className="text-center">
                         {"Ingredientes Mais Utilizados 📈"}
                     </h1>
                 </div>
-                <div className="row">
+                <div className="row" style={{ width: "90%", margin: "auto" }}>
                     <table className="table table-striped table-dark">
                         <thead>
                             <tr>
@@ -77,26 +82,32 @@ const MenuAdmin = () => {
                                 <tr key={ingrediente.id}>
                                     <td>{ingrediente.nome}</td>
                                     <td>{ingrediente.quantidade}</td>
-                                    <td>{ingrediente.lucro.toFixed(2)}</td>
+                                    <td>R$ {ingrediente.lucro.toFixed(2)}</td>
                                 </tr>
                             ))}
                         </tbody>
                     </table>
-                    <p>
-                        Total: R${" "}
-                        {ingredientes
-                            .reduce((total, ingrediente) => {
-                                return total + ingrediente.lucro;
-                            }, 0)
-                            .toFixed(2)}
-                    </p>
+                    <h3 style={{ fontSize: "1.5rem", textAlign: "right" }}>
+                        Total:{" "}
+                        <span style={{ fontSize: "2.5rem" }}>
+                            R$
+                            {ingredientes
+                                .reduce((total, ingrediente) => {
+                                    return total + ingrediente.lucro;
+                                }, 0)
+                                .toFixed(2)}
+                        </span>
+                    </h3>
                 </div>
+
+                <hr />
+
                 <div className="row">
                     <h1 className="text-center">
                         {"Produtos Mais Comprados 📈"}
                     </h1>
                 </div>
-                <div className="row">
+                <div className="row" style={{ width: "90%", margin: "auto" }}>
                     <table className="table table-striped table-dark">
                         <thead>
                             <tr>
@@ -110,19 +121,22 @@ const MenuAdmin = () => {
                                 <tr key={produto.id}>
                                     <td>{produto.nome}</td>
                                     <td>{produto.quantidade}</td>
-                                    <td>{produto.lucro.toFixed(2)}</td>
+                                    <td>R$ {produto.lucro.toFixed(2)}</td>
                                 </tr>
                             ))}
                         </tbody>
                     </table>
-                    <p>
-                        Total: R$
-                        {produtos
-                            .reduce((total, produto) => {
-                                return total + produto.lucro;
-                            }, 0)
-                            .toFixed(2)}
-                    </p>
+                    <h3 style={{ fontSize: "1.5rem", textAlign: "right" }}>
+                        Total:{" "}
+                        <span style={{ fontSize: "2.5rem" }}>
+                            R$
+                            {produtos
+                                .reduce((total, produto) => {
+                                    return total + produto.lucro;
+                                }, 0)
+                                .toFixed(2)}
+                        </span>
+                    </h3>
                 </div>
             </div>
         </>
