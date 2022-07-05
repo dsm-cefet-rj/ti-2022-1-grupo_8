@@ -61,9 +61,9 @@ const atualizarRelatorioPizzas = (relatorio, pizza) => {
             porcoes: 0,
             custo: 0,
         };
-        relatorio[id]["custo"] += pizza.preco;
     }
     relatorio[id]["porcoes"] += pizza.quantidade;
+    relatorio[id]["custo"] += pizza.preco * pizza.quantidade;
 };
 
 const atualizarRelatorioProdutos = (relatorio, produto) => {
@@ -77,9 +77,9 @@ const atualizarRelatorioProdutos = (relatorio, produto) => {
             quantidade: 0,
             lucro: 0,
         };
-        relatorio[id]["lucro"] += produto.preco;
     }
     relatorio[id]["quantidade"] += produto.quantidade;
+    relatorio[id]["lucro"] += produto.preco * produto.quantidade;
 };
 
 const gerarRelatorios = async function (dataInicio, dataFim) {
