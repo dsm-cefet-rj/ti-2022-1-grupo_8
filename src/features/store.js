@@ -8,6 +8,7 @@ import sessionSlice from "./sessionSlice";
 import pedidosClienteSlice from "./pedidos-clienteSlice";
 import pedidosFuncionarioSlice from "./pedidos-funcionarioSlice";
 import gerirPizzaSlice from "./gerir-pizzaSlice";
+import relatorioSlice from "./relatorioSlice";
 
 export default configureStore({
     reducer: {
@@ -20,5 +21,6 @@ export default configureStore({
         pedidosCliente: pedidosClienteSlice,
         pedidosFuncionario: pedidosFuncionarioSlice,
         gerirPizza: gerirPizzaSlice,
+        relatorio: relatorioSlice,
     },
 });
