@@ -1,13 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-    fetchIngredientes,
-    fetchPizzas,
-    fetchProdutos,
-    selectIngredientes,
-    selectPizzas,
-    selectProdutos,
-} from "../../features/clienteDatabaseSlice";
+import { fetchRelatorio, selectRelatorio } from "../../features/relatorioSlice";
 import AdminNav from "./admin-nav";
 import styles from "./menu-admin.module.scss";
 /* 
@@ -17,15 +10,14 @@ Descrição: Componente que renderiza a página principal de administração
 const MenuAdmin = () => {
     const dispatch = useDispatch();
 
-    const pizzasBD = useSelector(selectIngredientes);
-    const ProdutosBD = useSelector(selectPizzas);
-    const ingredientesBD = useSelector(selectProdutos);
-
     useEffect(() => {
-        dispatch(fetchIngredientes);
-        dispatch(fetchPizzas);
-        dispatch(fetchProdutos);
-    }, [pizzasBD, ProdutosBD, ingredientesBD, dispatch]);
+        dispatch(fetchRelatorio());
+    }, []);
+
+    const relatorio = useSelector(selectRelatorio);
+
+    let pizzas, ingredientes, produtos;
+    ({ pizzas, ingredientes, produtos } = relatorio);
 
     return (
         <>
@@ -47,24 +39,20 @@ const MenuAdmin = () => {
                             </tr>
                         </thead>
                         <tbody className="table-hover">
-                            {pizzasBD.map((pizza) => (
+                            {pizzas.map((pizza) => (
                                 <tr key={pizza.id}>
                                     <td>{pizza.nome}</td>
-                                    <td>{pizza.quant_comprada}</td>
-                                    <td>
-                                        {(pizza.quant_comprada * 23.37).toFixed(
-                                            2
-                                        )}
-                                    </td>
+                                    <td>{pizza.porcoes}</td>
+                                    <td>{pizza.custo.toFixed(2)}</td>
                                 </tr>
                             ))}
                         </tbody>
                     </table>
                     <p>
                         Total: R$
-                        {pizzasBD
+                        {pizzas
                             .reduce((total, pizza) => {
-                                return total + pizza.quant_comprada * 23.37;
+                                return total + pizza.lucro;
                             }, 0)
                             .toFixed(2)}
                     </p>
@@ -85,28 +73,20 @@ const MenuAdmin = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {ingredientesBD.map((ingrediente) => (
+                            {ingredientes.map((ingrediente) => (
                                 <tr key={ingrediente.id}>
                                     <td>{ingrediente.nome}</td>
-                                    <td>{ingrediente.usados}</td>
-                                    <td>
-                                        {(
-                                            ingrediente.usados *
-                                            ingrediente.preco
-                                        ).toFixed(2)}
-                                    </td>
+                                    <td>{ingrediente.quantidade}</td>
+                                    <td>{ingrediente.lucro.toFixed(2)}</td>
                                 </tr>
                             ))}
                         </tbody>
                     </table>
                     <p>
                         Total: R${" "}
-                        {ingredientesBD
+                        {ingredientes
                             .reduce((total, ingrediente) => {
-                                return (
-                                    total +
-                                    ingrediente.usados * ingrediente.preco
-                                );
+                                return total + ingrediente.lucro;
                             }, 0)
                             .toFixed(2)}
                     </p>
@@ -126,27 +106,22 @@ const MenuAdmin = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {ProdutosBD.map((produto) => (
+                            {produtos.map((produto) => (
                                 <tr key={produto.id}>
                                     <td>{produto.nome}</td>
-                                    <td>{produto.quant_comprada}</td>
-                                    <td>
-                                        {(
-                                            produto.quant_comprada *
-                                            produto.preco
-                                        ).toFixed(2)}
-                                    </td>
+                                    <td>{produto.quantidade}</td>
+                                    <td>{produto.lucro.toFixed(2)}</td>
                                 </tr>
                             ))}
                         </tbody>
                     </table>
                     <p>
                         Total: R$
-                        {ProdutosBD.reduce((total, produto) => {
-                            return (
-                                total + produto.quant_comprada * produto.preco
-                            );
-                        }, 0).toFixed(2)}
+                        {produtos
+                            .reduce((total, produto) => {
+                                return total + produto.lucro;
+                            }, 0)
+                            .toFixed(2)}
                     </p>
                 </div>
             </div>
