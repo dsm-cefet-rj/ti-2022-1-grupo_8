@@ -119,9 +119,15 @@ const gerarRelatorios = async function (dataInicio, dataFim) {
     }
 
     return {
-        ingredientes: Object.values(relatorioIngredientes),
-        pizzas: Object.values(relatorioPizzas),
-        produtos: Object.values(relatorioProdutos),
+        ingredientes: Object.values(relatorioIngredientes).sort(
+            (a, b) => b.quantidade - a.quantidade
+        ),
+        pizzas: Object.values(relatorioPizzas).sort(
+            (a, b) => b.porcoes - a.porcoes
+        ),
+        produtos: Object.values(relatorioProdutos).sort(
+            (a, b) => b.quantidade - a.quantidade
+        ),
     };
 };
 
