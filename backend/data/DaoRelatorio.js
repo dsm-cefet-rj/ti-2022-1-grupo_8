@@ -33,8 +33,6 @@ const atualizarRelatorioIngredientes = (ingredientesBD, relatorio, pizza) => {
                 continue;
             }
 
-            console.log(`Ingrediente ENCONTRADO: ${ingredienteID}`);
-
             id = ingrediente.id;
             if (relatorio[id] == undefined) {
                 relatorio[id] = {
@@ -106,7 +104,6 @@ const gerarRelatorios = async function (dataInicio, dataFim) {
             } else if (item.Metades) {
                 // Consolidar ingredientes das pizzas customizadas
                 // (pizzas customizadas têm o atributo Metades)
-                console.log(Object.values(relatorioIngredientes).length);
                 atualizarRelatorioIngredientes(
                     ingredientes,
                     relatorioIngredientes,
