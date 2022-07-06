@@ -28,7 +28,6 @@ const { getPedidos } = require("../data/DaoPedidos");
 const { gerarRelatorios } = require("../data/DaoRelatorio");
 require("dotenv").config();
 
-
 // Rota para o admin ver as informações de um usuário pelo email
 router.get("/usuario/:email", async (req, res) => {
     const email = req.params.email;
@@ -135,27 +134,25 @@ router.patch("/editar-pizza",async (req, res) => {
             preco,
         }
 
-        console.log(pizza);
+    console.log(pizza);
 
-        res.sendStatus(200);
-    }
-);
+    res.sendStatus(200);
+});
 
 // Rota para adicionar ou editar um produto
 router.patch("/editar-produto", async (req, res) => {
-        let { nome, descricao, imagem, preco, id, quant_comprada } = req.body;
-        const produto = {
-            nome, 
-            descricao, 
-            imagem, 
-            preco, 
-            id, 
-            quant_comprada
-        };
-        console.log(produto);
-        res.sendStatus(200);
-    }
-);
+    let { nome, descricao, imagem, preco, id, quant_comprada } = req.body;
+    const produto = {
+        nome,
+        descricao,
+        imagem,
+        preco,
+        id,
+        quant_comprada,
+    };
+    console.log(produto);
+    res.sendStatus(200);
+});
 
 //Rota para excluir um usuário pelo email
 router.delete("/usuario-excluir/:email", async (req, res) => {
