@@ -121,26 +121,19 @@ router.post("/editar-ingrediente", async (req, res) => {
 );
 
 // Rota para adicionar ou editar uma pizza
-router.patch("/editar-pizza",async (req, res) => {
-        const {
-            id,
-            nome,
-            descricao,
-            imagem,
-            ingredientes,
-            quant_comprada,
-            preco,
-        } = req.body;
-        
-        const pizza = {
-            id,
-            nome,
-            descricao,
-            imagem,
-            ingredientes,
-            quant_comprada,
-            preco,
-        }
+router.patch("/editar-pizza", async (req, res) => {
+    const { id, nome, descricao, imagem, ingredientes, quant_comprada, preco } =
+        req.body;
+
+    const pizza = {
+        id,
+        nome,
+        descricao,
+        imagem,
+        ingredientes,
+        quant_comprada,
+        preco,
+    };
 
     console.log(pizza);
 
