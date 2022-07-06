@@ -28,13 +28,6 @@ const { getPedidos } = require("../data/DaoPedidos");
 const { gerarRelatorios } = require("../data/DaoRelatorio");
 require("dotenv").config();
 
-// multer para upload de imagens
-const multer = require("multer");
-const { upload } = require("@testing-library/user-event/dist/upload");
-const baseImgPath = "./public/imgs/";
-const ingredienteImgDest = multer({ dest: baseImgPath + "ingredientes" });
-const pizzaImgDest = multer({ dest: baseImgPath + "pizzas" });
-const produtoImgDest = multer({ dest: baseImgPath + "produtos" });
 
 // Rota para o admin ver as informações de um usuário pelo email
 router.get("/usuario/:email", async (req, res) => {
@@ -104,10 +97,7 @@ router.post("/promover-funcionario/:email", async (req, res) => {
 });
 
 // Rota para adicionar ou editar um ingrediente
-router.post(
-    "/editar-ingrediente", // Caminho da rota
-    ingredienteImgDest.single("imagem"), // Middleware para upload de imagens
-    async (req, res) => {
+router.post("/editar-ingrediente", async (req, res) => {
         const { _id, imagem, nome, preco, descricao, pesoPorcao } = req.body;
         const ingrediente = {
             _id,
@@ -118,22 +108,13 @@ router.post(
             descricao,
             pesoPorcao: parseFloat(pesoPorcao),
         };
-        console.table(ingrediente);
-        try {
-            await editIngrediente(ingrediente);
-        } catch (err) {
-            res.status(404).json({ error: err.message }).end();
-            return;
-        }
+        console.log(ingrediente);
         res.sendStatus(200);
     }
 );
 
 // Rota para adicionar ou editar uma pizza
-router.patch(
-    "/editar-pizza", // Caminho da rota
-    pizzaImgDest.single("imagem"), // Middleware para upload de imagens
-    async (req, res) => {
+router.patch("/editar-pizza",async (req, res) => {
         const {
             id,
             nome,
@@ -143,69 +124,34 @@ router.patch(
             quant_comprada,
             preco,
         } = req.body;
-        if (id) {
-            //verificar se pizza realmente existe
-            const pizza = getAllPizzas().find((pizza) => pizza.id === id);
-            if (pizza) {
-                // se pizza existe, editar
-                //editar pizza
-                const novaPizza = editPizza(
-                    id,
-                    nome,
-                    descricao,
-                    imagem,
-                    ingredientes,
-                    quant_comprada,
-                    preco
-                );
-                res.json(novaPizza);
-            } else {
-                res.status(404).json({
-                    message: `Pizza não existe, id: ${id} 😔`,
-                });
-            }
-        } else {
-            addPizza(
-                nome,
-                descricao,
-                imagem,
-                ingredientes,
-                quant_comprada,
-                preco
-            );
+        const pizza = {
+            id,
+            nome,
+            descricao,
+            imagem,
+            ingredientes,
+            quant_comprada,
+            preco,
         }
+
+        console.log(pizza);
+
         res.sendStatus(200);
     }
 );
 
 // Rota para adicionar ou editar um produto
-router.patch(
-    "/editar-produto", // Caminho da rota
-    produtoImgDest.single("imagem"), // Middleware para upload de imagens
-    async (req, res) => {
+router.patch("/editar-produto", async (req, res) => {
         let { nome, descricao, imagem, preco, id, quant_comprada } = req.body;
-        if (id) {
-            const produto = getAllProdutos().find(
-                (produto) => produto.id === id
-            );
-            if (produto) {
-                const novoProduto = editProduto(
-                    id,
-                    nome,
-                    descricao,
-                    imagem,
-                    preco,
-                    quant_comprada
-                );
-                res.json(novoProduto);
-            } else {
-                res.status(404).json({
-                    message: `Produto não existe, id: ${id} 😔`,
-                });
-            }
-        } else {
-            addProduto(nome, descricao, imagem, preco, quant_comprada);
-        }
+        const produto = {
+            nome, 
+            descricao, 
+            imagem, 
+            preco, 
+            id, 
+            quant_comprada
+        };
+        console.log(produto);
         res.sendStatus(200);
     }
 );
