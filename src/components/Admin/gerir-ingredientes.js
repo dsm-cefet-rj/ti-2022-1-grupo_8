@@ -95,6 +95,12 @@ const GerirIngredientes = () => {
     const ingredientesBD = useSelector(selectIngredientes);
 
     const idSelecinado = useSelector(selectId);
+    const [nome, setNome] = useState("");
+    const [preco, setPreco] = useState("");
+    const [descricao, setDescricao] = useState("");
+    const [pesoPorcao, setPesoPorcao] = useState("");
+    const [imagem, setImagem] = useState("");
+
     useEffect(() => {
         if (idSelecinado !== 0) {
             let ingrediente = ingredientesBD.find(
@@ -119,11 +125,6 @@ const GerirIngredientes = () => {
     }, [idSelecinado]);
 
     const handleButton = (e) => {
-        let nome = document.getElementById("nome").value;
-        let preco = document.getElementById("preco").value;
-        let descricao = document.getElementById("descricao").value;
-        let pesoPorcao = document.getElementById("PesoPorcao").value;
-        let imagem = document.getElementById("imagem").value;
         const ingrediente = {
             _id: idSelecinado,
             nome: nome,

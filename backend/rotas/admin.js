@@ -99,7 +99,7 @@ router.post("/promover-funcionario/:email", async (req, res) => {
 // Rota para adicionar ou editar um ingrediente
 router.post("/editar-ingrediente", async (req, res) => {
         const { _id, imagem, nome, preco, descricao, pesoPorcao } = req.body;
-        const ingrediente = {
+        let ingrediente = {
             _id,
             imagem,
             nome,
@@ -124,6 +124,7 @@ router.patch("/editar-pizza",async (req, res) => {
             quant_comprada,
             preco,
         } = req.body;
+        
         const pizza = {
             id,
             nome,

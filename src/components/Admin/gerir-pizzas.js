@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -14,6 +15,7 @@ import {
 import Metade from "../geral/metade-pizza";
 import AdminNav from "./admin-nav";
 import styles from "./gerir-pizzas.module.scss";
+import { getSessionFromLocalStorage } from "../../features/sessionSlice";
 /* 
 Componente: GerirPizzas
 Descrição: Componente que renderiza a página de gerenciamento de pizzas
@@ -35,12 +37,45 @@ const GerirPizzas = () => {
     // Variáveis que controlam os ingredientes selecionados.
     const ingrediente = useSelector(selectGerirPizza).ingrediente; // ingredientes
 
+    const [idSelecinado, setIdSelecionado] = useState("");
+
     const [preco, setPreco] = useState(0);
     const [editando, setEditando] = useState(false);
 
     const handleSubmit = (e) => {
         e.preventDefault();
         //Atualiza as pizzas carregadas
+        const pizza = {
+            _id: idSelecinado,
+            nome,
+            imagem,
+            descricao,
+            ingredientes: ingrediente,
+            preco,
+        };
+
+        const token = getSessionFromLocalStorage();
+        const request = {
+            method: "POST",
+            url: "http://localhost:3001/admin/editar-pizza",
+            headers: {
+                "Content-Type": "application/json",
+                "x-access-token": `Bearer ${token}`,
+            },
+            data: pizza,
+        };
+
+        axios(request).then((response) => {
+            console.log(response);
+            if (response.status === 200) {
+                setErro("");
+            } else {
+                setErro("Erro ao editar a pizza");
+            }
+        }).catch((error) => {
+            console.log(error);
+            setErro("Erro ao editar a pizza");
+        });
         dispatch(fetchPizzas());
     };
 
@@ -107,6 +142,7 @@ const GerirPizzas = () => {
                                                 setEditando(true);
                                                 setNome(pizza.nome);
                                                 setDescricao(pizza.descricao);
+                                                setIdSelecionado(pizza.id);
 
                                                 let elem =
                                                     document.getElementById(
@@ -195,10 +231,10 @@ const GerirPizzas = () => {
                                     id="imagem"
                                     className="form-control"
                                     type="file"
-                                    value={imagem}
-                                    onChange={(e) =>
-                                        setImagem(e.target.value[0])
-                                    }
+                                    onChange={(e) => {
+                                        const [file] = e.target.files;
+                                        setImagem(file);
+                                    }}
                                 />
                             </div>
                             {/* Ingredientes*/}
@@ -257,7 +293,7 @@ const GerirPizzas = () => {
                         <div className="col-md-12">
                             <button
                                 className="btn btn-lg btn-success"
-                                onClick={() => {}}
+                                onClick={handleSubmit}
                             >
                                 Confirmar
                             </button>

@@ -6,6 +6,7 @@ import {
 } from "../../features/clienteDatabaseSlice";
 import AdminNav from "./admin-nav";
 import styles from "./gerir-produtos.module.scss";
+import { getSessionFromLocalStorage } from "../../features/sessionSlice";
 /* 
 Componente: GerirPizzas
 Descrição: Componente que renderiza a página de gerenciamento de pizzas
@@ -49,6 +50,16 @@ const GerirProdutos = () => {
             descricao: descricao,
         };
         console.log(produto);
+        const token = getSessionFromLocalStorage();
+        const request = {
+            method: "POST",
+            url: "http://localhost:3001/admin/editar-produto",
+            headers: {
+                "Content-Type": "application/json",
+                "x-access-token": `Bearer ${token}`,
+            },
+            data: pizza,
+        };
     };
 
     useEffect(() => {
