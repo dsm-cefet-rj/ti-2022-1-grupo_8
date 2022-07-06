@@ -97,28 +97,19 @@ router.post("/promover-funcionario/:email", async (req, res) => {
 
 // Rota para adicionar ou editar um ingrediente
 router.post("/editar-ingrediente", async (req, res) => {
-        // Get nome,preco,descricao,pesoPorcao,imagem,id, from form data
-        const {
-            nome,
-            preco,
-            descricao,
-            pesoPorcao,
-            imagem,
-            id,
-        } = req.body;
-        // Create ingrediente object
-        const ingrediente = {
-            nome,
-            preco,
-            descricao,
-            pesoPorcao,
-            imagem,
-            id,
-        }
-        console.log(req.files);
-
-    }
-);
+    // Get nome,preco,descricao,pesoPorcao,imagem,id, from form data
+    const { nome, preco, descricao, pesoPorcao, imagem, id } = req.body;
+    // Create ingrediente object
+    const ingrediente = {
+        nome,
+        preco,
+        descricao,
+        pesoPorcao,
+        imagem,
+        id,
+    };
+    console.log(req.files);
+});
 
 // Rota para adicionar ou editar uma pizza
 router.patch("/editar-pizza", async (req, res) => {

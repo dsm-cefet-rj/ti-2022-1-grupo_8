@@ -137,7 +137,7 @@ const GerirIngredientes = () => {
         const token = getSessionFromLocalStorage();
         const request = {
             method: "POST",
-           
+
             headers: {
                 "Content-Type": "multipart/form-data",
                 "x-access-token": `Bearer ${token}`,
@@ -148,7 +148,7 @@ const GerirIngredientes = () => {
                     (progressEvent.loaded * 100) / progressEvent.total
                 );
                 console.log(percentCompleted);
-            }
+            },
         };
 
         axios(request)
