@@ -65,17 +65,19 @@ const GerirPizzas = () => {
             data: pizza,
         };
 
-        axios(request).then((response) => {
-            console.log(response);
-            if (response.status === 200) {
-                setErro("");
-            } else {
+        axios(request)
+            .then((response) => {
+                console.log(response);
+                if (response.status === 200) {
+                    setErro("");
+                } else {
+                    setErro("Erro ao editar a pizza");
+                }
+            })
+            .catch((error) => {
+                console.log(error);
                 setErro("Erro ao editar a pizza");
-            }
-        }).catch((error) => {
-            console.log(error);
-            setErro("Erro ao editar a pizza");
-        });
+            });
         dispatch(fetchPizzas());
     };
 

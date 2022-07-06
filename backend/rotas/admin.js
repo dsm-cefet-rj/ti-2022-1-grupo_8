@@ -97,42 +97,34 @@ router.post("/promover-funcionario/:email", async (req, res) => {
 
 // Rota para adicionar ou editar um ingrediente
 router.post("/editar-ingrediente", async (req, res) => {
-        const { _id, imagem, nome, preco, descricao, pesoPorcao } = req.body;
-        let ingrediente = {
-            _id,
-            imagem,
-            nome,
-            preco: parseFloat(preco),
-            usados: 0,
-            descricao,
-            pesoPorcao: parseFloat(pesoPorcao),
-        };
-        console.log(ingrediente);
-        res.sendStatus(200);
-    }
-);
+    const { _id, imagem, nome, preco, descricao, pesoPorcao } = req.body;
+    let ingrediente = {
+        _id,
+        imagem,
+        nome,
+        preco: parseFloat(preco),
+        usados: 0,
+        descricao,
+        pesoPorcao: parseFloat(pesoPorcao),
+    };
+    console.log(ingrediente);
+    res.sendStatus(200);
+});
 
 // Rota para adicionar ou editar uma pizza
-router.patch("/editar-pizza",async (req, res) => {
-        const {
-            id,
-            nome,
-            descricao,
-            imagem,
-            ingredientes,
-            quant_comprada,
-            preco,
-        } = req.body;
-        
-        const pizza = {
-            id,
-            nome,
-            descricao,
-            imagem,
-            ingredientes,
-            quant_comprada,
-            preco,
-        }
+router.patch("/editar-pizza", async (req, res) => {
+    const { id, nome, descricao, imagem, ingredientes, quant_comprada, preco } =
+        req.body;
+
+    const pizza = {
+        id,
+        nome,
+        descricao,
+        imagem,
+        ingredientes,
+        quant_comprada,
+        preco,
+    };
 
     console.log(pizza);
 
