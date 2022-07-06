@@ -28,7 +28,6 @@ const { getPedidos } = require("../data/DaoPedidos");
 const { gerarRelatorios } = require("../data/DaoRelatorio");
 require("dotenv").config();
 
-
 // Rota para o admin ver as informações de um usuário pelo email
 router.get("/usuario/:email", async (req, res) => {
     const email = req.params.email;
@@ -98,63 +97,53 @@ router.post("/promover-funcionario/:email", async (req, res) => {
 
 // Rota para adicionar ou editar um ingrediente
 router.post("/editar-ingrediente", async (req, res) => {
-        const { _id, imagem, nome, preco, descricao, pesoPorcao } = req.body;
-        const ingrediente = {
-            _id,
-            imagem,
-            nome,
-            preco: parseFloat(preco),
-            usados: 0,
-            descricao,
-            pesoPorcao: parseFloat(pesoPorcao),
-        };
-        console.log(ingrediente);
-        res.sendStatus(200);
-    }
-);
+    const { _id, imagem, nome, preco, descricao, pesoPorcao } = req.body;
+    const ingrediente = {
+        _id,
+        imagem,
+        nome,
+        preco: parseFloat(preco),
+        usados: 0,
+        descricao,
+        pesoPorcao: parseFloat(pesoPorcao),
+    };
+    console.log(ingrediente);
+    res.sendStatus(200);
+});
 
 // Rota para adicionar ou editar uma pizza
-router.patch("/editar-pizza",async (req, res) => {
-        const {
-            id,
-            nome,
-            descricao,
-            imagem,
-            ingredientes,
-            quant_comprada,
-            preco,
-        } = req.body;
-        const pizza = {
-            id,
-            nome,
-            descricao,
-            imagem,
-            ingredientes,
-            quant_comprada,
-            preco,
-        }
+router.patch("/editar-pizza", async (req, res) => {
+    const { id, nome, descricao, imagem, ingredientes, quant_comprada, preco } =
+        req.body;
+    const pizza = {
+        id,
+        nome,
+        descricao,
+        imagem,
+        ingredientes,
+        quant_comprada,
+        preco,
+    };
 
-        console.log(pizza);
+    console.log(pizza);
 
-        res.sendStatus(200);
-    }
-);
+    res.sendStatus(200);
+});
 
 // Rota para adicionar ou editar um produto
 router.patch("/editar-produto", async (req, res) => {
-        let { nome, descricao, imagem, preco, id, quant_comprada } = req.body;
-        const produto = {
-            nome, 
-            descricao, 
-            imagem, 
-            preco, 
-            id, 
-            quant_comprada
-        };
-        console.log(produto);
-        res.sendStatus(200);
-    }
-);
+    let { nome, descricao, imagem, preco, id, quant_comprada } = req.body;
+    const produto = {
+        nome,
+        descricao,
+        imagem,
+        preco,
+        id,
+        quant_comprada,
+    };
+    console.log(produto);
+    res.sendStatus(200);
+});
 
 //Rota para excluir um usuário pelo email
 router.delete("/usuario-excluir/:email", async (req, res) => {
