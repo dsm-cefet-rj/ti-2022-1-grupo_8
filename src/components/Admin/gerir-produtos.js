@@ -58,7 +58,7 @@ const GerirProdutos = () => {
                 "Content-Type": "application/json",
                 "x-access-token": `Bearer ${token}`,
             },
-            data: pizza,
+            data: produto,
         };
     };
 
@@ -201,7 +201,8 @@ const GerirProdutos = () => {
                                 className="form-control"
                                 id="imagem"
                                 onChange={(e) => {
-                                    setImagem(e.target.files[0]);
+                                    let [file] = e.target.files;
+                                    setImagem(e.target.files);
                                 }}
                             />
 

@@ -125,26 +125,30 @@ const GerirIngredientes = () => {
     }, [idSelecinado]);
 
     const handleButton = (e) => {
-        const ingrediente = {
-            _id: idSelecinado,
-            nome: nome,
-            preco: preco,
-            descricao: descricao,
-            pesoPorcao: pesoPorcao,
-            imagem: imagem,
-        };
-
-        if (ingrediente.id === 0) delete ingrediente.id;
+        e.preventDefault();
+        let form_data = new FormData();
+        form_data.append("nome", nome);
+        form_data.append("preco", preco);
+        form_data.append("descricao", descricao);
+        form_data.append("pesoPorcao", pesoPorcao);
+        form_data.append("imagem", imagem);
+        form_data.append("id", idSelecinado);
 
         const token = getSessionFromLocalStorage();
         const request = {
             method: "POST",
-            url: "http://localhost:3001/admin/editar-ingrediente",
+           
             headers: {
-                "Content-Type": "application/json",
+                "Content-Type": "multipart/form-data",
                 "x-access-token": `Bearer ${token}`,
             },
-            data: ingrediente,
+            data: form_data,
+            onUploadProgress: (progressEvent) => {
+                const percentCompleted = Math.round(
+                    (progressEvent.loaded * 100) / progressEvent.total
+                );
+                console.log(percentCompleted);
+            }
         };
 
         axios(request)
@@ -213,6 +217,7 @@ const GerirIngredientes = () => {
                                 placeholder="Preço"
                                 step={0.01}
                                 autoComplete="off"
+                                onChange={(e) => setPreco(e.target.value)}
                             />
                         </div>
                         <div className="form-group mb-2">
@@ -224,6 +229,7 @@ const GerirIngredientes = () => {
                                 name="descricao"
                                 placeholder="Descrição"
                                 autoComplete="off"
+                                onChange={(e) => setDescricao(e.target.value)}
                             />
                         </div>
                         <div className="form-group mb-2">
@@ -240,6 +246,7 @@ const GerirIngredientes = () => {
                                 min="1"
                                 max="100"
                                 autoComplete="off"
+                                onChange={(e) => setPesoPorcao(e.target.value)}
                             />
                         </div>
                         <div className="form-group mb-2" id="imagem-field">
@@ -250,6 +257,10 @@ const GerirIngredientes = () => {
                                 id="imagem"
                                 name="imagem"
                                 placeholder="Imagem"
+                                onChange={(e) => {
+                                    let [file] = e.target.files;
+                                    setImagem(file);
+                                }}
                             />
                         </div>
                     </form>
