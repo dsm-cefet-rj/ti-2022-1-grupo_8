@@ -29,7 +29,6 @@ const atualizarRelatorioIngredientes = (ingredientesBD, relatorio, pizza) => {
 
             if (ingrediente == undefined) {
                 // Ingrediente não existe mais.
-                console.log(`Ingrediente não encontrado: ${ingredienteID}`);
                 continue;
             }
 

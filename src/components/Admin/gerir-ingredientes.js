@@ -157,7 +157,7 @@ const GerirIngredientes = () => {
                     (progressEvent.loaded * 100) / progressEvent.total
                 );
                 console.log(percentCompleted);
-            }
+            },
         };
 
         axios(request)
