@@ -133,14 +133,14 @@ const GerirIngredientes = () => {
             pesoPorcao: pesoPorcao,
             imagem: imagem,
             _id: idSelecinado,
-        }
+        };
 
         // imagem to base64
 
         const reader = new FileReader();
         reader.onload = (e) => {
             ingrediente.imagem = e.target.result;
-        }
+        };
         reader.readAsDataURL(imagem);
 
         const token = getSessionFromLocalStorage();
@@ -166,7 +166,8 @@ const GerirIngredientes = () => {
                     dispatch(fetchIngredientes());
                     console.log("Ingrediente editado com sucesso!");
                 } else console.log("Erro ao editar ingrediente!");
-            }).catch((error) => {
+            })
+            .catch((error) => {
                 console.log(error);
             });
     };
@@ -272,10 +273,9 @@ const GerirIngredientes = () => {
                                     reader.onload = () => {
                                         let base64 = reader.result;
                                         setImagem(String(base64));
-                                    }
+                                    };
                                     reader.readAsDataURL(file);
                                     console.log(imagem);
-                                    
                                 }}
                             />
                         </div>
