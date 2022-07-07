@@ -57,7 +57,6 @@ const GerirPizzas = () => {
         formData.append("pizza", JSON.stringify(pizza));
         formData.append("imagem", imagem);
 
-
         const token = getSessionFromLocalStorage();
         const request = {
             method: "POST",
@@ -71,7 +70,6 @@ const GerirPizzas = () => {
 
         const response = await axios(request);
 
-        
         dispatch(fetchPizzas());
     };
 
