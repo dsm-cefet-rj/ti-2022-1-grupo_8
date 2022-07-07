@@ -2,7 +2,7 @@
   "ingredientes": [
     {
       "_id": "62bc0b37ebdf021d97a34de7",
-      "imagem": "imgs/igrediente/molho_de_tomate.jpg",
+      "imagem": "/imgs/ingredientes/molho_de_tomate.png",
       "nome": "Molho",
       "preco": 0.6,
       "usados": 15,
@@ -11,7 +11,7 @@
     },
     {
       "_id": "62bc0b37ebdf021d97a34de8",
-      "imagem": "imgs/igrediente/queijo-musssarela.jpg",
+      "imagem": "/imgs/ingredientes/queijo-musssarela.png",
       "nome": "Queijo",
       "preco": 0.52,
       "usados": 16,
@@ -20,7 +20,7 @@
     },
     {
       "_id": "62bc0b37ebdf021d97a34de9",
-      "imagem": "imgs/igrediente/Calabresa.jpg",
+      "imagem": "/imgs/ingredientes/Calabresa.png",
       "nome": "Calabresa",
       "preco": 0.99,
       "usados": 18,
@@ -29,7 +29,7 @@
     },
     {
       "_id": "62bc0b37ebdf021d97a34dea",
-      "imagem": "imgs/igrediente/Presunto.jpg",
+      "imagem": "/imgs/ingredientes/Presunto.png",
       "nome": "Presunto",
       "preco": 0.78,
       "usados": 35,
@@ -38,7 +38,7 @@
     },
     {
       "_id": "62bc0b37ebdf021d97a34deb",
-      "imagem": "imgs/igrediente/Camarao.webp",
+      "imagem": "/imgs/ingredientes/Camarao.png",
       "nome": "Camarão",
       "preco": 0.81,
       "usados": 20,
@@ -47,7 +47,7 @@
     },
     {
       "_id": "62bc0b37ebdf021d97a34dec",
-      "imagem": "imgs/igrediente/Alho.jpg",
+      "imagem": "/imgs/ingredientes/Alho.png",
       "nome": "Alho",
       "preco": 0.92,
       "usados": 92,
@@ -56,7 +56,7 @@
     },
     {
       "_id": "62bc0b37ebdf021d97a34ded",
-      "imagem": "imgs/igrediente/Ovo.jpg",
+      "imagem": "/imgs/ingredientes/Ovo.png",
       "nome": "Ovo",
       "preco": 0.82,
       "usados": 13,
@@ -65,7 +65,7 @@
     },
     {
       "_id": "62bc0b37ebdf021d97a34dee",
-      "imagem": "imgs/igrediente/Azeitona verde.webp",
+      "imagem": "/imgs/ingredientes/Azeitona verde.png",
       "nome": "Azeitona verde",
       "preco": 0.85,
       "usados": 1,
@@ -74,7 +74,7 @@
     },
     {
       "_id": "62bc0b37ebdf021d97a34def",
-      "imagem": "imgs/igrediente/Azeitona preta.jpg",
+      "imagem": "/imgs/ingredientes/Azeitona preta.png",
       "nome": "Azeitona preta",
       "preco": 0.55,
       "usados": 13,
@@ -83,7 +83,7 @@
     },
     {
       "_id": "62bc0b37ebdf021d97a34df0",
-      "imagem": "imgs/igrediente/Tomate.jpg",
+      "imagem": "/imgs/ingredientes/Tomate.png",
       "nome": "Tomate",
       "preco": 0.95,
       "usados": 23,
@@ -92,7 +92,7 @@
     },
     {
       "_id": "62bc0b37ebdf021d97a34df1",
-      "imagem": "imgs/igrediente/Cebola.png",
+      "imagem": "/imgs/ingredientes/Cebola.png",
       "nome": "Cebola",
       "preco": 0.69,
       "usados": 39,
@@ -101,7 +101,7 @@
     },
     {
       "_id": "62bc0b37ebdf021d97a34df2",
-      "imagem": "imgs/igrediente/Frango desfiado.jpg",
+      "imagem": "/imgs/ingredientes/Frango desfiado.png",
       "nome": "Frango desfiado",
       "preco": 0.62,
       "usados": 79,
@@ -110,7 +110,7 @@
     },
     {
       "_id": "62bc0b37ebdf021d97a34df3",
-      "imagem": "imgs/igrediente/Requeijão.jpg",
+      "imagem": "/imgs/ingredientes/Requeijão.png",
       "nome": "Requeijão",
       "preco": 0.92,
       "usados": 77,
@@ -119,7 +119,7 @@
     },
     {
       "_id": "62bc0b37ebdf021d97a34df4",
-      "imagem": "imgs/igrediente/Pimentão verde.webp",
+      "imagem": "/imgs/ingredientes/Pimentão verde.png",
       "nome": "Pimentão verde",
       "preco": 0.51,
       "usados": 23,
@@ -128,7 +128,7 @@
     },
     {
       "_id": "62bc0b37ebdf021d97a34df5",
-      "imagem": "imgs/igrediente/Manjericão.jpg",
+      "imagem": "/imgs/ingredientes/Manjericão.png",
       "nome": "Manjericão",
       "preco": 0.72,
       "usados": 47,
@@ -137,7 +137,7 @@
     },
     {
       "_id": "62bc0b37ebdf021d97a34df6",
-      "imagem": "imgs/igrediente/Bacon.webp",
+      "imagem": "/imgs/ingredientes/Bacon.png",
       "nome": "Bacon",
       "preco": 0.86,
       "usados": 16,
@@ -146,7 +146,7 @@
     },
     {
       "_id": "62bc0b37ebdf021d97a34df7",
-      "imagem": "imgs/igrediente/Brócolis.jpg.crdownload",
+      "imagem": "/imgs/ingredientes/Brócolis.png",
       "nome": "Brócolis",
       "preco": 0.6,
       "usados": 25,
@@ -155,7 +155,7 @@
     },
     {
       "_id": "62bc0b37ebdf021d97a34df8",
-      "imagem": "imgs/igrediente/Pepperoni.webp",
+      "imagem": "/imgs/ingredientes/Pepperoni.png",
       "nome": "Pepperoni",
       "preco": 0.64,
       "usados": 23,
@@ -163,15 +163,13 @@
       "pesoPorcao": 46
     }
   ],
-  "pedidos": [
-    
-  ],
+  "pedidos": [],
   "pizzas": [
     {
       "_id": "62bc0b7eebdf021d97a34dfb",
       "nome": "Pizza de Mussarela",
       "descricao": "Básica mas ainda gostosa, pizza com molho de tomate, mussarela e orégano.",
-      "imagem": "/imgs/pizza-mussarela.webp",
+      "imagem": "/imgs/pizzas/pizza-mussarela.png",
       "ingredientes": [
         "62b8cb06c235d6ecd053fdc3",
         "62b8cb06c235d6ecd053fdc4",
@@ -184,7 +182,7 @@
       "_id": "62bc0b7eebdf021d97a34dfc",
       "nome": "Calabresa",
       "descricao": "Deliciosa pizza com molho de tomate, mussarela, calabresa, azeitona e orégano.",
-      "imagem": "/imgs/pizza-calabresa.jpg",
+      "imagem": "/imgs/pizzas/pizza-calabresa.png",
       "ingredientes": [
         "62b8cb06c235d6ecd053fdc3",
         "62b8cb06c235d6ecd053fdc4",
@@ -199,7 +197,7 @@
       "_id": "62bc0b7eebdf021d97a34dfd",
       "nome": "Bacon",
       "descricao": "Deliciosa pizza com molho de tomate, mussarela, bacon e orégano.",
-      "imagem": "/imgs/bacon.jpg",
+      "imagem": "/imgs/pizzas/bacon.png",
       "ingredientes": [
         "62b8cb06c235d6ecd053fdc3",
         "62b8cb06c235d6ecd053fdc4",
@@ -213,7 +211,7 @@
       "_id": "62bc0b7eebdf021d97a34dfe",
       "nome": "Brócolis com Alho",
       "descricao": "Deliciosa pizza com molho de tomate, mussarela, brócolis, alho e orégano.",
-      "imagem": "/imgs/brocolis e alho.jpeg",
+      "imagem": "/imgs/pizzas/brocolis e alho.png",
       "ingredientes": [
         "62b8cb06c235d6ecd053fdc3",
         "62b8cb06c235d6ecd053fdc4",
@@ -227,7 +225,7 @@
       "_id": "62bc0b7eebdf021d97a34dff",
       "nome": "Frango com Requeijão",
       "descricao": "A mais querida! Pizza com molho de tomate, frango desfiado, queijo, requeijão e orégano",
-      "imagem": "/imgs/Frango com Requeijão.jpeg",
+      "imagem": "/imgs/pizzas/Frango com Requeijão.png",
       "ingredientes": [
         "62b8cb06c235d6ecd053fdc3",
         "62b8cb06c235d6ecd053fdc4",
@@ -242,7 +240,7 @@
       "_id": "62bc0b7eebdf021d97a34e00",
       "nome": "Napolitana",
       "descricao": "Deliciosa pizza com molho de tomate, mussarela e manjericão.",
-      "imagem": "/imgs/pizza-napolitana.jpg",
+      "imagem": "/imgs/pizzas/pizza-napolitana.png",
       "ingredientes": [
         "62b8cb06c235d6ecd053fdc3",
         "62b8cb06c235d6ecd053fdc4",
@@ -256,7 +254,7 @@
       "_id": "62bc0b7eebdf021d97a34e01",
       "nome": "Brócolis",
       "descricao": "Deliciosa pizza com molho de tomate, mussarela, brócolis e orégano.",
-      "imagem": "/imgs/brocolis.jpg",
+      "imagem": "/imgs/pizzas/brocolis.png",
       "ingredientes": ["62b8cb06c235d6ecd053fdc3", "62b8cb06c235d6ecd053fdc4"],
       "quant_comprada": 45,
       "preco": 40.7
@@ -265,7 +263,7 @@
       "_id": "62bc0b7eebdf021d97a34e02",
       "nome": "Tropical",
       "descricao": "Deliciosa pizza com mussarela, camarão, bacon e abacaxi.",
-      "imagem": "/imgs/Tropical.jpg",
+      "imagem": "/imgs/pizzas/Tropical.png",
       "ingredientes": [
         "62b8cb06c235d6ecd053fdc3",
         "62b8cb06c235d6ecd053fdc4",
@@ -279,7 +277,7 @@
       "_id": "62bc0b7eebdf021d97a34e03",
       "nome": "Da Casa",
       "descricao": "Sabor original da pizzaria, contendo molho de tomate, mussarela, peperoni, cebola e pimentão verde.",
-      "imagem": "/imgs/pizza-da-casa.webp",
+      "imagem": "/imgs/pizzas/pizza-da-casa.png",
       "ingredientes": [
         "62b8cb06c235d6ecd053fdc3",
         "62b8cb06c235d6ecd053fdc4",
@@ -294,7 +292,7 @@
       "_id": "62bc0b7eebdf021d97a34e04",
       "nome": "Margherita",
       "descricao": "Deliciosa pizza com molho de tomate, mussarela de búfala, manjericão, queijo parmesão ralado, tomates e azeite.",
-      "imagem": "/imgs/Margherita.jpg",
+      "imagem": "/imgs/pizzas/Margherita.png",
       "ingredientes": [
         "62b8cb06c235d6ecd053fdc3",
         "62b8cb06c235d6ecd053fdc4",
@@ -308,7 +306,7 @@
       "_id": "62bc0b7eebdf021d97a34e05",
       "nome": "Portuguesa",
       "descricao": "Uma pizza com calabresa, tomates, mussarela, cebolas e azeitonas pretas.",
-      "imagem": "/imgs/Portuguesa.jpg",
+      "imagem": "/imgs/pizzas/Portuguesa.png",
       "ingredientes": [
         "62b8cb06c235d6ecd053fdc3",
         "62b8cb06c235d6ecd053fdc4",
@@ -323,7 +321,7 @@
       "_id": "62bc0b7eebdf021d97a34e06",
       "nome": "4 Queijos",
       "descricao": "Deliciosa pizza com molho de tomate, mussarela, gorgonzola, requeijão e parmesão.",
-      "imagem": "/imgs/4 Queijos.webp",
+      "imagem": "/imgs/pizzas/4 Queijos.png",
       "ingredientes": [
         "62b8cb06c235d6ecd053fdc3",
         "62b8cb06c235d6ecd053fdc4",
@@ -331,88 +329,6 @@
       ],
       "quant_comprada": 56,
       "preco": 57.03
-    }
-  ],
-  "produtos": [
-    {
-      "_id": "62b8cb55c235d6ecd053fdf5",
-      "nome": "Coca Cola 2L",
-      "descricao": "Refrigerante sabor cola de 2L.",
-      "imagem": "imgs/coca-cola.webp",
-      "preco": 8,
-      "quant_comprada": 625
-    },
-    {
-      "_id": "62b8cb55c235d6ecd053fdf6",
-      "nome": "Fanta Laranja 2L",
-      "descricao": "Refrigerante sabor laranja de 2L.",
-      "imagem": "imgs/fanta.webp",
-      "preco": 8,
-      "quant_comprada": 382
-    },
-    {
-      "_id": "62b8cb55c235d6ecd053fdf7",
-      "nome": "Guaraná 2L",
-      "descricao": "Refrigerante sabor guaraná de 2L.",
-      "imagem": "imgs/guarana.webp",
-      "preco": 8,
-      "quant_comprada": 425
-    },
-    {
-      "_id": "62b8cb55c235d6ecd053fdf8",
-      "nome": "Heineken 600ml",
-      "descricao": "Cerveja HEINEKEN Garrafa 600ml",
-      "imagem": "imgs/heineken-original-bottle.png",
-      "preco": 8,
-      "quant_comprada": 348
-    },
-    {
-      "_id": "62b8cb55c235d6ecd053fdf9",
-      "nome": "Mousse de Chocolate 50g",
-      "descricao": "Sobremesa leve com base de chocolate em barra meio amargo e creme de leite. Aerada, com leve toque de chocolate branco para dar crocância.",
-      "imagem": "imgs/mousse-de-chocolate.png",
-      "preco": 5,
-      "quant_comprada": 123
-    },
-    {
-      "_id": "62b8cb55c235d6ecd053fdfa",
-      "nome": "Mousse de Limão 50g",
-      "descricao": "Mousse de Limão",
-      "imagem": "imgs/mousse-de-limao.png",
-      "preco": 5,
-      "quant_comprada": 189
-    },
-    {
-      "_id": "62b8cb55c235d6ecd053fdfb",
-      "nome": "Mousse de Maracujá 50g",
-      "descricao": "Sobremesa aerada que leva suco de maracujá fresco, creme de leite e leite condensado. Leve, com um sabor cítrico e doce a cada colherada, finaliza qualquer almoço ou jantar.",
-      "imagem": "imgs/mousse-de-maracuja.png",
-      "preco": 5,
-      "quant_comprada": 168
-    },
-    {
-      "_id": "62b8cb55c235d6ecd053fdfc",
-      "nome": "Suco de Laranja 1L",
-      "descricao": "Suco de Laranja Del Valle sabor Laranja 1L",
-      "imagem": "imgs/suco-de-lagranja-com-gominhos-del-valle-1L.png",
-      "preco": 4,
-      "quant_comprada": 125
-    },
-    {
-      "_id": "62b8cb55c235d6ecd053fdfd",
-      "nome": "Suco de Uva 1L",
-      "descricao": "Suco de Laranja Del Valle sabor uva 1L",
-      "imagem": "imgs/suco-de-uva-del-valle-frut-1l.jpg",
-      "preco": 4,
-      "quant_comprada": 185
-    },
-    {
-      "_id": "62b8cb55c235d6ecd053fdfe",
-      "nome": "Suco de Pêssego 1L",
-      "descricao": "Suco de Laranja Del Valle sabor pêssego 1L",
-      "imagem": "imgs/suco-pessego-del-valle-frut-1l..png",
-      "preco": 4,
-      "quant_comprada": 158
     }
   ],
   "usuarios": [
@@ -471,6 +387,88 @@
       "email": "joao@joao.com",
       "senha": "$2b$10$w.wSlmTgUKgvGgBvgfUBA.sL7tymgNgXciMJWSxIt9i4L12NtvX2O",
       "type": "user"
+    }
+  ],
+  "produtos": [
+    {
+      "_id": "62b8cb55c235d6ecd053fdf5",
+      "nome": "Coca Cola 2L",
+      "descricao": "Refrigerante sabor cola de 2L.",
+      "imagem": "/imgs/produtos/coca-cola.png",
+      "preco": 8,
+      "quant_comprada": 625
+    },
+    {
+      "_id": "62b8cb55c235d6ecd053fdf6",
+      "nome": "Fanta Laranja 2L",
+      "descricao": "Refrigerante sabor laranja de 2L.",
+      "imagem": "/imgs/produtos/fanta.png",
+      "preco": 8,
+      "quant_comprada": 382
+    },
+    {
+      "_id": "62b8cb55c235d6ecd053fdf7",
+      "nome": "Guaraná 2L",
+      "descricao": "Refrigerante sabor guaraná de 2L.",
+      "imagem": "/imgs/produtos/guarana.png",
+      "preco": 8,
+      "quant_comprada": 425
+    },
+    {
+      "_id": "62b8cb55c235d6ecd053fdf8",
+      "nome": "Heineken 600ml",
+      "descricao": "Cerveja HEINEKEN Garrafa 600ml",
+      "imagem": "/imgs/produtos/heineken-original-bottle.png",
+      "preco": 8,
+      "quant_comprada": 348
+    },
+    {
+      "_id": "62b8cb55c235d6ecd053fdf9",
+      "nome": "Mousse de Chocolate 50g",
+      "descricao": "Sobremesa leve com base de chocolate em barra meio amargo e creme de leite. Aerada, com leve toque de chocolate branco para dar crocância.",
+      "imagem": "/imgs/produtos/mousse-de-chocolate.png",
+      "preco": 5,
+      "quant_comprada": 123
+    },
+    {
+      "_id": "62b8cb55c235d6ecd053fdfa",
+      "nome": "Mousse de Limão 50g",
+      "descricao": "Mousse de Limão",
+      "imagem": "/imgs/produtos/mousse-de-limao.png",
+      "preco": 5,
+      "quant_comprada": 189
+    },
+    {
+      "_id": "62b8cb55c235d6ecd053fdfb",
+      "nome": "Mousse de Maracujá 50g",
+      "descricao": "Sobremesa aerada que leva suco de maracujá fresco, creme de leite e leite condensado. Leve, com um sabor cítrico e doce a cada colherada, finaliza qualquer almoço ou jantar.",
+      "imagem": "/imgs/produtos/mousse-de-maracuja.png",
+      "preco": 5,
+      "quant_comprada": 168
+    },
+    {
+      "_id": "62b8cb55c235d6ecd053fdfc",
+      "nome": "Suco de Laranja 1L",
+      "descricao": "Suco de Laranja Del Valle sabor Laranja 1L",
+      "imagem": "/imgs/produtos/suco-de-lagranja-com-gominhos-del-valle-1L.png",
+      "preco": 4,
+      "quant_comprada": 125
+    },
+    {
+      "_id": "62b8cb55c235d6ecd053fdfd",
+      "nome": "Suco de Uva 1L",
+      "descricao": "Suco de Laranja Del Valle sabor uva 1L",
+      "imagem": "/imgs/produtos/suco-de-uva-del-valle-frut-1l.png",
+      "preco": 4,
+      "quant_comprada": 185
+    },
+    {
+      "_id": "62b8cb55c235d6ecd053fdfe",
+      "nome": "Suco de Pêssego 1L",
+      "descricao": "Suco de Laranja Del Valle sabor pêssego 1L",
+      "imagem": "/imgs/produtos/suco-pessego-del-valle-frut-1l.png",
+      "preco": 4,
+      "quant_comprada": 158
     }
   ]
 }
