@@ -4,6 +4,7 @@
 const { MongoClient, ServerApiVersion, ObjectId } = require("mongodb");
 const prettier = require("prettier");
 const fs = require("fs");
+const readline = require("readline");
 require("dotenv").config();
 
 const username = process.env.MONGODB_USERNAME;
@@ -64,10 +65,15 @@ const insertData = async () => {
     const connection = await getConnection();
     const database = connection.db(databaseName);
     console.log("Restoring data ❤️‍🩹");
-    for (const collectionName in Object.keys(data)) {
+    // get the names of the collections form data keys
+    console.log(`Collections ${Object.keys(data).length} 📚`);
+    const collectionNames = Object.keys(data);
+    for await (const collectionName of collectionNames) {
         const collection = database.collection(collectionName);
         const documents = data[collectionName];
-        await collection.insertMany(documents);
+        if(documents.length > 0) {
+            await collection.insertMany(documents);
+        }
         console.log(`Inserted ${documents.length} documents into ${collectionName} 📚`);
     }
     console.log("Restoring data finished 🏁");
@@ -75,7 +81,17 @@ const insertData = async () => {
 
 // main function
 const main = async () => {
-    await insertData();
+
+    const rl = readline.createInterface({
+        input: process.stdin,
+        output: process.stdout,
+    });
+
+    try {
+        await insertData();
+    } catch (err) {
+        console.log(err);
+    }
     // Exit 0
     process.exit(0);
 }
