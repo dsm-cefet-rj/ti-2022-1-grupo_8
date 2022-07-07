@@ -97,21 +97,16 @@ router.post("/promover-funcionario/:email", async (req, res) => {
 
 // Rota para adicionar ou editar um ingrediente
 router.post("/editar-ingrediente", async (req, res) => {
-        // Get nome,preco,descricao,pesoPorcao,imagem,id, from form data
-
-    }
-);
+    // Get nome,preco,descricao,pesoPorcao,imagem,id, from form data
+});
 
 // Rota para adicionar ou editar uma pizza
 router.patch("/editar-pizza", async (req, res) => {
-
-
     res.sendStatus(200);
 });
 
 // Rota para adicionar ou editar um produto
 router.patch("/editar-produto", async (req, res) => {
-
     res.sendStatus(200);
 });
 
@@ -189,7 +184,7 @@ router.delete("/excluir-produto/:id", async (req, res) => {
     }
 });
 
-router.get("/relatorios",express.json(), (req, res) => {
+router.get("/relatorios", express.json(), (req, res) => {
     let { dataInicio, dataFim } = req.body;
 
     if (!dataFim) {

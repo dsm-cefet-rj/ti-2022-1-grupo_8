@@ -10,7 +10,7 @@ const saltRounds = 10;
 require("dotenv").config();
 
 // Rota de login
-router.post("/auth",express.json(), async (req, res) => {
+router.post("/auth", express.json(), async (req, res) => {
     const { email, senha } = req.body;
 
     if (!email || !senha) {
@@ -72,7 +72,7 @@ router.post("/auth",express.json(), async (req, res) => {
 });
 
 // Rota para cadastrar um novo usuário
-router.post("/criar",express.json(), async (req, res) => {
+router.post("/criar", express.json(), async (req, res) => {
     const { nome, email, senha } = req.body;
 
     if (!nome || !email || !senha) {
