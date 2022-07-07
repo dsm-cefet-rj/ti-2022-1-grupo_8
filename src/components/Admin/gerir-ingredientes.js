@@ -126,23 +126,32 @@ const GerirIngredientes = () => {
 
     const handleButton = (e) => {
         e.preventDefault();
-        let form_data = new FormData();
-        form_data.append("nome", nome);
-        form_data.append("preco", preco);
-        form_data.append("descricao", descricao);
-        form_data.append("pesoPorcao", pesoPorcao);
-        form_data.append("imagem", imagem);
-        form_data.append("id", idSelecinado);
+        let ingrediente = {
+            nome: nome,
+            preco: preco,
+            descricao: descricao,
+            pesoPorcao: pesoPorcao,
+            imagem: imagem,
+            _id: idSelecinado,
+        }
+
+        // imagem to base64
+
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            ingrediente.imagem = e.target.result;
+        }
+        reader.readAsDataURL(imagem);
 
         const token = getSessionFromLocalStorage();
         const request = {
             method: "POST",
-           
+            url: "http://localhost:3001/admin/editar-ingrediente",
             headers: {
-                "Content-Type": "multipart/form-data",
+                "Content-Type": "application/json",
                 "x-access-token": `Bearer ${token}`,
             },
-            data: form_data,
+            data: ingrediente,
             onUploadProgress: (progressEvent) => {
                 const percentCompleted = Math.round(
                     (progressEvent.loaded * 100) / progressEvent.total
@@ -157,8 +166,7 @@ const GerirIngredientes = () => {
                     dispatch(fetchIngredientes());
                     console.log("Ingrediente editado com sucesso!");
                 } else console.log("Erro ao editar ingrediente!");
-            })
-            .catch((error) => {
+            }).catch((error) => {
                 console.log(error);
             });
     };
@@ -205,6 +213,7 @@ const GerirIngredientes = () => {
                                 name="nome"
                                 placeholder="Nome"
                                 autoComplete="off"
+                                onChange={(e) => setNome(e.target.value)}
                             />
                         </div>
                         <div className="form-group mb-2">
@@ -259,7 +268,14 @@ const GerirIngredientes = () => {
                                 placeholder="Imagem"
                                 onChange={(e) => {
                                     let [file] = e.target.files;
-                                    setImagem(file);
+                                    const reader = new FileReader();
+                                    reader.onload = () => {
+                                        let base64 = reader.result;
+                                        setImagem(String(base64));
+                                    }
+                                    reader.readAsDataURL(file);
+                                    console.log(imagem);
+                                    
                                 }}
                             />
                         </div>

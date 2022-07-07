@@ -98,60 +98,20 @@ router.post("/promover-funcionario/:email", async (req, res) => {
 // Rota para adicionar ou editar um ingrediente
 router.post("/editar-ingrediente", async (req, res) => {
         // Get nome,preco,descricao,pesoPorcao,imagem,id, from form data
-        const {
-            nome,
-            preco,
-            descricao,
-            pesoPorcao,
-            imagem,
-            id,
-        } = req.body;
-        // Create ingrediente object
-        const ingrediente = {
-            nome,
-            preco,
-            descricao,
-            pesoPorcao,
-            imagem,
-            id,
-        }
-        console.log(req.files);
 
     }
 );
 
 // Rota para adicionar ou editar uma pizza
 router.patch("/editar-pizza", async (req, res) => {
-    const { id, nome, descricao, imagem, ingredientes, quant_comprada, preco } =
-        req.body;
 
-    const pizza = {
-        id,
-        nome,
-        descricao,
-        imagem,
-        ingredientes,
-        quant_comprada,
-        preco,
-    };
-
-    console.log(pizza);
 
     res.sendStatus(200);
 });
 
 // Rota para adicionar ou editar um produto
 router.patch("/editar-produto", async (req, res) => {
-    let { nome, descricao, imagem, preco, id, quant_comprada } = req.body;
-    const produto = {
-        nome,
-        descricao,
-        imagem,
-        preco,
-        id,
-        quant_comprada,
-    };
-    console.log(produto);
+
     res.sendStatus(200);
 });
 
@@ -229,7 +189,7 @@ router.delete("/excluir-produto/:id", async (req, res) => {
     }
 });
 
-router.get("/relatorios", (req, res) => {
+router.get("/relatorios",express.json(), (req, res) => {
     let { dataInicio, dataFim } = req.body;
 
     if (!dataFim) {

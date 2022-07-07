@@ -13,6 +13,8 @@ const authMiddlewares = require("./middleware/authJws");
 server.use(cors());
 
 server.use(express.json());
+// multipart/form-data
+server.use(express.urlencoded({ extended: true }));
 
 server.use("/login", rotasLogin);
 
