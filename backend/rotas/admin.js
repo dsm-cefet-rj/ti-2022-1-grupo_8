@@ -184,7 +184,7 @@ router.delete("/excluir-produto/:id", async (req, res) => {
     }
 });
 
-router.get("/relatorios", express.json(), (req, res) => {
+router.get("/relatorios", (req, res) => {
     let { dataInicio, dataFim } = req.body;
 
     if (!dataFim) {

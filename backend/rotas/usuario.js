@@ -41,7 +41,7 @@ router.get("/produtos", async (req, res) => {
     res.status(200).json(produtos).end();
 });
 
-router.put("/fazer-pedido", express.json(), async (req, res) => {
+router.put("/fazer-pedido", async (req, res) => {
     // Permite um cliente fazer um pedido
     const cliente = req.user; // email,type,iat,exp
     const pedido = {

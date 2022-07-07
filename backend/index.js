@@ -9,12 +9,13 @@ const rotasFuncionario = require("./rotas/funcionario");
 const rotasAdministrador = require("./rotas/admin");
 const rotasLogin = require("./rotas/login");
 const authMiddlewares = require("./middleware/authJws");
-
+const bodyParser = require('body-parser');
 server.use(cors());
 
 server.use(express.json());
-// multipart/form-data
-server.use(express.urlencoded({ extended: true }));
+server.use(bodyParser.urlencoded());
+
+server.use(bodyParser.urlencoded({ extended: true }));
 
 server.use("/login", rotasLogin);
 
