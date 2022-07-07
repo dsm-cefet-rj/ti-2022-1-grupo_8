@@ -7,6 +7,7 @@ import {
 import AdminNav from "./admin-nav";
 import styles from "./gerir-produtos.module.scss";
 import { getSessionFromLocalStorage } from "../../features/sessionSlice";
+import axios from "axios";
 /* 
 Componente: GerirPizzas
 Descrição: Componente que renderiza a página de gerenciamento de pizzas
@@ -25,14 +26,7 @@ const GerirProdutos = () => {
 
     const [editando, setEditando] = useState(false);
 
-    const handleNome = (e) => {
-        setNome(e.target.value);
-    };
-    const handleImagem = (e) => {
-        setImagem(e.target.files[0]);
-    };
-
-    const handleButton = (e) => {
+    const handleButton = async (e) => {
         e.preventDefault();
         if (nome === "") {
             setErro("Preencha o nome da pizza");
@@ -49,17 +43,22 @@ const GerirProdutos = () => {
             preco: preco,
             descricao: descricao,
         };
-        console.log(produto);
+        const formData = new FormData();
+        formData.append("produto", JSON.stringify(produto));
+        formData.append("imagem", imagem);
+
         const token = getSessionFromLocalStorage();
         const request = {
             method: "POST",
             url: "http://localhost:3001/admin/editar-produto",
             headers: {
-                "Content-Type": "application/json",
+                "Content-Type": "multipart/form-data",
                 "x-access-token": `Bearer ${token}`,
             },
-            data: produto,
+            data: formData,
         };
+
+        const response = await axios(request);
     };
 
     useEffect(() => {
@@ -159,6 +158,7 @@ const GerirProdutos = () => {
                                                     );
                                                     elem.innerHTML = "Editar";
                                                 }
+                                                return pizzaOBJ;
                                             });
                                         }}
                                     >
@@ -202,7 +202,7 @@ const GerirProdutos = () => {
                                 id="imagem"
                                 onChange={(e) => {
                                     let [file] = e.target.files;
-                                    setImagem(e.target.files);
+                                    setImagem(file);
                                 }}
                             />
 
@@ -250,10 +250,12 @@ const GerirProdutos = () => {
     );
 };
 
-export default () => {
+const page = () => {
     return (
         <div className={styles.body}>
             <GerirProdutos />
         </div>
     );
 };
+
+export default page;

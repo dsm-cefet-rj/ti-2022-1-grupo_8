@@ -9,13 +9,18 @@ const rotasFuncionario = require("./rotas/funcionario");
 const rotasAdministrador = require("./rotas/admin");
 const rotasLogin = require("./rotas/login");
 const authMiddlewares = require("./middleware/authJws");
-const bodyParser = require('body-parser');
+const multer = require("multer");
+const upload = multer();
+
+// Cors middleware
 server.use(cors());
 
+// application/json middleware
 server.use(express.json());
-server.use(bodyParser.urlencoded());
 
-server.use(bodyParser.urlencoded({ extended: true }));
+// multipart/form-data middleware
+server.use(upload.array());
+server.use(express.static("public"));
 
 server.use("/login", rotasLogin);
 

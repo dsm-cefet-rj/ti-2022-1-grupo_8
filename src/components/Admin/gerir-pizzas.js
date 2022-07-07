@@ -12,7 +12,6 @@ import {
     addIngrediente,
     selectGerirPizza,
 } from "../../features/gerir-pizzaSlice";
-import Metade from "../geral/metade-pizza";
 import AdminNav from "./admin-nav";
 import styles from "./gerir-pizzas.module.scss";
 import { getSessionFromLocalStorage } from "../../features/sessionSlice";
@@ -42,7 +41,7 @@ const GerirPizzas = () => {
     const [preco, setPreco] = useState(0);
     const [editando, setEditando] = useState(false);
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         //Atualiza as pizzas carregadas
         const pizza = {
@@ -54,6 +53,11 @@ const GerirPizzas = () => {
             preco,
         };
 
+        const formData = new FormData();
+        formData.append("pizza", JSON.stringify(pizza));
+        formData.append("imagem", imagem);
+
+
         const token = getSessionFromLocalStorage();
         const request = {
             method: "POST",
@@ -62,22 +66,12 @@ const GerirPizzas = () => {
                 "Content-Type": "application/json",
                 "x-access-token": `Bearer ${token}`,
             },
-            data: pizza,
+            data: formData,
         };
 
-        axios(request)
-            .then((response) => {
-                console.log(response);
-                if (response.status === 200) {
-                    setErro("");
-                } else {
-                    setErro("Erro ao editar a pizza");
-                }
-            })
-            .catch((error) => {
-                console.log(error);
-                setErro("Erro ao editar a pizza");
-            });
+        const response = await axios(request);
+
+        
         dispatch(fetchPizzas());
     };
 
@@ -96,7 +90,7 @@ const GerirPizzas = () => {
     useEffect(() => {
         dispatch(fetchPizzas());
         dispatch(fetchIngredientes());
-    }, []);
+    }, [dispatch]);
 
     return (
         <>
@@ -316,10 +310,12 @@ const GerirPizzas = () => {
     );
 };
 
-export default () => {
+const page = () => {
     return (
         <div className={styles.body}>
             <GerirPizzas />
         </div>
     );
 };
+
+export default page;

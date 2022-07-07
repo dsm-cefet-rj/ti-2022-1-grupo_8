@@ -1,27 +1,20 @@
 const express = require("express");
 const router = express.Router();
 const {
-    addIngrediente,
-    editIngrediente,
-    getAllIngredientes,
     removeIngrediente,
+    getIngrediente
 } = require("../data/DaoIngrediente");
 const {
-    addPizza,
-    editPizza,
     removePizza,
     getAllPizzas,
 } = require("../data/DaoPizza");
 const {
-    addProduto,
-    editProduto,
     removeProduto,
     getAllProdutos,
 } = require("../data/DaoProduto");
 const {
     editUsuario,
     removeUsuario,
-    getAllUsuarios,
     getUsuario,
 } = require("../data/DaoUsuario");
 const { getPedidos } = require("../data/DaoPedidos");

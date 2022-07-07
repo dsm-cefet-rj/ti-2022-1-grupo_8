@@ -61,7 +61,7 @@ const Ingrediente = (props) => {
 
     useEffect(() => {
         dispatch(fetchIngredientes());
-    }, []);
+    }, [dispatch]);
 
     // Renderização do componente
     return (
@@ -122,9 +122,9 @@ const GerirIngredientes = () => {
             document.getElementById("imagem-field").hidden = false;
         }
         dispatch(fetchIngredientes());
-    }, [idSelecinado]);
+    }, [idSelecinado, dispatch, ingredientesBD]);
 
-    const handleButton = (e) => {
+    const handleButton = async (e) => {
         e.preventDefault();
         let ingrediente = {
             nome: nome,
@@ -134,42 +134,23 @@ const GerirIngredientes = () => {
             imagem: imagem,
             _id: idSelecinado,
         };
-
-        // imagem to base64
-
-        const reader = new FileReader();
-        reader.onload = (e) => {
-            ingrediente.imagem = e.target.result;
-        };
-        reader.readAsDataURL(imagem);
+        const formData = new FormData();
+        formData.append("imagem", imagem);
+        formData.append("ingrediente", JSON.stringify(ingrediente));
 
         const token = getSessionFromLocalStorage();
         const request = {
             method: "POST",
             url: "http://localhost:3001/admin/editar-ingrediente",
             headers: {
-                "Content-Type": "application/json",
+                "Content-Type": "multipart/form-data",
                 "x-access-token": `Bearer ${token}`,
             },
-            data: ingrediente,
-            onUploadProgress: (progressEvent) => {
-                const percentCompleted = Math.round(
-                    (progressEvent.loaded * 100) / progressEvent.total
-                );
-                console.log(percentCompleted);
-            },
+            data: formData,
         };
 
-        axios(request)
-            .then((response) => {
-                if (response.status === 200) {
-                    dispatch(fetchIngredientes());
-                    console.log("Ingrediente editado com sucesso!");
-                } else console.log("Erro ao editar ingrediente!");
-            })
-            .catch((error) => {
-                console.log(error);
-            });
+        const response = await axios(request);
+        console.log(response);
     };
 
     // Renderização do componente
@@ -215,6 +196,7 @@ const GerirIngredientes = () => {
                                 placeholder="Nome"
                                 autoComplete="off"
                                 onChange={(e) => setNome(e.target.value)}
+                                value={nome}
                             />
                         </div>
                         <div className="form-group mb-2">
@@ -228,6 +210,7 @@ const GerirIngredientes = () => {
                                 step={0.01}
                                 autoComplete="off"
                                 onChange={(e) => setPreco(e.target.value)}
+                                value={preco}
                             />
                         </div>
                         <div className="form-group mb-2">
@@ -240,6 +223,7 @@ const GerirIngredientes = () => {
                                 placeholder="Descrição"
                                 autoComplete="off"
                                 onChange={(e) => setDescricao(e.target.value)}
+                                value={descricao}
                             />
                         </div>
                         <div className="form-group mb-2">
@@ -257,6 +241,7 @@ const GerirIngredientes = () => {
                                 max="100"
                                 autoComplete="off"
                                 onChange={(e) => setPesoPorcao(e.target.value)}
+                                value={pesoPorcao}
                             />
                         </div>
                         <div className="form-group mb-2" id="imagem-field">
@@ -295,10 +280,12 @@ const GerirIngredientes = () => {
     );
 };
 
-export default () => {
+const page = () => {
     return (
         <div className={styles.body}>
             <GerirIngredientes />
         </div>
     );
 };
+
+export default page;
