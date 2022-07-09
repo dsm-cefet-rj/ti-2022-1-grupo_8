@@ -21,9 +21,9 @@ server.use(express.static("public"));
 const fs = require("fs");
 if (!fs.existsSync("./uploads")) {
     fs.mkdirSync("./uploads");
-}else {
+} else {
     // Apagar todos os arquivos da pasta uploads
-    fs.readdirSync("./uploads").forEach(file => {
+    fs.readdirSync("./uploads").forEach((file) => {
         fs.unlinkSync("./uploads/" + file);
     });
 }

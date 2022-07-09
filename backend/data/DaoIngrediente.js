@@ -55,7 +55,7 @@ const getAllIngredientes = async () => {
 };
 
 const getIngrediente = async (id) => {
-    if(!id || id == ""|| id == 0) {
+    if (!id || id == "" || id == 0) {
         return undefined;
     }
     console.log(id);

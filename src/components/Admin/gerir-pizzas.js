@@ -65,7 +65,7 @@ const GerirPizzas = () => {
             headers: {
                 "x-access-token": `Bearer ${token}`,
             },
-            data: '[form]',
+            data: "[form]",
         };
 
         const response = await axios(request);

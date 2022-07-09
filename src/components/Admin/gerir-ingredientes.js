@@ -253,9 +253,9 @@ const GerirIngredientes = () => {
                                 name="imagem"
                                 placeholder="Imagem"
                                 onChange={(e) => {
-                                    // setImagem to the fist file uploaded 
+                                    // setImagem to the fist file uploaded
                                     let [file] = e.target.files;
-                                    
+
                                     setImagem(file);
                                 }}
                             />

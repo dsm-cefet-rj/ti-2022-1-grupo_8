@@ -142,7 +142,9 @@ router.post("/editar-ingrediente", formData, async (req, res) => {
 
     if (!(nome && preco && descricao && pesoPorcao)) {
         console.log(req.fields);
-        res.status(400).json({ error: `Dados incompletos, fields: ${req.fields}` });
+        res.status(400).json({
+            error: `Dados incompletos, fields: ${req.fields}`,
+        });
         return;
     }
     let ingrediente = getIngrediente(_id);
@@ -183,7 +185,9 @@ router.patch("/editar-pizza", formData, async (req, res) => {
     const files = req.files;
     const { _id, nome, descricao, ingredientes, preco } = req.fields;
     if (!(nome && descricao && ingredientes && preco)) {
-        res.status(400).json({ error: `Dados incompletos, fields: ${req.fields}` });
+        res.status(400).json({
+            error: `Dados incompletos, fields: ${req.fields}`,
+        });
         return;
     }
     let pizza = getPizza(_id);
@@ -224,7 +228,9 @@ router.patch("/editar-produto", formData, async (req, res) => {
     const files = req.files;
     const { _id, nome, imagem, preco, descricao } = req.fields;
     if (!(nome && imagem && preco && descricao)) {
-        res.status(400).json({ error: `Dados incompletos, fields: ${req.fields}` });
+        res.status(400).json({
+            error: `Dados incompletos, fields: ${req.fields}`,
+        });
         return;
     }
     let produto = getProduto(_id);
