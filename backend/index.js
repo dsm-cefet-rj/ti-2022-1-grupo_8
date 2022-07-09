@@ -18,14 +18,16 @@ server.use(cors());
 server.use(express.json());
 
 // multipart/form-data middleware
-server.use(formidable({
-    encoding: "utf-8",
-    uploadDir: "./uploads",
-    keepExtensions: true,
-    maxFieldsSize: 2 * 1024 * 1024,
-    maxFields: 1000,
-    multiples: true,
-}));
+server.use(
+    formidable({
+        encoding: "utf-8",
+        uploadDir: "./uploads",
+        keepExtensions: true,
+        maxFieldsSize: 2 * 1024 * 1024,
+        maxFields: 1000,
+        multiples: true,
+    })
+);
 require("fs").mkdirSync("./uploads", { recursive: true });
 
 // Rotas de Login
