@@ -9,10 +9,8 @@ const UsuarioValidTypes = {
 };
 
 const IngredienteValidTypes = {
-    imagem: "string",
     nome: "string",
     preco: "number",
-    usados: "number",
     descricao: "string",
     pesoPorcao: "number",
 };
@@ -20,18 +18,14 @@ const IngredienteValidTypes = {
 const PizzaValidTypes = {
     nome: "string",
     descricao: "string",
-    imagem: "string",
     ingredientes: "object",
-    quant_comprada: "number",
     preco: "number",
 };
 
 const ProdutoValidTypes = {
     nome: "string",
     descricao: "string",
-    imagem: "string",
     preco: "number",
-    quant_comprada: "number",
 };
 
 const PedidoValidTypes = {

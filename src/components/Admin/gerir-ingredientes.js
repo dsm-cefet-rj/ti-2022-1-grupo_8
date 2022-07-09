@@ -133,17 +133,15 @@ const GerirIngredientes = () => {
         for (let key in ingrediente) {
             form.append(key, ingrediente[key]);
         }
-        console.log(imagem);
         const token = getSessionFromLocalStorage();
 
         const request = {
             method: "POST",
             url: "http://localhost:3001/admin/editar-ingrediente",
             headers: {
-                contentType: `multipart/form-data; boundary=----${form.getBoundary()}`,
                 "x-access-token": `Bearer ${token}`,
             },
-            data: '[form]',
+            data: form,
         };
 
         const response = await axios(request);
@@ -257,6 +255,7 @@ const GerirIngredientes = () => {
                                 onChange={(e) => {
                                     // setImagem to the fist file uploaded 
                                     let [file] = e.target.files;
+                                    
                                     setImagem(file);
                                 }}
                             />

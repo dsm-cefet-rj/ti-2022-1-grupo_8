@@ -18,7 +18,15 @@ server.use(express.json());
 
 server.use(express.static("public"));
 
-require("fs").mkdirSync("./uploads", { recursive: true });
+const fs = require("fs");
+if (!fs.existsSync("./uploads")) {
+    fs.mkdirSync("./uploads");
+}else {
+    // Apagar todos os arquivos da pasta uploads
+    fs.readdirSync("./uploads").forEach(file => {
+        fs.unlinkSync("./uploads/" + file);
+    });
+}
 
 // Rotas de Login
 server.use("/login", rotasLogin);

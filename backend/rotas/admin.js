@@ -149,9 +149,9 @@ router.post("/editar-ingrediente", formData, async (req, res) => {
     let ingrediente = getIngrediente(_id);
     if (ingrediente) {
         ingrediente.nome = nome;
-        ingrediente.preco = preco;
+        ingrediente.preco = parseFloat(preco);
         ingrediente.descricao = descricao;
-        ingrediente.pesoPorcao = pesoPorcao;
+        ingrediente.pesoPorcao = parseFloat(pesoPorcao);
         if (checkFiles(files)) {
             moveFile("ingrediente", files.image, _id);
             ingrediente.image = _id + files.image.name.split(".").at(-1);

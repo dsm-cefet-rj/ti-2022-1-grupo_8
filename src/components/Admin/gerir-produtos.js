@@ -54,7 +54,6 @@ const GerirProdutos = () => {
             method: "POST",
             url: "http://localhost:3001/admin/editar-produto",
             headers: {
-                contentType: `multipart/form-data; boundary=----${form.getBoundary()}`, 
                 "x-access-token": `Bearer ${token}`,
             },
             data: '[form]',

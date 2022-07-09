@@ -26,10 +26,10 @@ const validaçãoPedido = (ingrediente, ignoreId = false) => {
                 )}`
             );
         }
-        if (typeof ingrediente[key] !== ProdutoValidTypes[key]) {
+        if (typeof ingrediente[key] !== IngredienteValidTypes[key]) {
             if (!(ignoreId && key === "id"))
                 throw new Error(
-                    `${key} deve ser do tipo ${ProdutoValidTypes[key]} objeto ${ingrediente}`
+                    `${key} deve ser do tipo ${IngredienteValidTypes[key]} objeto ${ingrediente}`
                 );
         }
     });
@@ -55,6 +55,10 @@ const getAllIngredientes = async () => {
 };
 
 const getIngrediente = async (id) => {
+    if(!id || id == ""|| id == 0) {
+        return undefined;
+    }
+    console.log(id);
     const connection = await getConnection(); // conectar ao banco de dados
     let ingrediente = await connection.collection("ingredientes").findOne({
         _id: new ObjectId(id),
