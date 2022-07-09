@@ -9,8 +9,7 @@ const rotasFuncionario = require("./rotas/funcionario");
 const rotasAdministrador = require("./rotas/admin");
 const rotasLogin = require("./rotas/login");
 const authMiddlewares = require("./middleware/authJws");
-const multer = require("multer");
-const upload = multer();
+const formidable = require("express-formidable");
 
 // Cors middleware
 server.use(cors());
@@ -19,9 +18,17 @@ server.use(cors());
 server.use(express.json());
 
 // multipart/form-data middleware
-server.use(upload.array());
-server.use(express.static("public"));
+server.use(formidable({
+    encoding: "utf-8",
+    uploadDir: "./uploads",
+    keepExtensions: true,
+    maxFieldsSize: 2 * 1024 * 1024,
+    maxFields: 1000,
+    multiples: true,
+}));
+require("fs").mkdirSync("./uploads", { recursive: true });
 
+// Rotas de Login
 server.use("/login", rotasLogin);
 
 // usar o middleware verificarToken nas rotas de rotasUsuario

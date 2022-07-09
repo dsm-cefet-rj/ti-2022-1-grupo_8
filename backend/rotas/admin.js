@@ -1,16 +1,27 @@
 const express = require("express");
+const fs = require("fs");
+const path = require("path");
+
 const router = express.Router();
 const {
     removeIngrediente,
-    getIngrediente
+    getIngrediente,
+    editIngrediente,
+    addIngrediente,
 } = require("../data/DaoIngrediente");
 const {
     removePizza,
     getAllPizzas,
+    getPizza,
+    editPizza,
+    addPizza,
 } = require("../data/DaoPizza");
 const {
     removeProduto,
     getAllProdutos,
+    getProduto,
+    editProduto,
+    addProduto,
 } = require("../data/DaoProduto");
 const {
     editUsuario,
@@ -88,19 +99,157 @@ router.post("/promover-funcionario/:email", async (req, res) => {
     res.status(200).json(usuario).end();
 });
 
+const checkFiles = (files) => {
+    if (!files) {
+        return false;
+    }
+    if (!files.image) {
+        return false;
+    }
+    if (!files.image.mimetype.startsWith("image")) {
+        return false;
+    }
+    if (files.image.size > 1024 * 1024 * 2) {
+        return false;
+    }
+    return true;
+}
+
+const moveFile = (tipo,file,nome) => {
+    const tipos = {
+        "pizza": "./public/imgs/pizzas/",
+        "produto": "./public/imgs/produtos/",
+        "ingrediente": "./public/imgs/ingredientes/",
+    };
+    const path = tipos[tipo];
+    const newPath = path + nome + file.name.split(".").at(-1);
+    fs.renameSync(file.path, newPath);
+}
+
 // Rota para adicionar ou editar um ingrediente
 router.post("/editar-ingrediente", async (req, res) => {
-    // Get nome,preco,descricao,pesoPorcao,imagem,id, from form data
+    const files = req.files;
+    const {nome,preco,descricao,pesoPorcao,_id} = req.fields;
+    
+    if (!(nome && preco && descricao && pesoPorcao)){
+        res.status(400).json({ error: "Dados incompletos" });
+        return;
+    }
+    let ingrediente = getIngrediente(_id);
+    if(ingrediente){
+        ingrediente.nome = nome;
+        ingrediente.preco = preco;
+        ingrediente.descricao = descricao;
+        ingrediente.pesoPorcao = pesoPorcao;
+        if(checkFiles(files)){
+            moveFile("ingrediente",files.image,_id);
+            ingrediente.image = _id + files.image.name.split(".").at(-1);
+        }
+
+        await editIngrediente(ingrediente);
+
+        res.status(200).json(ingrediente).end();
+        return;
+    } else {
+        ingrediente = {
+            nome: nome,
+            preco: preco,
+            descricao: descricao,
+            pesoPorcao: pesoPorcao,
+        };
+        if(!checkFiles(files)){
+            res.status(400).json({ error: "Arquivo inválido" });
+            return;
+        }
+        
+        addIngrediente(ingrediente);
+
+        res.status(200).json(ingrediente).end();
+    }
+
 });
 
 // Rota para adicionar ou editar uma pizza
 router.patch("/editar-pizza", async (req, res) => {
-    res.sendStatus(200);
+    const files = req.files;
+    const {_id, nome, descricao, ingredientes, preco} = req.fields;
+    if (!(nome && descricao && ingredientes && preco)){
+        res.status(400).json({ error: "Dados incompletos" });
+        return;
+    }
+    let pizza = getPizza(_id);
+    if (pizza) {
+        pizza.nome = nome;
+        pizza.descricao = descricao;
+        pizza.ingredientes = ingredientes;
+        pizza.preco = preco;
+        if(checkFiles(files)){
+            moveFile("pizza",files.image,_id);
+            pizza.image = _id + files.image.name.split(".").at(-1);
+        }
+
+        await editPizza(pizza);
+        
+        res.status(200).json(pizza).end();
+        return;
+    } else {
+        pizza = {
+            nome: nome,
+            descricao: descricao,
+            ingredientes: ingredientes,
+            preco: preco,
+        };
+        if(!checkFiles(files)){
+            res.status(400).json({ error: "Arquivo inválido" });
+            return;
+        }
+        
+        addPizza(pizza);
+
+        res.status(200).json(pizza).end();
+    }
+
 });
 
 // Rota para adicionar ou editar um produto
 router.patch("/editar-produto", async (req, res) => {
-    res.sendStatus(200);
+    const files = req.files;
+    const {_id, nome,imagem ,preco ,descricao} = req.fields;
+    if (!(nome && imagem  && preco && descricao)){
+        res.status(400).json({ error: "Dados incompletos" });
+        return;
+    }
+    let produto = getProduto(_id);
+    if (produto) {
+        produto.nome = nome;
+        produto.preco = preco;
+        produto.descricao = descricao;
+        if(checkFiles(files)){
+            moveFile("produto",files.image,_id);
+            produto.image = _id + files.image.name.split(".").at(-1);
+        }
+
+        await editProduto(produto);
+        
+        res.status(200).json(produto).end();
+        return;
+    } else {
+        produto = {
+            nome: nome,
+            preco: preco,
+            descricao: descricao,
+        };
+        if(!checkFiles(files)){
+            res.status(400).json({ error: "Arquivo inválido" });
+            return;
+        }
+        
+        addProduto(produto);
+        
+        res.status(200).json(produto).end();
+    }
+        
+
 });
 
 //Rota para excluir um usuário pelo email
