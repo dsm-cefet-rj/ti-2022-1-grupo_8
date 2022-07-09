@@ -50,6 +50,9 @@
         "doBackup": "node ./DataBaseHealer/BackUp.js",
         "doRestore": "node ./DataBaseHealer/Restore.js"
     },
+    "nodemonConfig":{
+        "ignore": ["*.test.js", "fixtures/*","src/*","uploads/*","public/*"]
+    },
     "eslintConfig": {
         "extends": [
             "react-app",
