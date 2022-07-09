@@ -31,7 +31,6 @@ const { getPedidos } = require("../data/DaoPedidos");
 const { gerarRelatorios } = require("../data/DaoRelatorio");
 require("dotenv").config();
 
-
 // multipart/form-data middleware
 const formData = formidable({
     encoding: "utf-8",
