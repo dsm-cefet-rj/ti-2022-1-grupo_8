@@ -38,14 +38,16 @@ const GerirProdutos = () => {
         }
 
         let produto = {
+            _id: editando ? ProdutosBD[0]._id : 0,
             nome: nome,
             imagem: imagem,
             preco: preco,
             descricao: descricao,
         };
         const formData = new FormData();
-        formData.append("produto", JSON.stringify(produto));
-        formData.append("imagem", imagem);
+        for (let key in produto) {
+            formData.append(key, produto[key]);
+        }
 
         const token = getSessionFromLocalStorage();
         const request = {
@@ -55,10 +57,16 @@ const GerirProdutos = () => {
                 "Content-Type": "multipart/form-data",
                 "x-access-token": `Bearer ${token}`,
             },
-            data: formData,
+            body: formData,
         };
 
         const response = await axios(request);
+        if (response.status === 200) {
+            // reload window
+            window.location.reload();
+        }else{
+            setErro(response.data.error);
+        }
     };
 
     useEffect(() => {

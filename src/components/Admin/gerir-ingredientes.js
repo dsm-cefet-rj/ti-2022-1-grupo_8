@@ -135,8 +135,10 @@ const GerirIngredientes = () => {
             _id: idSelecinado,
         };
         const formData = new FormData();
-        formData.append("imagem", imagem);
-        formData.append("ingrediente", JSON.stringify(ingrediente));
+        for (let key in ingrediente) {
+            formData.append(key, ingrediente[key]);
+        }
+        
 
         const token = getSessionFromLocalStorage();
         const request = {
@@ -146,11 +148,16 @@ const GerirIngredientes = () => {
                 "Content-Type": "multipart/form-data",
                 "x-access-token": `Bearer ${token}`,
             },
-            data: formData,
+            body: formData,
         };
 
         const response = await axios(request);
-        console.log(response);
+        if (response.status === 200) {
+            // reload window
+            window.location.reload();
+        }else{
+            console.log(response.data.error);
+        }
     };
 
     // Renderização do componente

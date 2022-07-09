@@ -54,8 +54,9 @@ const GerirPizzas = () => {
         };
 
         const formData = new FormData();
-        formData.append("pizza", JSON.stringify(pizza));
-        formData.append("imagem", imagem);
+        for (const key in pizza) {
+            formData.append(key, pizza[key]);
+        }
 
         const token = getSessionFromLocalStorage();
         const request = {
@@ -65,12 +66,16 @@ const GerirPizzas = () => {
                 "Content-Type": "application/json",
                 "x-access-token": `Bearer ${token}`,
             },
-            data: formData,
+            body: formData,
         };
 
         const response = await axios(request);
-
-        dispatch(fetchPizzas());
+        if (response.status === 200) {
+            // reload window
+            window.location.reload();
+        }else{
+            setErro(response.data.error);
+        }
     };
 
     const handleCheckbox = (e) => {
