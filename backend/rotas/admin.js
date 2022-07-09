@@ -123,18 +123,18 @@ const checkFiles = (files) => {
         return false;
     }
     return true;
-}
+};
 
 const moveFile = (tipo, file, nome) => {
     const tipos = {
-        "pizza": "./public/imgs/pizzas/",
-        "produto": "./public/imgs/produtos/",
-        "ingrediente": "./public/imgs/ingredientes/",
+        pizza: "./public/imgs/pizzas/",
+        produto: "./public/imgs/produtos/",
+        ingrediente: "./public/imgs/ingredientes/",
     };
     const path = tipos[tipo];
     const newPath = path + nome + file.name.split(".").at(-1);
     fs.renameSync(file.path, newPath);
-}
+};
 
 // Rota para adicionar ou editar um ingrediente
 router.post("/editar-ingrediente", formData, async (req, res) => {

@@ -73,7 +73,7 @@ const GerirPizzas = () => {
         if (response.status === 200) {
             // reload window
             window.location.reload();
-        }else{
+        } else {
             setErro(response.data.error);
         }
     };

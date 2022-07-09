@@ -138,7 +138,6 @@ const GerirIngredientes = () => {
         for (let key in ingrediente) {
             formData.append(key, ingrediente[key]);
         }
-        
 
         const token = getSessionFromLocalStorage();
         const request = {
@@ -155,7 +154,7 @@ const GerirIngredientes = () => {
         if (response.status === 200) {
             // reload window
             window.location.reload();
-        }else{
+        } else {
             console.log(response.data.error);
         }
     };
