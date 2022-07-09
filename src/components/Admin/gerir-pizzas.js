@@ -53,9 +53,9 @@ const GerirPizzas = () => {
             preco,
         };
 
-        const formData = new FormData();
+        const form = new FormData();
         for (const key in pizza) {
-            formData.append(key, pizza[key]);
+            form.append(key, pizza[key]);
         }
 
         const token = getSessionFromLocalStorage();
@@ -63,10 +63,10 @@ const GerirPizzas = () => {
             method: "POST",
             url: "http://localhost:3001/admin/editar-pizza",
             headers: {
-                "Content-Type": "application/json",
+                contentType: `multipart/form-data; boundary=----${form.getBoundary()}`,
                 "x-access-token": `Bearer ${token}`,
             },
-            body: formData,
+            data: '[form]',
         };
 
         const response = await axios(request);

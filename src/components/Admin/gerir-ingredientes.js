@@ -114,11 +114,6 @@ const GerirIngredientes = () => {
                 ingrediente.pesoPorcao;
             document.getElementById("imagem-field").hidden = true;
         } else {
-            document.getElementById("nome").value = "";
-            document.getElementById("nome").readOnly = false;
-            document.getElementById("preco").value = "";
-            document.getElementById("descricao").value = "";
-            document.getElementById("PesoPorcao").value = "";
             document.getElementById("imagem-field").hidden = false;
         }
         dispatch(fetchIngredientes());
@@ -134,20 +129,21 @@ const GerirIngredientes = () => {
             imagem: imagem,
             _id: idSelecinado,
         };
-        const formData = new FormData();
+        const form = new FormData();
         for (let key in ingrediente) {
-            formData.append(key, ingrediente[key]);
+            form.append(key, ingrediente[key]);
         }
-
+        console.log(imagem);
         const token = getSessionFromLocalStorage();
+
         const request = {
             method: "POST",
             url: "http://localhost:3001/admin/editar-ingrediente",
             headers: {
-                "Content-Type": "multipart/form-data",
+                contentType: `multipart/form-data; boundary=----${form.getBoundary()}`,
                 "x-access-token": `Bearer ${token}`,
             },
-            body: formData,
+            data: '[form]',
         };
 
         const response = await axios(request);
@@ -259,14 +255,9 @@ const GerirIngredientes = () => {
                                 name="imagem"
                                 placeholder="Imagem"
                                 onChange={(e) => {
+                                    // setImagem to the fist file uploaded 
                                     let [file] = e.target.files;
-                                    const reader = new FileReader();
-                                    reader.onload = () => {
-                                        let base64 = reader.result;
-                                        setImagem(String(base64));
-                                    };
-                                    reader.readAsDataURL(file);
-                                    console.log(imagem);
+                                    setImagem(file);
                                 }}
                             />
                         </div>

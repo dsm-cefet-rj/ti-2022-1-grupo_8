@@ -16,6 +16,8 @@ server.use(cors());
 // application/json middleware
 server.use(express.json());
 
+server.use(express.static("public"));
+
 require("fs").mkdirSync("./uploads", { recursive: true });
 
 // Rotas de Login

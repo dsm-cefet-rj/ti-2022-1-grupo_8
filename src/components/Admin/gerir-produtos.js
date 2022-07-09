@@ -44,9 +44,9 @@ const GerirProdutos = () => {
             preco: preco,
             descricao: descricao,
         };
-        const formData = new FormData();
+        const form = new FormData();
         for (let key in produto) {
-            formData.append(key, produto[key]);
+            form.append(key, produto[key]);
         }
 
         const token = getSessionFromLocalStorage();
@@ -54,10 +54,10 @@ const GerirProdutos = () => {
             method: "POST",
             url: "http://localhost:3001/admin/editar-produto",
             headers: {
-                "Content-Type": "multipart/form-data",
+                contentType: `multipart/form-data; boundary=----${form.getBoundary()}`, 
                 "x-access-token": `Bearer ${token}`,
             },
-            body: formData,
+            data: '[form]',
         };
 
         const response = await axios(request);
