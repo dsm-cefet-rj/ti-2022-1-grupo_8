@@ -174,7 +174,7 @@ router.post("/editar-ingrediente", formData, async (req, res) => {
             return;
         }
 
-        addIngrediente(ingrediente);
+        await addIngrediente(ingrediente);
 
         res.status(200).json(ingrediente).end();
     }
@@ -217,7 +217,7 @@ router.patch("/editar-pizza", formData, async (req, res) => {
             return;
         }
 
-        addPizza(pizza);
+        await addPizza(pizza);
 
         res.status(200).json(pizza).end();
     }
@@ -258,7 +258,7 @@ router.patch("/editar-produto", formData, async (req, res) => {
             return;
         }
 
-        addProduto(produto);
+        await addProduto(produto);
 
         res.status(200).json(produto).end();
     }
