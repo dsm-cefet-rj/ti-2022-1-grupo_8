@@ -5,8 +5,16 @@ import {
     selectIngredientes,
 } from "../../features/clienteDatabaseSlice";
 import {
-    selectId,
     setIdSelecinado,
+    setnomeSelecinado,
+    setprecoSelecinado,
+    setdescricaoSelecinado,
+    setpesoPorcaoSelecinado,
+    selectId,
+    selectNome,
+    selectPreco,
+    selectDescricao,
+    selectPesoPorcao
 } from "../../features/gerir-ingredientesSlice";
 import AdminNav from "./admin-nav";
 import styles from "./gerir-ingredientes.module.scss";
@@ -24,7 +32,7 @@ const Ingrediente = (props) => {
     const ingredientesBD = useSelector(selectIngredientes);
 
     // Dados do ingrediente
-    const { id, imagem, nome, preco } = props.data;
+    const { id, imagem, nome, preco, pesoPorcao, descricao } = props.data;
     // Controle se o ingrediente está selecionado
     const [selecionado, setSelecionado] = useState(false);
 
@@ -35,6 +43,26 @@ const Ingrediente = (props) => {
             dispatch(
                 setIdSelecinado({
                     id: id,
+                })
+            );
+            dispatch(
+                setnomeSelecinado({
+                    nome: nome,
+                })
+            );
+            dispatch(
+                setprecoSelecinado({
+                    preco: preco,
+                })
+            );
+            dispatch(
+                setdescricaoSelecinado({
+                    descricao: descricao
+                })
+            );
+            dispatch(
+                setpesoPorcaoSelecinado({
+                    pesoPorcao: pesoPorcao,
                 })
             );
             document.getElementById("form-ingrediente").scrollIntoView({
@@ -54,6 +82,26 @@ const Ingrediente = (props) => {
             dispatch(
                 setIdSelecinado({
                     id: 0,
+                })
+            );
+            dispatch(
+                setnomeSelecinado({
+                    nome: "",
+                })
+            );
+            dispatch(
+                setprecoSelecinado({
+                    preco: 0,
+                })
+            );
+            dispatch(
+                setdescricaoSelecinado({
+                    descricao: "",
+                })
+            );
+            dispatch(
+                setpesoPorcaoSelecinado({
+                    pesoPorcao: 0,
                 })
             );
         }
@@ -95,23 +143,18 @@ const GerirIngredientes = () => {
     const ingredientesBD = useSelector(selectIngredientes);
 
     const idSelecinado = useSelector(selectId);
-    const [nome, setNome] = useState("");
-    const [preco, setPreco] = useState("");
-    const [descricao, setDescricao] = useState("");
-    const [pesoPorcao, setPesoPorcao] = useState("");
-    const [imagem, setImagem] = useState("");
+    const nome = useSelector(selectNome)
+    const preco = useSelector(selectPreco)
+    const descricao = useSelector(selectDescricao)
+    const pesoPorcao = useSelector(selectPesoPorcao)
+    const [imagem, setImagem] = useState("")
 
     useEffect(() => {
         if (idSelecinado !== 0) {
             let ingrediente = ingredientesBD.find(
                 (ingrediente) => ingrediente.id === idSelecinado
             );
-            document.getElementById("nome").value = ingrediente.nome;
-            document.getElementById("nome").readOnly = false;
-            document.getElementById("preco").value = ingrediente.preco;
-            document.getElementById("descricao").value = ingrediente.descricao;
-            document.getElementById("PesoPorcao").value =
-                ingrediente.pesoPorcao;
+
             document.getElementById("imagem-field").hidden = true;
         } else {
             document.getElementById("imagem-field").hidden = false;
@@ -195,7 +238,11 @@ const GerirIngredientes = () => {
                                 name="nome"
                                 placeholder="Nome"
                                 autoComplete="off"
-                                onChange={(e) => setNome(e.target.value)}
+                                onChange={(e) => dispatch(
+                                    setnomeSelecinado({
+                                        nome: e.target.value,
+                                    })
+                                )}
                                 value={nome}
                             />
                         </div>
@@ -209,7 +256,11 @@ const GerirIngredientes = () => {
                                 placeholder="Preço"
                                 step={0.01}
                                 autoComplete="off"
-                                onChange={(e) => setPreco(e.target.value)}
+                                onChange={(e) => dispatch(
+                                    setprecoSelecinado({
+                                        preco: e.target.value,
+                                    })
+                                )}
                                 value={preco}
                             />
                         </div>
@@ -222,7 +273,11 @@ const GerirIngredientes = () => {
                                 name="descricao"
                                 placeholder="Descrição"
                                 autoComplete="off"
-                                onChange={(e) => setDescricao(e.target.value)}
+                                onChange={(e) => dispatch(
+                                    setdescricaoSelecinado({
+                                        descricao: e.target.value,
+                                    })
+                                )}
                                 value={descricao}
                             />
                         </div>
@@ -240,7 +295,11 @@ const GerirIngredientes = () => {
                                 min="1"
                                 max="100"
                                 autoComplete="off"
-                                onChange={(e) => setPesoPorcao(e.target.value)}
+                                onChange={(e) => dispatch(
+                                    setpesoPorcaoSelecinado({
+                                        pesoPorcao: e.target.value,
+                                    })
+                                )}
                                 value={pesoPorcao}
                             />
                         </div>
