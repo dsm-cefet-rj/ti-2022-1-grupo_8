@@ -123,9 +123,9 @@ const checkFiles = (files) => {
 // Move e renomeia um arquivo com base no tipo e retorna o caminho do arquivo
 const moveFile = (tipo, imagem, nome) => {
     const tipos = {
-        pizza: "./public/imgs/pizzas/",
-        produto: "./public/imgs/produtos/",
-        ingrediente: "./public/imgs/ingredientes/",
+        pizza: "/imgs/pizzas/",
+        produto: "/imgs/produtos/",
+        ingrediente: "/imgs/ingredientes/",
     };
     const path = tipos[tipo];
     const newPath = `${path}${nome}.${imagem.path.split(".").at(-1)}`;
@@ -152,7 +152,7 @@ router.post("/editar-ingrediente", formData, async (req, res) => {
         ingrediente.descricao = descricao;
         ingrediente.pesoPorcao = parseFloat(pesoPorcao);
         if (checkFiles(files)) {
-            ingrediente.image = moveFile("ingrediente", files.image, _id);
+            ingrediente.imagem = moveFile("ingrediente", files.image, _id);
         }
         await editIngrediente(ingrediente);
 
@@ -166,7 +166,7 @@ router.post("/editar-ingrediente", formData, async (req, res) => {
             pesoPorcao: parseFloat(pesoPorcao),
         };
         if (checkFiles(files)) {
-            ingrediente.image =  moveFile("ingrediente", files.imagem, uuid.v4());
+            ingrediente.imagem = moveFile("ingrediente", files.imagem, uuid.v4());
             console.log(ingrediente);
         }else{
             res.status(400).json({
