@@ -123,7 +123,7 @@ const checkFiles = (files) => {
     }
     return true;
 };
-
+// Move e renomeia um arquivo com base no tipo e retorna o caminho do arquivo
 const moveFile = (tipo, file, nome) => {
     const tipos = {
         pizza: "./public/imgs/pizzas/",
@@ -133,6 +133,7 @@ const moveFile = (tipo, file, nome) => {
     const path = tipos[tipo];
     const newPath = path + nome + file.name.split(".").at(-1);
     fs.renameSync(file.path, newPath);
+    return newPath;
 };
 
 // Rota para adicionar ou editar um ingrediente
@@ -154,11 +155,10 @@ router.post("/editar-ingrediente", formData, async (req, res) => {
         ingrediente.descricao = descricao;
         ingrediente.pesoPorcao = parseFloat(pesoPorcao);
         if (checkFiles(files)) {
-            moveFile("ingrediente", files.image, _id);
-            ingrediente.image = _id + files.image.name.split(".").at(-1);
+            ingrediente.image =  moveFile("ingrediente", files.image, _id);
         }
-
-        await editIngrediente(ingrediente);
+        console.table(ingrediente);
+        //await editIngrediente(ingrediente);
 
         res.status(200).json(ingrediente).end();
         return;
@@ -172,9 +172,11 @@ router.post("/editar-ingrediente", formData, async (req, res) => {
         if (!checkFiles(files)) {
             res.status(400).json({ error: "Arquivo inválido" });
             return;
+        }else{
+            ingrediente.image =  moveFile("ingrediente", files.image, _id);
         }
-
-        await addIngrediente(ingrediente);
+        console.table(ingrediente);
+        //await addIngrediente(ingrediente);
 
         res.status(200).json(ingrediente).end();
     }
