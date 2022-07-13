@@ -7,7 +7,6 @@ import {
 import {
     setIdSelecinado,
     setNome,
-    setIngredientes,
     setPreco,
     setDescricao,
     selectIdSelecinado,
@@ -127,7 +126,6 @@ const GerirProdutos = () => {
                                                 // desselecionar
                                                 dispatch(setIdSelecinado(""));
                                                 dispatch(setNome(""));
-                                                dispatch(setIngredientes([]));
                                                 dispatch(setPreco(""));
                                                 dispatch(setDescricao(""));
                                             } else {
@@ -135,11 +133,6 @@ const GerirProdutos = () => {
                                                     setIdSelecinado(pizza.id)
                                                 );
                                                 dispatch(setNome(pizza.nome));
-                                                dispatch(
-                                                    setIngredientes(
-                                                        pizza.ingredientes
-                                                    )
-                                                );
                                                 dispatch(setPreco(pizza.preco));
                                                 dispatch(
                                                     setDescricao(
