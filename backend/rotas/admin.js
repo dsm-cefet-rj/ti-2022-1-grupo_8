@@ -155,7 +155,7 @@ router.post("/editar-ingrediente", formData, async (req, res) => {
         ingrediente.descricao = descricao;
         ingrediente.pesoPorcao = parseFloat(pesoPorcao);
         if (checkFiles(files)) {
-            ingrediente.image =  moveFile("ingrediente", files.image, _id);
+            ingrediente.image = moveFile("ingrediente", files.image, _id);
         }
         console.table(ingrediente);
         //await editIngrediente(ingrediente);
@@ -172,8 +172,8 @@ router.post("/editar-ingrediente", formData, async (req, res) => {
         if (!checkFiles(files)) {
             res.status(400).json({ error: "Arquivo inválido" });
             return;
-        }else{
-            ingrediente.image =  moveFile("ingrediente", files.image, _id);
+        } else {
+            ingrediente.image = moveFile("ingrediente", files.image, _id);
         }
         console.table(ingrediente);
         //await addIngrediente(ingrediente);
