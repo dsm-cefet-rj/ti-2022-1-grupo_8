@@ -12,7 +12,6 @@ import {
     setDescricao,
     selectIdSelecinado,
     selectNome,
-    selectIngredientes,
     selectPreco,
     selectDescricao,
 } from "../../features/gerir-produtosSlice";
@@ -35,7 +34,6 @@ const GerirProdutos = () => {
     const [imagem, setImagem] = useState("");
     const preco = useSelector(selectPreco);
     const descricao = useSelector(selectDescricao);
-    const ingredientes = useSelector(selectIngredientes);
 
     useEffect(() => {
         dispatch(fetchProdutos());
@@ -49,7 +47,6 @@ const GerirProdutos = () => {
             imagem: imagem,
             preco: preco,
             descricao: descricao,
-            ingredientes: ingredientes,
         };
         const form = new FormData();
         for (let key in produto) {
