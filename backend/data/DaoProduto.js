@@ -11,15 +11,15 @@ Os campos da entidade Produto são:
 const { getConnection } = require("./DaoConexão");
 const { ObjectId } = require("mongodb");
 require("dotenv").config();
-const { IngredienteValidTypes } = require("../negocio");
+const { ProdutoValidTypes } = require("../negocio");
 
 // Função para validar o produto
-const validaçãoPedido = (produto) => {
+const validaçãoProduto = (produto) => {
     // ProdutoValidTypes keys
-    const keys = Object.keys(IngredienteValidTypes);
+    const keys = Object.keys(ProdutoValidTypes);
     keys.forEach((key) => {
         if (!produto[key]) {
-            throw new Error(`${key} é um campo obrigatório`);
+            throw new Error(`${key} é um campo obrigatório: ${Object.keys(produto)}`);
         }
         if (typeof produto[key] !== ProdutoValidTypes[key]) {
             throw new Error(
@@ -45,6 +45,9 @@ const getAllProdutos = async () => {
 };
 
 const getProduto = async (_id) => {
+    if (!_id || _id === "" || _id === "0" || _id === 0) {
+        return undefined;
+    }
     const connection = await getConnection(); // conectar ao banco de dados
     // Busca o produto com o _id passado
     let produto = await connection
@@ -62,7 +65,7 @@ const getProduto = async (_id) => {
 
 const addProduto = async (produto) => {
     const connection = await getConnection(); // conectar ao banco de dados
-    validaçãoPedido(produto);
+    validaçãoProduto(produto);
     // Inserir produto na coleção produtos
     await connection.collection("produtos").insertOne(produto);
 };
@@ -70,7 +73,7 @@ const addProduto = async (produto) => {
 const editProduto = async (id, produto) => {
     const connection = await getConnection(); // conectar ao banco de dados
     // remove id e manter _id
-    validaçãoPedido(produto);
+    validaçãoProduto(produto);
     // Na coleção produtos, atualizar o produto com o id passado
     await connection
         .collection("produtos")

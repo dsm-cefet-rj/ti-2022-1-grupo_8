@@ -244,6 +244,7 @@ const GerirProdutos = () => {
                                                 Authorization: `Bearer ${token}`,
                                             },
                                         });
+                                        window.location.reload();
                                     } else {
                                         //voltar para pagina anterior
                                         window.history.back();

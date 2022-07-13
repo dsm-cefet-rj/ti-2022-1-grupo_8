@@ -230,7 +230,7 @@ router.post("/editar-pizza", formData, async (req, res) => {
 // Rota para adicionar ou editar um produto
 router.post("/editar-produto", formData, async (req, res) => {
     const files = req.files;
-    const { _id, nome, imagem, preco, descricao } = req.fields;
+    const { _id, nome, preco, descricao } = req.fields;
     if (!(nome && preco && descricao)) {
         res.status(400).json({
             error: `Dados incompletos, fields: ${req.fields}`,
@@ -241,28 +241,29 @@ router.post("/editar-produto", formData, async (req, res) => {
     console.log(produto);
     if (produto) {
         produto.nome = nome;
-        produto.preco = preco;
+        produto.preco = parseFloat(preco);
         produto.descricao = descricao;
+        delete produto._id;
         if (checkFiles(files)) {
-            moveFile("produto", files.image, _id);
-            produto.image = _id + files.image.name.split(".").at(-1);
+            moveFile("produto", files.imagem, _id);
+            produto.imagem = _id + files.imagem.name.split(".").at(-1);
         }
 
-        await editProduto(produto);
+        await editProduto( _id, produto);
 
         res.status(200).json(produto).end();
         return;
     } else {
         produto = {
             nome: nome,
-            preco: preco,
+            preco: parseFloat(preco),
             descricao: descricao,
         };
         if (!checkFiles(files)) {
             res.status(400).json({ error: "Arquivo inválido" });
             return;
         } else {
-            produto.image = moveFile("produto", files.image, _id);
+            produto.imagem = moveFile("produto", files.imagem, uuid.v4());
         }
 
         await addProduto(produto);
@@ -327,7 +328,7 @@ router.delete("/excluir-produto/:id", async (req, res) => {
     const { id } = req.params;
     if (id) {
         //verificar se produto realmente existe
-        const produto = getAllProdutos().find((produto) => produto.id === id);
+        const produto = getProduto(id);
         if (produto) {
             // se produto existe, excluir
             //excluir produto
