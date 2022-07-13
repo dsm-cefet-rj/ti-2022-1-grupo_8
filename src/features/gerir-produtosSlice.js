@@ -8,7 +8,6 @@ const geirProdutosSlice = createSlice({
         ingredientes: [],
         preco: 0,
         descricao: "",
-
     },
     reducers: {
         setIdSelecinado: (state, action) => {
@@ -29,18 +28,20 @@ const geirProdutosSlice = createSlice({
     },
 });
 
-export const { setIdSelecinado,
+export const {
+    setIdSelecinado,
     setNome,
     setIngredientes,
     setPreco,
-    setDescricao } = geirProdutosSlice.actions;
+    setDescricao,
+} = geirProdutosSlice.actions;
 
 // para ser usado com o UseSelector
-export const selectIdSelecinado = state => state.geirProdutos.idSelecinado;
-export const selectNome = state => state.geirProdutos.nome;
-export const selectIngredientes = state => state.geirProdutos.ingredientes;
-export const selectPreco = state => state.geirProdutos.preco;
-export const selectDescricao = state => state.geirProdutos.descricao;
+export const selectIdSelecinado = (state) => state.geirProdutos.idSelecinado;
+export const selectNome = (state) => state.geirProdutos.nome;
+export const selectIngredientes = (state) => state.geirProdutos.ingredientes;
+export const selectPreco = (state) => state.geirProdutos.preco;
+export const selectDescricao = (state) => state.geirProdutos.descricao;
 
 const reducer = geirProdutosSlice.reducer;
 export default reducer;

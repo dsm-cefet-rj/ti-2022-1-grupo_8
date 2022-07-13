@@ -14,7 +14,7 @@ import {
     selectNome,
     selectIngredientes,
     selectPreco,
-    selectDescricao
+    selectDescricao,
 } from "../../features/gerir-produtosSlice";
 import AdminNav from "./admin-nav";
 import styles from "./gerir-produtos.module.scss";
@@ -49,8 +49,8 @@ const GerirProdutos = () => {
             imagem: imagem,
             preco: preco,
             descricao: descricao,
-            ingredientes: ingredientes
-        }
+            ingredientes: ingredientes,
+        };
         const form = new FormData();
         for (let key in produto) {
             form.append(key, produto[key]);
@@ -71,8 +71,7 @@ const GerirProdutos = () => {
         if (response.status === 200) {
             // reload window
             window.location.reload();
-        }
-        else {
+        } else {
             setErro(response.data.message);
         }
     };
@@ -135,13 +134,24 @@ const GerirProdutos = () => {
                                                 dispatch(setPreco(""));
                                                 dispatch(setDescricao(""));
                                             } else {
-                                                dispatch(setIdSelecinado(pizza.id));
+                                                dispatch(
+                                                    setIdSelecinado(pizza.id)
+                                                );
                                                 dispatch(setNome(pizza.nome));
-                                                dispatch(setIngredientes(pizza.ingredientes));
+                                                dispatch(
+                                                    setIngredientes(
+                                                        pizza.ingredientes
+                                                    )
+                                                );
                                                 dispatch(setPreco(pizza.preco));
-                                                dispatch(setDescricao(pizza.descricao));
+                                                dispatch(
+                                                    setDescricao(
+                                                        pizza.descricao
+                                                    )
+                                                );
                                             }
-                                        }}>
+                                        }}
+                                    >
                                         Alterar
                                     </button>
                                 </div>
@@ -226,7 +236,8 @@ const GerirProdutos = () => {
                                 className="btn btn-outline-danger btn-lg"
                                 onClick={(e) => {
                                     if (idSelecinado !== 0) {
-                                        const token = getSessionFromLocalStorage();
+                                        const token =
+                                            getSessionFromLocalStorage();
                                         // Excluir produto
                                         axios({
                                             method: "DELETE",
@@ -234,7 +245,7 @@ const GerirProdutos = () => {
                                             headers: {
                                                 Authorization: `Bearer ${token}`,
                                             },
-                                        })
+                                        });
                                     } else {
                                         //voltar para pagina anterior
                                         window.history.back();
@@ -243,13 +254,12 @@ const GerirProdutos = () => {
                             >
                                 {idSelecinado !== 0
                                     ? "Deletar 🗑️"
-                                    : "Cancelar ❌"
-                                }
+                                    : "Cancelar ❌"}
                             </button>
                         </div>
                     </form>
                 </div>
-            </div >
+            </div>
         </>
     );
 };
