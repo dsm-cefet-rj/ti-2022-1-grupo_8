@@ -58,7 +58,7 @@ const getPizza = async (id) => {
 const addPizza = async (pizzas) => {
     const connection = await getConnection(); // conectar ao banco de dados
     validaçãoPedido(pizzas);
-    await connection.collection("pedidos").insertOne(pizzas);
+    await connection.collection("pizzas").insertOne(pizzas);
 };
 
 const editPizza = async (id, pizza) => {
