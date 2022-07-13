@@ -132,8 +132,8 @@ const GerirProdutos = () => {
                                                 dispatch(
                                                     setIdSelecinado(produtos.id)
                                                 );
-                                                dispatch(setNome(pizza.nome));
-                                                dispatch(setPreco(pizza.preco));
+                                                dispatch(setNome(produtos.nome));
+                                                dispatch(setPreco(produtos.preco));
                                                 dispatch(
                                                     setDescricao(
                                                         produtos.descricao
