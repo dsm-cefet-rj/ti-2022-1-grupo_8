@@ -185,7 +185,7 @@ router.post("/editar-ingrediente", formData, async (req, res) => {
 });
 
 // Rota para adicionar ou editar uma pizza
-router.patch("/editar-pizza", formData, async (req, res) => {
+router.post("/editar-pizza", formData, async (req, res) => {
     const files = req.files;
     const { _id, nome, descricao, ingredientes, preco } = req.fields;
     if (!(nome && descricao && ingredientes && preco)) {
@@ -228,7 +228,7 @@ router.patch("/editar-pizza", formData, async (req, res) => {
 });
 
 // Rota para adicionar ou editar um produto
-router.patch("/editar-produto", formData, async (req, res) => {
+router.post("/editar-produto", formData, async (req, res) => {
     const files = req.files;
     const { _id, nome, imagem, preco, descricao } = req.fields;
     if (!(nome && imagem && preco && descricao)) {
