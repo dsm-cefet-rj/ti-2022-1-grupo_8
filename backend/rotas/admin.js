@@ -123,14 +123,20 @@ const checkFiles = (files) => {
 // Move e renomeia um arquivo com base no tipo e retorna o caminho do arquivo
 const moveFile = (tipo, imagem, nome) => {
     const tipos = {
-        pizza: "/imgs/pizzas/",
-        produto: "/imgs/produtos/",
-        ingrediente: "/imgs/ingredientes/",
+        pizza: "./public/imgs/pizzas/",
+        produto: "./public/imgs/produtos/",
+        ingrediente: "./public/imgs/ingredientes/",
     };
     const path = tipos[tipo];
-    const newPath = `${path}${nome}.${imagem.path.split(".").at(-1)}`;
-    fs.renameSync(imagem.path, newPath);
-    return newPath;
+    let newPath = `${path}${nome}.${imagem.path.split(".").at(-1)}`;
+    try{
+        fs.renameSync(imagem.path, newPath);
+        console.log("Arquivo movido com sucesso");
+    }catch(err){
+        console.log(err);
+    }
+    // remove ./public form tme newPath
+    return newPath.replace("./public", "");
 };
 
 // Rota para adicionar ou editar um ingrediente
@@ -245,8 +251,7 @@ router.post("/editar-produto", formData, async (req, res) => {
         produto.descricao = descricao;
         delete produto._id;
         if (checkFiles(files)) {
-            moveFile("produto", files.imagem, _id);
-            produto.imagem = _id + files.imagem.name.split(".").at(-1);
+            produto.imagem = moveFile("produto", files.imagem, _id); 
         }
 
         await editProduto( _id, produto);
