@@ -74,15 +74,15 @@ const addIngrediente = async (ingrediente) => {
     validaçãoPedido(ingrediente, true);
     // Inserir ingrediente na coleção ingredientes
     delete ingrediente._id;
-    await connection.collection("ingredientes").insertOne(ingrediente,
-        (err, result) => {
+    await connection
+        .collection("ingredientes")
+        .insertOne(ingrediente, (err, result) => {
             if (err) {
                 console.log(err);
-            }else{
+            } else {
                 console.log(result);
             }
-        }
-    );
+        });
 };
 
 const editIngrediente = async (ingrediente) => {
