@@ -166,9 +166,13 @@ router.post("/editar-ingrediente", formData, async (req, res) => {
             pesoPorcao: parseFloat(pesoPorcao),
         };
         if (checkFiles(files)) {
-            ingrediente.image =  moveFile("ingrediente", files.imagem, uuid.v4());
+            ingrediente.image = moveFile(
+                "ingrediente",
+                files.imagem,
+                uuid.v4()
+            );
             console.log(ingrediente);
-        }else{
+        } else {
             res.status(400).json({
                 error: "Não foi enviado nenhuma imagem",
             });
