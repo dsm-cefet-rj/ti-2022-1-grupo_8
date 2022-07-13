@@ -27,100 +27,6 @@ Componente: GerirPizzas
 Descrição: Componente que renderiza a página de gerenciamento de pizzas
 */
 
-const Pizza = (props) => {
-    // Dispatch do Redux
-    const dispatch = useDispatch();
-
-    // Variavies que controlam os ingredientes do banco de dados.
-    const pizzasBD = useSelector(selectPizzas);
-
-    // Dados do ingrediente
-    const { id, imagem, nome, descricao, ingredientes } = props.data;
-    // Controla se a pizza está selecionada
-    const [selecionado, setSelecionado] = useState(false);
-
-    // Função que seleciona uma pizza
-    const selecionar = () => {
-        setSelecionado(!selecionado);
-        if (!selecionado) {
-            dispatch(
-                setIdSelecionado({
-                    id: id,
-                })
-            );
-            dispatch(
-                setNome({
-                    nome: nome,
-                })
-            );
-            dispatch(
-                setDescricao({
-                    descricao: descricao,
-                })
-            );
-            dispatch(
-                setIngredientes({
-                    ingredientes: ingredientes,
-                })
-            );
-            document.getElementById("form-pizza").scrollIntoView({
-                behavior: "instant",
-                block: "center",
-            });
-            //desselecionar todas as outras pizzas
-            pizzasBD.forEach((pizza) => {
-                if (pizza.id !== id) {
-                    let elem = document.getElementById(`pizza-${pizza.id}`);
-                    elem.innerHTML = "Selecionar";
-                }
-            });
-        } else {
-            dispatch(
-                setIdSelecionado({
-                    id: 0,
-                })
-            );
-            dispatch(
-                setNome({
-                    nome: "",
-                })
-            );
-            dispatch(
-                setDescricao({
-                    descricao: "",
-                })
-            );
-            dispatch(
-                setIngredientes({
-                    ingredientes: ingredientes,
-                })
-            );
-        }
-    };
-
-    useEffect(() => {
-        dispatch(fetchIngredientes());
-    }, [dispatch]);
-
-    // Renderização do componente
-    return (
-        <>
-            <div className="pizza">
-                <img src={imagem} alt="Pizza" style={{ width: "100px" }} />
-                <br />
-                <p>{nome}</p>
-                <button
-                    className="btn btn-primary"
-                    onClick={selecionar}
-                    id={`pizza-${id}`}
-                >
-                    {selecionado ? "Desselecionar" : "Selecionar"}
-                </button>
-            </div>
-        </>
-    );
-};
-
 const GerirPizzas = () => {
     // Dispatch do Redux
     const dispatch = useDispatch();
@@ -148,6 +54,37 @@ const GerirPizzas = () => {
         }
     }, [idSelecionado]);
 
+    // Função que seleciona uma pizza
+    const selecionar = (pizza) => {
+        if (idSelecionado !== pizza._id) {
+            // selecionar
+            dispatch(setIdSelecionado(pizza._id));
+            dispatch(setNome(pizza.nome));
+            dispatch(setDescricao(pizza.descricao));
+            dispatch(setIngredientes(pizza.ingredientes));
+
+            document.getElementById("form-pizza").scrollIntoView({
+                behavior: "instant",
+                block: "center",
+            });
+            // Desselecionar todos os outros
+            pizzasBD.forEach((pizza) => {
+                console.log(pizza._id, idSelecionado);
+                if (pizza._id !== idSelecionado) {
+                    let elem = document.getElementById(`pizza-${pizza._id}`);
+                    elem.innerHTML = "Selecionar";
+                }
+            });
+        } else {
+            // desselecionar
+            dispatch(setIdSelecionado(""));
+            dispatch(setNome(""));
+            dispatch(setDescricao(""));
+            dispatch(setIngredientes([]));
+        }
+    };
+
+    // Função que envia os dados alterados
     const handleButton = async (e) => {
         e.preventDefault();
         let pizza = {
@@ -181,6 +118,7 @@ const GerirPizzas = () => {
         }
     };
 
+    // Função que marca ou desmarca um ingrediente
     const handleCheckbox = (e) => {
         const id = e.target.id;
         const payload = {
@@ -193,11 +131,7 @@ const GerirPizzas = () => {
         }
     };
 
-    useEffect(() => {
-        dispatch(fetchPizzas());
-        dispatch(fetchIngredientes());
-    }, [dispatch]);
-
+    // Renderização da página
     return (
         <>
             <AdminNav Atual="pizzas" />
@@ -240,56 +174,7 @@ const GerirPizzas = () => {
                                         <button
                                             className="btn btn-lg btn-primary btn-success"
                                             id={`pizza-${pizza.id}`}
-                                            onClick={() => {
-                                                setNome(pizza.nome);
-                                                setDescricao(pizza.descricao);
-                                                setIdSelecionado(pizza.id);
-
-                                                let elem =
-                                                    document.getElementById(
-                                                        `pizza-${pizza.id}`
-                                                    );
-                                                if (
-                                                    elem.classList.contains(
-                                                        "btn-success"
-                                                    )
-                                                ) {
-                                                    elem.classList.remove(
-                                                        "btn-success"
-                                                    );
-                                                    elem.classList.add(
-                                                        "btn-danger"
-                                                    );
-                                                    elem.innerHTML = "Remover";
-                                                } else {
-                                                    elem.classList.remove(
-                                                        "btn-danger"
-                                                    );
-                                                    elem.classList.add(
-                                                        "btn-success"
-                                                    );
-                                                    elem.innerHTML = "Editar";
-                                                }
-
-                                                pizzasBD.map((pizzaOBJ) => {
-                                                    if (
-                                                        pizzaOBJ.id !== pizza.id
-                                                    ) {
-                                                        let elem =
-                                                            document.getElementById(
-                                                                `pizza-${pizzaOBJ.id}`
-                                                            );
-                                                        elem.classList.remove(
-                                                            "btn-danger"
-                                                        );
-                                                        elem.classList.add(
-                                                            "btn-success"
-                                                        );
-                                                        elem.innerHTML =
-                                                            "Editar";
-                                                    }
-                                                });
-                                            }}
+                                            onClick={(e) => selecionar(pizza)}
                                         >
                                             Alterar
                                         </button>
@@ -391,7 +276,7 @@ const GerirPizzas = () => {
                                                 width: "40px",
                                                 height: "40px",
                                             }}
-                                            value={ingrediente.id.toString()}
+                                            value={true}
                                             id={ingrediente.id.toString()}
                                             onChange={handleCheckbox}
                                         />
