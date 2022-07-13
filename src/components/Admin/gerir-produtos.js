@@ -4,6 +4,18 @@ import {
     fetchProdutos,
     selectProdutos,
 } from "../../features/clienteDatabaseSlice";
+import {
+    setIdSelecinado,
+    setNome,
+    setIngredientes,
+    setPreco,
+    setDescricao,
+    selectIdSelecinado,
+    selectNome,
+    selectIngredientes,
+    selectPreco,
+    selectDescricao
+} from "../../features/gerir-produtosSlice";
 import AdminNav from "./admin-nav";
 import styles from "./gerir-produtos.module.scss";
 import { getSessionFromLocalStorage } from "../../features/sessionSlice";
@@ -18,44 +30,12 @@ const GerirProdutos = () => {
     const ProdutosBD = useSelector(selectProdutos);
 
     const [erro, setErro] = useState("");
-
-    const [nome, setNome] = useState("");
+    const idSelecinado = useSelector(selectIdSelecinado);
+    const nome = useSelector(selectNome);
     const [imagem, setImagem] = useState("");
-    const [preco, setPreco] = useState(0);
-    const [descricao, setDescricao] = useState("");
-
-    const [selecionado, setSelecionado] = useState(false);
-
-    // Função que seleciona um ingrediente
-    const selecionar = () => {
-        setSelecionado(!selecionado);
-        if (!selecionado) {
-            dispatch(
-                setIdSelecinado({
-                    id: id,
-                })
-            );
-            document.getElementById("form-ingrediente").scrollIntoView({
-                behavior: "instant",
-                block: "center",
-            });
-            //descelecionar todos oo outros
-            ingredientesBD.forEach((ingrediente) => {
-                if (ingrediente.id !== id) {
-                    let elem = document.getElementById(
-                        `ingrediente-${ingrediente.id}`
-                    );
-                    elem.innerHTML = "Selecionar";
-                }
-            });
-        } else {
-            dispatch(
-                setIdSelecinado({
-                    id: 0,
-                })
-            );
-        }
-    };
+    const preco = useSelector(selectPreco);
+    const descricao = useSelector(selectDescricao);
+    const ingredientes = useSelector(selectIngredientes);
 
     useEffect(() => {
         dispatch(fetchProdutos());
@@ -63,12 +43,18 @@ const GerirProdutos = () => {
 
     const handleButton = async (e) => {
         e.preventDefault();
-        let form_data = new FormData();
-        form_data.append("nome", nome);
-        form_data.append("preco", preco);
-        form_data.append("descricao", descricao);
-        form_data.append("imagem", imagem);
-        form_data.append("id", idSelecinado);
+        let produto = {
+            _id: idSelecinado,
+            nome: nome,
+            imagem: imagem,
+            preco: preco,
+            descricao: descricao,
+            ingredientes: ingredientes
+        }
+        const form = new FormData();
+        for (let key in produto) {
+            form.append(key, produto[key]);
+        }
 
         const token = getSessionFromLocalStorage();
         const request = {
@@ -78,30 +64,22 @@ const GerirProdutos = () => {
                 "Content-Type": "multipart/form-data",
                 "x-access-token": `Bearer ${token}`,
             },
-            data: form_data,
-            onUploadProgress: (progressEvent) => {
-                const percentCompleted = Math.round(
-                    (progressEvent.loaded * 100) / progressEvent.total
-                );
-                console.log(percentCompleted);
-            },
+            data: form,
         };
 
-        axios(request)
-            .then((response) => {
-                if (response.status === 200) {
-                    dispatch(fetchProdutos());
-                    console.log("Produto editado com sucesso!");
-                } else console.log("Erro ao editar produto!");
-            })
-            .catch((error) => {
-                console.log(error);
-            });
+        const response = await axios(request);
+        if (response.status === 200) {
+            // reload window
+            window.location.reload();
+        }
+        else {
+            setErro(response.data.message);
+        }
     };
 
     useEffect(() => {
         dispatch(fetchProdutos);
-    }, [idSelecinado]);
+    }, []);
 
     return (
         <>
@@ -149,57 +127,21 @@ const GerirProdutos = () => {
                                         className="btn btn-lg btn-primary btn-success"
                                         id={`pizza-${pizza.id}`}
                                         onClick={(e) => {
-                                            setEditando(true);
-                                            setNome(pizza.nome);
-                                            setPreco(pizza.preco);
-                                            setDescricao(pizza.descricao);
-                                            let elem = document.getElementById(
-                                                `pizza-${pizza.id}`
-                                            );
-                                            if (
-                                                elem.classList.contains(
-                                                    "btn-success"
-                                                )
-                                            ) {
-                                                elem.classList.remove(
-                                                    "btn-success"
-                                                );
-                                                elem.classList.add(
-                                                    "btn-danger"
-                                                );
-                                                elem.innerHTML = "Remover";
+                                            if (idSelecinado === pizza.id) {
+                                                // desselecionar
+                                                dispatch(setIdSelecinado(""));
+                                                dispatch(setNome(""));
+                                                dispatch(setIngredientes([]));
+                                                dispatch(setPreco(""));
+                                                dispatch(setDescricao(""));
                                             } else {
-                                                elem.classList.remove(
-                                                    "btn-danger"
-                                                );
-                                                elem.classList.add(
-                                                    "btn-success"
-                                                );
-                                                elem.innerHTML = "Editar";
-
-                                                setEditando(false);
-                                                setNome("");
-                                                setPreco("");
-                                                setDescricao("");
+                                                dispatch(setIdSelecinado(pizza.id));
+                                                dispatch(setNome(pizza.nome));
+                                                dispatch(setIngredientes(pizza.ingredientes));
+                                                dispatch(setPreco(pizza.preco));
+                                                dispatch(setDescricao(pizza.descricao));
                                             }
-                                            ProdutosBD.map((pizzaOBJ) => {
-                                                if (pizzaOBJ.id !== pizza.id) {
-                                                    let elem =
-                                                        document.getElementById(
-                                                            `pizza-${pizzaOBJ.id}`
-                                                        );
-                                                    elem.classList.remove(
-                                                        "btn-danger"
-                                                    );
-                                                    elem.classList.add(
-                                                        "btn-success"
-                                                    );
-                                                    elem.innerHTML = "Editar";
-                                                }
-                                                return pizzaOBJ;
-                                            });
-                                        }}
-                                    >
+                                        }}>
                                         Alterar
                                     </button>
                                 </div>
@@ -229,7 +171,7 @@ const GerirProdutos = () => {
                                 id="nome"
                                 value={nome}
                                 onChange={(e) => {
-                                    setNome(e.target.value);
+                                    dispatch(setNome(e.target.value));
                                 }}
                             />
 
@@ -250,7 +192,9 @@ const GerirProdutos = () => {
                                 className="form-control"
                                 id="preco"
                                 value={preco}
-                                onChange={(e) => setPreco(e.target.value)}
+                                onChange={(e) => {
+                                    dispatch(setPreco(e.target.value));
+                                }}
                             />
 
                             <label htmlFor="descricao">Descrição</label>
@@ -258,7 +202,9 @@ const GerirProdutos = () => {
                                 className="form-control"
                                 id="descricao"
                                 value={descricao}
-                                onChange={(e) => setDescricao(e.target.value)}
+                                onChange={(e) => {
+                                    dispatch(setDescricao(e.target.value));
+                                }}
                             />
                         </div>
 
