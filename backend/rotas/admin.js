@@ -231,7 +231,7 @@ router.post("/editar-pizza", formData, async (req, res) => {
 router.post("/editar-produto", formData, async (req, res) => {
     const files = req.files;
     const { _id, nome, imagem, preco, descricao } = req.fields;
-    if (!(nome && imagem && preco && descricao)) {
+    if (!(nome && preco && descricao)) {
         res.status(400).json({
             error: `Dados incompletos, fields: ${req.fields}`,
         });
