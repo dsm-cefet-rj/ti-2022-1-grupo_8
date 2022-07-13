@@ -219,21 +219,37 @@ const GerirProdutos = () => {
                                     ? "Salvar 💿"
                                     : "Adicionar ✅"}
                             </button>
-                            <a
-                                href="/menu-admin"
+                            <button
                                 style={{
                                     margin: " 0 5px",
                                 }}
                                 className="btn btn-outline-danger btn-lg"
+                                onClick={(e) => {
+                                    if (idSelecinado !== 0) {
+                                        const token = getSessionFromLocalStorage();
+                                        // Excluir produto
+                                        axios({
+                                            method: "DELETE",
+                                            url: `http://localhost:3001/admin/excluir-produto/${idSelecinado}`,
+                                            headers: {
+                                                Authorization: `Bearer ${token}`,
+                                            },
+                                        })
+                                    } else {
+                                        //voltar para pagina anterior
+                                        window.history.back();
+                                    }
+                                }}
                             >
                                 {idSelecinado !== 0
                                     ? "Deletar 🗑️"
-                                    : "Cancelar ❌"}
-                            </a>
+                                    : "Cancelar ❌"
+                                }
+                            </button>
                         </div>
                     </form>
                 </div>
-            </div>
+            </div >
         </>
     );
 };
