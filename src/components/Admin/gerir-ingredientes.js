@@ -148,7 +148,7 @@ const GerirIngredientes = () => {
     const descricao = useSelector(selectDescricao);
     const pesoPorcao = useSelector(selectPesoPorcao);
     const [imagem, setImagem] = useState("");
-    
+
     useEffect(() => {
         dispatch(fetchIngredientes());
     }, []);
@@ -333,7 +333,8 @@ const GerirIngredientes = () => {
                     >
                         {idSelecinado !== 0 ? "Salvar 💿" : "Adicionar ✅"}
                     </button>
-                    <button className="btn btn-outline-danger"
+                    <button
+                        className="btn btn-outline-danger"
                         onClick={(e) => {
                             e.preventDefault();
                             if (idSelecinado !== 0) {
@@ -348,11 +349,12 @@ const GerirIngredientes = () => {
                                 });
                                 // Reload window
                                 window.location.reload();
-                            }else {
+                            } else {
                                 //voltar para pagina anterior
                                 window.history.back();
                             }
-                        }}>
+                        }}
+                    >
                         {idSelecinado !== 0 ? "Deletar 🗑️" : "Cancelar ❌"}
                     </button>
                 </div>
