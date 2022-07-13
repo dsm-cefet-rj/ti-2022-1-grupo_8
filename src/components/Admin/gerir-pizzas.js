@@ -271,6 +271,9 @@ const GerirPizzas = () => {
                                                 height: "40px",
                                             }}
                                             value={true}
+                                            defaultChecked={ingredientes.includes(
+                                                ingrediente._id
+                                            )}
                                             id={ingrediente.id.toString()}
                                             onChange={handleCheckbox}
                                         />
