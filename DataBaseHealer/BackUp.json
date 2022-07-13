@@ -1,33 +1,6 @@
 {
   "ingredientes": [
     {
-      "_id": "62bc0b37ebdf021d97a34de7",
-      "imagem": "/imgs/ingredientes/molho_de_tomate.png",
-      "nome": "Molho",
-      "preco": 0.6,
-      "usados": 15,
-      "descricao": "Molho - 0.75",
-      "pesoPorcao": 53
-    },
-    {
-      "_id": "62bc0b37ebdf021d97a34de8",
-      "imagem": "/imgs/ingredientes/queijo-musssarela.png",
-      "nome": "Queijo",
-      "preco": 0.52,
-      "usados": 16,
-      "descricao": "Queijo - 0.75",
-      "pesoPorcao": 29
-    },
-    {
-      "_id": "62bc0b37ebdf021d97a34de9",
-      "imagem": "/imgs/ingredientes/Calabresa.png",
-      "nome": "Calabresa",
-      "preco": 0.99,
-      "usados": 18,
-      "descricao": "Calabresa - 6.45",
-      "pesoPorcao": 86
-    },
-    {
       "_id": "62bc0b37ebdf021d97a34dea",
       "imagem": "/imgs/ingredientes/Presunto.png",
       "nome": "Presunto",
@@ -35,15 +8,6 @@
       "usados": 35,
       "descricao": "Presunto - 8.5",
       "pesoPorcao": 90
-    },
-    {
-      "_id": "62bc0b37ebdf021d97a34deb",
-      "imagem": "/imgs/ingredientes/Camarao.png",
-      "nome": "Camarão",
-      "preco": 0.81,
-      "usados": 20,
-      "descricao": "Camarão - 4.86",
-      "pesoPorcao": 18
     },
     {
       "_id": "62bc0b37ebdf021d97a34dec",
@@ -64,15 +28,6 @@
       "pesoPorcao": 95
     },
     {
-      "_id": "62bc0b37ebdf021d97a34dee",
-      "imagem": "/imgs/ingredientes/Azeitona verde.png",
-      "nome": "Azeitona verde",
-      "preco": 0.85,
-      "usados": 1,
-      "descricao": "Azeitona verde - 5.86",
-      "pesoPorcao": 9
-    },
-    {
       "_id": "62bc0b37ebdf021d97a34def",
       "imagem": "/imgs/ingredientes/Azeitona preta.png",
       "nome": "Azeitona preta",
@@ -80,33 +35,6 @@
       "usados": 13,
       "descricao": "Azeitona preta - 4",
       "pesoPorcao": 80
-    },
-    {
-      "_id": "62bc0b37ebdf021d97a34df0",
-      "imagem": "/imgs/ingredientes/Tomate.png",
-      "nome": "Tomate",
-      "preco": 0.95,
-      "usados": 23,
-      "descricao": "Tomate - 4.5",
-      "pesoPorcao": 67
-    },
-    {
-      "_id": "62bc0b37ebdf021d97a34df1",
-      "imagem": "/imgs/ingredientes/Cebola.png",
-      "nome": "Cebola",
-      "preco": 0.69,
-      "usados": 39,
-      "descricao": "Cebola - 2",
-      "pesoPorcao": 98
-    },
-    {
-      "_id": "62bc0b37ebdf021d97a34df2",
-      "imagem": "/imgs/ingredientes/Frango desfiado.png",
-      "nome": "Frango desfiado",
-      "preco": 0.62,
-      "usados": 79,
-      "descricao": "Frango desfiado - 7.99",
-      "pesoPorcao": 82
     },
     {
       "_id": "62bc0b37ebdf021d97a34df3",
@@ -118,6 +46,15 @@
       "pesoPorcao": 81
     },
     {
+      "_id": "62bc0b37ebdf021d97a34df1",
+      "imagem": "/imgs/ingredientes/Cebola.png",
+      "nome": "Cebola",
+      "preco": 0.69,
+      "usados": 39,
+      "descricao": "Cebola - 2",
+      "pesoPorcao": 98
+    },
+    {
       "_id": "62bc0b37ebdf021d97a34df4",
       "imagem": "/imgs/ingredientes/Pimentão verde.png",
       "nome": "Pimentão verde",
@@ -127,13 +64,13 @@
       "pesoPorcao": 66
     },
     {
-      "_id": "62bc0b37ebdf021d97a34df5",
-      "imagem": "/imgs/ingredientes/Manjericão.png",
-      "nome": "Manjericão",
-      "preco": 0.72,
-      "usados": 47,
-      "descricao": "Manjericão - 6.6",
-      "pesoPorcao": 88
+      "_id": "62bc0b37ebdf021d97a34df2",
+      "imagem": "/imgs/ingredientes/Frango desfiado.png",
+      "nome": "Frango desfiado",
+      "preco": 0.62,
+      "usados": 79,
+      "descricao": "Frango desfiado - 7.99",
+      "pesoPorcao": 82
     },
     {
       "_id": "62bc0b37ebdf021d97a34df6",
@@ -161,9 +98,161 @@
       "usados": 23,
       "descricao": "Pepperoni - 8.55",
       "pesoPorcao": 46
+    },
+    {
+      "_id": "62bc0b37ebdf021d97a34de7",
+      "imagem": "/imgs/ingredientes/molho_de_tomate.png",
+      "nome": "Molho",
+      "preco": 0.6,
+      "usados": 15,
+      "descricao": "Molho - 0.75",
+      "pesoPorcao": 53
+    },
+    {
+      "_id": "62bc0b37ebdf021d97a34de9",
+      "imagem": "/imgs/ingredientes/Calabresa.png",
+      "nome": "Calabresa",
+      "preco": 0.99,
+      "usados": 18,
+      "descricao": "Calabresa - 6.45",
+      "pesoPorcao": 86
+    },
+    {
+      "_id": "62bc0b37ebdf021d97a34deb",
+      "imagem": "/imgs/ingredientes/Camarao.png",
+      "nome": "Camarão",
+      "preco": 0.81,
+      "usados": 20,
+      "descricao": "Camarão - 4.86",
+      "pesoPorcao": 18
+    },
+    {
+      "_id": "62bc0b37ebdf021d97a34df0",
+      "imagem": "/imgs/ingredientes/Tomate.png",
+      "nome": "Tomate",
+      "preco": 0.95,
+      "usados": 23,
+      "descricao": "Tomate - 4.5",
+      "pesoPorcao": 67
+    },
+    {
+      "_id": "62bc0b37ebdf021d97a34de8",
+      "imagem": "/imgs/ingredientes/queijo-musssarela.png",
+      "nome": "Queijo",
+      "preco": 0.52,
+      "usados": 16,
+      "descricao": "Queijo - 0.75",
+      "pesoPorcao": 29
+    },
+    {
+      "_id": "62bc0b37ebdf021d97a34dee",
+      "imagem": "/imgs/ingredientes/Azeitona verde.png",
+      "nome": "Azeitona verde",
+      "preco": 0.85,
+      "usados": 1,
+      "descricao": "Azeitona verde - 5.86",
+      "pesoPorcao": 9
+    },
+    {
+      "_id": "62bc0b37ebdf021d97a34df5",
+      "imagem": "/imgs/ingredientes/Manjericão.png",
+      "nome": "Manjericão",
+      "preco": 0.72,
+      "usados": 47,
+      "descricao": "Manjericão - 6.6",
+      "pesoPorcao": 88
+    },
+    {
+      "_id": "62ce49322be2161e8991e642",
+      "nome": "Abacaxi",
+      "preco": 8,
+      "descricao": "Abacaxi",
+      "pesoPorcao": 12,
+      "imagem": "/imgs/ingredientes/f7a97c04-d0a2-4c57-9f70-7236f5d10881.jpg"
     }
   ],
-  "pedidos": [],
+  "pedidos": [
+    {
+      "_id": "62cb47322e7e663d92703b3e",
+      "email": "vycasnicolas@gmail.com",
+      "dataHora": 1657489202412,
+      "endereco": "Um endereço qualquer",
+      "carrinho": [
+        {
+          "nome": "Pizza de Mussarela",
+          "descricao": "Básica mas ainda gostosa, pizza com molho de tomate, mussarela e orégano.",
+          "imagem": "/imgs/pizzas/pizza-mussarela.png",
+          "preco": 20,
+          "id": "62bc0b7eebdf021d97a34dfb",
+          "tipo": "pizza",
+          "quantidade": 1
+        },
+        {
+          "id": "8874b505-b6a5-422f-85e4-152b7843bbbb",
+          "nome": "Pizza Grande de Alho com Ovo e Azeitona preta",
+          "preco": 24.770000000000007,
+          "quantidade": 1,
+          "tamanho": "Grande",
+          "Metades": [
+            [
+              "62bc0b37ebdf021d97a34dea",
+              "62bc0b37ebdf021d97a34dec",
+              "62bc0b37ebdf021d97a34ded"
+            ],
+            [
+              "62bc0b37ebdf021d97a34dea",
+              "62bc0b37ebdf021d97a34dec",
+              "62bc0b37ebdf021d97a34def"
+            ],
+            [],
+            []
+          ],
+          "descricao": "Ingredientes: 62bc0b37ebdf021d97a34dea, 62bc0b37ebdf021d97a34dec, 62bc0b37ebdf021d97a34ded, 62bc0b37ebdf021d97a34dea, 62bc0b37ebdf021d97a34dec, 62bc0b37ebdf021d97a34def"
+        }
+      ],
+      "status": "Feito"
+    },
+    {
+      "_id": "62cb4c13a9d07e43cef11da8",
+      "email": "vycasnicolas@gmail.com",
+      "dataHora": 1657490451914,
+      "endereco": "Um endereço qualquer",
+      "carrinho": [
+        {
+          "nome": "Pizza de Mussarela",
+          "descricao": "Básica mas ainda gostosa, pizza com molho de tomate, mussarela e orégano.",
+          "imagem": "/imgs/pizzas/pizza-mussarela.png",
+          "preco": 20,
+          "id": "62bc0b7eebdf021d97a34dfb",
+          "tipo": "pizza",
+          "quantidade": 1
+        },
+        {
+          "id": "9ef73890-8716-47c3-afe5-fdc5fa391417",
+          "nome": "Pizza Familia de Alho com Cebola e Ovo",
+          "preco": 29.680000000000007,
+          "quantidade": 1,
+          "tamanho": "Familia",
+          "Metades": [
+            [
+              "62bc0b37ebdf021d97a34dea",
+              "62bc0b37ebdf021d97a34dec",
+              "62bc0b37ebdf021d97a34ded"
+            ],
+            [
+              "62bc0b37ebdf021d97a34def",
+              "62bc0b37ebdf021d97a34df3",
+              "62bc0b37ebdf021d97a34df1"
+            ],
+            [],
+            []
+          ],
+          "descricao": "Ingredientes: 62bc0b37ebdf021d97a34dea, 62bc0b37ebdf021d97a34dec, 62bc0b37ebdf021d97a34ded, 62bc0b37ebdf021d97a34def, 62bc0b37ebdf021d97a34df3, 62bc0b37ebdf021d97a34df1"
+        }
+      ],
+      "status": "Feito"
+    }
+  ],
   "pizzas": [
     {
       "_id": "62bc0b7eebdf021d97a34dfb",
@@ -208,6 +297,34 @@
       "preco": 34.45
     },
     {
+      "_id": "62bc0b7eebdf021d97a34e03",
+      "nome": "Da Casa",
+      "descricao": "Sabor original da pizzaria, contendo molho de tomate, mussarela, peperoni, cebola e pimentão verde.",
+      "imagem": "/imgs/pizzas/pizza-da-casa.png",
+      "ingredientes": [
+        "62b8cb06c235d6ecd053fdc3",
+        "62b8cb06c235d6ecd053fdc4",
+        "62b8cb06c235d6ecd053fdca",
+        "62b8cb06c235d6ecd053fdcd",
+        "62b8cb06c235d6ecd053fdd4"
+      ],
+      "quant_comprada": 120,
+      "preco": 47.84
+    },
+    {
+      "_id": "62bc0b7eebdf021d97a34e06",
+      "nome": "4 Queijos",
+      "descricao": "Deliciosa pizza com molho de tomate, mussarela, gorgonzola, requeijão e parmesão.",
+      "imagem": "/imgs/pizzas/4 Queijos.png",
+      "ingredientes": [
+        "62b8cb06c235d6ecd053fdc3",
+        "62b8cb06c235d6ecd053fdc4",
+        "62b8cb06c235d6ecd053fdcf"
+      ],
+      "quant_comprada": 56,
+      "preco": 57.03
+    },
+    {
       "_id": "62bc0b7eebdf021d97a34dfe",
       "nome": "Brócolis com Alho",
       "descricao": "Deliciosa pizza com molho de tomate, mussarela, brócolis, alho e orégano.",
@@ -222,19 +339,33 @@
       "preco": 37.9
     },
     {
-      "_id": "62bc0b7eebdf021d97a34dff",
-      "nome": "Frango com Requeijão",
-      "descricao": "A mais querida! Pizza com molho de tomate, frango desfiado, queijo, requeijão e orégano",
-      "imagem": "/imgs/pizzas/Frango com Requeijão.png",
+      "_id": "62bc0b7eebdf021d97a34e02",
+      "nome": "Tropical",
+      "descricao": "Deliciosa pizza com mussarela, camarão, bacon e abacaxi.",
+      "imagem": "/imgs/pizzas/Tropical.png",
       "ingredientes": [
         "62b8cb06c235d6ecd053fdc3",
         "62b8cb06c235d6ecd053fdc4",
-        "62b8cb06c235d6ecd053fdcc",
-        "62b8cb06c235d6ecd053fdce",
-        "62b8cb06c235d6ecd053fdcf"
+        "62b8cb06c235d6ecd053fdc7",
+        "62b8cb06c235d6ecd053fdd2"
       ],
-      "quant_comprada": 115,
-      "preco": 38.51
+      "quant_comprada": 14,
+      "preco": 45.51
+    },
+    {
+      "_id": "62bc0b7eebdf021d97a34e05",
+      "nome": "Portuguesa",
+      "descricao": "Uma pizza com calabresa, tomates, mussarela, cebolas e azeitonas pretas.",
+      "imagem": "/imgs/pizzas/Portuguesa.png",
+      "ingredientes": [
+        "62b8cb06c235d6ecd053fdc3",
+        "62b8cb06c235d6ecd053fdc4",
+        "62b8cb06c235d6ecd053fdc5",
+        "62b8cb06c235d6ecd053fdcb",
+        "62b8cb06c235d6ecd053fdcd"
+      ],
+      "quant_comprada": 23,
+      "preco": 49.11
     },
     {
       "_id": "62bc0b7eebdf021d97a34e00",
@@ -260,35 +391,6 @@
       "preco": 40.7
     },
     {
-      "_id": "62bc0b7eebdf021d97a34e02",
-      "nome": "Tropical",
-      "descricao": "Deliciosa pizza com mussarela, camarão, bacon e abacaxi.",
-      "imagem": "/imgs/pizzas/Tropical.png",
-      "ingredientes": [
-        "62b8cb06c235d6ecd053fdc3",
-        "62b8cb06c235d6ecd053fdc4",
-        "62b8cb06c235d6ecd053fdc7",
-        "62b8cb06c235d6ecd053fdd2"
-      ],
-      "quant_comprada": 14,
-      "preco": 45.51
-    },
-    {
-      "_id": "62bc0b7eebdf021d97a34e03",
-      "nome": "Da Casa",
-      "descricao": "Sabor original da pizzaria, contendo molho de tomate, mussarela, peperoni, cebola e pimentão verde.",
-      "imagem": "/imgs/pizzas/pizza-da-casa.png",
-      "ingredientes": [
-        "62b8cb06c235d6ecd053fdc3",
-        "62b8cb06c235d6ecd053fdc4",
-        "62b8cb06c235d6ecd053fdca",
-        "62b8cb06c235d6ecd053fdcd",
-        "62b8cb06c235d6ecd053fdd4"
-      ],
-      "quant_comprada": 120,
-      "preco": 47.84
-    },
-    {
       "_id": "62bc0b7eebdf021d97a34e04",
       "nome": "Margherita",
       "descricao": "Deliciosa pizza com molho de tomate, mussarela de búfala, manjericão, queijo parmesão ralado, tomates e azeite.",
@@ -303,49 +405,22 @@
       "preco": 48.1
     },
     {
-      "_id": "62bc0b7eebdf021d97a34e05",
-      "nome": "Portuguesa",
-      "descricao": "Uma pizza com calabresa, tomates, mussarela, cebolas e azeitonas pretas.",
-      "imagem": "/imgs/pizzas/Portuguesa.png",
+      "_id": "62bc0b7eebdf021d97a34dff",
+      "nome": "Frango com Requeijão",
+      "descricao": "A mais querida! Pizza com molho de tomate, frango desfiado, queijo, requeijão e orégano",
+      "imagem": "/imgs/pizzas/Frango com Requeijão.png",
       "ingredientes": [
         "62b8cb06c235d6ecd053fdc3",
         "62b8cb06c235d6ecd053fdc4",
-        "62b8cb06c235d6ecd053fdc5",
-        "62b8cb06c235d6ecd053fdcb",
-        "62b8cb06c235d6ecd053fdcd"
-      ],
-      "quant_comprada": 23,
-      "preco": 49.11
-    },
-    {
-      "_id": "62bc0b7eebdf021d97a34e06",
-      "nome": "4 Queijos",
-      "descricao": "Deliciosa pizza com molho de tomate, mussarela, gorgonzola, requeijão e parmesão.",
-      "imagem": "/imgs/pizzas/4 Queijos.png",
-      "ingredientes": [
-        "62b8cb06c235d6ecd053fdc3",
-        "62b8cb06c235d6ecd053fdc4",
+        "62b8cb06c235d6ecd053fdcc",
+        "62b8cb06c235d6ecd053fdce",
         "62b8cb06c235d6ecd053fdcf"
       ],
-      "quant_comprada": 56,
-      "preco": 57.03
+      "quant_comprada": 115,
+      "preco": 38.51
     }
   ],
   "usuarios": [
-    {
-      "_id": "62b8cb62c235d6ecd053fe01",
-      "nome": "Nicolas Vycas Nery",
-      "email": "vycasnicolas@gmail.com",
-      "senha": "$2b$10$H8KWPGBF5x60Sg80lNjXN.4h5S4/s6gx1NKcx8RkiH3WMY9fAD3U2",
-      "type": "user"
-    },
-    {
-      "_id": "62b8cb62c235d6ecd053fe02",
-      "nome": "Bernardo Costa",
-      "email": "bernardocosta@gmail.com",
-      "senha": "$2b$10$vjFX73IV8oMRheYZXA5lMO2/m8KMdSgUf5dzlxfH.E6iMt7toyyhq",
-      "type": "user"
-    },
     {
       "_id": "62b8cb62c235d6ecd053fe03",
       "nome": "administrador",
@@ -361,10 +436,10 @@
       "type": "funcionario"
     },
     {
-      "_id": "62b8cb62c235d6ecd053fe05",
-      "nome": "Matheus",
-      "email": "mathues.coelho@gmail.com",
-      "senha": "$2b$10$ZOQpXXsxuj1IdKKx16JSo.NAs6GpaFBHAO.XDLtRjXqLhASF2jKdq",
+      "_id": "62b8cb62c235d6ecd053fe01",
+      "nome": "Nicolas Vycas Nery",
+      "email": "vycasnicolas@gmail.com",
+      "senha": "$2b$10$H8KWPGBF5x60Sg80lNjXN.4h5S4/s6gx1NKcx8RkiH3WMY9fAD3U2",
       "type": "user"
     },
     {
@@ -387,9 +462,31 @@
       "email": "joao@joao.com",
       "senha": "$2b$10$w.wSlmTgUKgvGgBvgfUBA.sL7tymgNgXciMJWSxIt9i4L12NtvX2O",
       "type": "user"
+    },
+    {
+      "_id": "62b8cb62c235d6ecd053fe02",
+      "nome": "Bernardo Costa",
+      "email": "bernardocosta@gmail.com",
+      "senha": "$2b$10$vjFX73IV8oMRheYZXA5lMO2/m8KMdSgUf5dzlxfH.E6iMt7toyyhq",
+      "type": "user"
+    },
+    {
+      "_id": "62b8cb62c235d6ecd053fe05",
+      "nome": "Matheus",
+      "email": "mathues.coelho@gmail.com",
+      "senha": "$2b$10$ZOQpXXsxuj1IdKKx16JSo.NAs6GpaFBHAO.XDLtRjXqLhASF2jKdq",
+      "type": "user"
     }
   ],
   "produtos": [
+    {
+      "_id": "62b8cb55c235d6ecd053fdfe",
+      "nome": "Suco de Pêssego 1L",
+      "descricao": "Suco de Laranja Del Valle sabor pêssego 1L",
+      "imagem": "/imgs/produtos/suco-pessego-del-valle-frut-1l.png",
+      "preco": 4,
+      "quant_comprada": 158
+    },
     {
       "_id": "62b8cb55c235d6ecd053fdf5",
       "nome": "Coca Cola 2L",
@@ -461,14 +558,6 @@
       "imagem": "/imgs/produtos/suco-de-uva-del-valle-frut-1l.png",
       "preco": 4,
       "quant_comprada": 185
-    },
-    {
-      "_id": "62b8cb55c235d6ecd053fdfe",
-      "nome": "Suco de Pêssego 1L",
-      "descricao": "Suco de Laranja Del Valle sabor pêssego 1L",
-      "imagem": "/imgs/produtos/suco-pessego-del-valle-frut-1l.png",
-      "preco": 4,
-      "quant_comprada": 158
     }
   ]
 }
