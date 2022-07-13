@@ -117,7 +117,9 @@ const GerirProdutos = () => {
                                     }}
                                 />
                                 <div className="card-body">
-                                    <h5 className="card-title">{produtos.nome}</h5>
+                                    <h5 className="card-title">
+                                        {produtos.nome}
+                                    </h5>
                                     <button
                                         className="btn btn-lg btn-primary btn-success"
                                         id={`pizza-${produtos.id}`}
@@ -132,8 +134,12 @@ const GerirProdutos = () => {
                                                 dispatch(
                                                     setIdSelecinado(produtos.id)
                                                 );
-                                                dispatch(setNome(produtos.nome));
-                                                dispatch(setPreco(produtos.preco));
+                                                dispatch(
+                                                    setNome(produtos.nome)
+                                                );
+                                                dispatch(
+                                                    setPreco(produtos.preco)
+                                                );
                                                 dispatch(
                                                     setDescricao(
                                                         produtos.descricao
@@ -142,11 +148,9 @@ const GerirProdutos = () => {
                                             }
                                         }}
                                     >
-                                        {
-                                            idSelecinado === produtos.id
-                                                ? "Desselecionar"
-                                                : "Selecionar"
-                                        }
+                                        {idSelecinado === produtos.id
+                                            ? "Desselecionar"
+                                            : "Selecionar"}
                                     </button>
                                 </div>
                             </div>
