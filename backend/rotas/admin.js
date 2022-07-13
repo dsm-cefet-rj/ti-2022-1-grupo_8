@@ -129,10 +129,10 @@ const moveFile = (tipo, imagem, nome) => {
     };
     const path = tipos[tipo];
     let newPath = `${path}${nome}.${imagem.path.split(".").at(-1)}`;
-    try{
+    try {
         fs.renameSync(imagem.path, newPath);
         console.log("Arquivo movido com sucesso");
-    }catch(err){
+    } catch (err) {
         console.log(err);
     }
     // remove ./public form tme newPath
@@ -251,10 +251,10 @@ router.post("/editar-produto", formData, async (req, res) => {
         produto.descricao = descricao;
         delete produto._id;
         if (checkFiles(files)) {
-            produto.imagem = moveFile("produto", files.imagem, _id); 
+            produto.imagem = moveFile("produto", files.imagem, _id);
         }
 
-        await editProduto( _id, produto);
+        await editProduto(_id, produto);
 
         res.status(200).json(produto).end();
         return;

@@ -19,7 +19,9 @@ const validaçãoProduto = (produto) => {
     const keys = Object.keys(ProdutoValidTypes);
     keys.forEach((key) => {
         if (!produto[key]) {
-            throw new Error(`${key} é um campo obrigatório: ${Object.keys(produto)}`);
+            throw new Error(
+                `${key} é um campo obrigatório: ${Object.keys(produto)}`
+            );
         }
         if (typeof produto[key] !== ProdutoValidTypes[key]) {
             throw new Error(
