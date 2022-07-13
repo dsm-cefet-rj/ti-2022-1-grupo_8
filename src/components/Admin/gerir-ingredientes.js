@@ -148,19 +148,18 @@ const GerirIngredientes = () => {
     const descricao = useSelector(selectDescricao);
     const pesoPorcao = useSelector(selectPesoPorcao);
     const [imagem, setImagem] = useState("");
+    
+    useEffect(() => {
+        dispatch(fetchIngredientes());
+    }, []);
 
     useEffect(() => {
         if (idSelecinado !== 0) {
-            let ingrediente = ingredientesBD.find(
-                (ingrediente) => ingrediente.id === idSelecinado
-            );
-
             document.getElementById("imagem-field").hidden = true;
         } else {
             document.getElementById("imagem-field").hidden = false;
         }
-        dispatch(fetchIngredientes());
-    }, [idSelecinado, dispatch, ingredientesBD]);
+    }, [idSelecinado]);
 
     const handleButton = async (e) => {
         e.preventDefault();
@@ -334,7 +333,26 @@ const GerirIngredientes = () => {
                     >
                         {idSelecinado !== 0 ? "Salvar 💿" : "Adicionar ✅"}
                     </button>
-                    <button className="btn btn-outline-danger">
+                    <button className="btn btn-outline-danger"
+                        onClick={(e) => {
+                            e.preventDefault();
+                            if (idSelecinado !== 0) {
+                                const token = getSessionFromLocalStorage();
+                                // Excluir ingrediente
+                                axios({
+                                    method: "DELETE",
+                                    url: `http://localhost:3001/admin/excluir-ingrediente/${idSelecinado}`,
+                                    headers: {
+                                        "x-access-token": `Bearer ${token}`,
+                                    },
+                                });
+                                // Reload window
+                                window.location.reload();
+                            }else {
+                                //voltar para pagina anterior
+                                window.history.back();
+                            }
+                        }}>
                         {idSelecinado !== 0 ? "Deletar 🗑️" : "Cancelar ❌"}
                     </button>
                 </div>
