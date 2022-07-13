@@ -152,8 +152,7 @@ router.post("/editar-ingrediente", formData, async (req, res) => {
         ingrediente.descricao = descricao;
         ingrediente.pesoPorcao = parseFloat(pesoPorcao);
         if (checkFiles(files)) {
-            ingrediente.image =  moveFile("ingrediente", files.imagem, _id);
-            console.log(ingrediente);
+            ingrediente.image = moveFile("ingrediente", files.image, _id);
         }
         await editIngrediente(ingrediente);
 
