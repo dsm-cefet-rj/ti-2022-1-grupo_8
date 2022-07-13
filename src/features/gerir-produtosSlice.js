@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const geirProdutosSlice = createSlice({
+const gerirProdutosSlice = createSlice({
     name: "geirProdutos",
     initialState: {
         idSelecinado: 0,
@@ -25,13 +25,13 @@ const geirProdutosSlice = createSlice({
 });
 
 export const { setIdSelecinado, setNome, setPreco, setDescricao } =
-    geirProdutosSlice.actions;
+    gerirProdutosSlice.actions;
 
 // para ser usado com o UseSelector
-export const selectIdSelecinado = (state) => state.geirProdutos.idSelecinado;
-export const selectNome = (state) => state.geirProdutos.nome;
-export const selectPreco = (state) => state.geirProdutos.preco;
-export const selectDescricao = (state) => state.geirProdutos.descricao;
+export const selectIdSelecinado = (state) => state.gerirProdutos.idSelecinado;
+export const selectNome = (state) => state.gerirProdutos.nome;
+export const selectPreco = (state) => state.gerirProdutos.preco;
+export const selectDescricao = (state) => state.gerirProdutos.descricao;
 
-const reducer = geirProdutosSlice.reducer;
+const reducer = gerirProdutosSlice.reducer;
 export default reducer;
