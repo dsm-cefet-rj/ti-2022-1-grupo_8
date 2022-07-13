@@ -55,7 +55,7 @@ const getAllIngredientes = async () => {
 };
 
 const getIngrediente = async (id) => {
-    if (!id || id == "" || id == 0) {
+    if (!id || id === "" || id === "0" || id === 0) {
         return undefined;
     }
     console.log(id);
@@ -73,7 +73,16 @@ const addIngrediente = async (ingrediente) => {
     // Valida o ingrediente
     validaçãoPedido(ingrediente, true);
     // Inserir ingrediente na coleção ingredientes
-    await connection.collection("ingredientes").insertOne(ingrediente);
+    delete ingrediente._id;
+    await connection
+        .collection("ingredientes")
+        .insertOne(ingrediente, (err, result) => {
+            if (err) {
+                console.log(err);
+            } else {
+                console.log(result);
+            }
+        });
 };
 
 const editIngrediente = async (ingrediente) => {
