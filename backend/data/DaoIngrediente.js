@@ -58,7 +58,6 @@ const getIngrediente = async (id) => {
     if (!id || id === "" || id === "0" || id === 0) {
         return undefined;
     }
-    console.log(id);
     const connection = await getConnection(); // conectar ao banco de dados
     let ingrediente = await connection.collection("ingredientes").findOne({
         _id: new ObjectId(id),

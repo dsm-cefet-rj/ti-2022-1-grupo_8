@@ -145,7 +145,6 @@ router.post("/editar-ingrediente", formData, async (req, res) => {
     const { nome, preco, descricao, pesoPorcao, _id } = req.fields;
 
     if (!(nome && preco && descricao && pesoPorcao)) {
-        console.log(req.fields);
         res.status(400).json({
             error: `Dados incompletos, fields: ${req.fields}`,
         });
@@ -177,7 +176,6 @@ router.post("/editar-ingrediente", formData, async (req, res) => {
                 files.imagem,
                 uuid.v4()
             );
-            console.log(ingrediente);
         } else {
             res.status(400).json({
                 error: "Não foi enviado nenhuma imagem",
@@ -244,7 +242,6 @@ router.post("/editar-produto", formData, async (req, res) => {
         return;
     }
     let produto = await getProduto(_id);
-    console.log(produto);
     if (produto) {
         produto.nome = nome;
         produto.preco = parseFloat(preco);
@@ -253,9 +250,7 @@ router.post("/editar-produto", formData, async (req, res) => {
         if (checkFiles(files)) {
             produto.imagem = moveFile("produto", files.imagem, _id);
         }
-
         await editProduto(_id, produto);
-
         res.status(200).json(produto).end();
         return;
     } else {
