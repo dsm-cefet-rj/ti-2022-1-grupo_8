@@ -1,5 +1,6 @@
 const express = require("express");
 const fs = require("fs");
+const uuid = require("uuid");
 const formidable = require("express-formidable");
 const router = express.Router();
 const {
@@ -109,30 +110,26 @@ router.post("/promover-funcionario/:email", async (req, res) => {
 });
 
 const checkFiles = (files) => {
-    if (!files) {
+    if (!files.imagem) {
+        console.log("Não foi enviado nenhuma imagem");
         return false;
     }
-    if (!files.image) {
-        return false;
-    }
-    if (!files.image.mimetype.startsWith("image")) {
-        return false;
-    }
-    if (files.image.size > 1024 * 1024 * 2) {
+    if (files.imagem.bytesWritten <= 12 * 1024 * 1024) {
+        console.log("O arquivo é muito grande");
         return false;
     }
     return true;
 };
 // Move e renomeia um arquivo com base no tipo e retorna o caminho do arquivo
-const moveFile = (tipo, file, nome) => {
+const moveFile = (tipo, imagem, nome) => {
     const tipos = {
         pizza: "./public/imgs/pizzas/",
         produto: "./public/imgs/produtos/",
         ingrediente: "./public/imgs/ingredientes/",
     };
     const path = tipos[tipo];
-    const newPath = path + nome + file.name.split(".").at(-1);
-    fs.renameSync(file.path, newPath);
+    const newPath = `${path}${nome}.${imagem.path.split(".").at(-1)}`;
+    fs.renameSync(imagem.path, newPath);
     return newPath;
 };
 
@@ -148,35 +145,37 @@ router.post("/editar-ingrediente", formData, async (req, res) => {
         });
         return;
     }
-    let ingrediente = getIngrediente(_id);
+    let ingrediente = await getIngrediente(_id);
     if (ingrediente) {
         ingrediente.nome = nome;
         ingrediente.preco = parseFloat(preco);
         ingrediente.descricao = descricao;
         ingrediente.pesoPorcao = parseFloat(pesoPorcao);
         if (checkFiles(files)) {
-            ingrediente.image =  moveFile("ingrediente", files.image, _id);
+            ingrediente.image =  moveFile("ingrediente", files.imagem, _id);
+            console.log(ingrediente);
         }
-        console.table(ingrediente);
-        //await editIngrediente(ingrediente);
+        await editIngrediente(ingrediente);
 
         res.status(200).json(ingrediente).end();
         return;
     } else {
         ingrediente = {
             nome: nome,
-            preco: preco,
+            preco: parseFloat(preco),
             descricao: descricao,
-            pesoPorcao: pesoPorcao,
+            pesoPorcao: parseFloat(pesoPorcao),
         };
-        if (!checkFiles(files)) {
-            res.status(400).json({ error: "Arquivo inválido" });
-            return;
+        if (checkFiles(files)) {
+            ingrediente.image =  moveFile("ingrediente", files.imagem, uuid.v4());
+            console.log(ingrediente);
         }else{
-            ingrediente.image =  moveFile("ingrediente", files.image, _id);
+            res.status(400).json({
+                error: "Não foi enviado nenhuma imagem",
+            });
+            return;
         }
-        console.table(ingrediente);
-        //await addIngrediente(ingrediente);
+        await addIngrediente(ingrediente);
 
         res.status(200).json(ingrediente).end();
     }
