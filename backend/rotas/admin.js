@@ -260,7 +260,7 @@ router.patch("/editar-produto", formData, async (req, res) => {
         if (!checkFiles(files)) {
             res.status(400).json({ error: "Arquivo inválido" });
             return;
-        }else{
+        } else {
             produto.image = moveFile("produto", files.image, _id);
         }
 

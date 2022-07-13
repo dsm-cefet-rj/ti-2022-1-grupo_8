@@ -24,12 +24,8 @@ const geirProdutosSlice = createSlice({
     },
 });
 
-export const {
-    setIdSelecinado,
-    setNome,
-    setPreco,
-    setDescricao,
-} = geirProdutosSlice.actions;
+export const { setIdSelecinado, setNome, setPreco, setDescricao } =
+    geirProdutosSlice.actions;
 
 // para ser usado com o UseSelector
 export const selectIdSelecinado = (state) => state.geirProdutos.idSelecinado;

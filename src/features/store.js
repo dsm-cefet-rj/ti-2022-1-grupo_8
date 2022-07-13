@@ -8,6 +8,7 @@ import sessionSlice from "./sessionSlice";
 import pedidosClienteSlice from "./pedidos-clienteSlice";
 import pedidosFuncionarioSlice from "./pedidos-funcionarioSlice";
 import gerirPizzaSlice from "./gerir-pizzaSlice";
+import gerirProdutosSlice from "./gerir-produtosSlice";
 import relatorioSlice from "./relatorioSlice";
 
 export default configureStore({
@@ -21,6 +22,7 @@ export default configureStore({
         pedidosCliente: pedidosClienteSlice,
         pedidosFuncionario: pedidosFuncionarioSlice,
         gerirPizza: gerirPizzaSlice,
+        gerirProdutos: gerirProdutosSlice,
         relatorio: relatorioSlice,
     },
 });
