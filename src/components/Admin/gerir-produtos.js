@@ -142,7 +142,11 @@ const GerirProdutos = () => {
                                             }
                                         }}
                                     >
-                                        Alterar
+                                        {
+                                            idSelecinado === produtos.id
+                                                ? "Desselecionar"
+                                                : "Selecionar"
+                                        }
                                     </button>
                                 </div>
                             </div>
