@@ -113,9 +113,7 @@ const GerirPizzas = () => {
     // Função que marca ou desmarca um ingrediente
     const handleCheckbox = (e) => {
         const id = e.target.id;
-        const payload = {
-            id: id,
-        };
+        const payload = id;
         if (e.target.checked) {
             dispatch(addIngrediente(payload));
         } else {
@@ -195,11 +193,7 @@ const GerirPizzas = () => {
                                     placeholder="Nome"
                                     autoComplete="off"
                                     onChange={(e) =>
-                                        dispatch(
-                                            setNome({
-                                                nome: e.target.value,
-                                            })
-                                        )
+                                        dispatch(setNome(e.target.value))
                                     }
                                     value={nome}
                                 />
@@ -215,11 +209,7 @@ const GerirPizzas = () => {
                                     placeholder="Descrição"
                                     autoComplete="off"
                                     onChange={(e) =>
-                                        dispatch(
-                                            setDescricao({
-                                                descricao: e.target.value,
-                                            })
-                                        )
+                                        dispatch(setDescricao(e.target.value))
                                     }
                                     value={descricao}
                                 />
