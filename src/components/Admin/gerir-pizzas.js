@@ -67,14 +67,6 @@ const GerirPizzas = () => {
                 behavior: "instant",
                 block: "center",
             });
-            // Desselecionar todos os outros
-            pizzasBD.forEach((pizza) => {
-                console.log(pizza._id, idSelecionado);
-                if (pizza._id !== idSelecionado) {
-                    let elem = document.getElementById(`pizza-${pizza._id}`);
-                    elem.innerHTML = "Selecionar";
-                }
-            });
         } else {
             // desselecionar
             dispatch(setIdSelecionado(""));
@@ -176,7 +168,9 @@ const GerirPizzas = () => {
                                             id={`pizza-${pizza.id}`}
                                             onClick={(e) => selecionar(pizza)}
                                         >
-                                            Alterar
+                                            {idSelecionado === pizza.id
+                                                ? "Desselecionar"
+                                                : "Selecionar"}
                                         </button>
                                     </div>
                                 </div>
