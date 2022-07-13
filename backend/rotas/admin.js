@@ -237,7 +237,8 @@ router.post("/editar-produto", formData, async (req, res) => {
         });
         return;
     }
-    let produto = getProduto(_id);
+    let produto = await getProduto(_id);
+    console.log(produto);
     if (produto) {
         produto.nome = nome;
         produto.preco = preco;

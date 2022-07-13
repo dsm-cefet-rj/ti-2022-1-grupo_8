@@ -47,10 +47,16 @@ const getAllProdutos = async () => {
 const getProduto = async (_id) => {
     const connection = await getConnection(); // conectar ao banco de dados
     // Busca o produto com o _id passado
-    let produto = connection
+    let produto = await connection
         .collection("produtos")
         .findOne({ _id: new ObjectId(_id) });
-    produto._id = produto._id.toString();
+    if (produto == null) {
+        return undefined;
+    }
+
+    // transformar _id para string se ele for um ObjectId
+    if (produto._id) produto._id = produto._id.toString();
+
     return produto;
 };
 
