@@ -70,7 +70,13 @@ const insertData = async () => {
     const collectionNames = Object.keys(data);
     for await (const collectionName of collectionNames) {
         const collection = database.collection(collectionName);
-        const documents = data[collectionName];
+        let documents = data[collectionName];
+        documents = documents.map((document) => {
+            if (document._id) {
+                document._id = new ObjectId(document._id);
+            }
+            return document;
+        });
         if(documents.length > 0) {
             await collection.insertMany(documents);
         }
