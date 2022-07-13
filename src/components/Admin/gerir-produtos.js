@@ -24,53 +24,84 @@ const GerirProdutos = () => {
     const [preco, setPreco] = useState(0);
     const [descricao, setDescricao] = useState("");
 
-    const [editando, setEditando] = useState(false);
+    const [selecionado, setSelecionado] = useState(false);
+
+    // Função que seleciona um ingrediente
+    const selecionar = () => {
+        setSelecionado(!selecionado);
+        if (!selecionado) {
+            dispatch(
+                setIdSelecinado({
+                    id: id,
+                })
+            );
+            document.getElementById("form-ingrediente").scrollIntoView({
+                behavior: "instant",
+                block: "center",
+            });
+            //descelecionar todos oo outros
+            ingredientesBD.forEach((ingrediente) => {
+                if (ingrediente.id !== id) {
+                    let elem = document.getElementById(
+                        `ingrediente-${ingrediente.id}`
+                    );
+                    elem.innerHTML = "Selecionar";
+                }
+            });
+        } else {
+            dispatch(
+                setIdSelecinado({
+                    id: 0,
+                })
+            );
+        }
+    };
+
+    useEffect(() => {
+        dispatch(fetchProdutos());
+    }, []);
 
     const handleButton = async (e) => {
         e.preventDefault();
-        if (nome === "") {
-            setErro("Preencha o nome da pizza");
-            return;
-        }
-        if (imagem === "") {
-            setErro("Preencha a imagem da pizza");
-            return;
-        }
-
-        let produto = {
-            _id: editando ? ProdutosBD[0]._id : 0,
-            nome: nome,
-            imagem: imagem,
-            preco: preco,
-            descricao: descricao,
-        };
-        const form = new FormData();
-        for (let key in produto) {
-            form.append(key, produto[key]);
-        }
+        let form_data = new FormData();
+        form_data.append("nome", nome);
+        form_data.append("preco", preco);
+        form_data.append("descricao", descricao);
+        form_data.append("imagem", imagem);
+        form_data.append("id", idSelecinado);
 
         const token = getSessionFromLocalStorage();
         const request = {
             method: "POST",
             url: "http://localhost:3001/admin/editar-produto",
             headers: {
+                "Content-Type": "multipart/form-data",
                 "x-access-token": `Bearer ${token}`,
             },
-            data: "[form]",
+            data: form_data,
+            onUploadProgress: (progressEvent) => {
+                const percentCompleted = Math.round(
+                    (progressEvent.loaded * 100) / progressEvent.total
+                );
+                console.log(percentCompleted);
+            },
         };
 
-        const response = await axios(request);
-        if (response.status === 200) {
-            // reload window
-            window.location.reload();
-        } else {
-            setErro(response.data.error);
-        }
+        axios(request)
+            .then((response) => {
+                if (response.status === 200) {
+                    dispatch(fetchProdutos());
+                    console.log("Produto editado com sucesso!");
+                } else console.log("Erro ao editar produto!");
+            })
+            .catch((error) => {
+                console.log(error);
+            });
     };
 
     useEffect(() => {
         dispatch(fetchProdutos);
-    }, [dispatch]);
+    }, [idSelecinado]);
 
     return (
         <>
@@ -238,7 +269,9 @@ const GerirProdutos = () => {
                             }}
                         >
                             <button className="btn btn-outline-success btn-lg">
-                                {editando ? "Salvar 💿" : "Adicionar ✅"}
+                                {idSelecinado !== 0
+                                    ? "Salvar 💿"
+                                    : "Adicionar ✅"}
                             </button>
                             <a
                                 href="/menu-admin"
@@ -247,7 +280,9 @@ const GerirProdutos = () => {
                                 }}
                                 className="btn btn-outline-danger btn-lg"
                             >
-                                {editando ? "Deletar 🗑️" : "Cancelar ❌"}
+                                {idSelecinado !== 0
+                                    ? "Deletar 🗑️"
+                                    : "Cancelar ❌"}
                             </a>
                         </div>
                     </form>
