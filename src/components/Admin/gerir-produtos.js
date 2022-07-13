@@ -7,7 +7,6 @@ import {
 import {
     setIdSelecinado,
     setNome,
-    setIngredientes,
     setPreco,
     setDescricao,
     selectIdSelecinado,
@@ -92,7 +91,7 @@ const GerirProdutos = () => {
                 </div>
                 <div className="row section mb-1">
                     <div className="scrollmenu">
-                        {ProdutosBD.map((pizza) => (
+                        {ProdutosBD.map((produtos) => (
                             <div
                                 style={{
                                     width: "18rem",
@@ -105,12 +104,12 @@ const GerirProdutos = () => {
                                     justifyContent: "space-between",
                                     alignItems: "center",
                                 }}
-                                key={pizza.id}
+                                key={produtos.id}
                             >
                                 <img
                                     className="card-img-top"
-                                    src={pizza.imagem}
-                                    alt={pizza.nome}
+                                    src={produtos.imagem}
+                                    alt={produtos.nome}
                                     style={{
                                         width: "12rem",
                                         height: "12rem",
@@ -118,32 +117,26 @@ const GerirProdutos = () => {
                                     }}
                                 />
                                 <div className="card-body">
-                                    <h5 className="card-title">{pizza.nome}</h5>
+                                    <h5 className="card-title">{produtos.nome}</h5>
                                     <button
                                         className="btn btn-lg btn-primary btn-success"
-                                        id={`pizza-${pizza.id}`}
+                                        id={`pizza-${produtos.id}`}
                                         onClick={(e) => {
-                                            if (idSelecinado === pizza.id) {
+                                            if (idSelecinado === produtos.id) {
                                                 // desselecionar
                                                 dispatch(setIdSelecinado(""));
                                                 dispatch(setNome(""));
-                                                dispatch(setIngredientes([]));
                                                 dispatch(setPreco(""));
                                                 dispatch(setDescricao(""));
                                             } else {
                                                 dispatch(
-                                                    setIdSelecinado(pizza.id)
+                                                    setIdSelecinado(produtos.id)
                                                 );
-                                                dispatch(setNome(pizza.nome));
-                                                dispatch(
-                                                    setIngredientes(
-                                                        pizza.ingredientes
-                                                    )
-                                                );
-                                                dispatch(setPreco(pizza.preco));
+                                                dispatch(setNome(produtos.nome));
+                                                dispatch(setPreco(produtos.preco));
                                                 dispatch(
                                                     setDescricao(
-                                                        pizza.descricao
+                                                        produtos.descricao
                                                     )
                                                 );
                                             }
