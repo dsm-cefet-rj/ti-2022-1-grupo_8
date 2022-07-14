@@ -22,9 +22,9 @@ const validaçãoPedido = (pizza) => {
         if (!pizza[key]) {
             throw new Error(`${key} é um campo obrigatório`);
         }
-        if (typeof pizza[key] !== ProdutoValidTypes[key]) {
+        if (typeof pizza[key] !== PizzaValidTypes[key]) {
             throw new Error(
-                `${key} deve ser do tipo ${ProdutoValidTypes[key]}`
+                `${key} deve ser do tipo ${PizzaValidTypes[key]}`
             );
         }
     });
@@ -64,6 +64,7 @@ const addPizza = async (pizzas) => {
 const editPizza = async (id, pizza) => {
     const connection = await getConnection(); // conectar ao banco de dados
     validaçãoPedido(pizza);
+    if(pizza._id) delete pizza._id;
     await connection
         .collection("pizzas")
         .updateOne({ _id: new ObjectId(id) }, { $set: pizza });

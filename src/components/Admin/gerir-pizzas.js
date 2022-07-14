@@ -40,6 +40,7 @@ const GerirPizzas = () => {
     const descricao = useSelector(selectDescricao);
     const ingredientes = useSelector(selectIngredientesPizza);
     const [imagem, setImagem] = useState("");
+    const [preco, setPreco] = useState(0);
 
     useEffect(() => {
         dispatch(fetchPizzas());
@@ -80,16 +81,17 @@ const GerirPizzas = () => {
         }
     };
 
-    // Função que marca ou desmarca um ingrediente
-    const handleCheckbox = (e) => {
-        const id = e.target.id;
-        const payload = id;
-        if (e.target.checked) {
-            dispatch(addIngrediente(payload));
-        } else {
-            dispatch(removeIngrediente(payload));
-        }
-    };
+    // atualizar preço
+    useEffect(() => {
+        let precoTotal = 20;
+        ingredientes.forEach((ingrediente) => {
+            precoTotal += ingredientesBD.find(
+                (ingredienteBD) => ingredienteBD._id === ingrediente
+            ).preco;
+        });
+        setPreco(precoTotal);
+    }, [ingredientes]);
+
 
     // Renderização da página
     return (
@@ -135,13 +137,13 @@ const GerirPizzas = () => {
                                             className="btn btn-lg btn-primary btn-success"
                                             id={`pizza-${pizza.id}`}
                                             onClick={(e) => {
-                                                if(idSelecionado !== pizza.id) {
+                                                if (idSelecionado !== pizza.id) {
                                                     dispatch(setIdSelecionado(pizza.id));
                                                     dispatch(setNome(pizza.nome));
                                                     dispatch(setDescricao(pizza.descricao));
                                                     dispatch(setIngredientes(pizza.ingredientes));
                                                     setImagem("");
-                                                }else{
+                                                } else {
                                                     dispatch(setIdSelecionado(0));
                                                     dispatch(setNome(""));
                                                     dispatch(setDescricao(""));
@@ -283,42 +285,40 @@ const GerirPizzas = () => {
                             }}
                         >
                             <h3>Preço total:</h3>
-                            <h3>{"R$: " + "10"}</h3>
+                            <h3>R$ {preco.toFixed(2)}</h3>
                         </div>
                     </div>
                     <div className="row section">
                         {/* Botoes de Confirmar ou cancelar e voltar para o menu-admin */}
                         <button
-                                className="btn btn-lg btn-success"
-                                onClick={handleButton}
-                            >
-                                {idSelecionado !== 0
-                                    ? "Salvar 💿"
-                                    : "Adicionar ✅"}
-                            </button>
+                            className="btn btn-lg btn-success"
+                            onClick={handleButton}
+                        >
+                            {idSelecionado !== 0
+                                ? "Salvar 💿"
+                                : "Adicionar ✅"}
+                        </button>
 
-                            <button
-                                className="btn btn-lg btn-danger"
-                                onClick={() => {
-                                    if (idSelecionado === 0) {
-                                        window.history.back();
-                                    } else {
-                                        const token = getSessionFromLocalStorage();
-                                        axios({
-                                            method: "delete",
-                                            url: `http://localhost:3001/admin/excluir-pizza/${idSelecionado}`,
-                                            headers: {
-                                                Authorization: `Bearer ${token}`,
-                                            },
-                                        })
-                                        window.location.reload();
-                                    }
-                                }}
-                            >
-                                 {idSelecionado !== 0
-                                    ? "Deletar 🗑️"
-                                    : "Cancelar ❌"}
-                            </button>
+                        <button
+                            className="btn btn-lg btn-danger"
+                            onClick={() => {
+                                if (idSelecionado === 0) {
+                                    window.history.back();
+                                } else {
+                                    const token = getSessionFromLocalStorage();
+                                    axios({
+                                        method: "delete",
+                                        url: `http://localhost:3001/admin/excluir-pizza/${idSelecionado}`,
+                                        headers: {
+                                            Authorization: `Bearer ${token}`,
+                                        },
+                                    })
+                                    window.location.reload();
+                                }
+                            }}
+                        >
+                            {idSelecionado !== 0 ? "Deletar 🗑️" : "Cancelar ❌"}
+                        </button>
                     </div>
                 </div>
             </div>

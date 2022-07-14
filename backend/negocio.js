@@ -25,7 +25,6 @@ const PizzaValidTypes = {
 const ProdutoValidTypes = {
     nome: "string",
     descricao: "string",
-    preco: "number",
 };
 
 const PedidoValidTypes = {

@@ -18,7 +18,6 @@ const {
 } = require("../data/DaoPizza");
 const {
     removeProduto,
-    getAllProdutos,
     getProduto,
     editProduto,
     addProduto,
@@ -146,7 +145,7 @@ router.post("/editar-ingrediente", formData, async (req, res) => {
 
     if (!(nome && preco && descricao && pesoPorcao)) {
         res.status(400).json({
-            error: `Dados incompletos, fields: ${req.fields}`,
+            error: `Dados incompletos, fields: ${Object.keys(req.fields)}`,
         });
         return;
     }
@@ -157,7 +156,7 @@ router.post("/editar-ingrediente", formData, async (req, res) => {
         ingrediente.descricao = descricao;
         ingrediente.pesoPorcao = parseFloat(pesoPorcao);
         if (checkFiles(files)) {
-            ingrediente.imagem = moveFile("ingrediente", files.image, _id);
+            ingrediente.imagem = moveFile("ingrediente", files.imagem, _id);
         }
         await editIngrediente(ingrediente);
 
@@ -171,7 +170,7 @@ router.post("/editar-ingrediente", formData, async (req, res) => {
             pesoPorcao: parseFloat(pesoPorcao),
         };
         if (checkFiles(files)) {
-            ingrediente.image = moveFile(
+            ingrediente.imagem = moveFile(
                 "ingrediente",
                 files.imagem,
                 uuid.v4()
@@ -191,10 +190,10 @@ router.post("/editar-ingrediente", formData, async (req, res) => {
 // Rota para adicionar ou editar uma pizza
 router.post("/editar-pizza", formData, async (req, res) => {
     const files = req.files;
-    const { _id, nome, descricao, ingredientes, preco } = req.fields;
-    if (!(nome && descricao && ingredientes && preco)) {
+    const { _id, nome, descricao, ingredientes } = req.fields;
+    if (!(nome && descricao && ingredientes )) {
         res.status(400).json({
-            error: `Dados incompletos, fields: ${req.fields}`,
+            error: `Dados incompletos, fields: ${Object.keys(req.fields)}`,
         });
         return;
     }
@@ -203,13 +202,12 @@ router.post("/editar-pizza", formData, async (req, res) => {
         pizza.nome = nome;
         pizza.descricao = descricao;
         pizza.ingredientes = ingredientes;
-        pizza.preco = preco;
         if (checkFiles(files)) {
-            moveFile("pizza", files.image, _id);
-            pizza.image = _id + files.image.name.split(".").at(-1);
+            moveFile("pizza", files.imagem, _id);
+            pizza.imagem = _id + files.imagem.name.split(".").at(-1);
         }
 
-        await editPizza(pizza);
+        await editPizza(_id, pizza);
 
         res.status(200).json(pizza).end();
         return;
@@ -218,11 +216,12 @@ router.post("/editar-pizza", formData, async (req, res) => {
             nome: nome,
             descricao: descricao,
             ingredientes: ingredientes,
-            preco: preco,
         };
         if (!checkFiles(files)) {
             res.status(400).json({ error: "Arquivo inválido" });
             return;
+        }else{
+            pizza.imagem = moveFile("pizza", files.imagem, uuid.v4());
         }
 
         await addPizza(pizza);
@@ -237,7 +236,7 @@ router.post("/editar-produto", formData, async (req, res) => {
     const { _id, nome, preco, descricao } = req.fields;
     if (!(nome && preco && descricao)) {
         res.status(400).json({
-            error: `Dados incompletos, fields: ${req.fields}`,
+            error: `Dados incompletos, fields: ${Object.keys(req.fields)}`,
         });
         return;
     }
