@@ -298,10 +298,24 @@ const GerirPizzas = () => {
                             <button
                                 className="btn btn-lg btn-warning"
                                 onClick={() => {
-                                    window.location.href = "/menu-admin";
+                                    if (idSelecionado === 0) {
+                                        window.history.back();
+                                    } else {
+                                        const token = getSessionFromLocalStorage();
+                                        axios({
+                                            method: "delete",
+                                            url: `http://localhost:3001/admin/excluir-pizza/${idSelecionado}`,
+                                            headers: {
+                                                Authorization: `Bearer ${token}`,
+                                            },
+                                        })
+                                        window.location.reload();
+                                    }
                                 }}
                             >
-                                Voltar
+                                 {idSelecionado !== 0
+                                    ? "Deletar 🗑️"
+                                    : "Cancelar ❌"}
                             </button>
                         </div>
                     </div>
