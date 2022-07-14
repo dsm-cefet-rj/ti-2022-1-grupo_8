@@ -19,7 +19,6 @@ const PizzaValidTypes = {
     nome: "string",
     descricao: "string",
     ingredientes: "object",
-    preco: "number",
 };
 
 const ProdutoValidTypes = {

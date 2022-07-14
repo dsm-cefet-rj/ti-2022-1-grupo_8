@@ -201,7 +201,7 @@ router.post("/editar-pizza", formData, async (req, res) => {
     if (pizza) {
         pizza.nome = nome;
         pizza.descricao = descricao;
-        pizza.ingredientes = ingredientes;
+        pizza.ingredientes = ingredientes.split(",");
         if (checkFiles(files)) {
             moveFile("pizza", files.imagem, _id);
             pizza.imagem = _id + files.imagem.name.split(".").at(-1);
@@ -215,7 +215,7 @@ router.post("/editar-pizza", formData, async (req, res) => {
         pizza = {
             nome: nome,
             descricao: descricao,
-            ingredientes: ingredientes,
+            ingredientes: ingredientes.split(","),
         };
         if (!checkFiles(files)) {
             res.status(400).json({ error: "Arquivo inválido" });

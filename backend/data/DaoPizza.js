@@ -24,7 +24,7 @@ const validaçãoPedido = (pizza) => {
         }
         if (typeof pizza[key] !== PizzaValidTypes[key]) {
             throw new Error(
-                `${key} deve ser do tipo ${PizzaValidTypes[key]}`
+                `${key} deve ser do tipo ${PizzaValidTypes[key]} recebido ${typeof pizza[key]}`
             );
         }
     });
