@@ -288,16 +288,17 @@ const GerirPizzas = () => {
                     </div>
                     <div className="row section">
                         {/* Botoes de Confirmar ou cancelar e voltar para o menu-admin */}
-                        <div className="col-md-12">
-                            <button
+                        <button
                                 className="btn btn-lg btn-success"
                                 onClick={handleButton}
                             >
-                                Confirmar
+                                {idSelecionado !== 0
+                                    ? "Salvar 💿"
+                                    : "Adicionar ✅"}
                             </button>
 
                             <button
-                                className="btn btn-lg btn-warning"
+                                className="btn btn-lg btn-danger"
                                 onClick={() => {
                                     if (idSelecionado === 0) {
                                         window.history.back();
@@ -318,7 +319,6 @@ const GerirPizzas = () => {
                                     ? "Deletar 🗑️"
                                     : "Cancelar ❌"}
                             </button>
-                        </div>
                     </div>
                 </div>
             </div>
