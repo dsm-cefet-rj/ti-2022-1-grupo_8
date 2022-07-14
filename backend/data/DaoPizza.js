@@ -64,7 +64,7 @@ const addPizza = async (pizzas) => {
 const editPizza = async (id, pizza) => {
     const connection = await getConnection(); // conectar ao banco de dados
     validaçãoPedido(pizza);
-    if(pizza._id) delete pizza._id;
+    if (pizza._id) delete pizza._id;
     await connection
         .collection("pizzas")
         .updateOne({ _id: new ObjectId(id) }, { $set: pizza });

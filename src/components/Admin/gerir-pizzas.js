@@ -92,7 +92,6 @@ const GerirPizzas = () => {
         setPreco(precoTotal);
     }, [ingredientes]);
 
-
     // Renderização da página
     return (
         <>
@@ -137,17 +136,37 @@ const GerirPizzas = () => {
                                             className="btn btn-lg btn-primary btn-success"
                                             id={`pizza-${pizza.id}`}
                                             onClick={(e) => {
-                                                if (idSelecionado !== pizza.id) {
-                                                    dispatch(setIdSelecionado(pizza.id));
-                                                    dispatch(setNome(pizza.nome));
-                                                    dispatch(setDescricao(pizza.descricao));
-                                                    dispatch(setIngredientes(pizza.ingredientes));
+                                                if (
+                                                    idSelecionado !== pizza.id
+                                                ) {
+                                                    dispatch(
+                                                        setIdSelecionado(
+                                                            pizza.id
+                                                        )
+                                                    );
+                                                    dispatch(
+                                                        setNome(pizza.nome)
+                                                    );
+                                                    dispatch(
+                                                        setDescricao(
+                                                            pizza.descricao
+                                                        )
+                                                    );
+                                                    dispatch(
+                                                        setIngredientes(
+                                                            pizza.ingredientes
+                                                        )
+                                                    );
                                                     setImagem("");
                                                 } else {
-                                                    dispatch(setIdSelecionado(0));
+                                                    dispatch(
+                                                        setIdSelecionado(0)
+                                                    );
                                                     dispatch(setNome(""));
                                                     dispatch(setDescricao(""));
-                                                    dispatch(setIngredientes([]));
+                                                    dispatch(
+                                                        setIngredientes([])
+                                                    );
                                                     setImagem("");
                                                 }
                                             }}
@@ -294,9 +313,7 @@ const GerirPizzas = () => {
                             className="btn btn-lg btn-success"
                             onClick={handleButton}
                         >
-                            {idSelecionado !== 0
-                                ? "Salvar 💿"
-                                : "Adicionar ✅"}
+                            {idSelecionado !== 0 ? "Salvar 💿" : "Adicionar ✅"}
                         </button>
 
                         <button
@@ -312,7 +329,7 @@ const GerirPizzas = () => {
                                         headers: {
                                             Authorization: `Bearer ${token}`,
                                         },
-                                    })
+                                    });
                                     window.location.reload();
                                 }
                             }}

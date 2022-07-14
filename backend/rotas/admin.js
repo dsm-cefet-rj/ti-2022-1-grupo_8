@@ -191,7 +191,7 @@ router.post("/editar-ingrediente", formData, async (req, res) => {
 router.post("/editar-pizza", formData, async (req, res) => {
     const files = req.files;
     const { _id, nome, descricao, ingredientes } = req.fields;
-    if (!(nome && descricao && ingredientes )) {
+    if (!(nome && descricao && ingredientes)) {
         res.status(400).json({
             error: `Dados incompletos, fields: ${Object.keys(req.fields)}`,
         });
@@ -220,7 +220,7 @@ router.post("/editar-pizza", formData, async (req, res) => {
         if (!checkFiles(files)) {
             res.status(400).json({ error: "Arquivo inválido" });
             return;
-        }else{
+        } else {
             pizza.imagem = moveFile("pizza", files.imagem, uuid.v4());
         }
 
