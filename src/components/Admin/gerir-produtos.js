@@ -28,7 +28,7 @@ const GerirProdutos = () => {
     const ProdutosBD = useSelector(selectProdutos);
 
     const [erro, setErro] = useState("");
-    const idSelecinado = useSelector(selectIdSelecinado);
+    const idSelecionado = useSelector(selectIdSelecinado);
     const nome = useSelector(selectNome);
     const [imagem, setImagem] = useState("");
     const preco = useSelector(selectPreco);
@@ -41,7 +41,7 @@ const GerirProdutos = () => {
     const handleButton = async (e) => {
         e.preventDefault();
         let produto = {
-            _id: idSelecinado,
+            _id: idSelecionado,
             nome: nome,
             imagem: imagem,
             preco: preco,
@@ -124,7 +124,7 @@ const GerirProdutos = () => {
                                         className="btn btn-lg btn-primary btn-success"
                                         id={`pizza-${produtos.id}`}
                                         onClick={(e) => {
-                                            if (idSelecinado === produtos.id) {
+                                            if (idSelecionado === produtos.id) {
                                                 // desselecionar
                                                 dispatch(setIdSelecinado(""));
                                                 dispatch(setNome(""));
@@ -148,7 +148,7 @@ const GerirProdutos = () => {
                                             }
                                         }}
                                     >
-                                        {idSelecinado === produtos.id
+                                        {idSelecionado === produtos.id
                                             ? "Desselecionar"
                                             : "Selecionar"}
                                     </button>
@@ -223,7 +223,7 @@ const GerirProdutos = () => {
                             }}
                         >
                             <button className="btn btn-outline-success btn-lg">
-                                {idSelecinado !== 0
+                                {idSelecionado !== 0
                                     ? "Salvar 💿"
                                     : "Adicionar ✅"}
                             </button>
@@ -233,13 +233,13 @@ const GerirProdutos = () => {
                                 }}
                                 className="btn btn-outline-danger btn-lg"
                                 onClick={(e) => {
-                                    if (idSelecinado !== 0) {
+                                    if (idSelecionado !== 0) {
                                         const token =
                                             getSessionFromLocalStorage();
                                         // Excluir produto
                                         axios({
                                             method: "DELETE",
-                                            url: `http://localhost:3001/admin/excluir-produto/${idSelecinado}`,
+                                            url: `http://localhost:3001/admin/excluir-produto/${idSelecionado}`,
                                             headers: {
                                                 Authorization: `Bearer ${token}`,
                                             },
@@ -251,7 +251,7 @@ const GerirProdutos = () => {
                                     }
                                 }}
                             >
-                                {idSelecinado !== 0
+                                {idSelecionado !== 0
                                     ? "Deletar 🗑️"
                                     : "Cancelar ❌"}
                             </button>
