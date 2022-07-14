@@ -46,36 +46,6 @@ const GerirPizzas = () => {
         dispatch(fetchIngredientes());
     }, [dispatch]);
 
-    useEffect(() => {
-        if (idSelecionado !== 0) {
-            document.getElementById("imagem-field").hidden = true;
-        } else {
-            document.getElementById("imagem-field").hidden = false;
-        }
-    }, [idSelecionado]);
-
-    // Função que seleciona uma pizza
-    const selecionar = (pizza) => {
-        if (idSelecionado !== pizza._id) {
-            // selecionar
-            dispatch(setIdSelecionado(pizza._id));
-            dispatch(setNome(pizza.nome));
-            dispatch(setDescricao(pizza.descricao));
-            dispatch(setIngredientes(pizza.ingredientes));
-
-            document.getElementById("form-pizza").scrollIntoView({
-                behavior: "instant",
-                block: "center",
-            });
-        } else {
-            // desselecionar
-            dispatch(setIdSelecionado(""));
-            dispatch(setNome(""));
-            dispatch(setDescricao(""));
-            dispatch(setIngredientes([]));
-        }
-    };
-
     // Função que envia os dados alterados
     const handleButton = async (e) => {
         e.preventDefault();
@@ -164,7 +134,21 @@ const GerirPizzas = () => {
                                         <button
                                             className="btn btn-lg btn-primary btn-success"
                                             id={`pizza-${pizza.id}`}
-                                            onClick={(e) => selecionar(pizza)}
+                                            onClick={(e) => {
+                                                if(idSelecionado !== pizza.id) {
+                                                    dispatch(setIdSelecionado(pizza.id));
+                                                    dispatch(setNome(pizza.nome));
+                                                    dispatch(setDescricao(pizza.descricao));
+                                                    dispatch(setIngredientes(pizza.ingredientes));
+                                                    setImagem("");
+                                                }else{
+                                                    dispatch(setIdSelecionado(0));
+                                                    dispatch(setNome(""));
+                                                    dispatch(setDescricao(""));
+                                                    dispatch(setIngredientes([]));
+                                                    setImagem("");
+                                                }
+                                            }}
                                         >
                                             {idSelecionado === pizza.id
                                                 ? "Desselecionar"
@@ -264,8 +248,25 @@ const GerirPizzas = () => {
                                             defaultChecked={ingredientes.includes(
                                                 ingrediente._id
                                             )}
+                                            checked={ingredientes.includes(
+                                                ingrediente._id
+                                            )}
                                             id={ingrediente.id.toString()}
-                                            onChange={handleCheckbox}
+                                            onChange={(e) => {
+                                                if (e.target.checked) {
+                                                    dispatch(
+                                                        addIngrediente(
+                                                            ingrediente._id
+                                                        )
+                                                    );
+                                                } else {
+                                                    dispatch(
+                                                        removeIngrediente(
+                                                            ingrediente._id
+                                                        )
+                                                    );
+                                                }
+                                            }}
                                         />
                                         <p>R$ {ingrediente.preco.toFixed(2)}</p>
                                     </div>
