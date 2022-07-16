@@ -1,5 +1,4 @@
 .body {
-    height: 100vh;
     background: rgba(0, 0, 0, 0.372) url("/imgs/adminBG.png");
     background-blend-mode: difference;
     background-size: cover;
@@ -9,5 +8,9 @@
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Assistant",
         "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
         "Helvetica Neue", sans-serif;
-    height: max-content;
+
+    & {
+        overflow: hidden;
+    }
+    height: 100vh;
 }
