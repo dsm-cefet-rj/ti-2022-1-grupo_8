@@ -1,10 +1,11 @@
-import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector, store } from "react-redux";
 import { Link } from "react-router-dom";
 import {
     fazerPedido,
     getFromLocalStorage,
     setCarrinho,
+    setEndereco,
 } from "../../features/carrinhoSlice";
 import styles from "./carrinho.module.scss";
 import MenuNav from "./menu-nav";
@@ -25,6 +26,8 @@ const Carrinho = () => {
             return total + item.preco * item.quantidade;
         }, 0)
     );
+
+    const endereco = useSelector((state) => state.endereco);
 
     // função que recalcula o total do carrinho
     const recalcularTotal = (novoCarrinho) => {
@@ -77,7 +80,7 @@ const Carrinho = () => {
 
     // Faz o pedido
     const finalizarPedido = () => {
-        if (itensCarrinho.length > 0) {
+        if (itensCarrinho.length > 0 && endereco !== "") {
             dispatch(fazerPedido());
         } else {
             console.log("Carrinho vazio");
@@ -210,6 +213,28 @@ const Carrinho = () => {
                         </h3>
                     </div>
                 </div>
+
+                <div
+                    className="row section"
+                    style={{
+                        marginBottom: "20px",
+                        flexDirection: "row",
+                    }}
+                >
+                    <div className="col-md-12">
+                        <strong>Endereço de entrega</strong>
+                        <input
+                            type="text"
+                            className="form-control"
+                            placeholder="Endereço"
+                            value={endereco}
+                            onChange={(e) =>
+                                dispatch(setEndereco(e.target.value))
+                            }
+                        />
+                    </div>
+                </div>
+
                 <div
                     className="row section"
                     style={{
@@ -230,7 +255,7 @@ const Carrinho = () => {
                     <button
                         className="btn btn-success mt-2"
                         onClick={finalizarPedido}
-                        disabled={itens.length === 0}
+                        disabled={itens.length === 0 || endereco === ""}
                     >
                         Finalizar Compra
                     </button>

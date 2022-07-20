@@ -19,12 +19,14 @@ export const saveToLocalStorage = (carrinho) => {
 export const fazerPedido = createAsyncThunk(
     // função que faz o pedido do cliente
     "carrinho/fazerPedido",
-    async () => {
+    async (arg, { getState }) => {
+        const state = getState();
         const token = getSessionFromLocalStorage();
         const url = "http://localhost:3001/usuario/fazer-pedido";
         const carinho = getFromLocalStorage();
+        const endereco = state.carrinho.endereco;
         const body = {
-            endereco: "Um endereço qualquer",
+            endereco: endereco,
             carrinho: carinho,
         };
         const response = await axios(url, {
@@ -43,6 +45,7 @@ const carrinhoSlice = createSlice({
     name: "carrinho",
     initialState: {
         itens: [],
+        endereco: "",
     },
     reducers: {
         // redefine a lista de itens
@@ -80,11 +83,16 @@ const carrinhoSlice = createSlice({
         carregarCarrinho: (state) => {
             state.itens = getFromLocalStorage();
         },
+        // define o endereço do cliente
+        setEndereco: (state, { payload }) => {
+            state.endereco = payload;
+        },
     },
     extraReducers: {
         [fazerPedido.fulfilled]: (state, action) => {
             console.log(action.payload);
             state.itens = []; // limpa o carrinho
+            state.endereco = ""; // limpa o endereço
             saveToLocalStorage(state.itens);
             // Redireciona para a página de pedidos
             window.location.href = "/meus-pedidos";
@@ -97,6 +105,7 @@ export const {
     adicionarAoCarrinho,
     removerDoCarrinho,
     carregarCarrinho,
+    setEndereco,
 } = carrinhoSlice.actions;
 
 // para ser usado com o UseSelector
