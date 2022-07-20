@@ -96,11 +96,13 @@ const GerirUsuarios = () => {
                 }}
             >
                 <div className="container mb-2 p-1 bg-transparent">
-                    <h1 style={{ textAlign: "center", margin: "30px" }}>
-                        Gerenciar Usuários 👥
-                    </h1>
-                    <div className="row ">{erro}</div>
-
+                    {erro !== "" ? (
+                        <div className="alert alert-danger" role="alert">
+                            {"Usuário não encontrado. Tente novamente!"}
+                        </div>
+                    ) : (
+                        <></>
+                    )}
                     {email && erro === "" ? (
                         <>
                             {/* Se email existir, renderiza o componente de edição */}
