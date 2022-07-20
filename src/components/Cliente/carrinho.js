@@ -155,6 +155,26 @@ const Carrinho = () => {
                                                     disabled={
                                                         item.quantidade === 1
                                                     }
+
+                {itensCarrinho.length === 0 ? (
+                    <div className="row section">
+                        <div
+                            className="col-12 text-center"
+                            style={{ marginBottom: "30px" }}
+                        >
+                            <h2>Seu carrinho está vazio!</h2>
+                            <p>
+                                Por que não dá uma olhadinha nos nossos
+                                produtos? 👀😋
+                            </p>
+                            <Link to="/menu">
+                                <button className="btn btn-primary">
+                                    Voltar para o menu
+                                </button>
+                            </Link>
+                        </div>
+                    </div>
+                ) : (
                                                 >
                                                     -
                                                 </button>
@@ -260,6 +280,7 @@ const Carrinho = () => {
                         Finalizar Compra
                     </button>
                 </div>
+                    </div>
             </div>
         </>
     );
