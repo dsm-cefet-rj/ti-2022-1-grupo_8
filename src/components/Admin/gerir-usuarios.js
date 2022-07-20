@@ -96,11 +96,9 @@ const GerirUsuarios = () => {
                 }}
             >
                 <div className="container mb-2 p-1 bg-transparent">
-                    <div className="row section">
-                        <div className="col text-center">
-                            <h2>Gerir Usuários</h2>
-                        </div>
-                    </div>
+                    <h1 style={{ textAlign: "center", margin: "30px" }}>
+                        Gerenciar Usuários 👥
+                    </h1>
                     <div className="row ">{erro}</div>
 
                     {email && erro === "" ? (
