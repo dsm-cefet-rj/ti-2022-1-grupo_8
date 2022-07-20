@@ -329,14 +329,15 @@ const CriarPizza = () => {
                     </div>
                 </div>
                 <hr />
-                <div className="row">
-                    <div
-                        className="col-md-12"
-                        style={{
-                            textAlign: "right",
-                            marginBottom: "20px",
-                        }}
-                    >
+                <div
+                    className="row"
+                    style={{
+                        textAlign: "right",
+                        marginBottom: "20px",
+                        marginRight: "10%",
+                    }}
+                >
+                    <div className="col-md-12">
                         <h3>Preço total:</h3>
                         <h3>
                             {erro === ""
