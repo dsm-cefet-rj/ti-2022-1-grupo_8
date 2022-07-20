@@ -97,7 +97,7 @@ const GerirPizzas = () => {
         <>
             <AdminNav Atual="pizzas" />
             <div className={styles.body}>
-                <h1> Gerenciar Pizzas </h1>
+                <h1 style={{ textAlign: "center" }}> Gerenciar Pizzas 🍕 </h1>
                 <div className="container">
                     <div className="row m-1 section">
                         {/*Area de seleção de pizza existente*/}
