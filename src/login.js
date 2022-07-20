@@ -40,15 +40,14 @@ const LoginForm = () => {
             email: email,
             senha: senha,
         };
-        const response = axios({
+        axios({
             method: "POST",
             url: "http://localhost:3001/login/auth",
             headers: {
                 "Content-Type": "application/json",
             },
             data: JSON.stringify(loginData),
-        });
-        response
+        })
             .then((res) => {
                 if (res.status === 200) {
                     console.log("Usuário logado com sucesso");
@@ -72,12 +71,9 @@ const LoginForm = () => {
                     }
                     return;
                 }
-                if (res.status === 400) {
-                    setErro(res.body.erro);
-                }
             })
             .catch((err) => {
-                console.log(err);
+                setErro(err.response.data.erro);
             });
     };
     return (
