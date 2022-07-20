@@ -18,14 +18,9 @@ const atualizarRelatorioIngredientes = (ingredientesBD, relatorio, pizza) => {
 
     for (let metade of pizza.Metades) {
         for (let ingredienteID of metade) {
-            //
-            // TODO: gambiarra para lidar com IDs numéricos que ainda estão no banco
-            const ingrediente = Number.isInteger(Number(ingredienteID))
-                ? ingredientesBD[Number.parseInt(ingredienteID) - 1]
-                : ingredientesBD.find(
-                      (ingrediente) => ingrediente.id === ingredienteID
-                  );
-            //end of gambiarra
+            const ingrediente = ingredientesBD.find(
+                (ingrediente) => ingrediente.id === ingredienteID
+            );
 
             if (ingrediente == undefined) {
                 // Ingrediente não existe mais.
