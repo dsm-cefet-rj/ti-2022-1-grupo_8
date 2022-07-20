@@ -199,6 +199,9 @@ const GerirIngredientes = () => {
     return (
         <>
             <AdminNav Atual="ingredientes" />
+            <h1 style={{ textAlign: "center", margin: "30px" }}>
+                Gerenciar Ingredientes 🧀
+            </h1>
             <div className="container mb-2 p-1 bg-transparent">
                 <div className="row section">
                     <div className="col">

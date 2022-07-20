@@ -81,7 +81,9 @@ const GerirProdutos = () => {
             <AdminNav Atual="gerir-produtos" />
             <div className="container mb-2 p-1 bg-transparent">
                 <div className="row">
-                    <h1>Gerenciar Produtos 🍾</h1>
+                    <h1 style={{ textAlign: "center", margin: "30px" }}>
+                        Gerenciar Produtos 🍾
+                    </h1>
                     <div className="row section mb-3">
                         <h4> Adicionar Novo ou Editar Produto </h4>
                     </div>
