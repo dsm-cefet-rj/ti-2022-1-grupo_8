@@ -2,11 +2,15 @@
     background: rgba(0, 0, 0, 0.372) url("/imgs/adminBG.png");
     background-blend-mode: difference;
     background-size: cover;
-    height: 100vh;
+    height: 140vh;
     background-repeat: no-repeat;
     background-attachment: fixed;
     font-family: "Yanone Kaffeesatz", sans-serif;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Assistant",
         "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
         "Helvetica Neue", sans-serif;
+
+    & {
+        overflow: hidden;
+    }
 }
