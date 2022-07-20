@@ -62,6 +62,7 @@ const MenuFuncionario = () => {
                         {pedidosFeitos.length > 0 ? (
                             pedidosFeitos.map((pedido) => (
                                 <PedidoCard
+                                    key={pedido.id}
                                     id={pedido.id}
                                     email={pedido.email}
                                     data={pedido.dataHora}
@@ -118,6 +119,7 @@ const MenuFuncionario = () => {
                                 )
                                 .map((pedido) => (
                                     <PedidoCard
+                                        key={pedido.id}
                                         id={pedido.id}
                                         email={pedido.email}
                                         data={pedido.dataHora}
