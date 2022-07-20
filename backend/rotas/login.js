@@ -89,7 +89,7 @@ router.post("/criar", async (req, res) => {
         pedidos: [],
     };
 
-    // usuário ja existe? > Verifica se usuário existe 
+    // usuário ja existe? > Verifica se usuário existe
     const usuarios = await getAllUsuarios();
 
     const usuarioExistente = usuarios.find((usuario) => usuario.email == email);
