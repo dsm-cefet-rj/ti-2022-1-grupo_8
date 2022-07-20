@@ -25,7 +25,7 @@ const ProdutoValidTypes = {
     nome: "string",
     descricao: "string",
 };
-
+// Serve para validar os contatos. Entre Aspas é o tipo. 
 const PedidoValidTypes = {
     email: "string",
     dataHora: "number",
