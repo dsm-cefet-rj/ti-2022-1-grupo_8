@@ -71,7 +71,7 @@ const isFuncionario = (req, res, next) => {
         req.headers["x-auth-token"];
     if (token) {
         token = token.replace("Bearer ", ""); // remove o Bearer do token
-        const tokenPayload = jwt.decode(token); // decodifica o token. Conteúdo: email, type, iat, exp
+        const tokenPayload = jwt.decode(token); // decodifica o token. Conteúdo: email, type, iat, exp. 
         const type = tokenPayload.type;
         if (type == "funcionario") {
             next();
@@ -80,7 +80,7 @@ const isFuncionario = (req, res, next) => {
     }
     res.status(401)
         .json({
-            // Usuário não é admin 401
+            // Usuário não é admin 401 // Admin PRINCIPAL
             auth: false,
             message: "Acesso negado",
         })
